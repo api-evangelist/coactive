@@ -1,0 +1,41 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/coactive-openapi-original.json
+docs: https://docs.coactive.ai/api-reference/authentication/api-authentication
+summary:
+  types:
+  - http
+  token_model: bearer-access-token
+  token_exchange: POST https://api.coactive.ai/api/v0/login
+  access_token_ttl_seconds: 3600
+schemes:
+- name: HTTPBearer
+  type: http
+  scheme: bearer
+  bearer_format: access_token
+  sources:
+  - openapi/coactive-openapi-original.json
+credential_types:
+- name: PERSONAL_TOKEN
+  description: User-scoped personal token created in the Coactive UI (app.coactive.ai/settings/credentials).
+    Expires after 30 days unused or 3 months from creation; cannot be retrieved after
+    creation (regenerate to obtain a new one).
+  exchange:
+    endpoint: POST https://api.coactive.ai/api/v0/login
+    auth: bearer PERSONAL_TOKEN
+    grant_type: refresh_token
+- name: SYSTEM_CREDENTIALS
+  description: Administrator CLIENT_ID + CLIENT_SECRET (system credentials) that do not
+    expire. Managed via the systemCredentials API and the Coactive UI.
+  exchange:
+    endpoint: POST https://api.coactive.ai/api/v0/login
+    auth: HTTP Basic CLIENT_ID:CLIENT_SECRET
+    grant_type: client_credentials
+access_token:
+  token_type: Bearer
+  expires_in: 3600
+  usage: 'Authorization: Bearer <access_token> on every subsequent API request.'
+scopes:
+  documented: false
+  notes: No granular OAuth scopes are documented; a valid access token grants API access
+    per the caller's credential type and role. No scopes/ artifact is emitted.
