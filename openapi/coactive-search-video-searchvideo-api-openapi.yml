@@ -1,0 +1,480 @@
+openapi: 3.1.0
+info:
+  title: API Reference agentic-search > agenticSearch search-video > searchVideo API
+  version: 1.0.0
+servers:
+- url: https://api.coactive.ai
+  description: Production
+- url: https://app.coactive.ai
+  description: Production
+tags:
+- name: search-video > searchVideo
+paths:
+  /api/v1/search/video:
+    get:
+      operationId: get-video-details
+      summary: Get Detailed Video Search By Id
+      description: Retrieves composite slices (shots, scenes, etc.) within a specific video ranked by their similarity to a text query. Given a video_id and text_query, this endpoint performs a drill-down search to find moments within that video. The text query is encoded using the dataset's configured shot-level encoder (e.g., Perception Encoder or other vision-language embedding models), then searched against shot embeddings for that specific video. Returns a ranked list of composite slices ordered by similarity score, including timestamps (start_time_ms, end_time_ms), frame numbers, and representative keyframes.
+      tags:
+      - search-video > searchVideo
+      parameters:
+      - name: dataset_id
+        in: query
+        description: Dataset identifier
+        required: true
+        schema:
+          type: string
+      - name: text_query
+        in: query
+        description: Text query for search
+        required: true
+        schema:
+          type: string
+      - name: video_id
+        in: query
+        description: Video identifier
+        required: true
+        schema:
+          type: string
+      - name: composite_type
+        in: query
+        description: Type of composite
+        required: false
+        schema:
+          type: string
+          default: shot
+      - name: limit
+        in: query
+        description: Maximum number of slices to return
+        required: false
+        schema:
+          type: integer
+          default: 10
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/search-video:VideoCompositeDrillDownResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/search-video:HTTPValidationError'
+    post:
+      operationId: search-videos
+      summary: Video Search
+      description: 'Executes a semantic video search using a natural language text query (e.g., ''person walking in park'' or ''cityscape at sunset'') within a specified dataset (dataset_id). The text query is encoded into an embedding using the dataset''s configured encoder (e.g., Perception Encoder or other vision-language embedding models for visual modalities, or Qwen or other text encoders for audio transcript modality), then searched against video content embeddings using vector similarity. The search behavior is controlled by the modality parameter: ''video'' (default) searches video-level embeddings for overall video similarity, ''shot'' searches shot-level embeddings to find videos with similar scenes, ''image'' searches frame-level embeddings to find videos with similar individual frames, and ''audio_speech_to_text'' searches transcript text embeddings for spoken content. All modalities return one result per video, surfacing the most relevant composite slice (shot or scene) and a preview frame. Results can be filtered using optional metadata filters and include the composite slice with start/end timestamps, frame numbers, relevance scores, and video metadata.'
+      tags:
+      - search-video > searchVideo
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/search-video:VideoSearchResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/search-video:HTTPValidationError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/search-video:VideoSearchRequest'
+components:
+  schemas:
+    search-video:ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    search-video:NotEqualsClause:
+      type: object
+      properties:
+        key:
+          type: string
+        operator:
+          type: string
+          enum:
+          - '!='
+        value:
+          type: string
+      required:
+      - key
+      - operator
+      - value
+      title: NotEqualsClause
+    search-video:DateTimeRangeInclusiveClause:
+      type: object
+      properties:
+        key:
+          type: string
+        start_utc_epoch:
+          type: number
+          format: double
+        end_utc_epoch:
+          type: number
+          format: double
+        operator:
+          type: string
+          enum:
+          - DateTimeRangeInclusive
+      required:
+      - key
+      - start_utc_epoch
+      - end_utc_epoch
+      - operator
+      title: DateTimeRangeInclusiveClause
+    search-video:MetadataFilters:
+      type: object
+      properties:
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/search-video:MetadataFiltersFiltersItems'
+      required:
+      - filters
+      description: Metadata filters for video search.
+      title: MetadataFilters
+    search-video:BooleanEqualsClause:
+      type: object
+      properties:
+        key:
+          type: string
+        operator:
+          type: string
+          enum:
+          - ==
+        value:
+          type: boolean
+      required:
+      - key
+      - operator
+      - value
+      title: BooleanEqualsClause
+    search-video:ModalityEnum:
+      type: string
+      enum:
+      - video
+      - shot
+      - image
+      - audio_speech_to_text
+      - capped-shot-segment
+      title: ModalityEnum
+    search-video:ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/search-video:ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    search-video:VideoSearchResultMetadata:
+      oneOf:
+      - $ref: '#/components/schemas/search-video:VideoMetadata'
+      - type: object
+        additionalProperties:
+          type: string
+      title: VideoSearchResultMetadata
+    search-video:HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/search-video:ValidationError'
+      title: HTTPValidationError
+    search-video:VideoCompositeDrillDownResponse:
+      type: object
+      properties:
+        dataset_id:
+          type: string
+          format: uuid
+        text_query:
+          type: string
+        video_id:
+          type: string
+        composite_type:
+          type: string
+        source_path:
+          type: string
+        slices:
+          type: array
+          items:
+            $ref: '#/components/schemas/search-video:VideoCompositeSliceDrillDown'
+      required:
+      - dataset_id
+      - text_query
+      - video_id
+      - composite_type
+      - source_path
+      - slices
+      title: VideoCompositeDrillDownResponse
+    search-video:ScoreType:
+      type: string
+      enum:
+      - probability
+      - level
+      description: 'Score type returned by the moderation service.
+
+        - PROBABILITY: Scores in range 0-1 (uses BGE Reranker model)
+
+        - LEVEL: Scores in range 0-5 (uses OpenAI model)'
+      title: ScoreType
+    search-video:EqualsClause:
+      type: object
+      properties:
+        key:
+          type: string
+        operator:
+          type: string
+          enum:
+          - ==
+        value:
+          type: string
+      required:
+      - key
+      - operator
+      - value
+      title: EqualsClause
+    search-video:VideoCompositeSliceDrillDown:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        index:
+          type:
+          - integer
+          - 'null'
+        start_frame_num:
+          type:
+          - integer
+          - 'null'
+        end_frame_num:
+          type:
+          - integer
+          - 'null'
+        start_time_ms:
+          type:
+          - integer
+          - 'null'
+        end_time_ms:
+          type:
+          - integer
+          - 'null'
+        composite_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        composite_type:
+          type: string
+          default: shot
+          description: Type of composite
+        composite_slice_score:
+          type:
+          - number
+          - 'null'
+          format: double
+      required:
+      - id
+      title: VideoCompositeSliceDrillDown
+    search-video:VideoSearchResult:
+      type: object
+      properties:
+        dataset_id:
+          type: string
+          format: uuid
+        text_query:
+          type: string
+        video_id:
+          type: string
+          format: uuid
+        source_path:
+          type: string
+        video_score:
+          type:
+          - number
+          - 'null'
+          format: double
+        metadata:
+          oneOf:
+          - $ref: '#/components/schemas/search-video:VideoSearchResultMetadata'
+          - type: 'null'
+        top_composite_slice:
+          oneOf:
+          - $ref: '#/components/schemas/search-video:VideoCompositeSlice'
+          - type: 'null'
+        top_keyframe:
+          oneOf:
+          - $ref: '#/components/schemas/search-video:VideoKeyframe'
+          - type: 'null'
+        moderation_score:
+          type:
+          - number
+          - 'null'
+          format: double
+      required:
+      - dataset_id
+      - text_query
+      - video_id
+      - source_path
+      description: Single result in the video search response.
+      title: VideoSearchResult
+    search-video:VideoCompositeSlice:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        index:
+          type:
+          - integer
+          - 'null'
+        start_frame_num:
+          type:
+          - integer
+          - 'null'
+        end_frame_num:
+          type:
+          - integer
+          - 'null'
+        start_time_ms:
+          type:
+          - integer
+          - 'null'
+        end_time_ms:
+          type:
+          - integer
+          - 'null'
+        composite_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        composite_type:
+          type: string
+          default: shot
+          description: Type of composite
+      required:
+      - id
+      description: Response schema for video composite details.
+      title: VideoCompositeSlice
+    search-video:VideoKeyframe:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        frame_time_ms:
+          type:
+          - integer
+          - 'null'
+      required:
+      - id
+      description: Response schema for video keyframe details.
+      title: VideoKeyframe
+    search-video:MetadataFiltersFiltersItems:
+      oneOf:
+      - $ref: '#/components/schemas/search-video:BooleanEqualsClause'
+      - $ref: '#/components/schemas/search-video:EqualsClause'
+      - $ref: '#/components/schemas/search-video:NotEqualsClause'
+      - $ref: '#/components/schemas/search-video:DateTimeRangeInclusiveClause'
+      title: MetadataFiltersFiltersItems
+    search-video:VideoSearchRequest:
+      type: object
+      properties:
+        dataset_id:
+          type: string
+          format: uuid
+          description: The unique identifier for the dataset
+        text_query:
+          type: string
+          description: The natural language search string
+        metadata_filters:
+          oneOf:
+          - $ref: '#/components/schemas/search-video:MetadataFilters'
+          - type: 'null'
+          description: JSON string containing a list of metadata filters
+        offset:
+          type: integer
+          default: 0
+          description: Starting index to return (default 0)
+        limit:
+          type: integer
+          default: 60
+          description: Max number of items to return(default 60, max 1000)
+        modality:
+          oneOf:
+          - $ref: '#/components/schemas/search-video:ModalityEnum'
+          - type: 'null'
+          description: 'Modality of the video to search for ( video, shot, image ). Valid options: "video", "shot", "image", "audio_speech_to_text", "capped-shot-segment". Default is ''video''.'
+        skip_moderation:
+          type: boolean
+          default: false
+          description: Skip content moderation if enabled
+        moderation_score_type:
+          $ref: '#/components/schemas/search-video:ScoreType'
+          description: Type of moderation scores to return when moderation is enabled
+        ignore_keyframes:
+          type: boolean
+          default: false
+          description: Whether to ignore keyframes
+      required:
+      - dataset_id
+      - text_query
+      description: Request schema for video search endpoint.
+      title: VideoSearchRequest
+    search-video:VideoSearchResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/search-video:VideoSearchResult'
+          description: List of video search results
+      required:
+      - results
+      description: Response schema for video search endpoint.
+      title: VideoSearchResponse
+    search-video:VideoMetadata:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            description: Any type
+      description: Metadata associated with a video shot.
+      title: VideoMetadata
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer

@@ -1,0 +1,91 @@
+openapi: 3.1.0
+info:
+  title: API Reference agentic-search > agenticSearch datasets > encoder API
+  version: 1.0.0
+servers:
+- url: https://api.coactive.ai
+  description: Production
+- url: https://app.coactive.ai
+  description: Production
+tags:
+- name: datasets > encoder
+paths:
+  /api/v1/encoders:
+    get:
+      operationId: list-available-encoders-api-v-1-encoders-get
+      summary: List Available Encoders
+      description: List available encoders
+      tags:
+      - datasets > encoder
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/datasets:EncoderDescription'
+components:
+  schemas:
+    datasets:EncoderDescriptionName:
+      oneOf:
+      - $ref: '#/components/schemas/datasets:VisualEncoderNameEnum'
+      - $ref: '#/components/schemas/datasets:AudioEncoderNameEnum'
+      description: The name of the encoder.
+      title: EncoderDescriptionName
+    datasets:EncoderDescription:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/datasets:EncoderDescriptionName'
+          description: The name of the encoder.
+        description:
+          type:
+          - string
+          - 'null'
+          description: A short summary of what the encoder is used for.
+        modality:
+          $ref: '#/components/schemas/datasets:ModalityEnum'
+          description: The modality of the encoder.
+      required:
+      - name
+      - modality
+      description: An encoder
+      title: EncoderDescription
+    datasets:VisualEncoderNameEnum:
+      type: string
+      enum:
+      - multimodal
+      - multimodal-tx-large2
+      - multimodal-tx-large3
+      - multimodal-tx-large4
+      - nova2-multimodal
+      - resnet-50
+      - resnet-50-reduced
+      title: VisualEncoderNameEnum
+    datasets:AudioEncoderNameEnum:
+      type: string
+      enum:
+      - audio
+      - text-llm
+      title: AudioEncoderNameEnum
+    datasets:ModalityEnum:
+      type: string
+      enum:
+      - image
+      - audio_speech_to_text
+      - video
+      description: Indicates the modality of an encoder
+      title: ModalityEnum
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer

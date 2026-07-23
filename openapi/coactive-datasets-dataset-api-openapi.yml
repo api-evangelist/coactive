@@ -1,0 +1,773 @@
+openapi: 3.1.0
+info:
+  title: API Reference agentic-search > agenticSearch datasets > dataset API
+  version: 1.0.0
+servers:
+- url: https://api.coactive.ai
+  description: Production
+- url: https://app.coactive.ai
+  description: Production
+tags:
+- name: datasets > dataset
+paths:
+  /api/v1/datasets:
+    post:
+      operationId: create-dataset-api-v-1-datasets-post
+      summary: Create Dataset
+      description: Create a new dataset
+      tags:
+      - datasets > dataset
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datasets:DatasetResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datasets:HTTPValidationError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/datasets:DatasetCreateRequest'
+    get:
+      operationId: get-datasets-api-v-1-datasets-get
+      summary: Get Datasets
+      description: Get all datasets in a paginated list
+      tags:
+      - datasets > dataset
+      parameters:
+      - name: dataset_ids
+        in: query
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+            format: uuid
+      - name: status
+        in: query
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/datasets:DatasetStatusEnum'
+      - name: allowed_asset_types
+        in: query
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/datasets:AssetTypeEnum'
+      - name: keyframe_sampling_method
+        in: query
+        required: false
+        schema:
+          oneOf:
+          - $ref: '#/components/schemas/datasets:KeyframeSamplingMethodEnum'
+          - type: 'null'
+      - name: store_original
+        in: query
+        required: false
+        schema:
+          type:
+          - boolean
+          - 'null'
+      - name: store_preview
+        in: query
+        required: false
+        schema:
+          type:
+          - boolean
+          - 'null'
+      - name: created_before
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      - name: created_after
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      - name: last_updated_before
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      - name: last_updated_after
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      - name: name_pattern
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: new_video_data_model
+        in: query
+        required: false
+        schema:
+          type:
+          - boolean
+          - 'null'
+      - name: celebrity_detection_enabled
+        in: query
+        required: false
+        schema:
+          type:
+          - boolean
+          - 'null'
+      - name: context_studio_enabled
+        in: query
+        required: false
+        schema:
+          type:
+          - boolean
+          - 'null'
+      - name: skip
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: include_deleted
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datasets:DatasetGetManyResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datasets:HTTPValidationError'
+  /api/v1/datasets/{dataset_id}:
+    delete:
+      operationId: delete-dataset-by-id-api-v-1-datasets-dataset-id-delete
+      summary: Delete Dataset By Id
+      description: Delete a dataset by its unique identifier
+      tags:
+      - datasets > dataset
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datasets:DatasetResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datasets:HTTPValidationError'
+    get:
+      operationId: get-dataset-by-id-api-v-1-datasets-dataset-id-get
+      summary: Get Dataset By Id
+      description: Get a dataset by its unique identifier
+      tags:
+      - datasets > dataset
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: include_deleted
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datasets:DatasetResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datasets:HTTPValidationError'
+    patch:
+      operationId: update-dataset-by-id-api-v-1-datasets-dataset-id-patch
+      summary: Update Dataset By Id
+      description: Update a dataset by its unique identifier
+      tags:
+      - datasets > dataset
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datasets:DatasetResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datasets:HTTPValidationError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/datasets:DatasetUpdateRequest'
+components:
+  schemas:
+    datasets:HybridSearchConfig:
+      type: object
+      properties:
+        weights:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
+          description: Weights for each modality used in hybrid search scoring.
+      required:
+      - weights
+      title: HybridSearchConfig
+    datasets:DatasetConfig:
+      type: object
+      properties:
+        embedding_id:
+          type: object
+          additionalProperties:
+            type: string
+            format: uuid
+          description: Mapping from encoder modality to the UUID of the embedding model used for that modality.
+        encoder_name:
+          type: object
+          additionalProperties:
+            type: string
+          description: Mapping from encoder modality to the name of the encoder model used for that modality.
+        extra_config:
+          oneOf:
+          - $ref: '#/components/schemas/datasets:ExtraConfig'
+          - type: 'null'
+          description: Optional extra configuration for composite types.
+        hybrid_search:
+          oneOf:
+          - $ref: '#/components/schemas/datasets:HybridSearchConfig'
+          - type: 'null'
+          description: Optional hybrid search configuration specifying modality weights.
+        context_studio_enabled:
+          type:
+          - boolean
+          - 'null'
+          default: false
+          description: Whether Context Studio is enabled for this dataset.
+        metadata_fields_to_embed:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: Metadata fields whose values are embedded.
+        metadata_fields_to_index:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: Metadata fields that are indexed for filtering and search.
+        celebrity_detection_enabled:
+          type:
+          - boolean
+          - 'null'
+          default: false
+          description: Whether celebrity detection is enabled for this dataset.
+        agentic_search_metadata_description:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: string
+          description: Per-key descriptions of metadata fields.
+        asset_identifier_key:
+          type:
+          - string
+          - 'null'
+          description: The metadata field name that uniquely identifies each asset in the dataset.
+        context_studio_export_json_connection_name:
+          type:
+          - string
+          - 'null'
+          description: The name of the connection required for external s3 export. (this is related to context_studio feature).
+      required:
+      - embedding_id
+      - encoder_name
+      title: DatasetConfig
+    datasets:DatasetGetManyResponse:
+      type: object
+      properties:
+        meta:
+          oneOf:
+          - $ref: '#/components/schemas/datasets:PagedMetaResponse'
+          - type: 'null'
+          description: Metadata for the set of data returned
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets:DatasetResponse'
+          description: The paginated data
+      required:
+      - meta
+      - data
+      title: DatasetGetManyResponse
+    datasets:VisualEncoderNameEnum:
+      type: string
+      enum:
+      - multimodal
+      - multimodal-tx-large2
+      - multimodal-tx-large3
+      - multimodal-tx-large4
+      - nova2-multimodal
+      - resnet-50
+      - resnet-50-reduced
+      title: VisualEncoderNameEnum
+    datasets:PagedMetaResponse:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/datasets:PagedPageDetailsResponse'
+          description: Details about the total set of data
+      required:
+      - page
+      description: Metadata about the paginated response
+      title: PagedMetaResponse
+    datasets:DatasetUpdateRequest:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          description: Name of the dataset, must be unique per organization and must only contain alphanumeric and underscore characters.
+        description:
+          type:
+          - string
+          - 'null'
+          description: A short summary of what the dataset includes or is intended for.
+        status:
+          $ref: '#/components/schemas/datasets:DatasetUpdateRequestStatus'
+          description: The status of the dataset (ACTIVE or INACTIVE)
+        store_original:
+          type:
+          - boolean
+          - 'null'
+          description: Whether the original file is stored.
+        store_preview:
+          type:
+          - boolean
+          - 'null'
+          description: Whether preview files are stored.
+        dataset_config:
+          oneOf:
+          - $ref: '#/components/schemas/datasets:DatasetConfig'
+          - type: 'null'
+      description: Update a dataset schema
+      title: DatasetUpdateRequest
+    datasets:CompositeSettings:
+      type: object
+      properties:
+        maximum_slice_duration_seconds:
+          type: integer
+          description: Maximum duration in seconds for a single composite slice.
+      required:
+      - maximum_slice_duration_seconds
+      title: CompositeSettings
+    datasets:DatasetUpdateRequestStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+      description: The status of the dataset (ACTIVE or INACTIVE)
+      title: DatasetUpdateRequestStatus
+    datasets:PagedPageDetailsResponse:
+      type: object
+      properties:
+        current_page:
+          type: integer
+          description: Current page number
+        last_page:
+          type:
+          - integer
+          - 'null'
+          description: Max page number based on limit and total number of items
+        limit:
+          type: integer
+          description: Number of items to return
+        offset:
+          type: integer
+          description: Starting index to return
+        total:
+          type:
+          - integer
+          - 'null'
+          description: Total number of items
+      required:
+      - current_page
+      - last_page
+      - limit
+      - offset
+      - total
+      description: Pagination metadata
+      title: PagedPageDetailsResponse
+    datasets:ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    datasets:DatasetCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the dataset, must be unique per organization and must only contain alphanumeric and underscore characters.
+        encoder_name:
+          $ref: '#/components/schemas/datasets:VisualEncoderNameEnum'
+          description: The model used to extract visual and audio features from assets.
+        description:
+          type:
+          - string
+          - 'null'
+          description: A short summary of what the dataset includes or is intended for.
+        allowed_asset_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets:AssetTypeEnum'
+          description: Types of assets allowed in this dataset.
+        keyframe_sampling_method:
+          $ref: '#/components/schemas/datasets:KeyframeSamplingMethodEnum'
+          description: Sampling method to extract keyframes from videos in dataset.
+        keyframe_uniform_fps_sampling_rate:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: 'If using uniform sampling method, number of keyframes/sec to sample from videos (allowed values: ≥ .00001 to 5 fps).'
+        store_original:
+          type: boolean
+          default: true
+          description: Whether to store original files.
+        store_preview:
+          type: boolean
+          default: true
+          description: Whether to store preview versions.
+        metadata_fields_to_index:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: The metadata fields to index for the dataset.
+        metadata_fields_to_embed:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: The metadata fields to embed for the dataset.
+        dataset_config:
+          oneOf:
+          - $ref: '#/components/schemas/datasets:DatasetConfig'
+          - type: 'null'
+      required:
+      - name
+      - encoder_name
+      description: Create a dataset schema
+      title: DatasetCreateRequest
+    datasets:ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets:ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    datasets:AssetTypeEnum:
+      type: string
+      enum:
+      - image
+      - video
+      description: Indicates the type of asset
+      title: AssetTypeEnum
+    datasets:ExtraConfig:
+      type: object
+      properties:
+        composite_settings:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/datasets:CompositeSettings'
+          description: Mapping of composite type name to its settings.
+      required:
+      - composite_settings
+      title: ExtraConfig
+    datasets:DatasetStatusEnum:
+      type: string
+      enum:
+      - active
+      - inactive
+      - deleting
+      - deleted
+      description: Indicates the operational status of a dataset
+      title: DatasetStatusEnum
+    datasets:Encoder:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier for the encoder.
+        name:
+          $ref: '#/components/schemas/datasets:EncoderName'
+          description: The model used to extract visual and audio features from assets.
+        modality:
+          type: string
+          description: The supported modality of the encoder.
+        modalities:
+          type: array
+          items:
+            type: string
+          description: The supported modalities of the encoder.
+      required:
+      - id
+      - name
+      - modality
+      - modalities
+      title: Encoder
+    datasets:HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets:ValidationError'
+      title: HTTPValidationError
+    datasets:DatasetResponse:
+      type: object
+      properties:
+        created_dt:
+          type: string
+          format: date-time
+          description: The created datetime of the resource in ISO 8601 format.
+        updated_dt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The datetime the resource was last updated in ISO 8601 format.
+        created_by:
+          type: string
+          description: ID of the user who added the asset to the dataset.
+        updated_by:
+          type:
+          - string
+          - 'null'
+          description: ID of the user who last updated the asset.
+        deleted_dt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Timestamp if the resource was deleted.
+        deleted_by:
+          type:
+          - string
+          - 'null'
+          description: ID of the user who deleted the resource.
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier for the dataset.
+        name:
+          type: string
+          description: Name of the dataset, must be unique per organization and must only contain alphanumeric and underscore characters.
+        embeddings:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets:Encoder'
+          description: The encoders of the dataset.
+        encoders:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets:Encoder'
+          description: The encoders of the dataset.
+        description:
+          type:
+          - string
+          - 'null'
+          description: A short summary of what the dataset includes or is intended for.
+        allowed_asset_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets:AssetTypeEnum'
+          description: Types of assets allowed in this dataset.
+        status:
+          oneOf:
+          - $ref: '#/components/schemas/datasets:DatasetStatusEnum'
+          - type: 'null'
+          description: The status of the dataset.
+        keyframe_sampling_method:
+          $ref: '#/components/schemas/datasets:KeyframeSamplingMethodEnum'
+          description: Sampling method to extract keyframes from videos in dataset.
+        keyframe_uniform_fps_sampling_rate:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: FPS rate used for uniform sampling.
+        store_original:
+          type: boolean
+          description: Whether the original file is stored.
+        store_preview:
+          type: boolean
+          description: Whether preview files are stored.
+        metadata_fields_to_index:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: The metadata fields to index for the dataset.
+        metadata_fields_to_embed:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: The metadata fields to embed for the dataset.
+        dataset_config:
+          oneOf:
+          - $ref: '#/components/schemas/datasets:DatasetConfig'
+          - type: 'null'
+      required:
+      - created_dt
+      - created_by
+      - id
+      - name
+      - embeddings
+      - encoders
+      - description
+      - allowed_asset_types
+      - status
+      - keyframe_sampling_method
+      - store_original
+      - store_preview
+      title: DatasetResponse
+    datasets:KeyframeSamplingMethodEnum:
+      type: string
+      enum:
+      - intelligent
+      - uniform
+      description: Indicates the method used to sample keyframes from a video
+      title: KeyframeSamplingMethodEnum
+    datasets:EncoderName:
+      oneOf:
+      - $ref: '#/components/schemas/datasets:VisualEncoderNameEnum'
+      - type: string
+      description: The model used to extract visual and audio features from assets.
+      title: EncoderName
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer

@@ -1,0 +1,826 @@
+openapi: 3.1.0
+info:
+  title: API Reference agentic-search > agenticSearch userManagement API
+  version: 1.0.0
+servers:
+- url: https://api.coactive.ai
+  description: Production
+- url: https://app.coactive.ai
+  description: Production
+tags:
+- name: userManagement
+paths:
+  /api/v1/auth-management/user-invitations:
+    post:
+      operationId: create-invitation
+      summary: Create Invitation
+      description: 'Create a new user invitation.
+
+
+        This endpoint creates a new invitation for a user to join the organization.
+
+        The invitation will be sent to the specified email address.'
+      tags:
+      - userManagement
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: The created invitation details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInvitation'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError1'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserInvitationRequest'
+    get:
+      operationId: list-invitations
+      summary: List Invitations
+      description: 'List all pending user invitations.
+
+        This endpoint retrieves a list of all pending invitations in the organization.'
+      tags:
+      - userManagement
+      parameters:
+      - name: offset
+        in: query
+        description: Number of records to skip (for pagination)
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: Number of invitations to return
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A paginated list of pending user invitations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInvitationListResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError1'
+  /api/v1/auth-management/user-invitations/{invitation_id}:
+    delete:
+      operationId: delete-invitation
+      summary: Delete Invitation
+      description: 'Delete a user invitation.
+
+
+        This endpoint cancels a pending invitation before it is accepted.
+
+        The invitation will no longer be valid.'
+      tags:
+      - userManagement
+      parameters:
+      - name: invitation_id
+        in: path
+        description: The unique identifier of the invitation to delete
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError1'
+    get:
+      operationId: get-invitation
+      summary: Get Invitation
+      description: 'Get a user invitation.
+
+
+        Get the details of a pending user invitation.'
+      tags:
+      - userManagement
+      parameters:
+      - name: invitation_id
+        in: path
+        description: The unique identifier of the invitation to retrieve
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The details of a pending user invitation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInvitation'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError1'
+  /api/v1/auth-management/roles:
+    get:
+      operationId: list-roles
+      summary: List Roles
+      description: 'List all assignable roles.
+
+
+        The roles returned are scoped to the roles context.
+
+        For example, if the roles_context is "dataset:123", the endpoint will return all roles
+
+        that are assignable to dataset with id "123". If the roles_context is "system", the endpoint
+
+        will return all system-level roles that are assignable in the organization.
+
+
+        If no roles_context is provided, the endpoint will return all system-level and dataset-level
+
+        roles in the organization.'
+      tags:
+      - userManagement
+      parameters:
+      - name: roles_context
+        in: query
+        description: Context for the roles to include in the response. This can either be 'system' for system-level roles or 'dataset:{dataset_id}' for dataset-level roles.
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of assignable roles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RolesListResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError1'
+  /api/v1/auth-management/users:
+    get:
+      operationId: list-users
+      summary: List Users
+      description: 'List users in the organization.
+
+
+        This endpoint retrieves a paginated list of users in the organization.
+
+        The response can be filtered by a search query and optionally include user roles.'
+      tags:
+      - userManagement
+      parameters:
+      - name: query
+        in: query
+        description: Search query to match names and emails
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: user_ids
+        in: query
+        description: List of user IDs to filter by
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: offset
+        in: query
+        description: Number of records to skip (for pagination)
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: Number of users to return
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: include_roles
+        in: query
+        description: Include user roles in the response
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A paginated list of users in the organization
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersListResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError1'
+  /api/v1/auth-management/users/{user_id}:
+    delete:
+      operationId: remove-user
+      summary: Remove User
+      description: 'Remove a user from the organization.
+
+
+        This endpoint permanently removes a user from the organization.
+
+        The user will no longer have access to any organization resources.'
+      tags:
+      - userManagement
+      parameters:
+      - name: user_id
+        in: path
+        description: The ID of the user to remove
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError1'
+  /api/v1/auth-management/users/{user_id}/roles:
+    put:
+      operationId: update-user-roles
+      summary: Update User Roles
+      description: 'Replace a user''s roles.
+
+
+        This endpoint allows administrators to replace the roles assigned to a user.
+
+
+        The roles can be scoped to a specific context (e.g., dataset or system).
+
+        If a context is provided, the roles will only be replaced within that context.
+
+        If no context is provided, all roles (system-level and dataset-level) will be replaced.
+
+
+        To replace roles at the system level, use the "system" context.
+
+        To replace roles at the dataset level, use the "dataset:{dataset_id}" context.'
+      tags:
+      - userManagement
+      parameters:
+      - name: user_id
+        in: path
+        description: The ID of the user to update
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The updated user profile with new roles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError1'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRolesRequest'
+components:
+  schemas:
+    RoleDefinition:
+      type: object
+      properties:
+        role_id:
+          type: string
+          description: Unique identifier for the role
+        name:
+          type: string
+          description: Display name of the role
+        description:
+          type:
+          - string
+          - 'null'
+          description: Optional description of the role's purpose
+        resource:
+          type:
+          - string
+          - 'null'
+          description: Optional resource type this role applies to
+      required:
+      - role_id
+      - name
+      description: Role definition model for available roles
+      title: RoleDefinition
+    PagedPageDetails:
+      type: object
+      properties:
+        current_page:
+          type: integer
+          description: Current page number (1-indexed)
+        last_page:
+          type:
+          - integer
+          - 'null'
+          description: Last page number (if total is known)
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Offset of the first item in the current page
+        total:
+          type:
+          - integer
+          - 'null'
+          description: Total number of items across all pages
+      required:
+      - current_page
+      - limit
+      - offset
+      description: Pagination metadata
+      title: PagedPageDetails
+    SortItem1:
+      type: object
+      properties:
+        direction:
+          $ref: '#/components/schemas/SortDirection1'
+          description: Sort direction (ascending or descending)
+        field:
+          type: string
+          description: Field name to sort by
+      required:
+      - direction
+      - field
+      description: Metadata about the sort order of the response
+      title: SortItem1
+    ValidationError1LocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationError1LocItems
+    Invitee:
+      type: object
+      properties:
+        email:
+          type: string
+          description: Email address of the invitee
+        name:
+          type: string
+          description: Display name of the invitee
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+          description: List of roles to assign to the invitee
+      required:
+      - email
+      - name
+      - roles
+      title: Invitee
+    ValidationError1:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError1LocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError1
+    Role:
+      type: object
+      properties:
+        role_id:
+          type: string
+          description: Name of the role (e.g., 'admin', 'editor', 'viewer')
+        resource:
+          type:
+          - string
+          - 'null'
+          description: Optional resource type the role applies to (e.g., 'dataset')
+        resource_instance:
+          type:
+          - string
+          - 'null'
+          description: Optional resource instance ID the role applies to
+      required:
+      - role_id
+      description: Role model for user and client roles
+      title: Role
+    HTTPValidationError1:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError1'
+      title: HTTPValidationError1
+    UserResponse:
+      type: object
+      properties:
+        user_id:
+          type: string
+          description: Unique identifier for the user
+        name:
+          type: string
+          description: Display name of the user
+        email:
+          type:
+          - string
+          - 'null'
+          description: Email address of the user
+        picture:
+          type:
+          - string
+          - 'null'
+          description: URL to the user's profile picture
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the user was created
+        last_login:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Timestamp of the user's last login
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+          description: List of roles assigned to the user
+      required:
+      - user_id
+      - name
+      - created_at
+      - roles
+      description: 'Complete user response model including roles.
+
+
+        This model extends the base user response to include the user''s assigned roles.
+
+        It is used when the complete user information, including roles, is required.'
+      title: UserResponse
+    UsersListResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartialUserResponse'
+          description: List of users with partial information
+        meta:
+          $ref: '#/components/schemas/PagedMeta'
+          description: Pagination metadata for the response
+      required:
+      - users
+      - meta
+      description: 'Response model for listing users with pagination.
+
+
+        This model contains a paginated list of users with partial information and
+
+        metadata about the pagination. It is used for endpoints that return multiple
+
+        users with their basic information.'
+      title: UsersListResponse
+    PagedMeta:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/PagedPageDetails'
+          description: Current page number (1-indexed)
+        links:
+          $ref: '#/components/schemas/PagedLinks'
+          description: Links to the previous, next, first, and last pages
+        sort:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortItem1'
+          description: Sort order for the response
+      required:
+      - page
+      - links
+      - sort
+      description: Metadata for paginated responses
+      title: PagedMeta
+    UserInvitation:
+      type: object
+      properties:
+        invitation_id:
+          type: string
+          description: Unique identifier for the invitation
+        inviter:
+          $ref: '#/components/schemas/Inviter'
+          description: Details about the user who sent the invitation
+        invitee:
+          $ref: '#/components/schemas/Invitee'
+          description: Details about the user being invited
+        invitation_url:
+          type: string
+          description: URL for the user to accept the invitation
+        created_at:
+          type: string
+          description: Timestamp when the invitation was created
+        expires_at:
+          type: string
+          description: Timestamp when the invitation expires
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+          description: List of roles that will be assigned upon acceptance
+      required:
+      - invitation_id
+      - inviter
+      - invitee
+      - invitation_url
+      - created_at
+      - expires_at
+      - roles
+      description: 'Model representing a user invitation.
+
+
+        This model contains the details of an invitation sent to a user, including the
+
+        invitation ID, who sent it, who it was sent to, and the roles that will be
+
+        assigned upon acceptance. The invitation URL is included for the user to accept
+
+        the invitation.'
+      title: UserInvitation
+    PagedLinks:
+      type: object
+      properties:
+        prev:
+          type:
+          - string
+          - 'null'
+          description: URL for the previous page
+        next:
+          type:
+          - string
+          - 'null'
+          description: URL for the next page
+        first:
+          type:
+          - string
+          - 'null'
+          description: URL for the first page
+        last:
+          type:
+          - string
+          - 'null'
+          description: URL for the last page
+      description: Metadata for retrieving paginated data
+      title: PagedLinks
+    RolesListResponse:
+      type: object
+      properties:
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleDefinition'
+          description: List of roles
+      required:
+      - roles
+      description: Response model for listing all available roles.
+      title: RolesListResponse
+    UserInvitationListResponse:
+      type: object
+      properties:
+        user_invitations:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserInvitation'
+          description: List of pending invitations
+        meta:
+          $ref: '#/components/schemas/PagedMeta'
+          description: Pagination metadata for the response
+      required:
+      - user_invitations
+      - meta
+      description: 'Response model for listing user invitations.
+
+
+        This model contains a list of pending user invitations and metadata about the
+
+        pagination of the results. Each invitation includes details about who sent it,
+
+        who it was sent to, and the roles that will be assigned upon acceptance.'
+      title: UserInvitationListResponse
+    UpdateUserRolesRequest:
+      type: object
+      properties:
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+          description: New list of roles to assign to the user
+        roles_context:
+          type:
+          - string
+          - 'null'
+          description: Context for the roles to update. This can either be 'system' for system-level roles or 'dataset:{dataset_id}' for dataset-level roles.
+      required:
+      - roles
+      description: 'Request model for updating user roles.
+
+
+        This model is used when modifying a user''s role assignments. It allows for
+
+        updating the complete list of roles and optionally specifying the context
+
+        where these roles apply. For example, if the "system" context is used, the roles
+
+        provided will only replace roles at the system level (ex. dataset
+
+        roles would remain unchanged). If no context is provided, the role provided in the
+
+        request will replace all roles for the user.'
+      title: UpdateUserRolesRequest
+    CreateUserInvitationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Display name for the invited user
+        email:
+          type: string
+          description: Email address to send the invitation to
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+          description: List of roles to assign to the user
+      required:
+      - name
+      - email
+      description: 'Request model for creating a new user invitation.
+
+
+        This model is used to invite a new user to join an organization. The invitation
+
+        will be sent to the specified email address and will include the roles that will
+
+        be assigned to the user upon acceptance.'
+      title: CreateUserInvitationRequest
+    Inviter:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Display name of the inviter
+      required:
+      - name
+      description: 'Model representing the user who sent the invitation.
+
+
+        This model contains the details of the user who sent the invitation, including
+
+        their display name.'
+      title: Inviter
+    PartialUserResponse:
+      type: object
+      properties:
+        user_id:
+          type: string
+          description: Unique identifier for the user
+        name:
+          type: string
+          description: Display name of the user
+        email:
+          type:
+          - string
+          - 'null'
+          description: Email address of the user
+        picture:
+          type:
+          - string
+          - 'null'
+          description: URL to the user's profile picture
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the user was created
+        last_login:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Timestamp of the user's last login
+        roles:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Role'
+          description: Optional list of roles assigned to the user
+      required:
+      - user_id
+      - name
+      - created_at
+      description: 'Partial user response model with optional roles.
+
+
+        This model extends the base user response with optional roles. It is used
+
+        when roles information may not be available or required in the response.'
+      title: PartialUserResponse
+    SortDirection1:
+      type: string
+      enum:
+      - asc
+      - desc
+      description: Possible sort orders
+      title: SortDirection1
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer

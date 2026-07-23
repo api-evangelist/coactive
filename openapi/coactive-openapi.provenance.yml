@@ -1,0 +1,5 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.coactive.ai/openapi.json
+spec: coactive-openapi-original.json
+notes: OpenAPI 3.1.0 harvested verbatim from Coactive's Fern-generated docs; 118 operations, 425 schemas, HTTPBearer auth.

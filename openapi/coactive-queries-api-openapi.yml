@@ -1,0 +1,756 @@
+openapi: 3.1.0
+info:
+  title: API Reference agentic-search > agenticSearch queries API
+  version: 1.0.0
+servers:
+- url: https://api.coactive.ai
+  description: Production
+- url: https://app.coactive.ai
+  description: Production
+tags:
+- name: queries
+paths:
+  /api/v1/queries/{query_id}/cancel:
+    post:
+      operationId: cancel-query-api-v-1-queries-query-id-cancel-post
+      summary: Cancel Query
+      tags:
+      - queries
+      parameters:
+      - name: query_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:app__api__v1__schema__GetQueryResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:HTTPValidationError'
+  /api/v1/queries:
+    post:
+      operationId: create-query-api-v-1-queries-post
+      summary: Create Query
+      tags:
+      - queries
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:app__api__v1__schema__GetQueryResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:HTTPValidationError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/queries:app__api__v1__schema__CreateQueryRequest'
+    get:
+      operationId: list-queries-api-v-1-queries-get
+      summary: List Queries
+      tags:
+      - queries
+      parameters:
+      - name: status
+        in: query
+        required: false
+        schema:
+          oneOf:
+          - $ref: '#/components/schemas/queries:QueryStatus'
+          - type: 'null'
+      - name: dataset_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      - name: exclude_no_code
+        in: query
+        required: false
+        schema:
+          type:
+          - boolean
+          - 'null'
+      - name: exclude_code
+        in: query
+        required: false
+        schema:
+          type:
+          - boolean
+          - 'null'
+      - name: query_types
+        in: query
+        required: false
+        schema:
+          oneOf:
+          - $ref: '#/components/schemas/queries:QueryType'
+          - type: 'null'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:app__api__v1__schema__ListQueriesResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:HTTPValidationError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/queries:Body_list_queries_api_v1_queries_get'
+  /api/v1/queries/{query_id}:
+    delete:
+      operationId: delete-query-api-v-1-queries-query-id-delete
+      summary: Delete Query
+      tags:
+      - queries
+      parameters:
+      - name: query_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:app__api__v1__schema__GetQueryResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:HTTPValidationError'
+    get:
+      operationId: get-query-api-v-1-queries-query-id-get
+      summary: Get Query
+      tags:
+      - queries
+      parameters:
+      - name: query_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:app__api__v1__schema__GetQueryResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:HTTPValidationError'
+  /api/v1/queries/{query_id}/exports:
+    post:
+      operationId: export-query-api-v-1-queries-query-id-exports-post
+      summary: Export Query
+      tags:
+      - queries
+      parameters:
+      - name: query_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:app__api__v1__schema__ExportQueryResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:HTTPValidationError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/queries:ExportQueryRequest'
+  /api/v1/queries/{query_id}/results:
+    get:
+      operationId: get-query-results-url-api-v-1-queries-query-id-results-get
+      summary: Get Query Results Url
+      tags:
+      - queries
+      parameters:
+      - name: query_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: url_format
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/queries:ApiV1QueriesQueryIdResultsGetParametersUrlFormat'
+      - name: expiration_seconds
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 900
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:GetQueryResultsResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:HTTPValidationError'
+  /api/v1/datasets/{dataset_id}/tables/{table_name}:
+    get:
+      operationId: get-table-api-v-1-datasets-dataset-id-tables-table-name-get
+      summary: Get Table
+      tags:
+      - queries
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: table_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:Table'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:HTTPValidationError'
+  /api/v1/datasets/{dataset_id}/tables:
+    get:
+      operationId: list-tables-api-v-1-datasets-dataset-id-tables-get
+      summary: List Tables
+      tags:
+      - queries
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:ListTablesResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:HTTPValidationError'
+  /api/v1/queries/{query_id}/run:
+    post:
+      operationId: run-query-api-v-1-queries-query-id-run-post
+      summary: Run Query
+      tags:
+      - queries
+      parameters:
+      - name: query_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:app__api__v1__schema__GetQueryResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:HTTPValidationError'
+  /api/v1/queries/{query_id}/stop:
+    post:
+      operationId: stop-query-api-v-1-queries-query-id-stop-post
+      summary: Stop Query
+      tags:
+      - queries
+      parameters:
+      - name: query_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:app__api__v1__schema__GetQueryResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/queries:HTTPValidationError'
+components:
+  schemas:
+    queries:ExportType:
+      type: string
+      enum:
+      - DELTA
+      - CSV
+      - UNITY
+      description: All possible export types
+      title: ExportType
+    queries:ApiV1QueriesQueryIdResultsGetParametersUrlFormat:
+      type: string
+      enum:
+      - download
+      - direct
+      default: download
+      title: ApiV1QueriesQueryIdResultsGetParametersUrlFormat
+    queries:QueryType:
+      type: string
+      enum:
+      - NATURAL_LANGUAGE
+      - SQL
+      description: All possible query types
+      title: QueryType
+    queries:Body_list_queries_api_v1_queries_get:
+      type: object
+      properties:
+        query_ids:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+            format: uuid
+        user_ids:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        exclude_user_ids:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      title: Body_list_queries_api_v1_queries_get
+    queries:ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    queries:ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/queries:ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    queries:GetQueryResultsResponse:
+      type: object
+      properties:
+        query_id:
+          type: string
+          format: uuid
+        download_url:
+          type: string
+      required:
+      - query_id
+      - download_url
+      title: GetQueryResultsResponse
+    queries:app__api__v1__schema__ExportQueryResponse:
+      type: object
+      properties:
+        query_id:
+          type: string
+          format: uuid
+        export_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+        message:
+          type: string
+      required:
+      - query_id
+      - export_id
+      - status
+      - message
+      title: app__api__v1__schema__ExportQueryResponse
+    queries:app__api__v1__schema__ListQueriesResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/queries:PagedMetaResponse'
+          description: Metadata for the set of data returned
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/queries:app__api__v1__schema__GetQueryResponse'
+          description: The paginated data
+      required:
+      - meta
+      - data
+      title: app__api__v1__schema__ListQueriesResponse
+    queries:PagedPageDetailsResponse:
+      type: object
+      properties:
+        current_page:
+          type: integer
+          description: Current page number
+        limit:
+          type: integer
+          description: Number of items returned in the list response
+        offset:
+          type: integer
+          description: Starting index returned for the list response
+      required:
+      - current_page
+      - limit
+      - offset
+      description: Pagination metadata
+      title: PagedPageDetailsResponse
+    queries:QueryStatus:
+      type: string
+      enum:
+      - Queued
+      - Running
+      - Stopping
+      - Stopped
+      - Complete
+      - Error
+      description: All possible query status values
+      title: QueryStatus
+    queries:ExportQueryRequest:
+      type: object
+      properties:
+        connection_name:
+          type:
+          - string
+          - 'null'
+          default: coactive
+        export_type:
+          $ref: '#/components/schemas/queries:ExportType'
+        target_bucket:
+          type: string
+        target_prefix:
+          type: string
+      required:
+      - target_bucket
+      - target_prefix
+      title: ExportQueryRequest
+    queries:PagedLinksDetailsResponse:
+      type: object
+      properties:
+        current:
+          type: string
+          description: The current page link
+        previous:
+          type:
+          - string
+          - 'null'
+          description: The previous page, if applicable
+        next:
+          type:
+          - string
+          - 'null'
+          description: The next page link, if applicable
+      required:
+      - current
+      - previous
+      - next
+      description: Pagination metadata
+      title: PagedLinksDetailsResponse
+    queries:app__api__v1__schema__GetQueryResponse:
+      type: object
+      properties:
+        query_id:
+          type: string
+          format: uuid
+        query:
+          type: string
+        type:
+          $ref: '#/components/schemas/queries:QueryType'
+        status:
+          $ref: '#/components/schemas/queries:QueryStatus'
+        results:
+          type:
+          - string
+          - 'null'
+        start_dt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        end_dt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        dataset_id:
+          type: string
+          format: uuid
+        total_row_count:
+          type:
+          - integer
+          - 'null'
+        parameters:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            description: Any type
+        created_dt:
+          type: string
+          format: date-time
+        updated_dt:
+          type: string
+          format: date-time
+        created_user_id:
+          type: string
+        updated_user_id:
+          type:
+          - string
+          - 'null'
+      required:
+      - query_id
+      - query
+      - type
+      - status
+      - results
+      - dataset_id
+      - created_dt
+      - updated_dt
+      - created_user_id
+      title: app__api__v1__schema__GetQueryResponse
+    queries:ListTablesResponse:
+      type: object
+      properties:
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/queries:Table'
+      required:
+      - tables
+      title: ListTablesResponse
+    queries:HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/queries:ValidationError'
+      title: HTTPValidationError
+    queries:PagedMetaResponse:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/queries:PagedPageDetailsResponse'
+          description: Details about the response page
+        links:
+          $ref: '#/components/schemas/queries:PagedLinksDetailsResponse'
+          description: Links for easy page traversal
+      required:
+      - page
+      - links
+      description: Metadata about the paginated response
+      title: PagedMetaResponse
+    queries:Table:
+      type: object
+      properties:
+        name:
+          type: string
+        table_schema:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+      - name
+      - table_schema
+      title: Table
+    queries:app__api__v1__schema__CreateQueryRequest:
+      type: object
+      properties:
+        dataset_id:
+          type: string
+          format: uuid
+        query:
+          type: string
+        type:
+          $ref: '#/components/schemas/queries:QueryType'
+        parameters:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            description: Any type
+        embedding_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        check_validity:
+          type: boolean
+          default: true
+        dynamic_tags_version:
+          type: string
+          default: v2
+      required:
+      - dataset_id
+      - query
+      title: app__api__v1__schema__CreateQueryRequest
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer

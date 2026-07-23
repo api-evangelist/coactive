@@ -1,0 +1,1034 @@
+openapi: 3.1.0
+info:
+  title: API Reference agentic-search > agenticSearch concept API
+  version: 1.0.0
+servers:
+- url: https://api.coactive.ai
+  description: Production
+- url: https://app.coactive.ai
+  description: Production
+tags:
+- name: concept
+paths:
+  /api/v1/concepts:
+    post:
+      operationId: create
+      summary: Create concept
+      description: Create a new concept
+      tags:
+      - concept
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The created concept
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Concept'
+        '400':
+          description: Invalid concept name
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateConceptRequest'
+    get:
+      operationId: list
+      summary: List concepts
+      description: Get paginated concepts, optionally filtered by datasets
+      tags:
+      - concept
+      parameters:
+      - name: datasets
+        in: query
+        description: Datasets to use to filter concepts
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            format: uuid4
+      - name: offset
+        in: query
+        description: Starting index to return
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: Max number of items to return
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: All concepts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedConcepts'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/concepts/{concept_id}:
+    delete:
+      operationId: delete
+      summary: Delete concept
+      description: Delete concept
+      tags:
+      - concept
+      parameters:
+      - name: concept_id
+        in: path
+        description: The unique identifier for the concept
+        required: true
+        schema:
+          type: string
+          format: uuid4
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      operationId: get
+      summary: Get concept
+      description: Get concept
+      tags:
+      - concept
+      parameters:
+      - name: concept_id
+        in: path
+        description: The unique identifier for the concept
+        required: true
+        schema:
+          type: string
+          format: uuid4
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Concept details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Concept'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      operationId: update
+      summary: Update concept
+      description: Update concept
+      tags:
+      - concept
+      parameters:
+      - name: concept_id
+        in: path
+        description: The unique identifier for the concept
+        required: true
+        schema:
+          type: string
+          format: uuid4
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Concept details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Concept'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateConceptRequest'
+  /api/v1/concepts/{concept_id}/prediction_estimation:
+    get:
+      operationId: get-concept-prediction
+      summary: Get concept's prediction estimation
+      description: Get concept's prediction estimation
+      tags:
+      - concept
+      parameters:
+      - name: concept_id
+        in: path
+        description: The unique identifier for the concept
+        required: true
+        schema:
+          type: string
+          format: uuid4
+      - name: threshold
+        in: query
+        description: Threshold above which classification is positive
+        required: false
+        schema:
+          type: number
+          format: double
+          default: 0.5
+      - name: confidence_level
+        in: query
+        description: A higher value results in wider confidence intervals, with more confidence of correctness. A lower value results in narrower confidence intervals, with less confidence of correctness
+        required: false
+        schema:
+          type: number
+          format: double
+          default: 0.95
+      - name: estimation_fidelity
+        in: query
+        description: A higher value makes estimation slower, but more accurate. A lower value makes estimation faster, but less accurate
+        required: false
+        schema:
+          type: integer
+          default: 1000
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Concept prediction estimation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConceptPredictionResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/concepts/{concept_id}/candidates:
+    get:
+      operationId: get-label-candidates
+      summary: Get label candidates
+      description: Get images and keyframes to label in order to improve the concept
+      tags:
+      - concept
+      parameters:
+      - name: concept_id
+        in: path
+        description: The concept id to get candidates to label
+        required: true
+        schema:
+          type: string
+          format: uuid4
+      - name: limit
+        in: query
+        description: Max number of items to return
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Candidates to label in order to improve the concept
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandidatesToLabel'
+        '404':
+          description: Concept not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v1/concepts/{concept_id}/labels:
+    get:
+      operationId: get-labels
+      summary: Get labels
+      description: Get all labels for a concept
+      tags:
+      - concept
+      parameters:
+      - name: concept_id
+        in: path
+        description: The unique identifier for the concept
+        required: true
+        schema:
+          type: string
+          format: uuid4
+      - name: offset
+        in: query
+        description: Starting index to return
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: Max number of items to return
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: labels_to_include
+        in: query
+        description: List of labels types to include, leave blank to return all
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConceptLabelEnum'
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Paginated labels for the concept
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedConceptLabels'
+        '404':
+          description: Concept not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      operationId: update-labels
+      summary: Update labels
+      description: Update labels for a concept. Label requests containing coactive image ids or image paths already in use will overwrite existing labels. Label requests with an empty label value will delete an existing label for that image/keyframe identifier.
+      tags:
+      - concept
+      parameters:
+      - name: concept_id
+        in: path
+        description: The unique identifier for the concept
+        required: true
+        schema:
+          type: string
+          format: uuid4
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The updated concept
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Concept'
+        '404':
+          description: Concept not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateConceptLabelsRequest'
+components:
+  schemas:
+    PagedConcepts:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/PagedMetaResponse'
+          description: Metadata for the set of data returned
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Concept'
+          description: The paginated concepts
+      required:
+      - meta
+      - data
+      description: A response containing paged data
+      title: PagedConcepts
+    PagedPageDetailsResponse:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          description: Current page number
+        lastPage:
+          type:
+          - integer
+          - 'null'
+          description: Max page number based on limit and total number of items
+        limit:
+          type: integer
+          description: Number of items to return
+        offset:
+          type: integer
+          description: Starting index to return
+        total:
+          type:
+          - integer
+          - 'null'
+          description: Total number of items
+      required:
+      - currentPage
+      - limit
+      - offset
+      description: Pagination metadata
+      title: PagedPageDetailsResponse
+    ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    PagedConceptLabels:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/PagedMetaResponse'
+          description: Metadata for the set of data returned
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConceptLabel'
+          description: The paginated data
+      required:
+      - meta
+      - data
+      description: A paginated list of labels
+      title: PagedConceptLabels
+    HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+      title: HTTPValidationError
+    app__shared__v1__schema__Shot:
+      type: object
+      properties:
+        shotId:
+          type: string
+          format: uuid4
+          description: The unique shot id
+        startTimeMs:
+          type: integer
+          description: The start time in milliseconds from the beginning of the video
+        endTimeMs:
+          type: integer
+          description: The end time in milliseconds from the beginning of the video
+      required:
+      - shotId
+      - startTimeMs
+      - endTimeMs
+      description: Metadata about a video shot
+      title: app__shared__v1__schema__Shot
+    Image:
+      type: object
+      properties:
+        createdUserId:
+          type: string
+          description: The user that created the resource
+        createdDt:
+          type: string
+          format: date-time
+          description: The created datetime of the resource
+        updatedUserId:
+          type: string
+          description: The user that last updated the resource
+        updatedDt:
+          type: string
+          format: date-time
+          description: The datetime the resource was last updated
+        coactiveImageId:
+          type: string
+          format: uuid4
+          description: The coactive image id
+        path:
+          type: string
+          description: The original path of the image
+        id:
+          type:
+          - string
+          - 'null'
+          description: The user provided image id
+        metadata:
+          oneOf:
+          - $ref: '#/components/schemas/ImageMetadata'
+          - type: 'null'
+          description: The user provided metadata for the image
+      required:
+      - createdUserId
+      - createdDt
+      - updatedUserId
+      - updatedDt
+      - coactiveImageId
+      description: An image asset response
+      title: Image
+    ConceptPredictionResponse:
+      type: object
+      properties:
+        probabilityRanges:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+              format: double
+          description: Each tuple represents the bounds of a bin we estimated number of assets for
+        estimates:
+          type: array
+          items:
+            type: integer
+          description: Number of assets belonging to each probability range
+        confidenceIntervals:
+          type:
+          - array
+          - 'null'
+          items:
+            type: array
+            items:
+              type: integer
+          description: Lower/upper bounds representing respective ranges that the actual number of assets is in
+      required:
+      - probabilityRanges
+      - estimates
+      description: Base model for all schema
+      title: ConceptPredictionResponse
+    ImageMetadata:
+      type: object
+      properties: {}
+      description: The user provided metadata for the image
+      title: ImageMetadata
+    Concept:
+      type: object
+      properties:
+        createdUserId:
+          type: string
+          description: The user that created the resource
+        createdDt:
+          type: string
+          format: date-time
+          description: The created datetime of the resource
+        updatedUserId:
+          type: string
+          description: The user that last updated the resource
+        updatedDt:
+          type: string
+          format: date-time
+          description: The datetime the resource was last updated
+        name:
+          type: string
+          description: The name of the concept
+        description:
+          type:
+          - string
+          - 'null'
+          description: A description for the concept
+        threshold:
+          type:
+          - number
+          - 'null'
+          format: double
+          default: 0.8
+          description: Threshold above which classification is positive
+        regularization:
+          type:
+          - number
+          - 'null'
+          format: double
+          default: 0.0625
+          description: How strongly the model adapts to the training labels. Regularization strength. Lower value means the model fits more heavily to the training data
+        conceptId:
+          type: string
+          format: uuid4
+          description: The unique identifier for the concept
+        datasetId:
+          type: string
+          format: uuid4
+          description: The unique identifier for the dataset
+      required:
+      - createdUserId
+      - createdDt
+      - updatedUserId
+      - updatedDt
+      - name
+      - conceptId
+      - datasetId
+      description: Data about a concept that can be used to query a dataset
+      title: Concept
+    ConceptLabel:
+      type: object
+      properties:
+        createdUserId:
+          type: string
+          description: The user that created the resource
+        createdDt:
+          type: string
+          format: date-time
+          description: The created datetime of the resource
+        updatedUserId:
+          type: string
+          description: The user that last updated the resource
+        updatedDt:
+          type: string
+          format: date-time
+          description: The datetime the resource was last updated
+        labelId:
+          type: string
+          format: uuid4
+          description: The label id
+        label:
+          $ref: '#/components/schemas/ConceptLabelEnum'
+          description: The label for the image or video keyframe
+        image:
+          oneOf:
+          - $ref: '#/components/schemas/Image'
+          - type: 'null'
+          description: The labelled image (if the labelled image is not a video keyframe)
+        keyframe:
+          oneOf:
+          - $ref: '#/components/schemas/Keyframe'
+          - type: 'null'
+          description: The labelled video keyframe (if the labelled image is a video keyframe)
+      required:
+      - createdUserId
+      - createdDt
+      - updatedUserId
+      - updatedDt
+      - labelId
+      - label
+      description: An association of an image or video keyframe to a concept
+      title: ConceptLabel
+    PagedLinksResponse:
+      type: object
+      properties:
+        prev:
+          type:
+          - string
+          - 'null'
+          description: Link to previous page
+        next:
+          type:
+          - string
+          - 'null'
+          description: Link to next page
+        first:
+          type:
+          - string
+          - 'null'
+          description: Link to first page
+        last:
+          type:
+          - string
+          - 'null'
+          description: Link to last page
+      description: Metadata for retrieving paginated data
+      title: PagedLinksResponse
+    Video:
+      type: object
+      properties:
+        createdUserId:
+          type: string
+          description: The user that created the resource
+        createdDt:
+          type: string
+          format: date-time
+          description: The created datetime of the resource
+        updatedUserId:
+          type: string
+          description: The user that last updated the resource
+        updatedDt:
+          type: string
+          format: date-time
+          description: The datetime the resource was last updated
+        path:
+          type:
+          - string
+          - 'null'
+          description: The original path of the video
+        coactiveVideoId:
+          type: string
+          format: uuid4
+          description: The coactive video id
+        metadata:
+          oneOf:
+          - $ref: '#/components/schemas/VideoMetadata'
+          - type: 'null'
+          description: The user provided metadata for the video
+      required:
+      - createdUserId
+      - createdDt
+      - updatedUserId
+      - updatedDt
+      - coactiveVideoId
+      description: A video asset response
+      title: Video
+    SortItem:
+      type: object
+      properties:
+        direction:
+          $ref: '#/components/schemas/SortDirection'
+          description: The sort order
+        field:
+          type: string
+          description: Which field to sort on
+      required:
+      - direction
+      - field
+      description: Metadata about the sort order of the response
+      title: SortItem
+    CreateConceptRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the concept, which will become available as the column name in SQL
+        description:
+          type:
+          - string
+          - 'null'
+          description: A description for the concept
+        threshold:
+          type:
+          - number
+          - 'null'
+          format: double
+          default: 0.8
+          description: Threshold above which classification is positive
+        regularization:
+          type:
+          - number
+          - 'null'
+          format: double
+          default: 0.0625
+          description: How strongly the model adapts to the training labels. Regularization strength. Lower value means the model fits more heavily to the training data
+        datasetId:
+          type: string
+          format: uuid4
+          description: The id of the dataset
+      required:
+      - name
+      - datasetId
+      description: An object used to create a concept in Coactive's system
+      title: CreateConceptRequest
+    Keyframe:
+      type: object
+      properties:
+        coactiveImageId:
+          type: string
+          format: uuid4
+          description: The coactive image id
+        video:
+          $ref: '#/components/schemas/Video'
+          description: The video the keyframe belongs to
+        shot:
+          $ref: '#/components/schemas/app__shared__v1__schema__Shot'
+          description: The video shot metadata
+        audioSegment:
+          oneOf:
+          - $ref: '#/components/schemas/app__shared__v1__schema__AudioSegment'
+          - type: 'null'
+          description: Audio segment associated with the keyframe (if the asset_type is 'keyframe')
+        timestamp:
+          type:
+          - integer
+          - 'null'
+          description: The timestamp of the keyframe in the video in milliseconds
+      required:
+      - coactiveImageId
+      - video
+      - shot
+      description: A keyframe asset response
+      title: Keyframe
+    VideoMetadata:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            description: Any type
+      description: Metadata associated with a video shot.
+      title: VideoMetadata
+    ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    UpdateConceptLabelsRequest:
+      type: object
+      properties:
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConceptLabelRequest'
+          description: Labels for the concept. A label with an empty label value will delete any existing labels associate with the provided image or keyframe
+        autosampledNumNegativeLabels:
+          type:
+          - integer
+          - 'null'
+          description: The number of negative labels to add
+      required:
+      - labels
+      description: An request to update labels for a concept
+      title: UpdateConceptLabelsRequest
+    ConceptLabelRequest:
+      type: object
+      properties:
+        coactiveImageId:
+          type:
+          - string
+          - 'null'
+          format: uuid4
+          description: The id of image or video keyframe to label
+        imagePath:
+          type:
+          - string
+          - 'null'
+          description: The path of an image to label
+        label:
+          oneOf:
+          - $ref: '#/components/schemas/ConceptLabelEnum'
+          - type: 'null'
+          description: The label for the image or video keyframe. "negative" means the image or keyframe is not an example of the concept. "positive" means the image or keyframe is example of the concept. An empty value indicates the label should be removed if one exists.
+      description: An request to associate an image or video keyframe to a concept
+      title: ConceptLabelRequest
+    ConceptLabelEnum:
+      type: string
+      enum:
+      - positive
+      - negative
+      description: Concept label values
+      title: ConceptLabelEnum
+    ErrorResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Details about the encountered error
+      required:
+      - detail
+      description: Details about an error that occurred
+      title: ErrorResponse
+    CandidatesToLabel:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            description: Any type
+          description: Images and video keyframes to label
+      required:
+      - data
+      description: 'A list of selected images or video keyframes to label to improve the accuracy of the
+
+        concept'
+      title: CandidatesToLabel
+    app__shared__v1__schema__AudioSegment:
+      type: object
+      properties:
+        startTimeMs:
+          type: integer
+          description: The start time in milliseconds of the beginning of the audio clip
+        endTimeMs:
+          type: integer
+          description: The end time in milliseconds of the end of the audio clip
+        speechToTextTranscription:
+          type: string
+          description: The text transcription of the audio clip
+      required:
+      - startTimeMs
+      - endTimeMs
+      - speechToTextTranscription
+      description: Metadata about a video audio segment
+      title: app__shared__v1__schema__AudioSegment
+    UpdateConceptRequest:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          description: A replacement name for the concept
+        description:
+          type:
+          - string
+          - 'null'
+          description: A replacement description for the concept
+        threshold:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: A replacement decision threshold for the concept
+        regularization:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: How strongly the model adapts to the training labels. Regularization strength. Lower value means the model fits more heavily to the training data
+      description: Base model for all schema
+      title: UpdateConceptRequest
+    SortDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      description: "Possible sort orders\n\nasc: ascending\n desc: descending"
+      title: SortDirection
+    PagedMetaResponse:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/PagedPageDetailsResponse'
+          description: Details about the total set of data
+        links:
+          $ref: '#/components/schemas/PagedLinksResponse'
+          description: Helpful links to other pages in the pagination
+        sort:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortItem'
+          description: Ordered list of fields to sort on, order of list determines priority
+      required:
+      - page
+      - links
+      - sort
+      description: Metadata about the paginated response
+      title: PagedMetaResponse
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer

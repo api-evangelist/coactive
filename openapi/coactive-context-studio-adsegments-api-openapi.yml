@@ -1,0 +1,323 @@
+openapi: 3.1.0
+info:
+  title: API Reference agentic-search > agenticSearch context-studio > adSegments API
+  version: 1.0.0
+servers:
+- url: https://api.coactive.ai
+  description: Production
+- url: https://app.coactive.ai
+  description: Production
+tags:
+- name: context-studio > adSegments
+paths:
+  /api/v1/datasets/{dataset_id}/videos/external-identifier/{asset_identifier_value}/ad-segments:
+    post:
+      operationId: create-ad-segments
+      summary: Create ad segments for a video
+      description: Creates ad segments for the video identified by the provided asset identifier value.
+      tags:
+      - context-studio > adSegments
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: asset_identifier_value
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/context-studio:VideoAdSegmentsCreateResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/context-studio:HTTPValidationError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/context-studio:VideoAdSegmentsCreateRequest'
+    delete:
+      operationId: delete-ad-segments
+      summary: Delete ad segment metadata for a video
+      description: Soft-deletes the ad-segment composite for the video identified by the provided asset identifier value. If no ad segments exist for the video, the request still succeeds with 204 No Content.
+      tags:
+      - context-studio > adSegments
+      parameters:
+      - name: dataset_id
+        in: path
+        description: The Coactive-internal unique identifier for the dataset the video belongs to.
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: asset_identifier_value
+        in: path
+        description: The customer's own internal asset identifier for the video.
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '401':
+          description: Missing or invalid authentication.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/context-studio:HTTPValidationError'
+        '403':
+          description: Caller is not authorized to delete assets in this dataset.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/context-studio:HTTPValidationError'
+        '404':
+          description: No video found matching the provided asset_identifier_value, or the dataset does not exist.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/context-studio:HTTPValidationError'
+        '422':
+          description: Invalid path parameter, missing gateway identity headers, or multiple videos match the provided asset_identifier_value.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/context-studio:HTTPValidationError'
+    get:
+      operationId: get-ad-segments
+      summary: Retrieve ad segments for a video
+      description: Returns all ad segments stored for the video identified by the provided asset identifier value.
+      tags:
+      - context-studio > adSegments
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: asset_identifier_value
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/context-studio:VideoAdSegmentsGetResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/context-studio:HTTPValidationError'
+components:
+  schemas:
+    context-studio:HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/context-studio:ValidationError'
+      title: HTTPValidationError
+    context-studio:VideoAdSegmentMetadataResponse:
+      type: object
+      properties:
+        segment_type:
+          type: string
+        segment_number:
+          type: integer
+        incode:
+          type: string
+        outcode:
+          type: string
+      required:
+      - segment_type
+      - segment_number
+      - incode
+      - outcode
+      description: Response model for ad segment metadata stored in composite slice JSONB.
+      title: VideoAdSegmentMetadataResponse
+    context-studio:VideoAdSegmentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        segment_start_time_ms:
+          type: number
+          format: double
+        segment_end_time_ms:
+          type: number
+          format: double
+        segment_start_frame_number:
+          type: integer
+        segment_end_frame_number:
+          type: integer
+        metadata:
+          oneOf:
+          - $ref: '#/components/schemas/context-studio:VideoAdSegmentMetadataResponse'
+          - type: 'null'
+      required:
+      - id
+      - segment_start_time_ms
+      - segment_end_time_ms
+      - segment_start_frame_number
+      - segment_end_frame_number
+      description: A single ad segment returned from the DB.
+      title: VideoAdSegmentResponse
+    context-studio:VideoAdSegmentsCreateResponse:
+      type: object
+      properties:
+        asset_identifier_value:
+          type: string
+        ad_segments_created:
+          type: integer
+        segments:
+          type: array
+          items:
+            $ref: '#/components/schemas/context-studio:AdSegmentInfo'
+        message:
+          type: string
+      required:
+      - asset_identifier_value
+      - ad_segments_created
+      - segments
+      - message
+      description: Response returned after ad segments are created.
+      title: VideoAdSegmentsCreateResponse
+    context-studio:ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/context-studio:ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    context-studio:AdSegmentInfo:
+      type: object
+      properties:
+        segment_number:
+          type: integer
+        id:
+          type: string
+          format: uuid
+      required:
+      - segment_number
+      - id
+      description: A single Break Pattern segment with its assigned ID.
+      title: AdSegmentInfo
+    context-studio:VideoAdSegmentsGetResponse:
+      type: object
+      properties:
+        ad_segments:
+          type: array
+          items:
+            $ref: '#/components/schemas/context-studio:VideoAdSegmentResponse'
+      required:
+      - ad_segments
+      description: Response wrapper for the GET ad-segments endpoint.
+      title: VideoAdSegmentsGetResponse
+    context-studio:VideoAdSegmentCreateRequest:
+      type: object
+      properties:
+        segment_start_time_ms:
+          type: number
+          format: double
+        segment_end_time_ms:
+          type: number
+          format: double
+        segment_start_frame_number:
+          type: integer
+        segment_end_frame_number:
+          type: integer
+        metadata:
+          oneOf:
+          - $ref: '#/components/schemas/context-studio:VideoAdSegmentMetadataRequest'
+          - type: 'null'
+      required:
+      - segment_start_time_ms
+      - segment_end_time_ms
+      - segment_start_frame_number
+      - segment_end_frame_number
+      description: Request model for creating an ad segment.
+      title: VideoAdSegmentCreateRequest
+    context-studio:VideoAdSegmentsCreateRequest:
+      type: object
+      properties:
+        ad_segments:
+          type: array
+          items:
+            $ref: '#/components/schemas/context-studio:VideoAdSegmentCreateRequest'
+      required:
+      - ad_segments
+      description: Request model for creating ad segments for a video.
+      title: VideoAdSegmentsCreateRequest
+    context-studio:ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    context-studio:VideoAdSegmentMetadataRequest:
+      type: object
+      properties:
+        segment_type:
+          type: string
+        segment_number:
+          type: integer
+        incode:
+          type: string
+        outcode:
+          type: string
+      required:
+      - segment_type
+      - segment_number
+      - incode
+      - outcode
+      description: Request model for ad segment metadata.
+      title: VideoAdSegmentMetadataRequest
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer

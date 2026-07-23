@@ -1,0 +1,154 @@
+openapi: 3.1.0
+info:
+  title: API Reference agentic-search > agenticSearch datasets > datasetConfig API
+  version: 1.0.0
+servers:
+- url: https://api.coactive.ai
+  description: Production
+- url: https://app.coactive.ai
+  description: Production
+tags:
+- name: datasets > datasetConfig
+paths:
+  /api/v1/datasets/{dataset_id}/config:
+    get:
+      operationId: get-dataset-config-api-v-1-datasets-dataset-id-config-get
+      summary: Get Dataset Config
+      description: Retrieve configuration for a dataset from the dataset_config JSONB column.
+      tags:
+      - datasets > datasetConfig
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: include_deleted
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datasets:DatasetConfigResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datasets:HTTPValidationError'
+components:
+  schemas:
+    datasets:HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets:ValidationError'
+      title: HTTPValidationError
+    datasets:ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets:ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    datasets:ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    datasets:DatasetConfigResponse:
+      type: object
+      properties:
+        dataset_id:
+          type: string
+          format: uuid
+        embedding_id:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: string
+            format: uuid
+        encoder_name:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: string
+        hybrid_search:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: number
+              format: double
+        metadata_fields_to_embed:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        metadata_fields_to_index:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        new_video_data_model:
+          type:
+          - boolean
+          - 'null'
+        celebrity_detection_enabled:
+          type:
+          - boolean
+          - 'null'
+          default: false
+        context_studio_enabled:
+          type:
+          - boolean
+          - 'null'
+          default: false
+        agentic_search_metadata_description:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: string
+        asset_identifier_key:
+          type:
+          - string
+          - 'null'
+      required:
+      - dataset_id
+      description: Response schema for the dataset_config JSONB column.
+      title: DatasetConfigResponse
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer

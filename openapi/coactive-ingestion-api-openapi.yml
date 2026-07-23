@@ -1,0 +1,154 @@
+openapi: 3.1.0
+info:
+  title: API Reference agentic-search > agenticSearch ingestion API
+  version: 1.0.0
+servers:
+- url: https://api.coactive.ai
+  description: Production
+- url: https://app.coactive.ai
+  description: Production
+tags:
+- name: ingestion
+paths:
+  /api/v0/delete/assets:
+    post:
+      operationId: delete-assets
+      summary: Delete Assets
+      description: Delete assets from a dataset by creating deletion jobs.  Supports deletion of up to 100 assets per request.  Assets can be identified by their Coactive Video/Image ID or path string.
+      tags:
+      - ingestion
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Deletion jobs enqueued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteAssetsResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteAssetsRequest'
+components:
+  schemas:
+    DeleteAssetsRequest:
+      type: object
+      properties:
+        dataset_id:
+          type: string
+          format: uuid
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeleteJobAsset'
+      required:
+      - dataset_id
+      - assets
+      title: DeleteAssetsRequest
+    ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    DeleteAssetsResponseAssetsItems:
+      type: object
+      properties:
+        asset_type:
+          $ref: '#/components/schemas/AssetType'
+        identifier:
+          $ref: '#/components/schemas/DeleteJobAssetIdentifier'
+          description: Either the Coactive Video/Image ID of the asset or a path string
+        delete_job_id:
+          type: string
+          description: Beanie ObjectId as string
+      required:
+      - asset_type
+      - identifier
+      - delete_job_id
+      title: DeleteAssetsResponseAssetsItems
+    AssetType:
+      type: string
+      enum:
+      - image
+      - video
+      description: An enumeration.
+      title: AssetType
+    DeleteJobAssetIdentifier:
+      oneOf:
+      - type: string
+        format: uuid
+      - type: string
+      description: Either the Coactive Video/Image ID of the asset or a path string
+      title: DeleteJobAssetIdentifier
+    DeleteJobAsset:
+      type: object
+      properties:
+        asset_type:
+          $ref: '#/components/schemas/AssetType'
+        identifier:
+          $ref: '#/components/schemas/DeleteJobAssetIdentifier'
+          description: Either the Coactive Video/Image ID of the asset or a path string
+      required:
+      - asset_type
+      - identifier
+      title: DeleteJobAsset
+    DeleteAssetsResponse:
+      type: object
+      properties:
+        org_id:
+          type: string
+        dataset_id:
+          type: string
+          format: uuid
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeleteAssetsResponseAssetsItems'
+      required:
+      - org_id
+      - dataset_id
+      - assets
+      title: DeleteAssetsResponse
+    HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+      title: HTTPValidationError
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer

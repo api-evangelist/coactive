@@ -1,0 +1,172 @@
+openapi: 3.1.0
+info:
+  title: API Reference agentic-search > agenticSearch classification API
+  version: 1.0.0
+servers:
+- url: https://api.coactive.ai
+  description: Production
+- url: https://app.coactive.ai
+  description: Production
+tags:
+- name: classification
+paths:
+  /api/v1/classify/image/url:
+    post:
+      operationId: classify-image-at-url
+      summary: Classify image at public url
+      description: Classify an image downloadable via a public url for specific concepts or all concepts within a dataset
+      tags:
+      - classification
+      parameters:
+      - name: threshold
+        in: query
+        description: Threshold above which classification is positive
+        required: false
+        schema:
+          type: number
+          format: double
+          default: 0.5
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Result of the classification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Classification'
+        '404':
+          description: Dataset not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublicUrlClassificationRequest'
+components:
+  schemas:
+    ClassificationScore:
+      type: object
+      properties:
+        conceptName:
+          type: string
+          description: The concept name
+        conceptId:
+          type: string
+          format: uuid4
+          description: The concept id
+        threshold:
+          type: number
+          format: double
+          description: The threshold used to determine if it's a positive example
+        positive:
+          type: boolean
+          description: If the sample is classified as positive
+        score:
+          type: number
+          format: double
+          description: The classification score in the range [0, 1]
+      required:
+      - conceptName
+      - conceptId
+      - threshold
+      - positive
+      - score
+      description: A classification of an asset for a single concept
+      title: ClassificationScore
+    PublicUrlClassificationRequest:
+      type: object
+      properties:
+        url:
+          type: string
+          description: A public url for downloading the image
+        conceptIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+            format: uuid4
+          description: The ids of concepts to use to classify an image
+        datasetId:
+          type:
+          - string
+          - 'null'
+          format: uuid4
+          description: The id of the dataset related to the concepts to use to classify an image
+      required:
+      - url
+      description: 'A request to classify a publicly downloadable image for specific concepts or all concepts
+
+        for a dataset. Either concept ids of a dataset id must be provided.'
+      title: PublicUrlClassificationRequest
+    ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ErrorResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Details about the encountered error
+      required:
+      - detail
+      description: Details about an error that occurred
+      title: ErrorResponse
+    Classification:
+      type: object
+      properties:
+        scores:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassificationScore'
+          description: Classifications of images for the relevant concept(s)
+      required:
+      - scores
+      description: A classification of an asset for one or more concepts
+      title: Classification
+    HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+      title: HTTPValidationError
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer

@@ -1,0 +1,95 @@
+openapi: 3.1.0
+info:
+  title: API Reference agentic-search > agenticSearch video-narative-metadata > videoSummarization API
+  version: 1.0.0
+servers:
+- url: https://api.coactive.ai
+  description: Production
+- url: https://app.coactive.ai
+  description: Production
+tags:
+- name: video-narative-metadata > videoSummarization
+paths:
+  /api/v0/video-summarization/datasets/{dataset_id}/videos/{video_id}/caption-keyframes:
+    post:
+      operationId: caption-video-keyframes-api-v-0-video-summarization-datasets-dataset-id-videos-video-id-caption-keyframes-post
+      summary: Request keyframe captioning for a video
+      description: Request keyframe captioning for a video.
+      tags:
+      - video-narative-metadata > videoSummarization
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: video_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/video-narative-metadata:CaptionVideoKeyframesResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/video-narative-metadata:HTTPValidationError'
+components:
+  schemas:
+    video-narative-metadata:ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/video-narative-metadata:ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    video-narative-metadata:HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/video-narative-metadata:ValidationError'
+      title: HTTPValidationError
+    video-narative-metadata:CaptionVideoKeyframesResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
+      description: Response body for video keyframes captioning.
+      title: CaptionVideoKeyframesResponse
+    video-narative-metadata:ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
