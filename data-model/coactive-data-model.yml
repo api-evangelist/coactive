@@ -1,0 +1,91 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/coactive-openapi-original.json
+description: Entity-relationship graph derived from Coactive OpenAPI paths and id-reference
+  fields. Coactive's core object is the Dataset, which owns ingested assets (images/videos)
+  and the intelligence layers built over them (concepts, dynamic tags, queries, metadata).
+entities:
+- name: dataset
+  id_param: dataset_id
+  summary: A collection of ingested visual assets (images/videos) and its configuration/encoder.
+- name: asset
+  id_param: asset_id
+  summary: An ingested image or video, addressable by internal id or external identifier.
+- name: video
+  id_param: video_id
+  summary: A video asset with narrative metadata, scores, summarization, and ad segments.
+- name: ingest_job
+  id_param: ingest_job_id
+  summary: An asynchronous ingestion job pulling assets from files/images/videos/buckets/metadata.
+- name: concept
+  id_param: concept_id
+  summary: A trained concept/classifier with labels, candidates, and prediction estimation.
+- name: query
+  id_param: query_id
+  summary: An asynchronous query over a dataset with exportable results.
+- name: connection
+  id_param: connection_name_or_id
+  summary: A data-source connection (e.g. S3) with credentials, testable and listable.
+- name: dynamic_tag_group
+  id_param: group_id
+  summary: A group of dynamic tags applied to a dataset's assets.
+- name: tag
+  id_param: tag_id
+  summary: A dynamic tag within a group.
+- name: person
+  id_param: person_id
+  summary: A celebrity/person entity for face detection and identification.
+- name: ad_segment
+  id_param: asset_identifier_value
+  summary: A Context Studio scene-level ad segment on a video.
+- name: user
+  id_param: user_id
+  summary: An organization user (userManagement).
+- name: system_credential
+  id_param: client_id
+  summary: A CLIENT_ID/CLIENT_SECRET system credential (systemCredentials).
+relationships:
+- from: dataset
+  type: has_many
+  to: asset
+  via: dataset_id
+- from: dataset
+  type: has_many
+  to: video
+  via: dataset_id
+- from: dataset
+  type: has_many
+  to: concept
+  via: dataset_id
+- from: dataset
+  type: has_many
+  to: dynamic_tag_group
+  via: dataset_id
+- from: dataset
+  type: has_many
+  to: query
+  via: dataset_id
+- from: ingest_job
+  type: belongs_to
+  to: dataset
+  via: dataset_id
+- from: concept
+  type: has_many
+  to: label
+  via: concept_id
+- from: dynamic_tag_group
+  type: has_many
+  to: tag
+  via: group_id
+- from: video
+  type: has_many
+  to: ad_segment
+  via: asset_identifier_value
+- from: ingest_job
+  type: has_many
+  to: asset
+  via: ingest_job_id
+- from: connection
+  type: has_one
+  to: credential
+  via: connection_name_or_id

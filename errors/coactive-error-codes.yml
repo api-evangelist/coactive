@@ -1,0 +1,43 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/coactive-openapi-original.json#/components/schemas/ingestion:ErrorCode
+area: ingestion
+description: Ingestion error-code registry (enum ErrorCode) surfaced on ingest job / asset
+  status responses. These classify why an image or video asset failed to ingest.
+error_codes:
+- code: unknown
+  meaning: Unclassified ingestion failure.
+- code: unknown_content_type
+  meaning: The asset's content type could not be determined.
+- code: file_not_found
+  meaning: Source file could not be located at the provided location.
+- code: permission_denied
+  meaning: Coactive lacks permission to read the source (check connection credentials).
+- code: broken_url
+  meaning: The provided asset URL is unreachable or malformed.
+- code: file_too_large
+  meaning: The asset exceeds the supported file-size limit.
+- code: video_too_short
+  meaning: The video duration is below the supported minimum.
+- code: video_too_long
+  meaning: The video duration exceeds the supported maximum.
+- code: resolution_out_of_spec
+  meaning: The asset resolution is outside supported bounds.
+- code: unsupported_format
+  meaning: The container/file format is not supported.
+- code: unsupported_codec
+  meaning: The media codec is not supported.
+- code: unsupported_source_type
+  meaning: The source type (connection/bucket kind) is not supported.
+- code: unsupported_uri_scheme
+  meaning: The URI scheme (e.g. protocol) is not supported.
+- code: audio_processing_failed
+  meaning: Audio track extraction/processing failed.
+- code: asset_metadata_error
+  meaning: Asset metadata could not be parsed/extracted.
+- code: transcription_failed
+  meaning: Speech-to-text transcription failed.
+- code: composite_creation_failed
+  meaning: Building the composite representation of the asset failed.
+- code: composite_slice_creation_failed
+  meaning: Building a composite slice (frame/segment) failed.

@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.coactive.ai/docs-guides/introduction/release-notes
+versioning:
+  scheme: uri-path
+  current: mixed (v0, v1, v3 per product area)
+  docs: https://docs.coactive.ai/
+  notes: Version embedded in path. Coactive is consolidating onto a unified, versioned API
+    domain (ingestion, user management, connections, system credentials).
+deprecation:
+  policy_documented: false
+  observed: Breaking removals of legacy endpoints are announced in dated release notes (e.g.
+    2026-07-17 asset-detail endpoints, 2026-02-11 legacy search endpoints) rather than via a
+    formal Sunset/Deprecation-header policy.
+  changelog: https://docs.coactive.ai/docs-guides/introduction/release-notes
+status_page: https://status.coactive.ai/
+sla:
+  url: null
+  notes: No public SLA/uptime target located.
+deprecated_operations: []

@@ -1,0 +1,16 @@
+generated: '2026-07-18'
+method: searched
+source: https://pypi.org/project/coactive/
+packages:
+- language: python
+  registry: pypi
+  name: coactive
+  url: https://pypi.org/project/coactive/
+  install: pip install coactive
+  version: 1.0.27
+  official: true
+  generated_by: Fern
+  notes: Official Coactive Python SDK (sync + async clients, typed, mypy annotations).
+    Maintained by Coactive (PyPI maintainers coactive-dahoon, coactive-jacob).
+notes: Searched npm, Maven Central, NuGet, pkg.go.dev, RubyGems, Packagist, crates.io —
+  only a first-party Python SDK was found published. No first-party CLI package located.

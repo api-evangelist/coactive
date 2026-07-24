@@ -1,0 +1,47 @@
+generated: '2026-07-18'
+method: searched
+source: live probes of Coactive hosts
+hosts_probed:
+- https://api.coactive.ai
+- https://www.coactive.ai
+- https://app.coactive.ai
+documents:
+- host: https://api.coactive.ai
+  path: /.well-known/security.txt
+  status: 404
+- host: https://api.coactive.ai
+  path: /.well-known/openid-configuration
+  status: 404
+- host: https://api.coactive.ai
+  path: /.well-known/oauth-authorization-server
+  status: 404
+- host: https://api.coactive.ai
+  path: /.well-known/api-catalog
+  status: 404
+- host: https://api.coactive.ai
+  path: /.well-known/ai-plugin.json
+  status: 404
+- host: https://www.coactive.ai
+  path: /.well-known/security.txt
+  status: 404
+- host: https://www.coactive.ai
+  path: /.well-known/openid-configuration
+  status: 404
+- host: https://www.coactive.ai
+  path: /.well-known/api-catalog
+  status: 404
+- host: https://app.coactive.ai
+  path: /.well-known/security.txt
+  status: 200
+  content_type: text/html
+  genuine: false
+- host: https://app.coactive.ai
+  path: /.well-known/openid-configuration
+  status: 200
+  content_type: text/html
+  genuine: false
+notes: No genuine .well-known documents are published. api.coactive.ai and www.coactive.ai
+  return 404 for all probed paths; app.coactive.ai is a single-page app that returns its
+  HTML shell (content-type text/html) for every path, so its 200s are false positives —
+  no security.txt, OIDC discovery, OAuth authorization-server metadata, api-catalog, or
+  ai-plugin.json exists. No WellKnown/SecurityTxt pointer emitted.

@@ -1,0 +1,24 @@
+generated: '2026-07-18'
+method: searched
+status: published
+source: https://docs.coactive.ai/_mcp/server
+server:
+  name: fern-docs-mcp-server
+  version: 1.0.0
+  transport: http
+  transport_detail: streamable-http
+  url: https://docs.coactive.ai/_mcp/server
+  description: Hosted MCP server over the Coactive documentation. Provides AI-powered
+    search across docs.coactive.ai. Published by the Fern docs platform, not the Coactive
+    data API itself.
+install:
+  claude_code: claude mcp add --transport http fern_mcp_docs-coactive-ai https://docs.coactive.ai/_mcp/server
+  cursor: Add "https://docs.coactive.ai/_mcp/server" to your MCP server configuration
+tools:
+- name: searchDocs
+  description: Search the documentation at https://docs.coactive.ai. Returns relevant
+    doc passages with source URLs.
+  read_only: true
+notes: This is a documentation-search MCP server (readOnly). Coactive does not publish a
+  hosted MCP server that fronts the data API; the 118 REST operations could be exposed as
+  candidate MCP tools via the OpenAPI (see agentic-access/ and openapi/).

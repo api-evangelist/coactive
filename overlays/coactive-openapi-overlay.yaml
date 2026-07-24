@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Coactive API
+  version: 1.0.0
+extends: openapi/coactive-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: coactive
+    x-apievangelist-review-date: '2026-07-18'
+    x-authentication: bearer-access-token via POST /api/v0/login (client_credentials or
+      refresh_token); Authorization Bearer; token TTL 3600s
+    x-pagination: mixed — limit/offset and page/per_page across list endpoints
+    x-error-envelope: FastAPI { detail } (application/json); 422 uses HTTPValidationError
+    x-idempotency: not supported
+    x-status-page: https://status.coactive.ai/
+    x-changelog: https://docs.coactive.ai/docs-guides/introduction/release-notes
+- target: $.servers
+  update:
+    x-primary: https://api.coactive.ai

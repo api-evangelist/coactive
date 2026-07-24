@@ -1,0 +1,1623 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/coactive-openapi-original.json
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 118
+  by_action_class:
+    acting: 71
+    connected: 47
+  by_consequence:
+    write: 70
+    read: 47
+    safety-critical: 1
+  human_in_the_loop_required: 1
+operations:
+- path: /api/v0/chat
+  method: post
+  operationId: chat
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/chat/dataset/{dataset_id}
+  method: post
+  operationId: chat-dataset
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/celebrity-detection/person/{person_id}
+  method: get
+  operationId: get-person-api-v-0-celebrity-detection-person-person-id-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/celebrity-detection/persons
+  method: get
+  operationId: get-persons-in-org-api-v-0-celebrity-detection-persons-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/celebrity-detection/faces-with-person
+  method: get
+  operationId: get-faces-with-person-api-v-0-celebrity-detection-faces-with-person-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/celebrity-detection/persons/by-names-and-aliases
+  method: get
+  operationId: get-persons-by-names-and-aliases-api-v-0-celebrity-detection-persons-by-names-and-aliases-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/celebrity-detection/persons-in-image/{image_id}
+  method: get
+  operationId: get-persons-in-image-api-v-0-celebrity-detection-persons-in-image-image-id-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/celebrity-detection/identify
+  method: get
+  operationId: identify-celebrities-in-external-image-api-v-0-celebrity-detection-identify-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/celebrity-detection/person/aliases
+  method: put
+  operationId: update-person-aliases-api-v-0-celebrity-detection-person-aliases-put
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/classify/image/url
+  method: post
+  operationId: classify-image-at-url
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/concepts
+  method: post
+  operationId: create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/concepts
+  method: get
+  operationId: list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/concepts/{concept_id}
+  method: delete
+  operationId: delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/concepts/{concept_id}
+  method: get
+  operationId: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/concepts/{concept_id}
+  method: patch
+  operationId: update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/concepts/{concept_id}/prediction_estimation
+  method: get
+  operationId: get-concept-prediction
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/concepts/{concept_id}/candidates
+  method: get
+  operationId: get-label-candidates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/concepts/{concept_id}/labels
+  method: get
+  operationId: get-labels
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/concepts/{concept_id}/labels
+  method: patch
+  operationId: update-labels
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/connections
+  method: post
+  operationId: create-connection-api-v-0-connections-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/connections
+  method: get
+  operationId: list-connections-api-v-0-connections-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/connections/{connection_name_or_id}
+  method: delete
+  operationId: delete-connection-api-v-0-connections-connection-name-or-id-delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/connections/{connection_name_or_id}
+  method: get
+  operationId: get-connection-api-v-0-connections-connection-name-or-id-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/connections/{connection_name_or_id}
+  method: patch
+  operationId: update-connection-api-v-0-connections-connection-name-or-id-patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/connections/{connection_name_or_id}/credentials
+  method: get
+  operationId: get-connection-credentials-api-v-0-connections-connection-name-or-id-credentials-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/connections/{connection_name_or_id}/list
+  method: post
+  operationId: list-with-connection-api-v-0-connections-connection-name-or-id-list-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/connections/{connection_name_or_id}/test
+  method: post
+  operationId: test-connection-api-v-0-connections-connection-name-or-id-test-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/datasets/{dataset_id}/videos/external-identifier/{asset_identifier_value}/ad-segments
+  method: post
+  operationId: create-ad-segments
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/datasets/{dataset_id}/videos/external-identifier/{asset_identifier_value}/ad-segments
+  method: delete
+  operationId: delete-ad-segments
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/datasets/{dataset_id}/videos/external-identifier/{asset_identifier_value}/ad-segments
+  method: get
+  operationId: get-ad-segments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/datasets
+  method: post
+  operationId: create-dataset-api-v-1-datasets-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/datasets
+  method: get
+  operationId: get-datasets-api-v-1-datasets-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/datasets/{dataset_id}
+  method: delete
+  operationId: delete-dataset-by-id-api-v-1-datasets-dataset-id-delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/datasets/{dataset_id}
+  method: get
+  operationId: get-dataset-by-id-api-v-1-datasets-dataset-id-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/datasets/{dataset_id}
+  method: patch
+  operationId: update-dataset-by-id-api-v-1-datasets-dataset-id-patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/datasets/{dataset_id}/config
+  method: get
+  operationId: get-dataset-config-api-v-1-datasets-dataset-id-config-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/encoders
+  method: get
+  operationId: list-available-encoders-api-v-1-encoders-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v3/dynamic-tags/groups
+  method: get
+  operationId: list-groups
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/delete/assets
+  method: post
+  operationId: delete-assets
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/ingestion/metadata
+  method: post
+  operationId: create-ingest-job-for-metadata-api-v-1-ingestion-metadata-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/ingestion/assets
+  method: post
+  operationId: create-ingest-job-from-assets-api-v-1-ingestion-assets-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/ingestion/buckets
+  method: post
+  operationId: create-ingest-job-from-bucket-api-v-1-ingestion-buckets-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/ingestion/files
+  method: post
+  operationId: create-ingest-job-from-file-api-v-1-ingestion-files-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/ingestion/images
+  method: post
+  operationId: create-ingest-job-from-images-api-v-1-ingestion-images-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/ingestion/videos
+  method: post
+  operationId: create-ingest-job-from-videos-api-v-1-ingestion-videos-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/ingestion/jobs/{ingest_job_id}
+  method: get
+  operationId: get-by-ingest-job-id-api-v-1-ingestion-jobs-ingest-job-id-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/ingestion/datasets/{dataset_id}/assets/status
+  method: post
+  operationId: get-dataset-assets-status-api-v-1-ingestion-datasets-dataset-id-assets-status-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/ingestion/datasets/{dataset_id}/assets/status/count
+  method: get
+  operationId: get-dataset-assets-status-count-api-v-1-ingestion-datasets-dataset-id-assets-status-count-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/ingestion/datasets/{dataset_id}/assets/status/summary
+  method: get
+  operationId: get-dataset-assets-status-summary-api-v-1-ingestion-datasets-dataset-id-assets-status-summary-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/ingestion/datasets/{dataset_id}/status
+  method: get
+  operationId: get-dataset-status-api-v-1-ingestion-datasets-dataset-id-status-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/ingestion/images/{asset_id}/status
+  method: get
+  operationId: get-image-asset-status-api-v-1-ingestion-images-asset-id-status-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/ingestion/jobs
+  method: get
+  operationId: get-ingest-jobs-api-v-1-ingestion-jobs-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/ingestion/jobs/{ingest_job_id}/status
+  method: get
+  operationId: get-job-status-api-v-1-ingestion-jobs-ingest-job-id-status-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/ingestion/videos/{asset_id}/status
+  method: get
+  operationId: get-video-asset-status-api-v-1-ingestion-videos-asset-id-status-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/queries/{query_id}/cancel
+  method: post
+  operationId: cancel-query-api-v-1-queries-query-id-cancel-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/queries
+  method: post
+  operationId: create-query-api-v-1-queries-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/queries
+  method: get
+  operationId: list-queries-api-v-1-queries-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/queries/{query_id}
+  method: delete
+  operationId: delete-query-api-v-1-queries-query-id-delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/queries/{query_id}
+  method: get
+  operationId: get-query-api-v-1-queries-query-id-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/queries/{query_id}/exports
+  method: post
+  operationId: export-query-api-v-1-queries-query-id-exports-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/queries/{query_id}/results
+  method: get
+  operationId: get-query-results-url-api-v-1-queries-query-id-results-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/datasets/{dataset_id}/tables/{table_name}
+  method: get
+  operationId: get-table-api-v-1-datasets-dataset-id-tables-table-name-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/datasets/{dataset_id}/tables
+  method: get
+  operationId: list-tables-api-v-1-datasets-dataset-id-tables-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/queries/{query_id}/run
+  method: post
+  operationId: run-query-api-v-1-queries-query-id-run-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/queries/{query_id}/stop
+  method: post
+  operationId: stop-query-api-v-1-queries-query-id-stop-post
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /api/v1/search/audio
+  method: post
+  operationId: audio-search
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/search/audio-sound
+  method: post
+  operationId: audio-sound-search
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/search/celebrity/matches
+  method: post
+  operationId: celebrity-matches-api-v-1-search-celebrity-matches-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/search/text-to-hybrid-search
+  method: post
+  operationId: hybrid-search
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/search/image-to-image
+  method: post
+  operationId: image-to-image
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/search/image-to-keyframes
+  method: post
+  operationId: image-to-keyframes
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/search/text-to-image/by-person
+  method: post
+  operationId: text-to-image-search-by-person
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/search/text-to-image
+  method: post
+  operationId: text-search-api-v-1-search-text-to-image-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/search/text-to-keyframes
+  method: post
+  operationId: text-to-keyframes-search-api-v-1-search-text-to-keyframes-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/search/text-to-transcript/exact-match
+  method: post
+  operationId: transcript-exact-match
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/search/metadata-filters/audio-sound
+  method: post
+  operationId: search-audio-sound-with-metadata-filters
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/search/metadata-filters/job/result/{run_id}
+  method: get
+  operationId: get-metadata-filter-search-result
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/search/metadata-filters/job/status/{run_id}
+  method: get
+  operationId: get-metadata-filter-search-status
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/search/metadata-filters/text-to-image
+  method: post
+  operationId: search-text-to-image-with-metadata-filters
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/search/metadata-filters/text-to-keyframe
+  method: post
+  operationId: search-text-to-keyframe-with-metadata-filters
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/search/metadata-filters/text-to-shot
+  method: post
+  operationId: search-text-to-shot-with-metadata-filters
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/search/metadata-filters/text-to-transcript
+  method: post
+  operationId: search-text-to-transcript-with-metadata-filters
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/search/metadata-filters/text-to-video
+  method: post
+  operationId: search-text-to-video-with-metadata-filters
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/search/video
+  method: get
+  operationId: get-video-details
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/search/video
+  method: post
+  operationId: search-videos
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/auth-management/clients
+  method: post
+  operationId: create-credentials
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/auth-management/clients
+  method: get
+  operationId: list-credentials
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/auth-management/clients/{client_id}
+  method: delete
+  operationId: delete-credentials
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/auth-management/clients/{client_id}
+  method: get
+  operationId: get-credentials
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/auth-management/clients/{client_id}
+  method: put
+  operationId: update-credentials
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/auth-management/user-invitations
+  method: post
+  operationId: create-invitation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/auth-management/user-invitations
+  method: get
+  operationId: list-invitations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/auth-management/user-invitations/{invitation_id}
+  method: delete
+  operationId: delete-invitation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/auth-management/user-invitations/{invitation_id}
+  method: get
+  operationId: get-invitation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/auth-management/roles
+  method: get
+  operationId: list-roles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/auth-management/users
+  method: get
+  operationId: list-users
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v1/auth-management/users/{user_id}
+  method: delete
+  operationId: remove-user
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v1/auth-management/users/{user_id}/roles
+  method: put
+  operationId: update-user-roles
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/video-narrative-metadata/metadata
+  method: post
+  operationId: create-metadata-api-v-0-video-narrative-metadata-metadata-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/video-narrative-metadata/metadata
+  method: get
+  operationId: get-metadata-api-v-0-video-narrative-metadata-metadata-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/video-narrative-metadata/metadata/{metadata_id}
+  method: delete
+  operationId: delete-metadata-api-v-0-video-narrative-metadata-metadata-metadata-id-delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/video-narrative-metadata/metadata/{metadata_id}
+  method: patch
+  operationId: update-metadata-api-v-0-video-narrative-metadata-metadata-metadata-id-patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/composite-slices/{composite_slice_id}/summary
+  method: post
+  operationId: generate-composite-slice-summary-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-composite-slices-composite-slice-id-summary-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/description
+  method: post
+  operationId: generate-video-description-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-description-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/summary
+  method: post
+  operationId: generate-video-summary-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-summary-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/synopsis
+  method: post
+  operationId: generate-video-synopsis-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-synopsis-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/composite-slices/{composite_slice_id}/format
+  method: post
+  operationId: predict-composite-slice-format-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-composite-slices-composite-slice-id-format-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/composite-slices/{composite_slice_id}/mood
+  method: post
+  operationId: predict-composite-slice-mood-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-composite-slices-composite-slice-id-mood-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/composite-slices/{composite_slice_id}/subject
+  method: post
+  operationId: predict-composite-slice-subject-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-composite-slices-composite-slice-id-subject-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/format
+  method: post
+  operationId: predict-video-format-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-format-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/genre
+  method: post
+  operationId: predict-video-genre-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-genre-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/mood
+  method: post
+  operationId: predict-video-mood-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-mood-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/subject
+  method: post
+  operationId: predict-video-subject-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-subject-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/video-summarization/datasets/{dataset_id}/videos/{video_id}/caption-keyframes
+  method: post
+  operationId: caption-video-keyframes-api-v-0-video-summarization-datasets-dataset-id-videos-video-id-caption-keyframes-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/v0/video-scores/groups/{group_id}/tags/{tag_id}/versions/{version_id}/videos/{video_id}/shot-scores
+  method: get
+  operationId: get-video-shot-scores
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/video-scores/groups/{group_id}/tags/{tag_id}/aggregations/{aggregation_id}/result
+  method: get
+  operationId: get-video-scores-result
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/video-scores/groups/{group_id}/tags/{tag_id}/aggregations/{aggregation_id}/result/count
+  method: get
+  operationId: get-video-scores-result-count
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/video-scores/groups/{group_id}/tags/{tag_id}/aggregations/-/result
+  method: get
+  operationId: get-video-scores-result-preview
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

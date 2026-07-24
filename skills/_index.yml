@@ -1,0 +1,19 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/coactive-openapi-original.json
+skills:
+- file: coactive-ingest-and-search.md
+  name: Ingest a video dataset and search it
+  api: openapi/coactive-openapi-original.json
+  operations:
+  - create-dataset-api-v-1-datasets-post
+  - create-ingest-job-from-videos-api-v-1-ingestion-videos-post
+  - get-job-status-api-v-1-ingestion-jobs-ingest-job-id-status-get
+  - text-search-api-v-1-search-text-to-image-post
+- file: coactive-query-and-export.md
+  name: Run an asynchronous query and export results
+  api: openapi/coactive-openapi-original.json
+  operations:
+  - create-query-api-v-1-queries-post
+  - get-query-api-v-1-queries-query-id-get
+  - export-query-api-v-1-queries-query-id-exports-post

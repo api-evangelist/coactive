@@ -1,0 +1,39 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.coactive.ai/docs-guides/introduction/release-notes
+scheme: dated-release-notes
+versioning: uri-path (v0/v1/v3); migrating to a unified versioned API domain
+entries:
+- date: '2026-07-17'
+  breaking: true
+  highlights: Removed legacy asset-detail endpoints (GET /api/v1/assets/image-detail and
+    GET /api/v1/assets/video-detail) with no direct replacement.
+- date: '2026-06-01'
+  breaking: false
+  highlights: Added DELETE endpoint to remove ad segments from videos in Context Studio
+    (204 No Content when none exist).
+- date: '2026-05-29'
+  breaking: false
+  highlights: Context Studio overview docs, new ad-segments API endpoints for scene-level
+    targeting, and a paginated dynamic-tags groups listing endpoint with filtering/sorting.
+- date: '2026-05-14'
+  breaking: false
+  highlights: Add images/videos to datasets via S3 paths with configurable folder recursion
+    depth.
+- date: '2026-04-21'
+  breaking: false
+  highlights: Dynamic Tags extended to Nova datasets — tag groups on Nova-ingested video with
+    segment-level previews and relevance scoring.
+- date: '2026-03-06'
+  breaking: false
+  highlights: Major release — Context Studio video package building, video-level aggregation
+    in Dynamic Tags, NOVA search, agentic natural-language search, Concepts on V1 pipeline
+    with TX-Large 4 encoder.
+- date: '2026-02-11'
+  breaking: true
+  highlights: Removed legacy GET /api/v1/search and GET /api/v1/search/similar-images in favor
+    of POST-based text-to-image and image-to-image search.
+- date: '2025-08-12'
+  breaking: true
+  highlights: Embedding dropdown removed from the Queries page; embedding info relocated to
+    Dataset UI and API retrieval options.

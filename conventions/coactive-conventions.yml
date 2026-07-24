@@ -1,0 +1,46 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/coactive-openapi-original.json
+docs: https://docs.coactive.ai/
+authentication:
+  style: bearer-access-token
+  scheme: HTTPBearer (Authorization Bearer)
+  token_exchange: POST https://api.coactive.ai/api/v0/login
+  ref: authentication/coactive-authentication.yml
+idempotency:
+  supported: false
+  notes: No Idempotency-Key header or idempotency contract is declared in the OpenAPI or
+    documented. Retries of write operations are not guaranteed idempotent.
+pagination:
+  styles:
+  - style: limit-offset
+    params: [limit, offset]
+    used_by: most list endpoints (datasets, queries, connections, concepts, ingestion jobs,
+      metadata filters)
+  - style: page-based
+    params: [page, per_page]
+    used_by: a subset of list endpoints
+  notes: Pagination style is not uniform across the API — some endpoints use limit/offset,
+    others use page/per_page.
+sorting:
+  params: [sort_field, sort_direction]
+filtering:
+  params: [filter, status, include_deleted, threshold, min_conf]
+versioning:
+  scheme: uri-path
+  segments: [v0, v1, v3]
+  notes: Version is embedded in the path (e.g. /api/v1/datasets, /api/v0/connections,
+    /api/v3/dynamic-tags). Coactive is consolidating onto a unified versioned API domain.
+  ref: lifecycle/coactive-lifecycle.yml
+error_envelope:
+  shape: '{ "detail": "<message>" }'
+  validation_shape: '{ "detail": [ { "loc": [...], "msg": "...", "type": "..." } ] }'
+  content_type: application/json
+  format: fastapi (not RFC 9457)
+  ref: errors/coactive-problem-types.yml
+rate_limiting:
+  documented: false
+  notes: No rate-limit headers or published quota were found in the OpenAPI or docs.
+async_processing:
+  notes: Ingestion, queries, and video metadata are asynchronous — jobs are created (202/201)
+    and polled via status endpoints (e.g. GET /api/v1/ingestion/jobs/{ingest_job_id}/status).

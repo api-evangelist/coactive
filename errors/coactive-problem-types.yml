@@ -1,0 +1,38 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/coactive-openapi-original.json
+format: json
+envelope:
+  schema: ErrorResponse
+  shape: '{ "detail": "<human-readable message>" }'
+  content_type: application/json
+  notes: 'FastAPI-style error envelope. Not RFC 9457 problem+json. 422 validation errors
+    return the FastAPI HTTPValidationError shape: detail is a list of objects with loc,
+    msg, and type fields.'
+problems:
+- status: 400
+  title: Bad Request
+  meaning: Invalid request input (e.g. invalid concept name, unsupported query strategy/engine
+    combination).
+  remediation: Correct the request body/parameters per the endpoint reference.
+- status: 401
+  title: Unauthorized
+  meaning: Missing or invalid authentication (absent, expired, or malformed bearer access
+    token).
+  remediation: Exchange credentials at POST /api/v0/login for a fresh access_token (TTL 3600s)
+    and send Authorization Bearer.
+- status: 403
+  title: Forbidden
+  meaning: Caller is authenticated but not authorized for the operation/resource (e.g. cannot
+    delete assets in this dataset).
+  remediation: Verify the caller's role/permissions on the target dataset or resource.
+- status: 404
+  title: Not Found
+  meaning: Referenced resource does not exist (dataset, concept, video/asset, query, connection).
+  remediation: Confirm the resource id exists and belongs to the caller's organization.
+- status: 422
+  title: Unprocessable Entity (Validation Error)
+  meaning: Request failed schema validation (bad/missing path or body parameters, missing
+    gateway identity headers, ambiguous asset_identifier_value).
+  remediation: Inspect detail[].loc/msg to fix the offending field. Present on 117 of 118
+    operations.
