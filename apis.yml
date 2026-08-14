@@ -30,7 +30,7 @@ accessModel:
   method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-08-08'
+modified: '2026-08-13'
 image: https://www.coactive.ai/favicon.ico
 tags:
 - Company
@@ -594,8 +594,6 @@ common:
   url: authentication/coactive-authentication.yml
 - type: Overlay
   url: overlays/coactive-openapi-overlay.yaml
-- type: WellKnown
-  url: well-known/coactive-well-known.yml
 - type: Conventions
   url: conventions/coactive-conventions.yml
 - type: ErrorCatalog
@@ -606,10 +604,23 @@ common:
   url: https://docs.coactive.ai/docs-guides/introduction/release-notes
 - type: GitHubOrganization
   url: https://github.com/CoactiveAI
+- type: Postman
+  url: https://www.postman.com/coactive-all/coactive-rest-api
+- type: ToolCrosswalk
+  url: mcp/coactive-tool-crosswalk.yml
+- type: Plans
+  url: plans/coactive-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/coactive-rate-limits.yml
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 3
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+  note: >-
+    Round 2. Live anonymous MCP tools/list against docs.coactive.ai/_mcp/server returned the real
+    searchDocs inputSchema; discovered Coactive's public Postman workspace (coactive-all); recorded
+    honest zeros for plans and rate limits; removed the WellKnown pointer whose own probe is all
+    404s/SPA false positives. No A2A agent card on any host.
 x-merged-from:
 - coactive-ai
