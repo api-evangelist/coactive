@@ -1,0 +1,187 @@
+{
+  "item": [
+    {
+      "id": "5943988b-eb77-4e6f-a224-78926f234032",
+      "name": "ingestion",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "01c0255b-d594-494e-b7a2-a728c3e71b14",
+          "name": "Delete Assets",
+          "request": {
+            "name": "Delete Assets",
+            "description": {
+              "content": "Delete assets from a dataset by creating deletion jobs.  Supports deletion of up to 100 assets per request.  Assets can be identified by their Coactive Video/Image ID or path string.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "delete",
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"assets\": [\n    {\n      \"asset_type\": \"<string>\",\n      \"identifier\": \"<uuid>\"\n    },\n    {\n      \"asset_type\": \"<string>\",\n      \"identifier\": \"<uuid>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "afc6516d-908d-48c4-954f-81885a917319",
+              "name": "Deletion jobs enqueued",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "delete",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"assets\": [\n    {\n      \"asset_type\": \"image\",\n      \"identifier\": \"a8764b93-d358-9a15-98a3-6e3f1efee0f3\"\n    },\n    {\n      \"asset_type\": \"video\",\n      \"identifier\": \"03466767-e9c1-bf95-9100-522f15819786\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"org_id\": \"string\",\n  \"dataset_id\": \"5408c3c4-b469-0539-9fe0-375664e40948\",\n  \"assets\": [\n    {\n      \"asset_type\": \"image\",\n      \"identifier\": \"b0436179-c6ed-4b10-428d-a61634a39589\",\n      \"delete_job_id\": \"string\"\n    },\n    {\n      \"asset_type\": \"image\",\n      \"identifier\": \"ff5c8529-4d25-7ba4-afc3-4d17d7872d7f\",\n      \"delete_job_id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a732bb1b-62d4-49f5-893a-5af4478c1d20",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "delete",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"assets\": [\n    {\n      \"asset_type\": \"image\",\n      \"identifier\": \"a8764b93-d358-9a15-98a3-6e3f1efee0f3\"\n    },\n    {\n      \"asset_type\": \"video\",\n      \"identifier\": \"03466767-e9c1-bf95-9100-522f15819786\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.coactive.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8c8a239a-5cf4-43b8-8611-75354a6f94d6",
+    "name": "API Reference agentic-search > agenticSearch ingestion API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

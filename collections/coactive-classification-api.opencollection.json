@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch classification API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "classification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Classify image at public url",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/classify/image/url",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "threshold",
+                "value": "",
+                "type": "query",
+                "description": "Threshold above which classification is positive"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Classify an image downloadable via a public url for specific concepts or all concepts within a dataset"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

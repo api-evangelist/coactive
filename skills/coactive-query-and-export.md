@@ -2,7 +2,7 @@
 name: Run an asynchronous query and export results
 description: Create an asynchronous query over a Coactive dataset, poll it to completion,
   and export the results.
-api: openapi/coactive-openapi-original.json
+api: openapi/coactive-queries-api-openapi.yml
 operations:
 - create-query-api-v-1-queries-post
 - get-query-api-v-1-queries-query-id-get

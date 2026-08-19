@@ -1,0 +1,1273 @@
+{
+  "item": [
+    {
+      "id": "78ed7003-05bb-4a57-b869-5966dff8f13c",
+      "name": "video-scores > videoScores",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "19881c44-2854-41e5-8ac1-13293eef56f7",
+          "name": "Get shot scores for a video",
+          "request": {
+            "name": "Get shot scores for a video",
+            "description": {
+              "content": "Retrieve shot-level scores for a given video and tag version: score, start/end time, and duration for each shot (only shots with score >= min_conf).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "video-scores",
+                "groups",
+                ":group_id",
+                "tags",
+                ":tag_id",
+                "versions",
+                ":version_id",
+                "videos",
+                ":video_id",
+                "shot-scores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dataset_id",
+                  "value": "<uuid>",
+                  "description": "(Required) Dataset ID (used to locate the shot scores table)."
+                },
+                {
+                  "disabled": false,
+                  "key": "min_conf",
+                  "value": "0.5",
+                  "description": "Minimum confidence threshold (score >= min_conf). Must be greater than 0.1."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the Dynamic Tag group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "tag_id",
+                  "description": "(Required) The ID of the tag within the group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "version_id",
+                  "description": "(Required) The tag version ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "video_id",
+                  "description": "(Required) The Coactive Video ID to retrieve shot scores for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eded1605-4bee-458a-9ca3-45c8eeaa79c9",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "video-scores",
+                    "groups",
+                    ":group_id",
+                    "tags",
+                    ":tag_id",
+                    "versions",
+                    ":version_id",
+                    "videos",
+                    ":video_id",
+                    "shot-scores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataset_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "min_conf",
+                      "value": "0.5"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the Dynamic Tag group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "tag_id",
+                      "description": "(Required) The ID of the tag within the group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "version_id",
+                      "description": "(Required) The tag version ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "video_id",
+                      "description": "(Required) The Coactive Video ID to retrieve shot scores for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"shot_id\": \"9b482944-9736-3b0b-f522-c984d600eec1\",\n      \"score\": 9832.306872338586,\n      \"start_time\": 8220.849942411258,\n      \"end_time\": 6211.821537875011,\n      \"duration\": 3020.3834973447397,\n      \"textPrompts\": [\n        {\n          \"modality\": \"string\",\n          \"prompt\": \"string\"\n        },\n        {\n          \"modality\": \"string\",\n          \"prompt\": \"string\"\n        }\n      ]\n    },\n    {\n      \"shot_id\": \"3ce9403e-e7cf-026f-f0fe-e92c967bd6bf\",\n      \"score\": 6585.05982227769,\n      \"start_time\": 6026.495095877283,\n      \"end_time\": 1788.4551438761841,\n      \"duration\": 7893.175604886759,\n      \"textPrompts\": [\n        {\n          \"modality\": \"string\",\n          \"prompt\": \"string\"\n        },\n        {\n          \"modality\": \"string\",\n          \"prompt\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"total_shot_count\": 937\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "187cb0cf-3399-46a8-bf1c-2865974e8263",
+              "name": "Shot scores table not found for dataset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "video-scores",
+                    "groups",
+                    ":group_id",
+                    "tags",
+                    ":tag_id",
+                    "versions",
+                    ":version_id",
+                    "videos",
+                    ":video_id",
+                    "shot-scores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataset_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "min_conf",
+                      "value": "0.5"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the Dynamic Tag group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "tag_id",
+                      "description": "(Required) The ID of the tag within the group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "version_id",
+                      "description": "(Required) The tag version ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "video_id",
+                      "description": "(Required) The Coactive Video ID to retrieve shot scores for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d92a7a30-4cca-4595-a033-0befb2049f7d",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "video-scores",
+                    "groups",
+                    ":group_id",
+                    "tags",
+                    ":tag_id",
+                    "versions",
+                    ":version_id",
+                    "videos",
+                    ":video_id",
+                    "shot-scores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataset_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "min_conf",
+                      "value": "0.5"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the Dynamic Tag group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "tag_id",
+                      "description": "(Required) The ID of the tag within the group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "version_id",
+                      "description": "(Required) The tag version ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "video_id",
+                      "description": "(Required) The Coactive Video ID to retrieve shot scores for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63caac26-941f-4117-8ec2-91feb2ca7426",
+          "name": "Get video scores result",
+          "request": {
+            "name": "Get video scores result",
+            "description": {
+              "content": "Retrieve video scores based on an existing aggregation ID with pagination support.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "video-scores",
+                "groups",
+                ":group_id",
+                "tags",
+                ":tag_id",
+                "aggregations",
+                ":aggregation_id",
+                "result"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (1-indexed)."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100",
+                  "description": "Number of items per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_order",
+                  "value": "desc",
+                  "description": "Sort order for scores (ascending or descending)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the Dynamic Tag group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "tag_id",
+                  "description": "(Required) The ID of the tag within the group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "aggregation_id",
+                  "description": "(Required) The ID of the aggregation to retrieve results for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2d46e71c-1655-413f-b982-60c866c2f57a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "video-scores",
+                    "groups",
+                    ":group_id",
+                    "tags",
+                    ":tag_id",
+                    "aggregations",
+                    ":aggregation_id",
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the Dynamic Tag group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "tag_id",
+                      "description": "(Required) The ID of the tag within the group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "aggregation_id",
+                      "description": "(Required) The ID of the aggregation to retrieve results for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"page\": {\n      \"page\": 7517,\n      \"per_page\": 494\n    },\n    \"has_next_page\": true\n  },\n  \"data\": [\n    {\n      \"group_id\": \"323f44a3-6e3b-9740-e650-261549ab323b\",\n      \"group_name\": \"string\",\n      \"tag_id\": \"07a943cc-9916-f0bd-9746-4fb3672bb823\",\n      \"tag_name\": \"string\",\n      \"tag_version_id\": \"e2c921ec-ae77-d5e7-ff78-a573ea8c2a84\",\n      \"coactive_video_id\": \"abca7e13-1348-be37-7043-9f9b5c1d4368\",\n      \"score\": 6142.100443853996,\n      \"criteria_met\": false,\n      \"accepted\": false,\n      \"computed_dt\": \"1963-10-12T00:08:53.902Z\",\n      \"video\": {\n        \"id\": \"968ec6f5-270f-fd5e-c905-0d85094c330f\",\n        \"dataset_id\": \"862efd48-351b-f7b7-a6bd-858eab235403\",\n        \"created_user_id\": \"string\",\n        \"updated_user_id\": \"string\",\n        \"created_dt\": \"1977-06-28T00:37:26.233Z\",\n        \"updated_dt\": \"1964-10-07T23:30:51.841Z\",\n        \"status\": \"string\",\n        \"path\": \"string\",\n        \"video_key\": \"string\",\n        \"internal_metadata\": {}\n      },\n      \"video_metadata\": {\n        \"title\": \"string\",\n        \"episode_name\": \"string\",\n        \"video_type\": \"string\",\n        \"series_name\": \"string\",\n        \"genre\": \"string\",\n        \"rating\": \"string\",\n        \"content_id\": \"string\"\n      },\n      \"preview_s3_path\": \"string\",\n      \"preview_asset_start_time_ms\": 5335.02821889055,\n      \"preview_asset_end_time_ms\": 7457.263395829577\n    },\n    {\n      \"group_id\": \"ad43060f-6866-7f12-91f8-e0643f57f6b7\",\n      \"group_name\": \"string\",\n      \"tag_id\": \"39308376-5a9d-b280-a65e-d4725eaf6fbd\",\n      \"tag_name\": \"string\",\n      \"tag_version_id\": \"ee30fe14-2a2f-5de0-5a05-2a175e9199b3\",\n      \"coactive_video_id\": \"1a74299e-3f5c-7001-949f-45bb1922dcd3\",\n      \"score\": 8787.527466669006,\n      \"criteria_met\": true,\n      \"accepted\": true,\n      \"computed_dt\": \"1948-06-11T08:25:53.900Z\",\n      \"video\": {\n        \"id\": \"0fb38455-3be3-3f65-2625-916036982172\",\n        \"dataset_id\": \"28b9ddeb-1b03-91e0-7ed1-f88560837fce\",\n        \"created_user_id\": \"string\",\n        \"updated_user_id\": \"string\",\n        \"created_dt\": \"2013-11-09T17:01:27.624Z\",\n        \"updated_dt\": \"1964-07-14T06:54:55.491Z\",\n        \"status\": \"string\",\n        \"path\": \"string\",\n        \"video_key\": \"string\",\n        \"internal_metadata\": {}\n      },\n      \"video_metadata\": {\n        \"title\": \"string\",\n        \"episode_name\": \"string\",\n        \"video_type\": \"string\",\n        \"series_name\": \"string\",\n        \"genre\": \"string\",\n        \"rating\": \"string\",\n        \"content_id\": \"string\"\n      },\n      \"preview_s3_path\": \"string\",\n      \"preview_asset_start_time_ms\": 3008.936103928309,\n      \"preview_asset_end_time_ms\": 5889.359078817961\n    }\n  ],\n  \"sort\": [\n    {\n      \"field\": \"string\",\n      \"direction\": \"desc\"\n    },\n    {\n      \"field\": \"string\",\n      \"direction\": \"desc\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fd3041b-acd3-41d4-af75-bfc41ee0eae8",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "video-scores",
+                    "groups",
+                    ":group_id",
+                    "tags",
+                    ":tag_id",
+                    "aggregations",
+                    ":aggregation_id",
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the Dynamic Tag group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "tag_id",
+                      "description": "(Required) The ID of the tag within the group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "aggregation_id",
+                      "description": "(Required) The ID of the aggregation to retrieve results for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ed9dc5d-79ed-474e-97cf-beade8aa5322",
+          "name": "Get video scores result count",
+          "request": {
+            "name": "Get video scores result count",
+            "description": {
+              "content": "Retrieve the count of video scores based on an aggregation ID with filtering options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "video-scores",
+                "groups",
+                ":group_id",
+                "tags",
+                ":tag_id",
+                "aggregations",
+                ":aggregation_id",
+                "result",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "criteria_met",
+                  "value": "true",
+                  "description": "Filter by whether criteria were met."
+                },
+                {
+                  "disabled": false,
+                  "key": "accepted",
+                  "value": "<boolean>",
+                  "description": "Filter by whether the score was accepted."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the Dynamic Tag group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "tag_id",
+                  "description": "(Required) The ID of the tag within the group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "aggregation_id",
+                  "description": "(Required) The ID of the aggregation to retrieve count for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dddeedb1-fedc-496d-8574-7667ced3c46a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "video-scores",
+                    "groups",
+                    ":group_id",
+                    "tags",
+                    ":tag_id",
+                    "aggregations",
+                    ":aggregation_id",
+                    "result",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "criteria_met",
+                      "value": "true"
+                    },
+                    {
+                      "key": "accepted",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the Dynamic Tag group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "tag_id",
+                      "description": "(Required) The ID of the tag within the group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "aggregation_id",
+                      "description": "(Required) The ID of the aggregation to retrieve count for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"group_id\": \"1f3f5b6c-bc97-aa78-c0f1-1ec441fe89fd\",\n  \"tag_id\": \"bdeb1294-2a49-bbe3-b4e1-8d42ff3c776e\",\n  \"aggregation_id\": \"9f34da13-59c6-b6dd-1b2a-a43885bf15b1\",\n  \"count\": 4293,\n  \"predicate\": {\n    \"criteria_met\": true,\n    \"accepted\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de1564d7-152b-41ba-8e78-1a98f599f8f1",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "video-scores",
+                    "groups",
+                    ":group_id",
+                    "tags",
+                    ":tag_id",
+                    "aggregations",
+                    ":aggregation_id",
+                    "result",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "criteria_met",
+                      "value": "true"
+                    },
+                    {
+                      "key": "accepted",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the Dynamic Tag group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "tag_id",
+                      "description": "(Required) The ID of the tag within the group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "aggregation_id",
+                      "description": "(Required) The ID of the aggregation to retrieve count for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb64f492-edb5-4c1f-a785-55a328855be1",
+          "name": "Get video scores result preview",
+          "request": {
+            "name": "Get video scores result preview",
+            "description": {
+              "content": "Retrieve a preview of video scores based on aggregation strategy. Use this endpoint to preview results before creating an aggregation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "video-scores",
+                "groups",
+                ":group_id",
+                "tags",
+                ":tag_id",
+                "aggregations",
+                "-",
+                "result"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tag_version_id",
+                  "value": "<uuid>",
+                  "description": "(Required) The version ID of the tag."
+                },
+                {
+                  "disabled": false,
+                  "key": "dataset_id",
+                  "value": "<uuid>",
+                  "description": "(Required) The ID of the dataset to query."
+                },
+                {
+                  "disabled": false,
+                  "key": "strategy",
+                  "value": "<string>",
+                  "description": "(Required) The aggregation strategy/methodology to use."
+                },
+                {
+                  "disabled": false,
+                  "key": "min_conf",
+                  "value": "<double>",
+                  "description": "(Required) Minimum confidence threshold."
+                },
+                {
+                  "disabled": false,
+                  "key": "coverage_threshold",
+                  "value": "<double>",
+                  "description": "Coverage threshold (required for COVERAGE_THRESHOLD strategy)."
+                },
+                {
+                  "disabled": false,
+                  "key": "engine",
+                  "value": "DUCKDB",
+                  "description": "Backend engine used to query shot scores. DUCKDB (default) supports all strategies; PINOT supports ANY_HIT and COVERAGE_THRESHOLD only."
+                },
+                {
+                  "disabled": false,
+                  "key": "max_shot_length",
+                  "value": "<integer>",
+                  "description": "Maximum shot length in seconds. Videos with any shot longer than this value are excluded from results. Omit or set to null to disable filtering."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the Dynamic Tag group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "tag_id",
+                  "description": "(Required) The ID of the tag within the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aee91ed7-6671-4201-be54-13fb877f4cfa",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "video-scores",
+                    "groups",
+                    ":group_id",
+                    "tags",
+                    ":tag_id",
+                    "aggregations",
+                    "-",
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag_version_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "dataset_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "strategy",
+                      "value": "LONGEST_RUN"
+                    },
+                    {
+                      "key": "min_conf",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "coverage_threshold",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "engine",
+                      "value": "DUCKDB"
+                    },
+                    {
+                      "key": "max_shot_length",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the Dynamic Tag group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "tag_id",
+                      "description": "(Required) The ID of the tag within the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"page\": {\n      \"page\": 7517,\n      \"per_page\": 494\n    },\n    \"has_next_page\": true\n  },\n  \"data\": [\n    {\n      \"group_id\": \"323f44a3-6e3b-9740-e650-261549ab323b\",\n      \"group_name\": \"string\",\n      \"tag_id\": \"07a943cc-9916-f0bd-9746-4fb3672bb823\",\n      \"tag_name\": \"string\",\n      \"tag_version_id\": \"e2c921ec-ae77-d5e7-ff78-a573ea8c2a84\",\n      \"coactive_video_id\": \"abca7e13-1348-be37-7043-9f9b5c1d4368\",\n      \"score\": 6142.100443853996,\n      \"criteria_met\": false,\n      \"accepted\": false,\n      \"computed_dt\": \"1963-10-12T00:08:53.902Z\",\n      \"video\": {\n        \"id\": \"968ec6f5-270f-fd5e-c905-0d85094c330f\",\n        \"dataset_id\": \"862efd48-351b-f7b7-a6bd-858eab235403\",\n        \"created_user_id\": \"string\",\n        \"updated_user_id\": \"string\",\n        \"created_dt\": \"1977-06-28T00:37:26.233Z\",\n        \"updated_dt\": \"1964-10-07T23:30:51.841Z\",\n        \"status\": \"string\",\n        \"path\": \"string\",\n        \"video_key\": \"string\",\n        \"internal_metadata\": {}\n      },\n      \"video_metadata\": {\n        \"title\": \"string\",\n        \"episode_name\": \"string\",\n        \"video_type\": \"string\",\n        \"series_name\": \"string\",\n        \"genre\": \"string\",\n        \"rating\": \"string\",\n        \"content_id\": \"string\"\n      },\n      \"preview_s3_path\": \"string\",\n      \"preview_asset_start_time_ms\": 5335.02821889055,\n      \"preview_asset_end_time_ms\": 7457.263395829577\n    },\n    {\n      \"group_id\": \"ad43060f-6866-7f12-91f8-e0643f57f6b7\",\n      \"group_name\": \"string\",\n      \"tag_id\": \"39308376-5a9d-b280-a65e-d4725eaf6fbd\",\n      \"tag_name\": \"string\",\n      \"tag_version_id\": \"ee30fe14-2a2f-5de0-5a05-2a175e9199b3\",\n      \"coactive_video_id\": \"1a74299e-3f5c-7001-949f-45bb1922dcd3\",\n      \"score\": 8787.527466669006,\n      \"criteria_met\": true,\n      \"accepted\": true,\n      \"computed_dt\": \"1948-06-11T08:25:53.900Z\",\n      \"video\": {\n        \"id\": \"0fb38455-3be3-3f65-2625-916036982172\",\n        \"dataset_id\": \"28b9ddeb-1b03-91e0-7ed1-f88560837fce\",\n        \"created_user_id\": \"string\",\n        \"updated_user_id\": \"string\",\n        \"created_dt\": \"2013-11-09T17:01:27.624Z\",\n        \"updated_dt\": \"1964-07-14T06:54:55.491Z\",\n        \"status\": \"string\",\n        \"path\": \"string\",\n        \"video_key\": \"string\",\n        \"internal_metadata\": {}\n      },\n      \"video_metadata\": {\n        \"title\": \"string\",\n        \"episode_name\": \"string\",\n        \"video_type\": \"string\",\n        \"series_name\": \"string\",\n        \"genre\": \"string\",\n        \"rating\": \"string\",\n        \"content_id\": \"string\"\n      },\n      \"preview_s3_path\": \"string\",\n      \"preview_asset_start_time_ms\": 3008.936103928309,\n      \"preview_asset_end_time_ms\": 5889.359078817961\n    }\n  ],\n  \"sort\": [\n    {\n      \"field\": \"string\",\n      \"direction\": \"desc\"\n    },\n    {\n      \"field\": \"string\",\n      \"direction\": \"desc\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fac643bf-4cfe-4d87-ad71-877a7dd4020f",
+              "name": "Bad Request - LONGEST_RUN strategy is not supported with PINOT engine",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "video-scores",
+                    "groups",
+                    ":group_id",
+                    "tags",
+                    ":tag_id",
+                    "aggregations",
+                    "-",
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag_version_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "dataset_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "strategy",
+                      "value": "LONGEST_RUN"
+                    },
+                    {
+                      "key": "min_conf",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "coverage_threshold",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "engine",
+                      "value": "DUCKDB"
+                    },
+                    {
+                      "key": "max_shot_length",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the Dynamic Tag group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "tag_id",
+                      "description": "(Required) The ID of the tag within the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a2854da-c4d5-436b-9701-b04734307d07",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "video-scores",
+                    "groups",
+                    ":group_id",
+                    "tags",
+                    ":tag_id",
+                    "aggregations",
+                    "-",
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag_version_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "dataset_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "strategy",
+                      "value": "LONGEST_RUN"
+                    },
+                    {
+                      "key": "min_conf",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "coverage_threshold",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "engine",
+                      "value": "DUCKDB"
+                    },
+                    {
+                      "key": "max_shot_length",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the Dynamic Tag group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "tag_id",
+                      "description": "(Required) The ID of the tag within the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.coactive.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b5a7ce9e-b49b-489c-a5eb-c5a3b74f6203",
+    "name": "API Reference agentic-search > agenticSearch video-scores > videoScores API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,499 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch video-narative-metadata > videoNarrativeMetadata API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "video-narative-metadata > videoNarrativeMetadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List metadata values by type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v0/video-narrative-metadata/metadata",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "metadata_type",
+                "value": "",
+                "type": "query",
+                "description": "Metadata type to list"
+              }
+            ]
+          },
+          "docs": "List metadata values by type."
+        },
+        {
+          "info": {
+            "name": "Create a metadata value",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/video-narrative-metadata/metadata",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a metadata value.\n\n- Genre: The overall story category or narrative style of the content.\n- Mood: The emotional tone or feeling the content creates.\n- Subject: The main topic or theme the content focuses on.\n- Format: The structural style or production type of the content."
+        },
+        {
+          "info": {
+            "name": "Update a metadata value",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.coactive.ai/api/v0/video-narrative-metadata/metadata/:metadata_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "metadata_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a metadata value.\n\n- Genre: The overall story category or narrative style of the content.\n- Mood: The emotional tone or feeling the content creates.\n- Subject: The main topic or theme the content focuses on.\n- Format: The structural style or production type of the content."
+        },
+        {
+          "info": {
+            "name": "Delete a metadata value",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.coactive.ai/api/v0/video-narrative-metadata/metadata/:metadata_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "metadata_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a metadata value."
+        },
+        {
+          "info": {
+            "name": "Generate a composite slice summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/video-narrative-metadata/datasets/:dataset_id/videos/:video_id/composite-slices/:composite_slice_id/summary",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "video_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "composite_slice_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a composite slice summary.\n\nSummary: A clear, structured overview of the main events in the shot, following their chronological order from beginning to end. It mentions the main characters by name (if identifiable) and describes their roles, actions, and relationships. It summarizes the key moments, turning points, and overall narrative arc, so that the reader can understand the full story, its progression including the ending."
+        },
+        {
+          "info": {
+            "name": "Generate a video description",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/video-narrative-metadata/datasets/:dataset_id/videos/:video_id/description",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "video_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a video description.\n\nDescription: A very detailed, factual account of what is visually, verbally, and audibly happening in the video. It accurately describes scenes, actions, environments, sounds, and dialogues without interpretation."
+        },
+        {
+          "info": {
+            "name": "Generate a video summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/video-narrative-metadata/datasets/:dataset_id/videos/:video_id/summary",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "video_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a video summary.\n\nSummary: A clear, structured overview of the main events in the video, following their chronological order from beginning to end. It mentions the main characters by name (if identifiable) and describes their roles, actions, and relationships. It summarizes the key moments, turning points, and overall narrative arc, so that the reader can understand the full story, its progression including the ending."
+        },
+        {
+          "info": {
+            "name": "Generate a video synopsis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/video-narrative-metadata/datasets/:dataset_id/videos/:video_id/synopsis",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "video_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a video synopsis.\n\nSynopsis: A short, engaging, spoiler-free overview designed for someone deciding whether to watch the video. It focuses on the premise, intrigue, mood, and tone, but does not reveal major plot twists or the ending. It highlights the main characters and setup of the story, giving a sense of the emotional or thematic focus without detailing the resolution."
+        },
+        {
+          "info": {
+            "name": "Predict composite slice format(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/video-narrative-metadata/datasets/:dataset_id/videos/:video_id/composite-slices/:composite_slice_id/format",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "video_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "composite_slice_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Predict composite slice format(s).\n\nFormat: The structural style or production type of the content."
+        },
+        {
+          "info": {
+            "name": "Predict composite slice mood(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/video-narrative-metadata/datasets/:dataset_id/videos/:video_id/composite-slices/:composite_slice_id/mood",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "video_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "composite_slice_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Predict composite slice mood(s).\n\nMood: The emotional tone or feeling the content creates."
+        },
+        {
+          "info": {
+            "name": "Predict composite slice subject(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/video-narrative-metadata/datasets/:dataset_id/videos/:video_id/composite-slices/:composite_slice_id/subject",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "video_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "composite_slice_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Predict composite slice subject(s).\n\nSubject: The main topic or theme the content focuses on."
+        },
+        {
+          "info": {
+            "name": "Predict video format(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/video-narrative-metadata/datasets/:dataset_id/videos/:video_id/format",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "video_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Predict video format(s).\n\nFormat: The structural style or production type of the content."
+        },
+        {
+          "info": {
+            "name": "Predict video genre(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/video-narrative-metadata/datasets/:dataset_id/videos/:video_id/genre",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "video_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Predict video genre(s).\n\nGenre: The overall story category or narrative style of the content."
+        },
+        {
+          "info": {
+            "name": "Predict video mood(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/video-narrative-metadata/datasets/:dataset_id/videos/:video_id/mood",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "video_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Predict video mood(s).\n\nMood: The emotional tone or feeling the content creates."
+        },
+        {
+          "info": {
+            "name": "Predict video subject(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/video-narrative-metadata/datasets/:dataset_id/videos/:video_id/subject",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "video_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Predict video subject(s).\n\nSubject: The main topic or theme the content focuses on."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

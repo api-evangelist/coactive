@@ -1,0 +1,2188 @@
+{
+  "item": [
+    {
+      "id": "a708d859-cacc-4176-b415-0304dfc673dd",
+      "name": "concept",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "49d0acff-0fd2-44d7-a63c-78c85940c093",
+          "name": "Create concept",
+          "request": {
+            "name": "Create concept",
+            "description": {
+              "content": "Create a new concept",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "concepts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"datasetId\": \"<uuid4>\",\n  \"description\": \"<string,null>\",\n  \"threshold\": 0.8,\n  \"regularization\": 0.0625\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2f943367-d611-4b55-a0a3-853c584557f0",
+              "name": "The created concept",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"datasetId\": \"<uuid4>\",\n  \"description\": \"<string,null>\",\n  \"threshold\": 0.8,\n  \"regularization\": 0.0625\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdUserId\": \"string\",\n  \"createdDt\": \"2016-09-29T12:18:46.787Z\",\n  \"updatedUserId\": \"string\",\n  \"updatedDt\": \"1974-08-02T15:03:36.003Z\",\n  \"name\": \"string\",\n  \"conceptId\": \"string\",\n  \"datasetId\": \"string\",\n  \"description\": \"string\",\n  \"threshold\": 0.8,\n  \"regularization\": 0.0625\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8744b202-1717-4283-83fb-8b850da4ac38",
+              "name": "Invalid concept name",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"datasetId\": \"<uuid4>\",\n  \"description\": \"<string,null>\",\n  \"threshold\": 0.8,\n  \"regularization\": 0.0625\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "540e7ba4-4e48-41c8-9d51-2e8605582a82",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"datasetId\": \"<uuid4>\",\n  \"description\": \"<string,null>\",\n  \"threshold\": 0.8,\n  \"regularization\": 0.0625\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24e50166-6783-4326-b54a-97825da61d27",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"datasetId\": \"<uuid4>\",\n  \"description\": \"<string,null>\",\n  \"threshold\": 0.8,\n  \"regularization\": 0.0625\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a12e2e57-38b3-4256-b469-6f461e112d45",
+          "name": "List concepts",
+          "request": {
+            "name": "List concepts",
+            "description": {
+              "content": "Get paginated concepts, optionally filtered by datasets",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "concepts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "datasets",
+                  "value": "<uuid4>",
+                  "description": "Datasets to use to filter concepts"
+                },
+                {
+                  "disabled": false,
+                  "key": "datasets",
+                  "value": "<uuid4>",
+                  "description": "Datasets to use to filter concepts"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Starting index to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Max number of items to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b2caaec-4023-472b-98de-50967b3331cf",
+              "name": "All concepts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "datasets",
+                      "value": "<uuid4>"
+                    },
+                    {
+                      "key": "datasets",
+                      "value": "<uuid4>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"page\": {\n      \"currentPage\": 7436,\n      \"limit\": 7779,\n      \"offset\": 7464,\n      \"lastPage\": 9997,\n      \"total\": 5978\n    },\n    \"links\": {\n      \"prev\": \"string\",\n      \"next\": \"string\",\n      \"first\": \"string\",\n      \"last\": \"string\"\n    },\n    \"sort\": [\n      {\n        \"direction\": \"asc\",\n        \"field\": \"string\"\n      },\n      {\n        \"direction\": \"desc\",\n        \"field\": \"string\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"createdUserId\": \"string\",\n      \"createdDt\": \"1969-06-20T11:59:42.747Z\",\n      \"updatedUserId\": \"string\",\n      \"updatedDt\": \"2010-12-03T18:47:29.143Z\",\n      \"name\": \"string\",\n      \"conceptId\": \"string\",\n      \"datasetId\": \"string\",\n      \"description\": \"string\",\n      \"threshold\": 0.8,\n      \"regularization\": 0.0625\n    },\n    {\n      \"createdUserId\": \"string\",\n      \"createdDt\": \"1982-11-24T11:28:29.426Z\",\n      \"updatedUserId\": \"string\",\n      \"updatedDt\": \"1955-05-31T10:36:38.864Z\",\n      \"name\": \"string\",\n      \"conceptId\": \"string\",\n      \"datasetId\": \"string\",\n      \"description\": \"string\",\n      \"threshold\": 0.8,\n      \"regularization\": 0.0625\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a4b1219-7d70-442b-a42d-7b558b9319e4",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "datasets",
+                      "value": "<uuid4>"
+                    },
+                    {
+                      "key": "datasets",
+                      "value": "<uuid4>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1549808-0b30-411c-991d-1b1bffe86fd9",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "datasets",
+                      "value": "<uuid4>"
+                    },
+                    {
+                      "key": "datasets",
+                      "value": "<uuid4>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "793c6671-b09d-4319-b73d-e801208f6fe6",
+          "name": "Delete concept",
+          "request": {
+            "name": "Delete concept",
+            "description": {
+              "content": "Delete concept",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "concepts",
+                ":concept_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid4>",
+                  "key": "concept_id",
+                  "description": "(Required) The unique identifier for the concept"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60c51bfe-e22e-4212-a0b6-5645715fa56b",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6508ae3b-2bc8-423e-aa5c-6c7c88489c92",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96092faf-b2e2-4993-84ba-643ada874b9d",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0104cf4-f22d-4cd1-ab93-423d843e8f89",
+          "name": "Get concept",
+          "request": {
+            "name": "Get concept",
+            "description": {
+              "content": "Get concept",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "concepts",
+                ":concept_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid4>",
+                  "key": "concept_id",
+                  "description": "(Required) The unique identifier for the concept"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc16efa2-cbb7-4dc3-8407-f1cddbca93d7",
+              "name": "Concept details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdUserId\": \"string\",\n  \"createdDt\": \"2016-09-29T12:18:46.787Z\",\n  \"updatedUserId\": \"string\",\n  \"updatedDt\": \"1974-08-02T15:03:36.003Z\",\n  \"name\": \"string\",\n  \"conceptId\": \"string\",\n  \"datasetId\": \"string\",\n  \"description\": \"string\",\n  \"threshold\": 0.8,\n  \"regularization\": 0.0625\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81fe7806-3a7e-4883-a8ed-250dd5641ded",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3aa0a19e-e0a5-4916-bac1-9e58da0a117d",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94de3010-94c7-41a5-8483-f89ede51ef80",
+          "name": "Update concept",
+          "request": {
+            "name": "Update concept",
+            "description": {
+              "content": "Update concept",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "concepts",
+                ":concept_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid4>",
+                  "key": "concept_id",
+                  "description": "(Required) The unique identifier for the concept"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string,null>\",\n  \"description\": \"<string,null>\",\n  \"threshold\": \"<number,null-double>\",\n  \"regularization\": \"<number,null-double>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1aa6feee-8985-4fda-a071-3508d1cb37f9",
+              "name": "Concept details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string,null>\",\n  \"description\": \"<string,null>\",\n  \"threshold\": \"<number,null-double>\",\n  \"regularization\": \"<number,null-double>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdUserId\": \"string\",\n  \"createdDt\": \"2016-09-29T12:18:46.787Z\",\n  \"updatedUserId\": \"string\",\n  \"updatedDt\": \"1974-08-02T15:03:36.003Z\",\n  \"name\": \"string\",\n  \"conceptId\": \"string\",\n  \"datasetId\": \"string\",\n  \"description\": \"string\",\n  \"threshold\": 0.8,\n  \"regularization\": 0.0625\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11b4a1da-1c0c-43b6-a9e4-516b64656146",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string,null>\",\n  \"description\": \"<string,null>\",\n  \"threshold\": \"<number,null-double>\",\n  \"regularization\": \"<number,null-double>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d1d4d59-f898-4883-a964-01983ee6726b",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string,null>\",\n  \"description\": \"<string,null>\",\n  \"threshold\": \"<number,null-double>\",\n  \"regularization\": \"<number,null-double>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ede1777-8484-463f-9ea0-78f71544df0d",
+          "name": "Get concept's prediction estimation",
+          "request": {
+            "name": "Get concept's prediction estimation",
+            "description": {
+              "content": "Get concept's prediction estimation",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "concepts",
+                ":concept_id",
+                "prediction_estimation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "threshold",
+                  "value": "0.5",
+                  "description": "Threshold above which classification is positive"
+                },
+                {
+                  "disabled": false,
+                  "key": "confidence_level",
+                  "value": "0.95",
+                  "description": "A higher value results in wider confidence intervals, with more confidence of correctness. A lower value results in narrower confidence intervals, with less confidence of correctness"
+                },
+                {
+                  "disabled": false,
+                  "key": "estimation_fidelity",
+                  "value": "1000",
+                  "description": "A higher value makes estimation slower, but more accurate. A lower value makes estimation faster, but less accurate"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid4>",
+                  "key": "concept_id",
+                  "description": "(Required) The unique identifier for the concept"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c33a2cf6-d77f-41db-ba8b-a8caee93f723",
+              "name": "Concept prediction estimation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id",
+                    "prediction_estimation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "threshold",
+                      "value": "0.5"
+                    },
+                    {
+                      "key": "confidence_level",
+                      "value": "0.95"
+                    },
+                    {
+                      "key": "estimation_fidelity",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"probabilityRanges\": [\n    [\n      680.2752022859427,\n      1424.92437474658\n    ],\n    [\n      6708.4865234482195,\n      3927.922485530735\n    ]\n  ],\n  \"estimates\": [\n    7890,\n    1217\n  ],\n  \"confidenceIntervals\": [\n    [\n      543,\n      4798\n    ],\n    [\n      3174,\n      1052\n    ]\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b45ecff-f99f-411c-af57-83b877f8f8bc",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id",
+                    "prediction_estimation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "threshold",
+                      "value": "0.5"
+                    },
+                    {
+                      "key": "confidence_level",
+                      "value": "0.95"
+                    },
+                    {
+                      "key": "estimation_fidelity",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1509cc9a-0e93-4594-92f5-0543fd8a1f0e",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id",
+                    "prediction_estimation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "threshold",
+                      "value": "0.5"
+                    },
+                    {
+                      "key": "confidence_level",
+                      "value": "0.95"
+                    },
+                    {
+                      "key": "estimation_fidelity",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d50c4971-1df3-4c1c-b615-e7c21265b829",
+          "name": "Get label candidates",
+          "request": {
+            "name": "Get label candidates",
+            "description": {
+              "content": "Get images and keyframes to label in order to improve the concept",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "concepts",
+                ":concept_id",
+                "candidates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Max number of items to return"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid4>",
+                  "key": "concept_id",
+                  "description": "(Required) The concept id to get candidates to label"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dbc15baa-a57b-40a0-a145-57efe9fad43d",
+              "name": "Candidates to label in order to improve the concept",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id",
+                    "candidates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The concept id to get candidates to label"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14372cef-641a-41c0-81a3-afa7533a1706",
+              "name": "Concept not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id",
+                    "candidates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The concept id to get candidates to label"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75ed3f29-5545-4a5a-a203-f942fc85c612",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id",
+                    "candidates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The concept id to get candidates to label"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eef7238d-b176-4d7f-8f3d-4e83fd91a77a",
+          "name": "Get labels",
+          "request": {
+            "name": "Get labels",
+            "description": {
+              "content": "Get all labels for a concept",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "concepts",
+                ":concept_id",
+                "labels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Starting index to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Max number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "labels_to_include",
+                  "value": "<string>",
+                  "description": "List of labels types to include, leave blank to return all"
+                },
+                {
+                  "disabled": false,
+                  "key": "labels_to_include",
+                  "value": "<string>",
+                  "description": "List of labels types to include, leave blank to return all"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid4>",
+                  "key": "concept_id",
+                  "description": "(Required) The unique identifier for the concept"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b232df9-35a8-4d26-93a4-720a6b7ef645",
+              "name": "Paginated labels for the concept",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "labels_to_include",
+                      "value": "negative"
+                    },
+                    {
+                      "key": "labels_to_include",
+                      "value": "positive"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"page\": {\n      \"currentPage\": 8600,\n      \"limit\": 9997,\n      \"offset\": 1404,\n      \"lastPage\": 4811,\n      \"total\": 3797\n    },\n    \"links\": {\n      \"prev\": \"string\",\n      \"next\": \"string\",\n      \"first\": \"string\",\n      \"last\": \"string\"\n    },\n    \"sort\": [\n      {\n        \"direction\": \"desc\",\n        \"field\": \"string\"\n      },\n      {\n        \"direction\": \"asc\",\n        \"field\": \"string\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"createdUserId\": \"string\",\n      \"createdDt\": \"1988-08-28T04:43:57.039Z\",\n      \"updatedUserId\": \"string\",\n      \"updatedDt\": \"1963-11-29T10:15:02.715Z\",\n      \"labelId\": \"string\",\n      \"label\": \"positive\",\n      \"image\": {\n        \"createdUserId\": \"string\",\n        \"createdDt\": \"2024-10-30T20:18:29.485Z\",\n        \"updatedUserId\": \"string\",\n        \"updatedDt\": \"2011-05-23T13:55:23.891Z\",\n        \"coactiveImageId\": \"string\",\n        \"path\": \"string\",\n        \"id\": \"string\",\n        \"metadata\": {}\n      },\n      \"keyframe\": {\n        \"coactiveImageId\": \"string\",\n        \"video\": {\n          \"createdUserId\": \"string\",\n          \"createdDt\": \"1953-01-29T10:16:29.280Z\",\n          \"updatedUserId\": \"string\",\n          \"updatedDt\": \"1971-11-30T09:54:05.997Z\",\n          \"coactiveVideoId\": \"string\",\n          \"path\": \"string\",\n          \"metadata\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"shot\": {\n          \"shotId\": \"string\",\n          \"startTimeMs\": 8673,\n          \"endTimeMs\": 7754\n        },\n        \"audioSegment\": {\n          \"startTimeMs\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"endTimeMs\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"speechToTextTranscription\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"timestamp\": 2740\n      }\n    },\n    {\n      \"createdUserId\": \"string\",\n      \"createdDt\": \"2017-02-01T11:58:44.085Z\",\n      \"updatedUserId\": \"string\",\n      \"updatedDt\": \"1997-03-19T06:05:19.675Z\",\n      \"labelId\": \"string\",\n      \"label\": \"positive\",\n      \"image\": {\n        \"createdUserId\": \"string\",\n        \"createdDt\": \"1964-06-14T23:37:14.968Z\",\n        \"updatedUserId\": \"string\",\n        \"updatedDt\": \"2010-06-24T04:18:20.072Z\",\n        \"coactiveImageId\": \"string\",\n        \"path\": \"string\",\n        \"id\": \"string\",\n        \"metadata\": {}\n      },\n      \"keyframe\": {\n        \"coactiveImageId\": \"string\",\n        \"video\": {\n          \"createdUserId\": \"string\",\n          \"createdDt\": \"2008-07-12T14:22:35.419Z\",\n          \"updatedUserId\": \"string\",\n          \"updatedDt\": \"1960-11-21T21:54:46.648Z\",\n          \"coactiveVideoId\": \"string\",\n          \"path\": \"string\",\n          \"metadata\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"shot\": {\n          \"shotId\": \"string\",\n          \"startTimeMs\": 69,\n          \"endTimeMs\": 9456\n        },\n        \"audioSegment\": {\n          \"startTimeMs\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"endTimeMs\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"speechToTextTranscription\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"timestamp\": 5435\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1dfdb34-438d-447f-9d3b-84785de68443",
+              "name": "Concept not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "labels_to_include",
+                      "value": "negative"
+                    },
+                    {
+                      "key": "labels_to_include",
+                      "value": "positive"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3edd2ba-e959-4af5-adc5-0732b483b8c2",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "labels_to_include",
+                      "value": "negative"
+                    },
+                    {
+                      "key": "labels_to_include",
+                      "value": "positive"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b35c47d5-1437-4cd5-b1f1-496e17b55453",
+          "name": "Update labels",
+          "request": {
+            "name": "Update labels",
+            "description": {
+              "content": "Update labels for a concept. Label requests containing coactive image ids or image paths already in use will overwrite existing labels. Label requests with an empty label value will delete an existing label for that image/keyframe identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "concepts",
+                ":concept_id",
+                "labels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid4>",
+                  "key": "concept_id",
+                  "description": "(Required) The unique identifier for the concept"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"labels\": [\n    {\n      \"coactiveImageId\": \"<string,null-uuid4>\",\n      \"imagePath\": \"<string,null>\",\n      \"label\": \"<string>\"\n    },\n    {\n      \"coactiveImageId\": \"<string,null-uuid4>\",\n      \"imagePath\": \"<string,null>\",\n      \"label\": \"<string>\"\n    }\n  ],\n  \"autosampledNumNegativeLabels\": \"<integer,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "166d1b1c-2601-4602-8df2-9cf18592f004",
+              "name": "The updated concept",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"labels\": [\n    {\n      \"coactiveImageId\": \"string\",\n      \"imagePath\": \"string\",\n      \"label\": \"positive\"\n    },\n    {\n      \"coactiveImageId\": \"string\",\n      \"imagePath\": \"string\",\n      \"label\": \"negative\"\n    }\n  ],\n  \"autosampledNumNegativeLabels\": \"<integer,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createdUserId\": \"string\",\n  \"createdDt\": \"2016-09-29T12:18:46.787Z\",\n  \"updatedUserId\": \"string\",\n  \"updatedDt\": \"1974-08-02T15:03:36.003Z\",\n  \"name\": \"string\",\n  \"conceptId\": \"string\",\n  \"datasetId\": \"string\",\n  \"description\": \"string\",\n  \"threshold\": 0.8,\n  \"regularization\": 0.0625\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13fbb620-ed75-4455-9ee7-c050cf261030",
+              "name": "Concept not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"labels\": [\n    {\n      \"coactiveImageId\": \"string\",\n      \"imagePath\": \"string\",\n      \"label\": \"positive\"\n    },\n    {\n      \"coactiveImageId\": \"string\",\n      \"imagePath\": \"string\",\n      \"label\": \"negative\"\n    }\n  ],\n  \"autosampledNumNegativeLabels\": \"<integer,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d35a8496-c4f0-4bc4-a487-2afd3c1bee63",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "concepts",
+                    ":concept_id",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid4>",
+                      "key": "concept_id",
+                      "description": "(Required) The unique identifier for the concept"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"labels\": [\n    {\n      \"coactiveImageId\": \"string\",\n      \"imagePath\": \"string\",\n      \"label\": \"positive\"\n    },\n    {\n      \"coactiveImageId\": \"string\",\n      \"imagePath\": \"string\",\n      \"label\": \"negative\"\n    }\n  ],\n  \"autosampledNumNegativeLabels\": \"<integer,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.coactive.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "65d10d7c-21f9-422c-93e6-c9c8dc96d623",
+    "name": "API Reference agentic-search > agenticSearch concept API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

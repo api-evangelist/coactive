@@ -1,0 +1,469 @@
+{
+  "item": [
+    {
+      "id": "0dc8fd72-0ff6-41ad-a367-9a80b2682c8c",
+      "name": "dynamicTags",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "01fadec5-4dd0-4ed9-8ec0-4cd7bf8d372f",
+          "name": "Retrieve a paginated list of groups",
+          "request": {
+            "name": "Retrieve a paginated list of groups",
+            "description": {
+              "content": "Retrieves a paginated list of dynamic tag groups. Supports filtering by name, version name, or status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "dynamic-tags",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string,null>",
+                  "description": "Filter by group name"
+                },
+                {
+                  "disabled": false,
+                  "key": "name_contains",
+                  "value": "<string,null>",
+                  "description": "Filter by group name containing this string"
+                },
+                {
+                  "disabled": false,
+                  "key": "version_name",
+                  "value": "<string,null>",
+                  "description": "Filter by version name"
+                },
+                {
+                  "disabled": false,
+                  "key": "group_status",
+                  "value": "<string>",
+                  "description": "Filter by status"
+                },
+                {
+                  "disabled": false,
+                  "key": "group_ids",
+                  "value": "<uuid>",
+                  "description": "Filter by group IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "group_ids",
+                  "value": "<uuid>",
+                  "description": "Filter by group IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "visual_encoder",
+                  "value": "<string,null>",
+                  "description": "Filter by visual encoder"
+                },
+                {
+                  "disabled": false,
+                  "key": "transcript_encoder",
+                  "value": "<string,null>",
+                  "description": "Filter by transcript encoder"
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_group_ids",
+                  "value": "<uuid>",
+                  "description": "Exclude groups with these IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_group_ids",
+                  "value": "<uuid>",
+                  "description": "Exclude groups with these IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_shareable",
+                  "value": "false",
+                  "description": "Whether to return only shareable groups"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_user_id",
+                  "value": "<string,null>",
+                  "description": "Filter by user who created the group"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_dt_from",
+                  "value": "<string,null-date-time>",
+                  "description": "Filter groups created on or after this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_dt_to",
+                  "value": "<string,null-date-time>",
+                  "description": "Filter groups created before this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "training_dataset_id",
+                  "value": "<string,null-uuid>",
+                  "description": "Filter by associated training dataset ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (1-indexed)"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "25",
+                  "description": "Number of items per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_field",
+                  "value": "name",
+                  "description": "Field to sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "Sort direction"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_training_datasets",
+                  "value": "false",
+                  "description": "Include at most 10 associated datasets in the response"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_versions",
+                  "value": "false",
+                  "description": "Include the latest draft and published versions of the group in the response"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_tags",
+                  "value": "false",
+                  "description": "Include at most 10 tag names in the response"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c039ecd4-00d3-41de-bcb8-48c4777b303c",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "dynamic-tags",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "name_contains",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "version_name",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "group_status",
+                      "value": "superseded"
+                    },
+                    {
+                      "key": "group_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "group_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "visual_encoder",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "transcript_encoder",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "exclude_group_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "exclude_group_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "is_shareable",
+                      "value": "false"
+                    },
+                    {
+                      "key": "created_user_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "created_dt_from",
+                      "value": "<string,null-date-time>"
+                    },
+                    {
+                      "key": "created_dt_to",
+                      "value": "<string,null-date-time>"
+                    },
+                    {
+                      "key": "training_dataset_id",
+                      "value": "<string,null-uuid>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort_field",
+                      "value": "name"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "include_training_datasets",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_versions",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_tags",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"group_id\": \"3eb8e317-ada0-ed14-3849-2f2b43417fc4\",\n      \"group_version_id\": \"62796d35-dbca-bbe5-79e3-d31f15ff7ae6\",\n      \"name\": \"string\",\n      \"status\": \"error\",\n      \"shareable\": false,\n      \"created_user_id\": \"string\",\n      \"updated_user_id\": \"string\",\n      \"created_dt\": \"1954-04-26T15:36:58.971Z\",\n      \"updated_dt\": \"1990-08-21T13:06:41.741Z\",\n      \"group_created_user_id\": \"string\",\n      \"group_created_dt\": \"2021-02-02T10:16:34.781Z\",\n      \"tags_preview\": [\n        {\n          \"tag_id\": \"71faac2f-3808-5f9a-135c-6926157a80b2\",\n          \"tag_version_id\": \"1ab5e6c7-aeda-7290-6c90-4ab947343361\",\n          \"name\": \"string\",\n          \"status\": \"updating\"\n        },\n        {\n          \"tag_id\": \"06dc59ab-bac3-3e0d-743c-a4fc5f95db78\",\n          \"tag_version_id\": \"cdc7c0d5-5200-537a-3a78-41e4881daaa2\",\n          \"name\": \"string\",\n          \"status\": \"deleted\"\n        }\n      ],\n      \"tags_count\": 5424,\n      \"all_draft_tags_reviewed_dt\": \"2024-09-04T01:56:24.176Z\",\n      \"review_tags_visited_at\": \"2010-07-08T12:27:22.856Z\",\n      \"version_name\": \"string\",\n      \"group_description\": \"string\",\n      \"training_datasets\": [\n        {\n          \"id\": \"6c588f08-7377-5e99-0619-855b6d77a750\",\n          \"status\": \"scoring\"\n        },\n        {\n          \"id\": \"cef40bb5-62d9-749d-f5f6-d6e7f6749cc7\",\n          \"status\": \"deleting\"\n        }\n      ]\n    },\n    {\n      \"group_id\": \"90c63b69-32fe-28a0-226e-ee090e93d138\",\n      \"group_version_id\": \"da86eee0-b8bc-7505-05d8-64bb14a9ccd5\",\n      \"name\": \"string\",\n      \"status\": \"unpublished_changes\",\n      \"shareable\": false,\n      \"created_user_id\": \"string\",\n      \"updated_user_id\": \"string\",\n      \"created_dt\": \"1952-04-07T12:23:22.659Z\",\n      \"updated_dt\": \"2017-02-04T20:49:04.222Z\",\n      \"group_created_user_id\": \"string\",\n      \"group_created_dt\": \"2014-10-26T11:36:24.561Z\",\n      \"tags_preview\": [\n        {\n          \"tag_id\": \"db1dfa55-76be-98f8-c0db-6b5ae9d25b09\",\n          \"tag_version_id\": \"2d82f104-159f-6d18-d623-ebba5099730d\",\n          \"name\": \"string\",\n          \"status\": \"draft\"\n        },\n        {\n          \"tag_id\": \"c4258ee8-7bb6-83e9-6dad-7d59badffbab\",\n          \"tag_version_id\": \"a5ae1718-e37d-188a-ec04-a832889a7235\",\n          \"name\": \"string\",\n          \"status\": \"deleting\"\n        }\n      ],\n      \"tags_count\": 2662,\n      \"all_draft_tags_reviewed_dt\": \"2011-08-09T07:19:29.088Z\",\n      \"review_tags_visited_at\": \"1969-11-19T13:19:51.606Z\",\n      \"version_name\": \"string\",\n      \"group_description\": \"string\",\n      \"training_datasets\": [\n        {\n          \"id\": \"a6f7d3eb-49b6-0ab3-b10d-1b5c571621f6\",\n          \"status\": \"scoring\"\n        },\n        {\n          \"id\": \"b068750d-2746-c74d-c04c-3dc4ad232402\",\n          \"status\": \"scoring\"\n        }\n      ]\n    }\n  ],\n  \"meta\": {\n    \"page\": {\n      \"page\": 2242,\n      \"per_page\": 8681\n    },\n    \"has_next_page\": false\n  },\n  \"sort\": [\n    {\n      \"field\": \"string\",\n      \"direction\": \"desc\"\n    },\n    {\n      \"field\": \"string\",\n      \"direction\": \"desc\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "302ee962-f611-4dd9-862c-c386650b926e",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "dynamic-tags",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "name_contains",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "version_name",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "group_status",
+                      "value": "superseded"
+                    },
+                    {
+                      "key": "group_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "group_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "visual_encoder",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "transcript_encoder",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "exclude_group_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "exclude_group_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "is_shareable",
+                      "value": "false"
+                    },
+                    {
+                      "key": "created_user_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "created_dt_from",
+                      "value": "<string,null-date-time>"
+                    },
+                    {
+                      "key": "created_dt_to",
+                      "value": "<string,null-date-time>"
+                    },
+                    {
+                      "key": "training_dataset_id",
+                      "value": "<string,null-uuid>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort_field",
+                      "value": "name"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "include_training_datasets",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_versions",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_tags",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.coactive.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1fc43c63-969a-4e1e-808d-89027cde4df1",
+    "name": "API Reference agentic-search > agenticSearch dynamicTags API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

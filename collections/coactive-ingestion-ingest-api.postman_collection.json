@@ -1,0 +1,962 @@
+{
+  "item": [
+    {
+      "id": "af342ddc-1e50-4f16-9267-98e9d6c5c341",
+      "name": "ingestion > ingest",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d3d968b2-458b-4ce4-802c-a17bb1f5f2be",
+          "name": "Add/Update Metadata",
+          "request": {
+            "name": "Add/Update Metadata",
+            "description": {
+              "content": "Update metadata for ingested assets",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "ingestion",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"update_assets\": [\n    {\n      \"asset_type\": \"<string>\",\n      \"asset_id\": \"<string,null-uuid>\",\n      \"source_path\": \"<string,null>\",\n      \"metadata\": {\n        \"key_0\": \"<boolean>\",\n        \"key_1\": \"<boolean>\"\n      }\n    },\n    {\n      \"asset_type\": \"<string>\",\n      \"asset_id\": \"<string,null-uuid>\",\n      \"source_path\": \"<string,null>\",\n      \"metadata\": {\n        \"key_0\": \"<boolean>\"\n      }\n    }\n  ],\n  \"source_path\": \"<string,null>\",\n  \"update_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7cd74938-e9e2-41c1-8bc7-7569f4f6fd42",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ingestion",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"update_assets\": [\n    {\n      \"asset_type\": \"video\",\n      \"asset_id\": \"4afff9dd-9e24-b1c4-6205-bd9de603369d\",\n      \"source_path\": \"string\",\n      \"metadata\": {\n        \"key_0\": true\n      }\n    },\n    {\n      \"asset_type\": \"image\",\n      \"asset_id\": \"b16b34e7-efa2-e7ef-2702-d34958d26843\",\n      \"source_path\": \"string\",\n      \"metadata\": {\n        \"key_0\": true,\n        \"key_1\": false\n      }\n    }\n  ],\n  \"source_path\": \"<string,null>\",\n  \"update_type\": \"overwrite\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"org_id\": \"string\",\n  \"dataset_id\": \"cfa8ec97-3392-2eeb-d416-455d45ffb0c1\",\n  \"job_type\": \"bucket\",\n  \"details\": {\n    \"assets\": [\n      {\n        \"asset\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"asset_id\": \"d0c01599-0849-9caa-65a1-c859967df389\",\n        \"error\": \"string\"\n      },\n      {\n        \"asset\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"asset_id\": \"f7784317-0bf6-5fdc-eafe-09bb78f2921b\",\n        \"error\": \"string\"\n      }\n    ]\n  },\n  \"created_dt\": \"1985-09-08T11:21:24.424Z\",\n  \"connection_name\": \"string\",\n  \"request_type\": \"submit\",\n  \"status\": \"in_progress\",\n  \"updated_dt\": \"2019-06-10T02:45:54.802Z\",\n  \"total_assets\": 8445,\n  \"processed_assets\": 0,\n  \"errored_assets\": 0,\n  \"request_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bdc3816e-ba16-47dd-8868-ab06e72ff11c",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ingestion",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"update_assets\": [\n    {\n      \"asset_type\": \"video\",\n      \"asset_id\": \"4afff9dd-9e24-b1c4-6205-bd9de603369d\",\n      \"source_path\": \"string\",\n      \"metadata\": {\n        \"key_0\": true\n      }\n    },\n    {\n      \"asset_type\": \"image\",\n      \"asset_id\": \"b16b34e7-efa2-e7ef-2702-d34958d26843\",\n      \"source_path\": \"string\",\n      \"metadata\": {\n        \"key_0\": true,\n        \"key_1\": false\n      }\n    }\n  ],\n  \"source_path\": \"<string,null>\",\n  \"update_type\": \"overwrite\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f83a12fe-9970-4d25-b466-45e1fde46a89",
+          "name": "Create Ingest Job From Assets",
+          "request": {
+            "name": "Create Ingest Job From Assets",
+            "description": {
+              "content": "Ingest assets directly, using a batch/list specification",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "ingestion",
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"assets\": [\n    {\n      \"source_path\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": \"<boolean>\",\n        \"key_1\": \"<boolean>\",\n        \"key_2\": \"<boolean>\"\n      },\n      \"asset_type\": \"<string>\"\n    },\n    {\n      \"source_path\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": \"<boolean>\"\n      },\n      \"asset_type\": \"<string>\"\n    }\n  ],\n  \"connection_name\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c2c48fad-730f-4ca8-bd91-c0c0a867d276",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ingestion",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"assets\": [\n    {\n      \"source_path\": \"string\",\n      \"metadata\": {\n        \"key_0\": false,\n        \"key_1\": true\n      },\n      \"asset_type\": \"image\"\n    },\n    {\n      \"source_path\": \"string\",\n      \"metadata\": {\n        \"key_0\": true,\n        \"key_1\": false,\n        \"key_2\": true\n      },\n      \"asset_type\": \"image\"\n    }\n  ],\n  \"connection_name\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"org_id\": \"string\",\n  \"dataset_id\": \"cfa8ec97-3392-2eeb-d416-455d45ffb0c1\",\n  \"job_type\": \"bucket\",\n  \"details\": {\n    \"assets\": [\n      {\n        \"asset\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"asset_id\": \"d0c01599-0849-9caa-65a1-c859967df389\",\n        \"error\": \"string\"\n      },\n      {\n        \"asset\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"asset_id\": \"f7784317-0bf6-5fdc-eafe-09bb78f2921b\",\n        \"error\": \"string\"\n      }\n    ]\n  },\n  \"created_dt\": \"1985-09-08T11:21:24.424Z\",\n  \"connection_name\": \"string\",\n  \"request_type\": \"submit\",\n  \"status\": \"in_progress\",\n  \"updated_dt\": \"2019-06-10T02:45:54.802Z\",\n  \"total_assets\": 8445,\n  \"processed_assets\": 0,\n  \"errored_assets\": 0,\n  \"request_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b011e629-8283-40c6-b6f7-d1a184a60f74",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ingestion",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"assets\": [\n    {\n      \"source_path\": \"string\",\n      \"metadata\": {\n        \"key_0\": false,\n        \"key_1\": true\n      },\n      \"asset_type\": \"image\"\n    },\n    {\n      \"source_path\": \"string\",\n      \"metadata\": {\n        \"key_0\": true,\n        \"key_1\": false,\n        \"key_2\": true\n      },\n      \"asset_type\": \"image\"\n    }\n  ],\n  \"connection_name\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9dc78e4f-4767-40c8-ab7a-45d7442a9e69",
+          "name": "Create Ingest Job From Bucket",
+          "request": {
+            "name": "Create Ingest Job From Bucket",
+            "description": {
+              "content": "Ingest assets from a bucket scan",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "ingestion",
+                "buckets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"connection_name\": \"<string,null>\",\n  \"path\": \"<string,null>\",\n  \"spec\": {\n    \"bucket\": \"<string>\",\n    \"prefix\": \"/\",\n    \"provider\": \"<string>\"\n  },\n  \"source_path\": \"<string,null>\",\n  \"source_spec\": {\n    \"bucket\": \"<string>\",\n    \"prefix\": \"/\",\n    \"provider\": \"<string>\"\n  },\n  \"max_depth\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8048ab15-f811-4fbd-83ec-eff3b3f3f992",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ingestion",
+                    "buckets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"connection_name\": \"<string,null>\",\n  \"path\": \"<string,null>\",\n  \"spec\": {\n    \"bucket\": \"string\",\n    \"prefix\": \"/\",\n    \"provider\": \"aws\"\n  },\n  \"source_path\": \"<string,null>\",\n  \"source_spec\": {\n    \"bucket\": \"string\",\n    \"prefix\": \"/\",\n    \"provider\": \"aws\"\n  },\n  \"max_depth\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"org_id\": \"string\",\n  \"dataset_id\": \"cfa8ec97-3392-2eeb-d416-455d45ffb0c1\",\n  \"job_type\": \"bucket\",\n  \"details\": {\n    \"assets\": [\n      {\n        \"asset\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"asset_id\": \"d0c01599-0849-9caa-65a1-c859967df389\",\n        \"error\": \"string\"\n      },\n      {\n        \"asset\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"asset_id\": \"f7784317-0bf6-5fdc-eafe-09bb78f2921b\",\n        \"error\": \"string\"\n      }\n    ]\n  },\n  \"created_dt\": \"1985-09-08T11:21:24.424Z\",\n  \"connection_name\": \"string\",\n  \"request_type\": \"submit\",\n  \"status\": \"in_progress\",\n  \"updated_dt\": \"2019-06-10T02:45:54.802Z\",\n  \"total_assets\": 8445,\n  \"processed_assets\": 0,\n  \"errored_assets\": 0,\n  \"request_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "abf02458-d7ae-45de-b1aa-ec67663ec86a",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ingestion",
+                    "buckets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"connection_name\": \"<string,null>\",\n  \"path\": \"<string,null>\",\n  \"spec\": {\n    \"bucket\": \"string\",\n    \"prefix\": \"/\",\n    \"provider\": \"aws\"\n  },\n  \"source_path\": \"<string,null>\",\n  \"source_spec\": {\n    \"bucket\": \"string\",\n    \"prefix\": \"/\",\n    \"provider\": \"aws\"\n  },\n  \"max_depth\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e005087-2289-4e63-b20a-f2600d27e307",
+          "name": "Create Ingest Job From File",
+          "request": {
+            "name": "Create Ingest Job From File",
+            "description": {
+              "content": "Ingest assets from a CSV or JSON file",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "ingestion",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"source_path\": \"<string>\",\n  \"connection_name\": \"<string,null>\",\n  \"file_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "54b99d7d-ae17-492b-8192-50e613a4cc52",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ingestion",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"source_path\": \"<string>\",\n  \"connection_name\": \"<string,null>\",\n  \"file_type\": \"json\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"org_id\": \"string\",\n  \"dataset_id\": \"cfa8ec97-3392-2eeb-d416-455d45ffb0c1\",\n  \"job_type\": \"bucket\",\n  \"details\": {\n    \"assets\": [\n      {\n        \"asset\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"asset_id\": \"d0c01599-0849-9caa-65a1-c859967df389\",\n        \"error\": \"string\"\n      },\n      {\n        \"asset\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"asset_id\": \"f7784317-0bf6-5fdc-eafe-09bb78f2921b\",\n        \"error\": \"string\"\n      }\n    ]\n  },\n  \"created_dt\": \"1985-09-08T11:21:24.424Z\",\n  \"connection_name\": \"string\",\n  \"request_type\": \"submit\",\n  \"status\": \"in_progress\",\n  \"updated_dt\": \"2019-06-10T02:45:54.802Z\",\n  \"total_assets\": 8445,\n  \"processed_assets\": 0,\n  \"errored_assets\": 0,\n  \"request_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7819003-9958-4f3f-812b-5569b7ecd56a",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ingestion",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"source_path\": \"<string>\",\n  \"connection_name\": \"<string,null>\",\n  \"file_type\": \"json\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "257bf082-471f-4579-983c-63c20ea95acf",
+          "name": "Create Ingest Job From Images",
+          "request": {
+            "name": "Create Ingest Job From Images",
+            "description": {
+              "content": "Ingest assets directly, using a batch/list specification",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "ingestion",
+                "images"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"images\": [\n    {\n      \"source_path\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": \"<boolean>\"\n      }\n    },\n    {\n      \"source_path\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": \"<boolean>\"\n      }\n    }\n  ],\n  \"connection_name\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "35716b69-836f-41c2-8087-39742ee44125",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ingestion",
+                    "images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"images\": [\n    {\n      \"source_path\": \"string\",\n      \"metadata\": {\n        \"key_0\": false,\n        \"key_1\": true\n      }\n    },\n    {\n      \"source_path\": \"string\",\n      \"metadata\": {\n        \"key_0\": false\n      }\n    }\n  ],\n  \"connection_name\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"org_id\": \"string\",\n  \"dataset_id\": \"cfa8ec97-3392-2eeb-d416-455d45ffb0c1\",\n  \"job_type\": \"bucket\",\n  \"details\": {\n    \"assets\": [\n      {\n        \"asset\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"asset_id\": \"d0c01599-0849-9caa-65a1-c859967df389\",\n        \"error\": \"string\"\n      },\n      {\n        \"asset\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"asset_id\": \"f7784317-0bf6-5fdc-eafe-09bb78f2921b\",\n        \"error\": \"string\"\n      }\n    ]\n  },\n  \"created_dt\": \"1985-09-08T11:21:24.424Z\",\n  \"connection_name\": \"string\",\n  \"request_type\": \"submit\",\n  \"status\": \"in_progress\",\n  \"updated_dt\": \"2019-06-10T02:45:54.802Z\",\n  \"total_assets\": 8445,\n  \"processed_assets\": 0,\n  \"errored_assets\": 0,\n  \"request_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "160732e2-aefe-4186-b07c-c40e3cc895fc",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ingestion",
+                    "images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"images\": [\n    {\n      \"source_path\": \"string\",\n      \"metadata\": {\n        \"key_0\": false,\n        \"key_1\": true\n      }\n    },\n    {\n      \"source_path\": \"string\",\n      \"metadata\": {\n        \"key_0\": false\n      }\n    }\n  ],\n  \"connection_name\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4d24d6b-b327-45e5-9454-0fb565b2a5a2",
+          "name": "Create Ingest Job From Videos",
+          "request": {
+            "name": "Create Ingest Job From Videos",
+            "description": {
+              "content": "Ingest assets directly, using a batch/list specification",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "ingestion",
+                "videos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"videos\": [\n    {\n      \"source_path\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": \"<boolean>\"\n      }\n    },\n    {\n      \"source_path\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": \"<boolean>\"\n      }\n    }\n  ],\n  \"connection_name\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f0ea31f2-56e4-470b-a3b2-2fce23b6033b",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ingestion",
+                    "videos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"videos\": [\n    {\n      \"source_path\": \"string\",\n      \"metadata\": {\n        \"key_0\": true,\n        \"key_1\": false,\n        \"key_2\": true\n      }\n    },\n    {\n      \"source_path\": \"string\",\n      \"metadata\": {\n        \"key_0\": true\n      }\n    }\n  ],\n  \"connection_name\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"org_id\": \"string\",\n  \"dataset_id\": \"cfa8ec97-3392-2eeb-d416-455d45ffb0c1\",\n  \"job_type\": \"bucket\",\n  \"details\": {\n    \"assets\": [\n      {\n        \"asset\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"asset_id\": \"d0c01599-0849-9caa-65a1-c859967df389\",\n        \"error\": \"string\"\n      },\n      {\n        \"asset\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"asset_id\": \"f7784317-0bf6-5fdc-eafe-09bb78f2921b\",\n        \"error\": \"string\"\n      }\n    ]\n  },\n  \"created_dt\": \"1985-09-08T11:21:24.424Z\",\n  \"connection_name\": \"string\",\n  \"request_type\": \"submit\",\n  \"status\": \"in_progress\",\n  \"updated_dt\": \"2019-06-10T02:45:54.802Z\",\n  \"total_assets\": 8445,\n  \"processed_assets\": 0,\n  \"errored_assets\": 0,\n  \"request_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea6e2615-8bd4-44bb-b31b-6e816ed0dae9",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ingestion",
+                    "videos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"videos\": [\n    {\n      \"source_path\": \"string\",\n      \"metadata\": {\n        \"key_0\": true,\n        \"key_1\": false,\n        \"key_2\": true\n      }\n    },\n    {\n      \"source_path\": \"string\",\n      \"metadata\": {\n        \"key_0\": true\n      }\n    }\n  ],\n  \"connection_name\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.coactive.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "24f67bb6-0ad7-4915-b9d5-0e5b296ebe98",
+    "name": "API Reference agentic-search > agenticSearch ingestion > ingest API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch datasets > dataset API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "datasets > dataset",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/datasets",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_ids",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "allowed_asset_types",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "keyframe_sampling_method",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "store_original",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "store_preview",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_before",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated_before",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "last_updated_after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name_pattern",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "new_video_data_model",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "celebrity_detection_enabled",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "context_studio_enabled",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include_deleted",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all datasets in a paginated list"
+        },
+        {
+          "info": {
+            "name": "Create Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/datasets",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new dataset"
+        },
+        {
+          "info": {
+            "name": "Get Dataset By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/datasets/:dataset_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include_deleted",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a dataset by its unique identifier"
+        },
+        {
+          "info": {
+            "name": "Update Dataset By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.coactive.ai/api/v1/datasets/:dataset_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a dataset by its unique identifier"
+        },
+        {
+          "info": {
+            "name": "Delete Dataset By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.coactive.ai/api/v1/datasets/:dataset_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a dataset by its unique identifier"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

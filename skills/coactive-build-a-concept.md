@@ -1,7 +1,7 @@
 ---
 name: Build and refine a visual concept
 description: Create a Coactive concept, label candidate assets, and read its prediction estimation to tag and retrieve matching visual content.
-api: openapi/coactive-ai-openapi-original.json
+api: openapi/coactive-concept-api-openapi.yml
 operations:
   - create
   - get-label-candidates
@@ -15,7 +15,7 @@ operations:
 Concepts let you teach Coactive a custom visual idea and apply it across a dataset.
 
 ## Prerequisites
-- Bearer access token from `POST /api/v0/login` (see `authentication/coactive-ai-authentication.yml`).
+- Bearer access token from `POST /api/v0/login` (see `authentication/coactive-authentication.yml`).
 - An ingested dataset with searchable assets (`dataset_id`).
 
 ## Steps
@@ -26,5 +26,5 @@ Concepts let you teach Coactive a custom visual idea and apply it across a datas
 5. **List concepts** — `list` (`GET /api/v1/concepts`, paginated via `offset`/`limit`) to manage the concept catalog.
 
 ## Conventions
-- Offset pagination + `{ meta, data }` envelope; RBAC governs who may edit concepts. See `conventions/coactive-ai-conventions.yml`.
+- Offset pagination + `{ meta, data }` envelope; RBAC governs who may edit concepts. See `conventions/coactive-conventions.yml`.
 - Handle 422 validation errors from `detail[]`; a 404 means the `concept_id` or dataset no longer exists.

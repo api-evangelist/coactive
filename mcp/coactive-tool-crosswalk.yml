@@ -1,0 +1,108 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  live tools/list against https://docs.coactive.ai/_mcp/server (anonymous, HTTP 200) bound against
+  the 118 operationIds in openapi/
+surfaces:
+  openapi:
+    path: openapi/
+    specs: 22
+    operations: 118
+    spec_source: https://docs.coactive.ai/openapi.json
+    gated: false
+    note: OpenAPI 3.1.0, HTTPBearer; calling it requires a token from POST /api/v0/login.
+  graphql:
+    endpoint: null
+    note: Coactive publishes no GraphQL surface.
+  mcp:
+    url: https://docs.coactive.ai/_mcp/server
+    transport: streamable-http
+    gated: false
+    note: >-
+      tools/list answers anonymously and returned real inputSchema. The server is the Fern
+      documentation MCP server, not a server over the Coactive data API.
+coverage:
+  tools_named: 1
+  tools_bound_to_rest: 0
+  mcp_only: 1
+  rest_ops_total: 118
+  rest_ops_with_tool: 0
+  binding_rate: 0.0
+crosswalk: []
+mcp_only:
+- tool: searchDocs
+  category: documentation
+  reason: >-
+    Full-text retrieval over docs.coactive.ai rendered by the Fern docs platform. It has no
+    backing Coactive REST operation — it queries the documentation index, not the API. Its real
+    inputSchema is {query: string} (required), annotated readOnlyHint true.
+rest_only:
+- capability: search
+  operations: 20
+  specs:
+  - openapi/coactive-search-search-api-openapi.yml
+  - openapi/coactive-search-metadata-filter-api-openapi.yml
+  - openapi/coactive-search-video-searchvideo-api-openapi.yml
+- capability: video narrative metadata and summarization
+  operations: 16
+  specs:
+  - openapi/coactive-video-narative-metadata-videonarrativemetadata-api-openapi.yml
+  - openapi/coactive-video-narative-metadata-videosummarization-api-openapi.yml
+- capability: queries and export
+  operations: 11
+  specs:
+  - openapi/coactive-queries-api-openapi.yml
+- capability: ingestion
+  operations: 16
+  specs:
+  - openapi/coactive-ingestion-api-openapi.yml
+  - openapi/coactive-ingestion-ingest-api-openapi.yml
+  - openapi/coactive-ingestion-status-api-openapi.yml
+- capability: concepts and classification
+  operations: 10
+  specs:
+  - openapi/coactive-concept-api-openapi.yml
+  - openapi/coactive-classification-api-openapi.yml
+- capability: datasets
+  operations: 7
+  specs:
+  - openapi/coactive-datasets-dataset-api-openapi.yml
+  - openapi/coactive-datasets-datasetconfig-api-openapi.yml
+  - openapi/coactive-datasets-encoder-api-openapi.yml
+- capability: connections
+  operations: 8
+  specs:
+  - openapi/coactive-connections-connections-api-openapi.yml
+- capability: user management and system credentials
+  operations: 13
+  specs:
+  - openapi/coactive-usermanagement-api-openapi.yml
+  - openapi/coactive-systemcredentials-api-openapi.yml
+- capability: celebrity and face detection
+  operations: 7
+  specs:
+  - openapi/coactive-celebrity-detection-api-openapi.yml
+- capability: video scores
+  operations: 4
+  specs:
+  - openapi/coactive-video-scores-videoscores-api-openapi.yml
+- capability: context studio ad segments
+  operations: 3
+  specs:
+  - openapi/coactive-context-studio-adsegments-api-openapi.yml
+- capability: agentic search
+  operations: 2
+  specs:
+  - openapi/coactive-agentic-search-agenticsearch-api-openapi.yml
+- capability: dynamic tags
+  operations: 1
+  specs:
+  - openapi/coactive-dynamictags-api-openapi.yml
+notes: >-
+  The divergence is total, and that is the finding: Coactive's MCP surface and its REST surface do
+  not overlap at a single operation. The only tool an agent can reach over MCP reads the docs; all
+  118 callable operations — including the agentic-search endpoints Coactive markets as its
+  natural-language interface — are REST-only with no agent-facing tool binding. A crosswalk row
+  would require inventing a binding that does not exist, so crosswalk[] is deliberately empty.
+  agentic-access/coactive-agentic-access.yml carries the per-operation execution contracts that a
+  future MCP server over the data API would need.

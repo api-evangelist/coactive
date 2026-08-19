@@ -1,0 +1,1336 @@
+{
+  "item": [
+    {
+      "id": "951e921f-59d4-408c-b6f7-54aa3d201732",
+      "name": "userManagement",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5038f145-8a7f-4a91-86f6-49a4e6213509",
+          "name": "Create Invitation",
+          "request": {
+            "name": "Create Invitation",
+            "description": {
+              "content": "Create a new user invitation.\n\nThis endpoint creates a new invitation for a user to join the organization.\nThe invitation will be sent to the specified email address.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth-management",
+                "user-invitations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"roles\": [\n    {\n      \"role_id\": \"<string>\",\n      \"resource\": \"<string,null>\",\n      \"resource_instance\": \"<string,null>\"\n    },\n    {\n      \"role_id\": \"<string>\",\n      \"resource\": \"<string,null>\",\n      \"resource_instance\": \"<string,null>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "16b08e20-2238-44ab-8c66-eaee6330a4d7",
+              "name": "The created invitation details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth-management",
+                    "user-invitations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"resource\": \"string\",\n      \"resource_instance\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"resource\": \"string\",\n      \"resource_instance\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invitation_id\": \"string\",\n  \"inviter\": {\n    \"name\": \"string\"\n  },\n  \"invitee\": {\n    \"email\": \"string\",\n    \"name\": \"string\",\n    \"roles\": [\n      {\n        \"role_id\": \"string\",\n        \"resource\": \"string\",\n        \"resource_instance\": \"string\"\n      },\n      {\n        \"role_id\": \"string\",\n        \"resource\": \"string\",\n        \"resource_instance\": \"string\"\n      }\n    ]\n  },\n  \"invitation_url\": \"string\",\n  \"created_at\": \"string\",\n  \"expires_at\": \"string\",\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"resource\": \"string\",\n      \"resource_instance\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"resource\": \"string\",\n      \"resource_instance\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b99d83f-36b8-46bc-b36f-c54a3bc81e99",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth-management",
+                    "user-invitations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"resource\": \"string\",\n      \"resource_instance\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"resource\": \"string\",\n      \"resource_instance\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5d639d3-2c07-493f-bea7-435b8a507e1d",
+          "name": "List Invitations",
+          "request": {
+            "name": "List Invitations",
+            "description": {
+              "content": "List all pending user invitations.\nThis endpoint retrieves a list of all pending invitations in the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth-management",
+                "user-invitations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip (for pagination)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Number of invitations to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6737f40-8562-4835-aa92-3ea339af416f",
+              "name": "A paginated list of pending user invitations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth-management",
+                    "user-invitations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_invitations\": [\n    {\n      \"invitation_id\": \"string\",\n      \"inviter\": {\n        \"name\": \"string\"\n      },\n      \"invitee\": {\n        \"email\": \"string\",\n        \"name\": \"string\",\n        \"roles\": [\n          {\n            \"role_id\": \"string\",\n            \"resource\": \"string\",\n            \"resource_instance\": \"string\"\n          },\n          {\n            \"role_id\": \"string\",\n            \"resource\": \"string\",\n            \"resource_instance\": \"string\"\n          }\n        ]\n      },\n      \"invitation_url\": \"string\",\n      \"created_at\": \"string\",\n      \"expires_at\": \"string\",\n      \"roles\": [\n        {\n          \"role_id\": \"string\",\n          \"resource\": \"string\",\n          \"resource_instance\": \"string\"\n        },\n        {\n          \"role_id\": \"string\",\n          \"resource\": \"string\",\n          \"resource_instance\": \"string\"\n        }\n      ]\n    },\n    {\n      \"invitation_id\": \"string\",\n      \"inviter\": {\n        \"name\": \"string\"\n      },\n      \"invitee\": {\n        \"email\": \"string\",\n        \"name\": \"string\",\n        \"roles\": [\n          {\n            \"role_id\": \"string\",\n            \"resource\": \"string\",\n            \"resource_instance\": \"string\"\n          },\n          {\n            \"role_id\": \"string\",\n            \"resource\": \"string\",\n            \"resource_instance\": \"string\"\n          }\n        ]\n      },\n      \"invitation_url\": \"string\",\n      \"created_at\": \"string\",\n      \"expires_at\": \"string\",\n      \"roles\": [\n        {\n          \"role_id\": \"string\",\n          \"resource\": \"string\",\n          \"resource_instance\": \"string\"\n        },\n        {\n          \"role_id\": \"string\",\n          \"resource\": \"string\",\n          \"resource_instance\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"meta\": {\n    \"page\": {\n      \"current_page\": 4771,\n      \"limit\": 3021,\n      \"offset\": 736,\n      \"last_page\": 1829,\n      \"total\": 3246\n    },\n    \"links\": {\n      \"prev\": \"string\",\n      \"next\": \"string\",\n      \"first\": \"string\",\n      \"last\": \"string\"\n    },\n    \"sort\": [\n      {\n        \"direction\": \"asc\",\n        \"field\": \"string\"\n      },\n      {\n        \"direction\": \"desc\",\n        \"field\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f802627-75d9-4af7-9c5d-e5789d5f2385",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth-management",
+                    "user-invitations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49bb7e26-dc7e-45e3-b5bd-431590b46af8",
+          "name": "Delete Invitation",
+          "request": {
+            "name": "Delete Invitation",
+            "description": {
+              "content": "Delete a user invitation.\n\nThis endpoint cancels a pending invitation before it is accepted.\nThe invitation will no longer be valid.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth-management",
+                "user-invitations",
+                ":invitation_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invitation_id",
+                  "description": "(Required) The unique identifier of the invitation to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aad4ee3b-5d0a-444c-9172-fe8d093ac81c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth-management",
+                    "user-invitations",
+                    ":invitation_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invitation_id",
+                      "description": "(Required) The unique identifier of the invitation to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0d58c1ac-9f03-43eb-8ffd-391b3d073f2c",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth-management",
+                    "user-invitations",
+                    ":invitation_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invitation_id",
+                      "description": "(Required) The unique identifier of the invitation to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "edcdb4ec-ced7-4144-bbb8-2a7e45062e90",
+          "name": "Get Invitation",
+          "request": {
+            "name": "Get Invitation",
+            "description": {
+              "content": "Get a user invitation.\n\nGet the details of a pending user invitation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth-management",
+                "user-invitations",
+                ":invitation_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invitation_id",
+                  "description": "(Required) The unique identifier of the invitation to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47a8963f-2e7d-418c-bb4e-e09fe7f1f9b5",
+              "name": "The details of a pending user invitation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth-management",
+                    "user-invitations",
+                    ":invitation_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invitation_id",
+                      "description": "(Required) The unique identifier of the invitation to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invitation_id\": \"string\",\n  \"inviter\": {\n    \"name\": \"string\"\n  },\n  \"invitee\": {\n    \"email\": \"string\",\n    \"name\": \"string\",\n    \"roles\": [\n      {\n        \"role_id\": \"string\",\n        \"resource\": \"string\",\n        \"resource_instance\": \"string\"\n      },\n      {\n        \"role_id\": \"string\",\n        \"resource\": \"string\",\n        \"resource_instance\": \"string\"\n      }\n    ]\n  },\n  \"invitation_url\": \"string\",\n  \"created_at\": \"string\",\n  \"expires_at\": \"string\",\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"resource\": \"string\",\n      \"resource_instance\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"resource\": \"string\",\n      \"resource_instance\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "845e5475-f26d-4865-a80a-dcd493cec655",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth-management",
+                    "user-invitations",
+                    ":invitation_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invitation_id",
+                      "description": "(Required) The unique identifier of the invitation to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57130a59-add7-4b60-a946-fc18e8c16e11",
+          "name": "List Roles",
+          "request": {
+            "name": "List Roles",
+            "description": {
+              "content": "List all assignable roles.\n\nThe roles returned are scoped to the roles context.\nFor example, if the roles_context is \"dataset:123\", the endpoint will return all roles\nthat are assignable to dataset with id \"123\". If the roles_context is \"system\", the endpoint\nwill return all system-level roles that are assignable in the organization.\n\nIf no roles_context is provided, the endpoint will return all system-level and dataset-level\nroles in the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth-management",
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "roles_context",
+                  "value": "<string,null>",
+                  "description": "Context for the roles to include in the response. This can either be 'system' for system-level roles or 'dataset:{dataset_id}' for dataset-level roles."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2798da08-1c6e-49aa-8078-584fcb3ce42a",
+              "name": "A list of assignable roles",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth-management",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "roles_context",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"resource\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"resource\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7943457-2262-4498-92ba-66a0f7ada221",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth-management",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "roles_context",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ffb7beb-b881-4901-97b8-4cb26e4249f2",
+          "name": "List Users",
+          "request": {
+            "name": "List Users",
+            "description": {
+              "content": "List users in the organization.\n\nThis endpoint retrieves a paginated list of users in the organization.\nThe response can be filtered by a search query and optionally include user roles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth-management",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string,null>",
+                  "description": "Search query to match names and emails"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_ids",
+                  "value": "<string>",
+                  "description": "List of user IDs to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_ids",
+                  "value": "<string>",
+                  "description": "List of user IDs to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip (for pagination)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Number of users to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_roles",
+                  "value": "false",
+                  "description": "Include user roles in the response"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e483a47b-0867-4359-926c-a82db1b3ba88",
+              "name": "A paginated list of users in the organization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth-management",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "include_roles",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"users\": [\n    {\n      \"user_id\": \"string\",\n      \"name\": \"string\",\n      \"created_at\": \"1999-07-04T22:34:53.701Z\",\n      \"email\": \"string\",\n      \"picture\": \"string\",\n      \"last_login\": \"1968-11-06T15:40:52.787Z\",\n      \"roles\": [\n        {\n          \"role_id\": \"string\",\n          \"resource\": \"string\",\n          \"resource_instance\": \"string\"\n        },\n        {\n          \"role_id\": \"string\",\n          \"resource\": \"string\",\n          \"resource_instance\": \"string\"\n        }\n      ]\n    },\n    {\n      \"user_id\": \"string\",\n      \"name\": \"string\",\n      \"created_at\": \"2013-01-21T23:02:49.513Z\",\n      \"email\": \"string\",\n      \"picture\": \"string\",\n      \"last_login\": \"2013-05-08T05:49:26.060Z\",\n      \"roles\": [\n        {\n          \"role_id\": \"string\",\n          \"resource\": \"string\",\n          \"resource_instance\": \"string\"\n        },\n        {\n          \"role_id\": \"string\",\n          \"resource\": \"string\",\n          \"resource_instance\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"meta\": {\n    \"page\": {\n      \"current_page\": 3331,\n      \"limit\": 9164,\n      \"offset\": 7880,\n      \"last_page\": 3850,\n      \"total\": 3214\n    },\n    \"links\": {\n      \"prev\": \"string\",\n      \"next\": \"string\",\n      \"first\": \"string\",\n      \"last\": \"string\"\n    },\n    \"sort\": [\n      {\n        \"direction\": \"asc\",\n        \"field\": \"string\"\n      },\n      {\n        \"direction\": \"asc\",\n        \"field\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7512915b-8491-4e55-87a5-a4ba513f9e4c",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth-management",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "include_roles",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de6f23c0-413a-4430-a317-7d042167372d",
+          "name": "Remove User",
+          "request": {
+            "name": "Remove User",
+            "description": {
+              "content": "Remove a user from the organization.\n\nThis endpoint permanently removes a user from the organization.\nThe user will no longer have access to any organization resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth-management",
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user to remove"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11ea8671-3965-4bc2-b61e-036efd601811",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth-management",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user to remove"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c6490c2a-72a5-4d1d-82c2-91dd44e314fd",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth-management",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user to remove"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d697667-9720-44af-958d-34c4da3f239f",
+          "name": "Update User Roles",
+          "request": {
+            "name": "Update User Roles",
+            "description": {
+              "content": "Replace a user's roles.\n\nThis endpoint allows administrators to replace the roles assigned to a user.\n\nThe roles can be scoped to a specific context (e.g., dataset or system).\nIf a context is provided, the roles will only be replaced within that context.\nIf no context is provided, all roles (system-level and dataset-level) will be replaced.\n\nTo replace roles at the system level, use the \"system\" context.\nTo replace roles at the dataset level, use the \"dataset:{dataset_id}\" context.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth-management",
+                "users",
+                ":user_id",
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roles\": [\n    {\n      \"role_id\": \"<string>\",\n      \"resource\": \"<string,null>\",\n      \"resource_instance\": \"<string,null>\"\n    },\n    {\n      \"role_id\": \"<string>\",\n      \"resource\": \"<string,null>\",\n      \"resource_instance\": \"<string,null>\"\n    }\n  ],\n  \"roles_context\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e4236af-4158-4ae0-8522-7203a99f5325",
+              "name": "The updated user profile with new roles",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth-management",
+                    "users",
+                    ":user_id",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"resource\": \"string\",\n      \"resource_instance\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"resource\": \"string\",\n      \"resource_instance\": \"string\"\n    }\n  ],\n  \"roles_context\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_id\": \"string\",\n  \"name\": \"string\",\n  \"created_at\": \"1947-08-29T22:20:50.501Z\",\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"resource\": \"string\",\n      \"resource_instance\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"resource\": \"string\",\n      \"resource_instance\": \"string\"\n    }\n  ],\n  \"email\": \"string\",\n  \"picture\": \"string\",\n  \"last_login\": \"2015-07-12T23:22:53.979Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b75ee01-90c1-4538-b8db-4035f880d331",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth-management",
+                    "users",
+                    ":user_id",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"roles\": [\n    {\n      \"role_id\": \"string\",\n      \"resource\": \"string\",\n      \"resource_instance\": \"string\"\n    },\n    {\n      \"role_id\": \"string\",\n      \"resource\": \"string\",\n      \"resource_instance\": \"string\"\n    }\n  ],\n  \"roles_context\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.coactive.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "132826e4-036b-4183-9843-29902b871fa8",
+    "name": "API Reference agentic-search > agenticSearch userManagement API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

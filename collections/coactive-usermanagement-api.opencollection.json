@@ -1,0 +1,248 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch userManagement API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "userManagement",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Invitations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/auth-management/user-invitations",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip (for pagination)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of invitations to return"
+              }
+            ]
+          },
+          "docs": "List all pending user invitations.\nThis endpoint retrieves a list of all pending invitations in the organization."
+        },
+        {
+          "info": {
+            "name": "Create Invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/auth-management/user-invitations",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new user invitation.\n\nThis endpoint creates a new invitation for a user to join the organization.\nThe invitation will be sent to the specified email address."
+        },
+        {
+          "info": {
+            "name": "Get Invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/auth-management/user-invitations/:invitation_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "invitation_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the invitation to retrieve"
+              }
+            ]
+          },
+          "docs": "Get a user invitation.\n\nGet the details of a pending user invitation."
+        },
+        {
+          "info": {
+            "name": "Delete Invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.coactive.ai/api/v1/auth-management/user-invitations/:invitation_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "invitation_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the invitation to delete"
+              }
+            ]
+          },
+          "docs": "Delete a user invitation.\n\nThis endpoint cancels a pending invitation before it is accepted.\nThe invitation will no longer be valid."
+        },
+        {
+          "info": {
+            "name": "List Roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/auth-management/roles",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "roles_context",
+                "value": "",
+                "type": "query",
+                "description": "Context for the roles to include in the response. This can either be 'system' for system-level roles or 'dataset:{dataset_id}' for dataset-level roles."
+              }
+            ]
+          },
+          "docs": "List all assignable roles.\n\nThe roles returned are scoped to the roles context.\nFor example, if the roles_context is \"dataset:123\", the endpoint will return all roles\nthat are assignable to dataset with id \"123\". If the roles_context is \"system\", the endpoint\nwill return all system-level roles that are assignable in the organization.\n\nIf no roles_context is provided, the endpoint will return all system-level and dataset-level\nroles in the organization."
+        },
+        {
+          "info": {
+            "name": "List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/auth-management/users",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search query to match names and emails"
+              },
+              {
+                "name": "user_ids",
+                "value": "",
+                "type": "query",
+                "description": "List of user IDs to filter by"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip (for pagination)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of users to return"
+              },
+              {
+                "name": "include_roles",
+                "value": "",
+                "type": "query",
+                "description": "Include user roles in the response"
+              }
+            ]
+          },
+          "docs": "List users in the organization.\n\nThis endpoint retrieves a paginated list of users in the organization.\nThe response can be filtered by a search query and optionally include user roles."
+        },
+        {
+          "info": {
+            "name": "Remove User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.coactive.ai/api/v1/auth-management/users/:user_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user to remove"
+              }
+            ]
+          },
+          "docs": "Remove a user from the organization.\n\nThis endpoint permanently removes a user from the organization.\nThe user will no longer have access to any organization resources."
+        },
+        {
+          "info": {
+            "name": "Update User Roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.coactive.ai/api/v1/auth-management/users/:user_id/roles",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replace a user's roles.\n\nThis endpoint allows administrators to replace the roles assigned to a user.\n\nThe roles can be scoped to a specific context (e.g., dataset or system).\nIf a context is provided, the roles will only be replaced within that context.\nIf no context is provided, all roles (system-level and dataset-level) will be replaced.\n\nTo replace roles at the system level, use the \"system\" context.\nTo replace roles at the dataset level, use the \"dataset:{dataset_id}\" context."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

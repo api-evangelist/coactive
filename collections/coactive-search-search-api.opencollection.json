@@ -1,0 +1,228 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch search > search API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "search > search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Audio Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/search/audio",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find video segments where the spoken content matches a natural-language query. Use this to find moments by what was said, for example, thank you for your time or breaking news.Returns matching audio segments with the parent video, the transcript text, and timestamps so you can jump straight to the moment."
+        },
+        {
+          "info": {
+            "name": "Audio Sounds Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/search/audio-sound",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find video segments containing a specific audio sound class, for example, Music, Dog, gunfire, or clapping.Returns ranked segments with timestamps and a confidence score."
+        },
+        {
+          "info": {
+            "name": "Celebrity Matches Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/search/celebrity/matches",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find video frames that match a reference set of face images.Provide 15–100 upload IDs of reference images and get back ranked keyframe matches across the dataset's videos."
+        },
+        {
+          "info": {
+            "name": "Hybrid Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/search/text-to-hybrid-search",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search images using a text query that scores results against both visual content and text metadata (titles, captions, descriptions, and other text fields).This endpoint is in beta and requires special access, please contact the support team."
+        },
+        {
+          "info": {
+            "name": "Image to Image Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/search/image-to-image",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find visually similar images using a reference image. Provide the reference as either a coactive_image_id (an asset already in the dataset) or a public_url.Useful for finding visually related assets."
+        },
+        {
+          "info": {
+            "name": "Image to Keyframes Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/search/image-to-keyframes",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find video keyframes that look similar to a reference image. Provide the reference as a public_url or upload_id.Returns a ranked list of matching frames with their parent video."
+        },
+        {
+          "info": {
+            "name": "Text to Image by Person Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/search/text-to-image/by-person",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search for video keyframes that match a text query and contain a specific enrolled person — for example, Jane Doe at a press conference. Specify the person via either person_ids or person_names_or_aliases.The person must already be enrolled in your organization. Returns matching assets plus a video-level list aggregated by best matching keyframe score."
+        },
+        {
+          "info": {
+            "name": "Text to Image Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/search/text-to-image",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search a dataset with a natural-language query and get back the images that best match it. Use this when you want to find visuals by describing what's in them.For example, search for a sunset at the beach or Jalen Hurts holding the Vince Lombardi trophy. Pair the text query with exact-match metadata filters to narrow results further."
+        },
+        {
+          "info": {
+            "name": "Text to Keyframes Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/search/text-to-keyframes",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search across all video frames in a dataset using a natural-language query. Returns the keyframes that best match the description.Use this when you want all the keyframe-level results from your videos rather than one-result-per-video."
+        },
+        {
+          "info": {
+            "name": "Transcript Exact Match",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/search/text-to-transcript/exact-match",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Performs an exact text match search on video transcripts using a natural language text query (e.g., 'thank you for your time' or 'my name is John') within a specified dataset (dataset_id). This searches for exact occurrences of the provided text within video transcript data, not semantic or approximate matching. Returns videos grouped by their exact transcript matches, where each match includes the composite slice (shot or scene) containing the match, the matched transcript text, timestamps, fra"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

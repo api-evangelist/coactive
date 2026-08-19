@@ -1,0 +1,1591 @@
+{
+  "item": [
+    {
+      "id": "4a48ae06-e434-4d45-93be-8b3720ee7620",
+      "name": "search > search",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e21590f9-bab8-4cfe-99a8-cfe5cd033c1e",
+          "name": "Audio Search",
+          "request": {
+            "name": "Audio Search",
+            "description": {
+              "content": "Find video segments where the spoken content matches a natural-language query. Use this to find moments by what was said, for example, thank you for your time or breaking news.Returns matching audio segments with the parent video, the transcript text, and timestamps so you can jump straight to the moment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "search",
+                "audio"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      }\n    ]\n  },\n  \"moderation_score_type\": \"<string>\",\n  \"skip_moderation\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3066ce1f-925a-457d-bab6-c9ec4a5ca5c6",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "audio"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      }\n    ]\n  },\n  \"moderation_score_type\": \"probability\",\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"created_user_id\": \"string\",\n      \"created_dt\": \"1954-10-27T03:47:10.792Z\",\n      \"updated_user_id\": \"string\",\n      \"updated_dt\": \"1991-04-30T17:52:32.321Z\",\n      \"coactive_image_id\": \"42abc24f-385e-3bc7-a1b4-3634e840f79b\",\n      \"path\": \"string\",\n      \"metadata\": {\n        \"key_0\": {}\n      },\n      \"moderation_score\": 9729.380175314067\n    },\n    {\n      \"created_user_id\": \"string\",\n      \"created_dt\": \"1990-04-18T16:36:18.825Z\",\n      \"updated_user_id\": \"string\",\n      \"updated_dt\": \"1957-10-26T23:58:12.176Z\",\n      \"coactive_image_id\": \"fac81601-699b-5741-0785-ed85a5d905f9\",\n      \"path\": \"string\",\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"moderation_score\": 9006.762101125041\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3a203d4-1c2f-452f-9c8c-8a5c183c3de0",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "audio"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      }\n    ]\n  },\n  \"moderation_score_type\": \"probability\",\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b78ee459-e2e5-41ac-afec-7414b6601e5e",
+          "name": "Audio Sounds Search",
+          "request": {
+            "name": "Audio Sounds Search",
+            "description": {
+              "content": "Find video segments containing a specific audio sound class, for example, Music, Dog, gunfire, or clapping.Returns ranked segments with timestamps and a confidence score.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "search",
+                "audio-sound"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"audio_class\": \"<string>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      }\n    ]\n  },\n  \"moderation_score_type\": \"<string>\",\n  \"skip_moderation\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "adff82cc-0377-416c-af86-328a62c4f70a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "audio-sound"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"audio_class\": \"Hoot\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      }\n    ]\n  },\n  \"moderation_score_type\": \"probability\",\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"coactive_image_id\": \"420f0ec0-e8c3-b1ea-074a-59e83af208d8\",\n      \"video\": {\n        \"created_user_id\": \"string\",\n        \"created_dt\": \"1995-05-29T07:57:49.726Z\",\n        \"updated_user_id\": \"string\",\n        \"updated_dt\": \"1973-05-22T05:29:48.319Z\",\n        \"coactive_video_id\": \"24f67de6-7daf-92ce-5d7f-01dd21002ef7\",\n        \"path\": \"string\",\n        \"metadata\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        }\n      },\n      \"start_time_ms\": 7312,\n      \"end_time_ms\": 9926,\n      \"score\": 4371.821575990464,\n      \"timestamp\": 6813,\n      \"moderation_score\": 2950.841623441127\n    },\n    {\n      \"coactive_image_id\": \"96b5ab4d-b3c6-dad4-677c-f94f6e95718d\",\n      \"video\": {\n        \"created_user_id\": \"string\",\n        \"created_dt\": \"2016-06-07T01:44:24.046Z\",\n        \"updated_user_id\": \"string\",\n        \"updated_dt\": \"2008-10-14T05:47:48.871Z\",\n        \"coactive_video_id\": \"15ed326d-1e12-1878-4bb5-7ab1f9855941\",\n        \"path\": \"string\",\n        \"metadata\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        }\n      },\n      \"start_time_ms\": 3932,\n      \"end_time_ms\": 1757,\n      \"score\": 4513.091469893678,\n      \"timestamp\": 8132,\n      \"moderation_score\": 6767.547288329069\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80f36c50-fa7d-432e-ace4-11af8c7cbdf3",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "audio-sound"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"audio_class\": \"Hoot\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      }\n    ]\n  },\n  \"moderation_score_type\": \"probability\",\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "efc27b7c-3e10-47c2-a29b-fecc960a070e",
+          "name": "Celebrity Matches Search",
+          "request": {
+            "name": "Celebrity Matches Search",
+            "description": {
+              "content": "Find video frames that match a reference set of face images.Provide 15–100 upload IDs of reference images and get back ranked keyframe matches across the dataset's videos.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "search",
+                "celebrity",
+                "matches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"upload_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      }\n    ]\n  },\n  \"moderation_score_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9f24eaac-4c24-4a98-9905-ab70188f92e5",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "celebrity",
+                    "matches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"upload_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      }\n    ]\n  },\n  \"moderation_score_type\": \"probability\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"keyframe_id\": \"bd1768a0-d0a9-97c7-9330-bc9f7230067f\",\n      \"score\": 7629.927684530595,\n      \"asset_type\": \"string\",\n      \"dataset_id\": \"149fe449-aa08-9c67-96f8-d17ccbcfd772\",\n      \"video_id\": \"d7945571-c4a0-67d4-c701-6fc794cbdd47\",\n      \"composite_slice_id\": \"8f058283-fc70-e2ed-bfa0-2d70be8863a8\",\n      \"moderation_score\": 3942.1058535337093\n    },\n    {\n      \"keyframe_id\": \"a598cb74-da70-0efd-326a-6b843d11df39\",\n      \"score\": 4110.115914006616,\n      \"asset_type\": \"string\",\n      \"dataset_id\": \"2426e7b2-8703-5054-5f12-08423309d998\",\n      \"video_id\": \"ee10eec4-bcb0-f874-1007-16978a35cbd6\",\n      \"composite_slice_id\": \"cca8bf5b-2986-0861-9c33-576dc99d1b7d\",\n      \"moderation_score\": 9752.850708997088\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14e00f0d-33ee-4d02-b1ab-aea34f310dd8",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "celebrity",
+                    "matches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"upload_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      }\n    ]\n  },\n  \"moderation_score_type\": \"probability\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f429ce8-f04c-49f5-8068-390a565c1c81",
+          "name": "Hybrid Search",
+          "request": {
+            "name": "Hybrid Search",
+            "description": {
+              "content": "Search images using a text query that scores results against both visual content and text metadata (titles, captions, descriptions, and other text fields).This endpoint is in beta and requires special access, please contact the support team.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "search",
+                "text-to-hybrid-search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"negative_text\": \"<string,null>\",\n  \"limit\": 100,\n  \"datetime_filter\": {\n    \"key\": \"<string>\",\n    \"operator\": \"<string>\",\n    \"start_utc_epoch\": \"<number,null-double>\",\n    \"end_utc_epoch\": \"<number,null-double>\"\n  },\n  \"skip_moderation\": false,\n  \"moderation_score_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4508f55a-360f-4b61-87e7-c2df9800f120",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "text-to-hybrid-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"negative_text\": \"<string,null>\",\n  \"limit\": 100,\n  \"datetime_filter\": {\n    \"key\": \"string\",\n    \"operator\": \"DateTimeRangeInclusive\",\n    \"start_utc_epoch\": 3069.022813800899,\n    \"end_utc_epoch\": 5924.48745472785\n  },\n  \"skip_moderation\": false,\n  \"moderation_score_type\": \"level\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"created_user_id\": \"string\",\n      \"created_dt\": \"1954-02-13T00:40:09.173Z\",\n      \"updated_user_id\": \"string\",\n      \"updated_dt\": \"1965-06-08T21:41:20.624Z\",\n      \"coactive_image_id\": \"4a532a2a-8580-4a44-c27a-e95ab7e3795b\",\n      \"relevance_score\": 8797.265018622766,\n      \"path\": \"string\",\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"moderation_score\": 8876.333210040651\n    },\n    {\n      \"created_user_id\": \"string\",\n      \"created_dt\": \"1957-01-27T16:20:56.026Z\",\n      \"updated_user_id\": \"string\",\n      \"updated_dt\": \"1986-12-15T04:14:38.051Z\",\n      \"coactive_image_id\": \"7e469b4e-a730-5b60-0487-ad015b7dd03e\",\n      \"relevance_score\": 1420.1437541166063,\n      \"path\": \"string\",\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"moderation_score\": 4232.082635800106\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "571acd1c-a39d-4447-9ea2-1df3caf0a24c",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "text-to-hybrid-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"negative_text\": \"<string,null>\",\n  \"limit\": 100,\n  \"datetime_filter\": {\n    \"key\": \"string\",\n    \"operator\": \"DateTimeRangeInclusive\",\n    \"start_utc_epoch\": 3069.022813800899,\n    \"end_utc_epoch\": 5924.48745472785\n  },\n  \"skip_moderation\": false,\n  \"moderation_score_type\": \"level\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1216e4a5-e3bb-45a3-970b-7f7a181ee1a9",
+          "name": "Image to Image Search",
+          "request": {
+            "name": "Image to Image Search",
+            "description": {
+              "content": "Find visually similar images using a reference image. Provide the reference as either a coactive_image_id (an asset already in the dataset) or a public_url.Useful for finding visually related assets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "search",
+                "image-to-image"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      }\n    ]\n  },\n  \"moderation_score_type\": \"<string>\",\n  \"coactive_image_id\": \"<string,null-uuid>\",\n  \"public_url\": \"<string,null>\",\n  \"upload_id\": \"<string,null>\",\n  \"asset_type\": \"<string>\",\n  \"skip_moderation\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9b9d240c-d5c9-46a8-b89a-5bf97528c173",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "image-to-image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      }\n    ]\n  },\n  \"moderation_score_type\": \"level\",\n  \"coactive_image_id\": \"<string,null-uuid>\",\n  \"public_url\": \"<string,null>\",\n  \"upload_id\": \"<string,null>\",\n  \"asset_type\": \"image\",\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"created_user_id\": \"string\",\n      \"created_dt\": \"1991-04-27T16:19:20.743Z\",\n      \"updated_user_id\": \"string\",\n      \"updated_dt\": \"1971-07-04T19:38:01.130Z\",\n      \"coactive_image_id\": \"99e968b1-20f4-b9db-1bc5-9f9edb1f26fe\",\n      \"path\": \"string\",\n      \"metadata\": {\n        \"key_0\": {}\n      },\n      \"moderation_score\": 2458.5252262234735\n    },\n    {\n      \"created_user_id\": \"string\",\n      \"created_dt\": \"2021-12-20T22:48:19.351Z\",\n      \"updated_user_id\": \"string\",\n      \"updated_dt\": \"1982-12-27T10:35:41.457Z\",\n      \"coactive_image_id\": \"3a27b4b7-97e0-cdde-cf55-f80d49484f58\",\n      \"path\": \"string\",\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"moderation_score\": 5013.205670650561\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d38021a-2cc3-4566-a7fe-4cbd53a273c0",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "image-to-image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      }\n    ]\n  },\n  \"moderation_score_type\": \"level\",\n  \"coactive_image_id\": \"<string,null-uuid>\",\n  \"public_url\": \"<string,null>\",\n  \"upload_id\": \"<string,null>\",\n  \"asset_type\": \"image\",\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2d9f2cd-7629-4e02-ad2e-d3b6ec4cfdb3",
+          "name": "Image to Keyframes Search",
+          "request": {
+            "name": "Image to Keyframes Search",
+            "description": {
+              "content": "Find video keyframes that look similar to a reference image. Provide the reference as a public_url or upload_id.Returns a ranked list of matching frames with their parent video.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "search",
+                "image-to-keyframes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      }\n    ]\n  },\n  \"moderation_score_type\": \"<string>\",\n  \"coactive_image_id\": \"<string,null-uuid>\",\n  \"public_url\": \"<string,null>\",\n  \"upload_id\": \"<string,null>\",\n  \"skip_moderation\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1e115ace-3418-4e6f-91dc-5d590dcc9287",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "image-to-keyframes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      }\n    ]\n  },\n  \"moderation_score_type\": \"probability\",\n  \"coactive_image_id\": \"<string,null-uuid>\",\n  \"public_url\": \"<string,null>\",\n  \"upload_id\": \"<string,null>\",\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"keyframe_id\": \"bd1768a0-d0a9-97c7-9330-bc9f7230067f\",\n      \"score\": 7629.927684530595,\n      \"asset_type\": \"string\",\n      \"dataset_id\": \"149fe449-aa08-9c67-96f8-d17ccbcfd772\",\n      \"video_id\": \"d7945571-c4a0-67d4-c701-6fc794cbdd47\",\n      \"composite_slice_id\": \"8f058283-fc70-e2ed-bfa0-2d70be8863a8\",\n      \"moderation_score\": 3942.1058535337093\n    },\n    {\n      \"keyframe_id\": \"a598cb74-da70-0efd-326a-6b843d11df39\",\n      \"score\": 4110.115914006616,\n      \"asset_type\": \"string\",\n      \"dataset_id\": \"2426e7b2-8703-5054-5f12-08423309d998\",\n      \"video_id\": \"ee10eec4-bcb0-f874-1007-16978a35cbd6\",\n      \"composite_slice_id\": \"cca8bf5b-2986-0861-9c33-576dc99d1b7d\",\n      \"moderation_score\": 9752.850708997088\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ade340bf-f25f-4b87-bdae-8194e6f94507",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "image-to-keyframes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      }\n    ]\n  },\n  \"moderation_score_type\": \"probability\",\n  \"coactive_image_id\": \"<string,null-uuid>\",\n  \"public_url\": \"<string,null>\",\n  \"upload_id\": \"<string,null>\",\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff190a3d-2037-4673-8a3e-a772e5937eec",
+          "name": "Text to Image by Person Search",
+          "request": {
+            "name": "Text to Image by Person Search",
+            "description": {
+              "content": "Search for video keyframes that match a text query and contain a specific enrolled person — for example, Jane Doe at a press conference. Specify the person via either person_ids or person_names_or_aliases.The person must already be enrolled in your organization. Returns matching assets plus a video-level list aggregated by best matching keyframe score.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "search",
+                "text-to-image",
+                "by-person"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"asset_type\": \"<string>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      }\n    ]\n  },\n  \"moderation_score_type\": \"<string>\",\n  \"negative_text\": \"<string,null>\",\n  \"person_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"person_names_or_aliases\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip_moderation\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "810ef5f8-43f6-4f3c-a0a3-0692453ef5dd",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "text-to-image",
+                    "by-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"asset_type\": \"image\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      }\n    ]\n  },\n  \"moderation_score_type\": \"probability\",\n  \"negative_text\": \"<string,null>\",\n  \"person_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"person_names_or_aliases\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"coactive_image_id\": \"2e41c4bc-a9b2-7b38-02af-b9dda997cfd3\",\n      \"asset_type\": \"image\",\n      \"dataset_id\": \"f6618934-35e1-28ca-c5eb-ffe88c717257\",\n      \"video_id\": \"e44863c1-b963-a222-4656-47dc676092ee\",\n      \"composite_slice_id\": \"2b2419ef-001c-0441-19fc-11f06f7ea0b1\",\n      \"composite_type\": \"segment\",\n      \"composite_start_time_ms\": 867,\n      \"composite_end_time_ms\": 2651,\n      \"moderation_score\": 1464.2507269853954\n    },\n    {\n      \"coactive_image_id\": \"ca04f713-938d-c392-609b-fd6339ff6020\",\n      \"asset_type\": \"image\",\n      \"dataset_id\": \"cc34268e-b194-2045-dfb1-e9a18d727875\",\n      \"video_id\": \"945af9df-ac9e-df0e-9041-e7088eef23c4\",\n      \"composite_slice_id\": \"1775cafb-6ed3-a4ef-d6b5-fd5a22368bf2\",\n      \"composite_type\": \"shot\",\n      \"composite_start_time_ms\": 8311,\n      \"composite_end_time_ms\": 1622,\n      \"moderation_score\": 4000.0087842013677\n    }\n  ],\n  \"videos\": [\n    {\n      \"video_id\": \"574d874f-ada9-2d32-547e-b05af32460b6\",\n      \"moderation_score\": 1463.8154373191935\n    },\n    {\n      \"video_id\": \"b6be022c-10bd-761e-86c3-ef32f1fecb5f\",\n      \"moderation_score\": 1393.579067189842\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "164a1093-f213-433b-a8cb-aaf004e0471d",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "text-to-image",
+                    "by-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"asset_type\": \"image\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      }\n    ]\n  },\n  \"moderation_score_type\": \"probability\",\n  \"negative_text\": \"<string,null>\",\n  \"person_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"person_names_or_aliases\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8625ac31-19d6-40bf-a865-77ab676ed2a0",
+          "name": "Text to Image Search",
+          "request": {
+            "name": "Text to Image Search",
+            "description": {
+              "content": "Search a dataset with a natural-language query and get back the images that best match it. Use this when you want to find visuals by describing what's in them.For example, search for a sunset at the beach or Jalen Hurts holding the Vince Lombardi trophy. Pair the text query with exact-match metadata filters to narrow results further.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "search",
+                "text-to-image"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      }\n    ]\n  },\n  \"moderation_score_type\": \"<string>\",\n  \"negative_text\": \"<string,null>\",\n  \"asset_type\": \"<string>\",\n  \"skip_moderation\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "32d439e1-f46f-4cf0-a425-bfd532d010b8",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "text-to-image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      }\n    ]\n  },\n  \"moderation_score_type\": \"level\",\n  \"negative_text\": \"<string,null>\",\n  \"asset_type\": \"video\",\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"created_user_id\": \"string\",\n      \"created_dt\": \"1991-04-27T16:19:20.743Z\",\n      \"updated_user_id\": \"string\",\n      \"updated_dt\": \"1971-07-04T19:38:01.130Z\",\n      \"coactive_image_id\": \"99e968b1-20f4-b9db-1bc5-9f9edb1f26fe\",\n      \"path\": \"string\",\n      \"metadata\": {\n        \"key_0\": {}\n      },\n      \"moderation_score\": 2458.5252262234735\n    },\n    {\n      \"created_user_id\": \"string\",\n      \"created_dt\": \"2021-12-20T22:48:19.351Z\",\n      \"updated_user_id\": \"string\",\n      \"updated_dt\": \"1982-12-27T10:35:41.457Z\",\n      \"coactive_image_id\": \"3a27b4b7-97e0-cdde-cf55-f80d49484f58\",\n      \"path\": \"string\",\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"moderation_score\": 5013.205670650561\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b47b99c-11c1-4334-9a69-9324181cf091",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "text-to-image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      }\n    ]\n  },\n  \"moderation_score_type\": \"level\",\n  \"negative_text\": \"<string,null>\",\n  \"asset_type\": \"video\",\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "465fc806-74f5-49b4-a1af-a68d4ad59671",
+          "name": "Text to Keyframes Search",
+          "request": {
+            "name": "Text to Keyframes Search",
+            "description": {
+              "content": "Search across all video frames in a dataset using a natural-language query. Returns the keyframes that best match the description.Use this when you want all the keyframe-level results from your videos rather than one-result-per-video.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "search",
+                "text-to-keyframes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      }\n    ]\n  },\n  \"moderation_score_type\": \"<string>\",\n  \"negative_text\": \"<string,null>\",\n  \"asset_type\": \"<string>\",\n  \"skip_moderation\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f432d910-0012-4324-8f40-f4ffdbc2c95e",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "text-to-keyframes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      }\n    ]\n  },\n  \"moderation_score_type\": \"level\",\n  \"negative_text\": \"<string,null>\",\n  \"asset_type\": \"video\",\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"keyframe_id\": \"bd1768a0-d0a9-97c7-9330-bc9f7230067f\",\n      \"score\": 7629.927684530595,\n      \"asset_type\": \"string\",\n      \"dataset_id\": \"149fe449-aa08-9c67-96f8-d17ccbcfd772\",\n      \"video_id\": \"d7945571-c4a0-67d4-c701-6fc794cbdd47\",\n      \"composite_slice_id\": \"8f058283-fc70-e2ed-bfa0-2d70be8863a8\",\n      \"moderation_score\": 3942.1058535337093\n    },\n    {\n      \"keyframe_id\": \"a598cb74-da70-0efd-326a-6b843d11df39\",\n      \"score\": 4110.115914006616,\n      \"asset_type\": \"string\",\n      \"dataset_id\": \"2426e7b2-8703-5054-5f12-08423309d998\",\n      \"video_id\": \"ee10eec4-bcb0-f874-1007-16978a35cbd6\",\n      \"composite_slice_id\": \"cca8bf5b-2986-0861-9c33-576dc99d1b7d\",\n      \"moderation_score\": 9752.850708997088\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4655a924-f4e5-40e6-8745-3d79051ec5b7",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "text-to-keyframes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": true\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      }\n    ]\n  },\n  \"moderation_score_type\": \"level\",\n  \"negative_text\": \"<string,null>\",\n  \"asset_type\": \"video\",\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5928b0e-1baf-4824-9c8f-841acf137425",
+          "name": "Transcript Exact Match",
+          "request": {
+            "name": "Transcript Exact Match",
+            "description": {
+              "content": "Performs an exact text match search on video transcripts using a natural language text query (e.g., 'thank you for your time' or 'my name is John') within a specified dataset (dataset_id). This searches for exact occurrences of the provided text within video transcript data, not semantic or approximate matching. Returns videos grouped by their exact transcript matches, where each match includes the composite slice (shot or scene) containing the match, the matched transcript text, timestamps, frame numbers, and a coverage score indicating how much of the composite's transcript is covered by the query (1.0 means the query matches the entire transcript).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "search",
+                "text-to-transcript",
+                "exact-match"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      }\n    ]\n  },\n  \"moderation_score_type\": \"<string>\",\n  \"composite_type\": \"shot\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ad90e6c3-d02b-438e-a6e5-30fd32e47821",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "text-to-transcript",
+                    "exact-match"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      }\n    ]\n  },\n  \"moderation_score_type\": \"level\",\n  \"composite_type\": \"shot\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"coactive_image_id\": \"6ad9f373-87fd-5120-422a-2d6d121b2b52\",\n      \"video\": {\n        \"created_user_id\": \"string\",\n        \"created_dt\": \"1983-08-27T15:35:05.317Z\",\n        \"updated_user_id\": \"string\",\n        \"updated_dt\": \"2006-11-22T05:42:35.959Z\",\n        \"coactive_video_id\": \"4f38888c-2ec7-ff1b-d2cd-f5b86f4d834c\",\n        \"path\": \"string\",\n        \"metadata\": {\n          \"key_0\": {}\n        }\n      },\n      \"audio_segment\": {\n        \"start_time_ms\": 2482,\n        \"end_time_ms\": 8076,\n        \"speech_to_text_transcription\": \"string\"\n      },\n      \"coverage_score\": 4670.108481171249,\n      \"timestamp\": 6759,\n      \"moderation_score\": 5063.754322957843\n    },\n    {\n      \"coactive_image_id\": \"159e5279-c0c1-3b4d-c88e-faf0b962d622\",\n      \"video\": {\n        \"created_user_id\": \"string\",\n        \"created_dt\": \"2013-11-30T14:52:36.275Z\",\n        \"updated_user_id\": \"string\",\n        \"updated_dt\": \"1954-12-13T19:26:29.205Z\",\n        \"coactive_video_id\": \"776d8a3e-3116-9047-5bd4-c0fb9fc3a613\",\n        \"path\": \"string\",\n        \"metadata\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        }\n      },\n      \"audio_segment\": {\n        \"start_time_ms\": 1207,\n        \"end_time_ms\": 3493,\n        \"speech_to_text_transcription\": \"string\"\n      },\n      \"coverage_score\": 6656.447929424275,\n      \"timestamp\": 9153,\n      \"moderation_score\": 8154.345711913509\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85cce18f-45dd-4407-a9a6-59548a82c99b",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "text-to-transcript",
+                    "exact-match"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"offset\": 0,\n  \"limit\": 100,\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      }\n    ]\n  },\n  \"moderation_score_type\": \"level\",\n  \"composite_type\": \"shot\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.coactive.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b92a4e33-65a3-4912-bb68-0330a9b09fc6",
+    "name": "API Reference agentic-search > agenticSearch search > search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

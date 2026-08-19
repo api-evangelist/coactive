@@ -1,10 +1,10 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: generated
-source: openapi/coactive-openapi-original.json
+source: openapi/ (22 refined specs, 118 operations, harvested from https://docs.coactive.ai/openapi.json)
 skills:
 - file: coactive-ingest-and-search.md
   name: Ingest a video dataset and search it
-  api: openapi/coactive-openapi-original.json
+  api: openapi/coactive-datasets-dataset-api-openapi.yml
   operations:
   - create-dataset-api-v-1-datasets-post
   - create-ingest-job-from-videos-api-v-1-ingestion-videos-post
@@ -12,8 +12,30 @@ skills:
   - text-search-api-v-1-search-text-to-image-post
 - file: coactive-query-and-export.md
   name: Run an asynchronous query and export results
-  api: openapi/coactive-openapi-original.json
+  api: openapi/coactive-queries-api-openapi.yml
   operations:
   - create-query-api-v-1-queries-post
   - get-query-api-v-1-queries-query-id-get
   - export-query-api-v-1-queries-query-id-exports-post
+- file: coactive-agentic-search.md
+  name: Conversational agentic search over a dataset
+  api: openapi/coactive-agentic-search-agenticsearch-api-openapi.yml
+  operations:
+  - chat
+  - chat-dataset
+  - search-videos
+- file: coactive-build-a-concept.md
+  name: Build and refine a visual concept
+  api: openapi/coactive-concept-api-openapi.yml
+  operations:
+  - create
+  - get-label-candidates
+  - update-labels
+  - get-concept-prediction
+  - list
+notes: >-
+  Four packaged Agent Skills. Every operationId listed was verified verbatim against the refined
+  specs in openapi/ on 2026-08-13. The two skills carried over from the merged coactive-ai repo
+  (agentic-search, build-a-concept) had been left out of this index and pointed at spec/artifact
+  paths that no longer exist; both the index entries and the in-file cross-references were repaired
+  this round to the current refined specs.

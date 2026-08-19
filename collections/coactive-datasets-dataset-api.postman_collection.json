@@ -1,0 +1,1065 @@
+{
+  "item": [
+    {
+      "id": "0136b8a6-cd83-4405-8c92-b55cf7a9e29d",
+      "name": "datasets > dataset",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "35c627e4-6db7-4ecb-9808-8a50b70ac680",
+          "name": "Create Dataset",
+          "request": {
+            "name": "Create Dataset",
+            "description": {
+              "content": "Create a new dataset",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "datasets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"encoder_name\": \"<string>\",\n  \"description\": \"<string,null>\",\n  \"allowed_asset_types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"keyframe_sampling_method\": \"<string>\",\n  \"keyframe_uniform_fps_sampling_rate\": \"<number,null-double>\",\n  \"store_original\": true,\n  \"store_preview\": true,\n  \"metadata_fields_to_index\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata_fields_to_embed\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dataset_config\": {\n    \"embedding_id\": {\n      \"key_0\": \"<uuid>\"\n    },\n    \"encoder_name\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"extra_config\": {\n      \"composite_settings\": {\n        \"key_0\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_1\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_2\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    \"hybrid_search\": {\n      \"weights\": {\n        \"key_0\": \"<double>\",\n        \"key_1\": \"<double>\"\n      }\n    },\n    \"context_studio_enabled\": false,\n    \"metadata_fields_to_embed\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"metadata_fields_to_index\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"celebrity_detection_enabled\": false,\n    \"agentic_search_metadata_description\": {\n      \"key_0\": \"<string>\"\n    },\n    \"asset_identifier_key\": \"<string,null>\",\n    \"context_studio_export_json_connection_name\": \"<string,null>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "835f1b56-2494-40e4-9b3c-af4b1e463e98",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"encoder_name\": \"nova2-multimodal\",\n  \"description\": \"<string,null>\",\n  \"allowed_asset_types\": [\n    \"video\",\n    \"image\"\n  ],\n  \"keyframe_sampling_method\": \"uniform\",\n  \"keyframe_uniform_fps_sampling_rate\": \"<number,null-double>\",\n  \"store_original\": true,\n  \"store_preview\": true,\n  \"metadata_fields_to_index\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata_fields_to_embed\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dataset_config\": {\n    \"embedding_id\": {\n      \"key_0\": \"8b54eae3-b24b-59e7-a8b9-f9e078b10318\",\n      \"key_1\": \"c6a44673-b7c5-9010-4625-f6961303ed14\"\n    },\n    \"encoder_name\": {\n      \"key_0\": \"string\"\n    },\n    \"extra_config\": {\n      \"composite_settings\": {\n        \"key_0\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_1\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    \"hybrid_search\": {\n      \"weights\": {\n        \"key_0\": 9396.72611835866\n      }\n    },\n    \"context_studio_enabled\": false,\n    \"metadata_fields_to_embed\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata_fields_to_index\": [\n      \"string\",\n      \"string\"\n    ],\n    \"celebrity_detection_enabled\": false,\n    \"agentic_search_metadata_description\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"asset_identifier_key\": \"string\",\n    \"context_studio_export_json_connection_name\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_dt\": \"1967-05-24T08:34:44.322Z\",\n  \"created_by\": \"string\",\n  \"id\": \"a839fb43-7f05-168d-ec96-01fc994a4083\",\n  \"name\": \"string\",\n  \"embeddings\": [\n    {\n      \"id\": \"859b31a5-9537-a36c-5148-3136d9d71267\",\n      \"name\": \"multimodal\",\n      \"modality\": \"string\",\n      \"modalities\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"f7cbeb0f-8502-92bc-637a-ff205aa6aa54\",\n      \"name\": \"nova2-multimodal\",\n      \"modality\": \"string\",\n      \"modalities\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"encoders\": [\n    {\n      \"id\": \"3929b21e-4d47-2974-a9d2-59cf04b43fe1\",\n      \"name\": \"multimodal-tx-large4\",\n      \"modality\": \"string\",\n      \"modalities\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"76b573b1-6856-8b86-6c6e-a5acee6fbf4c\",\n      \"name\": \"multimodal-tx-large2\",\n      \"modality\": \"string\",\n      \"modalities\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"description\": \"string\",\n  \"allowed_asset_types\": [\n    \"image\",\n    \"image\"\n  ],\n  \"status\": \"deleted\",\n  \"keyframe_sampling_method\": \"uniform\",\n  \"store_original\": false,\n  \"store_preview\": false,\n  \"updated_dt\": \"1973-05-17T20:30:49.360Z\",\n  \"updated_by\": \"string\",\n  \"deleted_dt\": \"2001-07-08T08:30:06.237Z\",\n  \"deleted_by\": \"string\",\n  \"keyframe_uniform_fps_sampling_rate\": 98.61387368023777,\n  \"metadata_fields_to_index\": [\n    \"string\",\n    \"string\"\n  ],\n  \"metadata_fields_to_embed\": [\n    \"string\",\n    \"string\"\n  ],\n  \"dataset_config\": {\n    \"embedding_id\": {\n      \"key_0\": \"24ea408a-1a2d-0c17-6494-75ac8d8abb5d\",\n      \"key_1\": \"e635de19-771e-8fb2-4418-2eb26bea0dd2\",\n      \"key_2\": \"0639a4a8-bee3-fb83-b76b-14634965f543\"\n    },\n    \"encoder_name\": {\n      \"key_0\": \"string\"\n    },\n    \"extra_config\": {\n      \"composite_settings\": {\n        \"key_0\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    \"hybrid_search\": {\n      \"weights\": {\n        \"key_0\": 1581.2947336993689,\n        \"key_1\": 3419.638825947211\n      }\n    },\n    \"context_studio_enabled\": false,\n    \"metadata_fields_to_embed\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata_fields_to_index\": [\n      \"string\",\n      \"string\"\n    ],\n    \"celebrity_detection_enabled\": false,\n    \"agentic_search_metadata_description\": {\n      \"key_0\": \"string\"\n    },\n    \"asset_identifier_key\": \"string\",\n    \"context_studio_export_json_connection_name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90244aef-6a58-4429-a031-1fe43de744d8",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"encoder_name\": \"nova2-multimodal\",\n  \"description\": \"<string,null>\",\n  \"allowed_asset_types\": [\n    \"video\",\n    \"image\"\n  ],\n  \"keyframe_sampling_method\": \"uniform\",\n  \"keyframe_uniform_fps_sampling_rate\": \"<number,null-double>\",\n  \"store_original\": true,\n  \"store_preview\": true,\n  \"metadata_fields_to_index\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata_fields_to_embed\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dataset_config\": {\n    \"embedding_id\": {\n      \"key_0\": \"8b54eae3-b24b-59e7-a8b9-f9e078b10318\",\n      \"key_1\": \"c6a44673-b7c5-9010-4625-f6961303ed14\"\n    },\n    \"encoder_name\": {\n      \"key_0\": \"string\"\n    },\n    \"extra_config\": {\n      \"composite_settings\": {\n        \"key_0\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_1\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    \"hybrid_search\": {\n      \"weights\": {\n        \"key_0\": 9396.72611835866\n      }\n    },\n    \"context_studio_enabled\": false,\n    \"metadata_fields_to_embed\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata_fields_to_index\": [\n      \"string\",\n      \"string\"\n    ],\n    \"celebrity_detection_enabled\": false,\n    \"agentic_search_metadata_description\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"asset_identifier_key\": \"string\",\n    \"context_studio_export_json_connection_name\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24bf26e2-b712-4283-9200-fdbdbe1c18f2",
+          "name": "Get Datasets",
+          "request": {
+            "name": "Get Datasets",
+            "description": {
+              "content": "Get all datasets in a paginated list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "datasets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dataset_ids",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "dataset_ids",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "allowed_asset_types",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "allowed_asset_types",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "keyframe_sampling_method",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "store_original",
+                  "value": "<boolean,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "store_preview",
+                  "value": "<boolean,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_before",
+                  "value": "<string,null-date-time>"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_after",
+                  "value": "<string,null-date-time>"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_updated_before",
+                  "value": "<string,null-date-time>"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_updated_after",
+                  "value": "<string,null-date-time>"
+                },
+                {
+                  "disabled": false,
+                  "key": "name_pattern",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "new_video_data_model",
+                  "value": "<boolean,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "celebrity_detection_enabled",
+                  "value": "<boolean,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "context_studio_enabled",
+                  "value": "<boolean,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_deleted",
+                  "value": "false"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1b82ab02-5cb4-4254-a67a-5d70c74e1136",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataset_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "dataset_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "inactive"
+                    },
+                    {
+                      "key": "status",
+                      "value": "active"
+                    },
+                    {
+                      "key": "allowed_asset_types",
+                      "value": "video"
+                    },
+                    {
+                      "key": "allowed_asset_types",
+                      "value": "video"
+                    },
+                    {
+                      "key": "keyframe_sampling_method",
+                      "value": "intelligent"
+                    },
+                    {
+                      "key": "store_original",
+                      "value": "<boolean,null>"
+                    },
+                    {
+                      "key": "store_preview",
+                      "value": "<boolean,null>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<string,null-date-time>"
+                    },
+                    {
+                      "key": "created_after",
+                      "value": "<string,null-date-time>"
+                    },
+                    {
+                      "key": "last_updated_before",
+                      "value": "<string,null-date-time>"
+                    },
+                    {
+                      "key": "last_updated_after",
+                      "value": "<string,null-date-time>"
+                    },
+                    {
+                      "key": "name_pattern",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "new_video_data_model",
+                      "value": "<boolean,null>"
+                    },
+                    {
+                      "key": "celebrity_detection_enabled",
+                      "value": "<boolean,null>"
+                    },
+                    {
+                      "key": "context_studio_enabled",
+                      "value": "<boolean,null>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "include_deleted",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"page\": {\n      \"current_page\": 6538,\n      \"last_page\": 5370,\n      \"limit\": 6172,\n      \"offset\": 5830,\n      \"total\": 992\n    }\n  },\n  \"data\": [\n    {\n      \"created_dt\": \"1947-05-17T01:39:49.284Z\",\n      \"created_by\": \"string\",\n      \"id\": \"ce94ff58-1592-c215-8f7d-e53f726b78a3\",\n      \"name\": \"string\",\n      \"embeddings\": [\n        {\n          \"id\": \"4ed6c9a2-457b-f5b5-9dae-f373d2d9424c\",\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"modality\": \"string\",\n          \"modalities\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"id\": \"074a5714-84f5-bc02-f522-b1ee376db18e\",\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"modality\": \"string\",\n          \"modalities\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"encoders\": [\n        {\n          \"id\": \"7fadf929-559b-4fed-811e-a000e51b23fc\",\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"modality\": \"string\",\n          \"modalities\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"id\": \"16fac339-4645-5813-9605-1377105d1756\",\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"modality\": \"string\",\n          \"modalities\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"description\": \"string\",\n      \"allowed_asset_types\": [\n        \"video\",\n        \"video\"\n      ],\n      \"status\": \"deleted\",\n      \"keyframe_sampling_method\": \"uniform\",\n      \"store_original\": true,\n      \"store_preview\": false,\n      \"updated_dt\": \"1955-10-16T06:17:50.920Z\",\n      \"updated_by\": \"string\",\n      \"deleted_dt\": \"1948-10-12T21:37:06.651Z\",\n      \"deleted_by\": \"string\",\n      \"keyframe_uniform_fps_sampling_rate\": 5909.206629273367,\n      \"metadata_fields_to_index\": [\n        \"string\",\n        \"string\"\n      ],\n      \"metadata_fields_to_embed\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dataset_config\": {\n        \"embedding_id\": {\n          \"key_0\": \"ac99d37f-62ad-fb62-efe7-1bda4307f6e8\",\n          \"key_1\": \"4ffb39e6-3cb1-d1f8-efff-2fbe9802a899\"\n        },\n        \"encoder_name\": {\n          \"key_0\": \"string\"\n        },\n        \"extra_config\": {\n          \"composite_settings\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"hybrid_search\": {\n          \"weights\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"context_studio_enabled\": false,\n        \"metadata_fields_to_embed\": [\n          \"string\",\n          \"string\"\n        ],\n        \"metadata_fields_to_index\": [\n          \"string\",\n          \"string\"\n        ],\n        \"celebrity_detection_enabled\": false,\n        \"agentic_search_metadata_description\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"asset_identifier_key\": \"string\",\n        \"context_studio_export_json_connection_name\": \"string\"\n      }\n    },\n    {\n      \"created_dt\": \"1988-08-02T08:37:17.616Z\",\n      \"created_by\": \"string\",\n      \"id\": \"af072251-8753-29ba-fe8a-a2bffaabfea8\",\n      \"name\": \"string\",\n      \"embeddings\": [\n        {\n          \"id\": \"1aa370c3-7c8c-a38a-8588-b9fec0d8c68f\",\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"modality\": \"string\",\n          \"modalities\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"id\": \"31c77a68-e136-ed7a-6959-b906bea085ff\",\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"modality\": \"string\",\n          \"modalities\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"encoders\": [\n        {\n          \"id\": \"387a9060-3d7c-c04d-f7eb-733f4266a31b\",\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"modality\": \"string\",\n          \"modalities\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"id\": \"621b233f-1625-90b0-c4f2-04f311138628\",\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"modality\": \"string\",\n          \"modalities\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"description\": \"string\",\n      \"allowed_asset_types\": [\n        \"image\",\n        \"image\"\n      ],\n      \"status\": \"inactive\",\n      \"keyframe_sampling_method\": \"uniform\",\n      \"store_original\": false,\n      \"store_preview\": false,\n      \"updated_dt\": \"1966-02-27T12:47:24.284Z\",\n      \"updated_by\": \"string\",\n      \"deleted_dt\": \"1975-04-01T03:43:46.646Z\",\n      \"deleted_by\": \"string\",\n      \"keyframe_uniform_fps_sampling_rate\": 6525.372852885044,\n      \"metadata_fields_to_index\": [\n        \"string\",\n        \"string\"\n      ],\n      \"metadata_fields_to_embed\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dataset_config\": {\n        \"embedding_id\": {\n          \"key_0\": \"e806c0aa-782d-3cd7-0a3a-6d2e567868db\",\n          \"key_1\": \"b0cc050d-8238-c827-5ec7-c51d79f6b97a\"\n        },\n        \"encoder_name\": {\n          \"key_0\": \"string\"\n        },\n        \"extra_config\": {\n          \"composite_settings\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"hybrid_search\": {\n          \"weights\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"context_studio_enabled\": false,\n        \"metadata_fields_to_embed\": [\n          \"string\",\n          \"string\"\n        ],\n        \"metadata_fields_to_index\": [\n          \"string\",\n          \"string\"\n        ],\n        \"celebrity_detection_enabled\": false,\n        \"agentic_search_metadata_description\": {\n          \"key_0\": \"string\"\n        },\n        \"asset_identifier_key\": \"string\",\n        \"context_studio_export_json_connection_name\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6945ffde-7f6a-4cdd-92e2-241ef6ce231a",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataset_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "dataset_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "inactive"
+                    },
+                    {
+                      "key": "status",
+                      "value": "active"
+                    },
+                    {
+                      "key": "allowed_asset_types",
+                      "value": "video"
+                    },
+                    {
+                      "key": "allowed_asset_types",
+                      "value": "video"
+                    },
+                    {
+                      "key": "keyframe_sampling_method",
+                      "value": "intelligent"
+                    },
+                    {
+                      "key": "store_original",
+                      "value": "<boolean,null>"
+                    },
+                    {
+                      "key": "store_preview",
+                      "value": "<boolean,null>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<string,null-date-time>"
+                    },
+                    {
+                      "key": "created_after",
+                      "value": "<string,null-date-time>"
+                    },
+                    {
+                      "key": "last_updated_before",
+                      "value": "<string,null-date-time>"
+                    },
+                    {
+                      "key": "last_updated_after",
+                      "value": "<string,null-date-time>"
+                    },
+                    {
+                      "key": "name_pattern",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "new_video_data_model",
+                      "value": "<boolean,null>"
+                    },
+                    {
+                      "key": "celebrity_detection_enabled",
+                      "value": "<boolean,null>"
+                    },
+                    {
+                      "key": "context_studio_enabled",
+                      "value": "<boolean,null>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "include_deleted",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ed00794-0a3c-48c3-9c8e-696c36662034",
+          "name": "Delete Dataset By Id",
+          "request": {
+            "name": "Delete Dataset By Id",
+            "description": {
+              "content": "Delete a dataset by its unique identifier",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "datasets",
+                ":dataset_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "dataset_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f37c5d2-2efd-45cd-8d51-4c93379308f7",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets",
+                    ":dataset_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_dt\": \"1967-05-24T08:34:44.322Z\",\n  \"created_by\": \"string\",\n  \"id\": \"a839fb43-7f05-168d-ec96-01fc994a4083\",\n  \"name\": \"string\",\n  \"embeddings\": [\n    {\n      \"id\": \"859b31a5-9537-a36c-5148-3136d9d71267\",\n      \"name\": \"multimodal\",\n      \"modality\": \"string\",\n      \"modalities\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"f7cbeb0f-8502-92bc-637a-ff205aa6aa54\",\n      \"name\": \"nova2-multimodal\",\n      \"modality\": \"string\",\n      \"modalities\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"encoders\": [\n    {\n      \"id\": \"3929b21e-4d47-2974-a9d2-59cf04b43fe1\",\n      \"name\": \"multimodal-tx-large4\",\n      \"modality\": \"string\",\n      \"modalities\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"76b573b1-6856-8b86-6c6e-a5acee6fbf4c\",\n      \"name\": \"multimodal-tx-large2\",\n      \"modality\": \"string\",\n      \"modalities\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"description\": \"string\",\n  \"allowed_asset_types\": [\n    \"image\",\n    \"image\"\n  ],\n  \"status\": \"deleted\",\n  \"keyframe_sampling_method\": \"uniform\",\n  \"store_original\": false,\n  \"store_preview\": false,\n  \"updated_dt\": \"1973-05-17T20:30:49.360Z\",\n  \"updated_by\": \"string\",\n  \"deleted_dt\": \"2001-07-08T08:30:06.237Z\",\n  \"deleted_by\": \"string\",\n  \"keyframe_uniform_fps_sampling_rate\": 98.61387368023777,\n  \"metadata_fields_to_index\": [\n    \"string\",\n    \"string\"\n  ],\n  \"metadata_fields_to_embed\": [\n    \"string\",\n    \"string\"\n  ],\n  \"dataset_config\": {\n    \"embedding_id\": {\n      \"key_0\": \"24ea408a-1a2d-0c17-6494-75ac8d8abb5d\",\n      \"key_1\": \"e635de19-771e-8fb2-4418-2eb26bea0dd2\",\n      \"key_2\": \"0639a4a8-bee3-fb83-b76b-14634965f543\"\n    },\n    \"encoder_name\": {\n      \"key_0\": \"string\"\n    },\n    \"extra_config\": {\n      \"composite_settings\": {\n        \"key_0\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    \"hybrid_search\": {\n      \"weights\": {\n        \"key_0\": 1581.2947336993689,\n        \"key_1\": 3419.638825947211\n      }\n    },\n    \"context_studio_enabled\": false,\n    \"metadata_fields_to_embed\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata_fields_to_index\": [\n      \"string\",\n      \"string\"\n    ],\n    \"celebrity_detection_enabled\": false,\n    \"agentic_search_metadata_description\": {\n      \"key_0\": \"string\"\n    },\n    \"asset_identifier_key\": \"string\",\n    \"context_studio_export_json_connection_name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e70c53f7-55c9-42f9-9bdb-c67d21a78f82",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets",
+                    ":dataset_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a209b4d3-6ed6-43c5-8fa2-ae4a4acd46fd",
+          "name": "Get Dataset By Id",
+          "request": {
+            "name": "Get Dataset By Id",
+            "description": {
+              "content": "Get a dataset by its unique identifier",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "datasets",
+                ":dataset_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_deleted",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "dataset_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e381c58-5131-42eb-868e-3b18744bf4f2",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets",
+                    ":dataset_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_deleted",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_dt\": \"1967-05-24T08:34:44.322Z\",\n  \"created_by\": \"string\",\n  \"id\": \"a839fb43-7f05-168d-ec96-01fc994a4083\",\n  \"name\": \"string\",\n  \"embeddings\": [\n    {\n      \"id\": \"859b31a5-9537-a36c-5148-3136d9d71267\",\n      \"name\": \"multimodal\",\n      \"modality\": \"string\",\n      \"modalities\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"f7cbeb0f-8502-92bc-637a-ff205aa6aa54\",\n      \"name\": \"nova2-multimodal\",\n      \"modality\": \"string\",\n      \"modalities\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"encoders\": [\n    {\n      \"id\": \"3929b21e-4d47-2974-a9d2-59cf04b43fe1\",\n      \"name\": \"multimodal-tx-large4\",\n      \"modality\": \"string\",\n      \"modalities\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"76b573b1-6856-8b86-6c6e-a5acee6fbf4c\",\n      \"name\": \"multimodal-tx-large2\",\n      \"modality\": \"string\",\n      \"modalities\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"description\": \"string\",\n  \"allowed_asset_types\": [\n    \"image\",\n    \"image\"\n  ],\n  \"status\": \"deleted\",\n  \"keyframe_sampling_method\": \"uniform\",\n  \"store_original\": false,\n  \"store_preview\": false,\n  \"updated_dt\": \"1973-05-17T20:30:49.360Z\",\n  \"updated_by\": \"string\",\n  \"deleted_dt\": \"2001-07-08T08:30:06.237Z\",\n  \"deleted_by\": \"string\",\n  \"keyframe_uniform_fps_sampling_rate\": 98.61387368023777,\n  \"metadata_fields_to_index\": [\n    \"string\",\n    \"string\"\n  ],\n  \"metadata_fields_to_embed\": [\n    \"string\",\n    \"string\"\n  ],\n  \"dataset_config\": {\n    \"embedding_id\": {\n      \"key_0\": \"24ea408a-1a2d-0c17-6494-75ac8d8abb5d\",\n      \"key_1\": \"e635de19-771e-8fb2-4418-2eb26bea0dd2\",\n      \"key_2\": \"0639a4a8-bee3-fb83-b76b-14634965f543\"\n    },\n    \"encoder_name\": {\n      \"key_0\": \"string\"\n    },\n    \"extra_config\": {\n      \"composite_settings\": {\n        \"key_0\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    \"hybrid_search\": {\n      \"weights\": {\n        \"key_0\": 1581.2947336993689,\n        \"key_1\": 3419.638825947211\n      }\n    },\n    \"context_studio_enabled\": false,\n    \"metadata_fields_to_embed\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata_fields_to_index\": [\n      \"string\",\n      \"string\"\n    ],\n    \"celebrity_detection_enabled\": false,\n    \"agentic_search_metadata_description\": {\n      \"key_0\": \"string\"\n    },\n    \"asset_identifier_key\": \"string\",\n    \"context_studio_export_json_connection_name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0e3395b-355a-4d88-a489-60411a32c74b",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets",
+                    ":dataset_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_deleted",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7426feed-232c-4b55-95a5-d2a702cb98ac",
+          "name": "Update Dataset By Id",
+          "request": {
+            "name": "Update Dataset By Id",
+            "description": {
+              "content": "Update a dataset by its unique identifier",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "datasets",
+                ":dataset_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "dataset_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string,null>\",\n  \"description\": \"<string,null>\",\n  \"status\": \"<string>\",\n  \"store_original\": \"<boolean,null>\",\n  \"store_preview\": \"<boolean,null>\",\n  \"dataset_config\": {\n    \"embedding_id\": {\n      \"key_0\": \"<uuid>\",\n      \"key_1\": \"<uuid>\"\n    },\n    \"encoder_name\": {\n      \"key_0\": \"<string>\"\n    },\n    \"extra_config\": {\n      \"composite_settings\": {\n        \"key_0\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_1\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    \"hybrid_search\": {\n      \"weights\": {\n        \"key_0\": \"<double>\",\n        \"key_1\": \"<double>\"\n      }\n    },\n    \"context_studio_enabled\": false,\n    \"metadata_fields_to_embed\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"metadata_fields_to_index\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"celebrity_detection_enabled\": false,\n    \"agentic_search_metadata_description\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"asset_identifier_key\": \"<string,null>\",\n    \"context_studio_export_json_connection_name\": \"<string,null>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2655ed6a-eade-40b3-9616-45106c95329f",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets",
+                    ":dataset_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string,null>\",\n  \"description\": \"<string,null>\",\n  \"status\": \"active\",\n  \"store_original\": \"<boolean,null>\",\n  \"store_preview\": \"<boolean,null>\",\n  \"dataset_config\": {\n    \"embedding_id\": {\n      \"key_0\": \"52a63f02-010c-cee0-1477-b16b9021a102\",\n      \"key_1\": \"89d15db2-de57-4dfc-5542-7bafb792fb8c\"\n    },\n    \"encoder_name\": {\n      \"key_0\": \"string\"\n    },\n    \"extra_config\": {\n      \"composite_settings\": {\n        \"key_0\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_1\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_2\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    \"hybrid_search\": {\n      \"weights\": {\n        \"key_0\": 4232.235238802794,\n        \"key_1\": 822.935502396509\n      }\n    },\n    \"context_studio_enabled\": false,\n    \"metadata_fields_to_embed\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata_fields_to_index\": [\n      \"string\",\n      \"string\"\n    ],\n    \"celebrity_detection_enabled\": false,\n    \"agentic_search_metadata_description\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"asset_identifier_key\": \"string\",\n    \"context_studio_export_json_connection_name\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_dt\": \"1967-05-24T08:34:44.322Z\",\n  \"created_by\": \"string\",\n  \"id\": \"a839fb43-7f05-168d-ec96-01fc994a4083\",\n  \"name\": \"string\",\n  \"embeddings\": [\n    {\n      \"id\": \"859b31a5-9537-a36c-5148-3136d9d71267\",\n      \"name\": \"multimodal\",\n      \"modality\": \"string\",\n      \"modalities\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"f7cbeb0f-8502-92bc-637a-ff205aa6aa54\",\n      \"name\": \"nova2-multimodal\",\n      \"modality\": \"string\",\n      \"modalities\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"encoders\": [\n    {\n      \"id\": \"3929b21e-4d47-2974-a9d2-59cf04b43fe1\",\n      \"name\": \"multimodal-tx-large4\",\n      \"modality\": \"string\",\n      \"modalities\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"76b573b1-6856-8b86-6c6e-a5acee6fbf4c\",\n      \"name\": \"multimodal-tx-large2\",\n      \"modality\": \"string\",\n      \"modalities\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"description\": \"string\",\n  \"allowed_asset_types\": [\n    \"image\",\n    \"image\"\n  ],\n  \"status\": \"deleted\",\n  \"keyframe_sampling_method\": \"uniform\",\n  \"store_original\": false,\n  \"store_preview\": false,\n  \"updated_dt\": \"1973-05-17T20:30:49.360Z\",\n  \"updated_by\": \"string\",\n  \"deleted_dt\": \"2001-07-08T08:30:06.237Z\",\n  \"deleted_by\": \"string\",\n  \"keyframe_uniform_fps_sampling_rate\": 98.61387368023777,\n  \"metadata_fields_to_index\": [\n    \"string\",\n    \"string\"\n  ],\n  \"metadata_fields_to_embed\": [\n    \"string\",\n    \"string\"\n  ],\n  \"dataset_config\": {\n    \"embedding_id\": {\n      \"key_0\": \"24ea408a-1a2d-0c17-6494-75ac8d8abb5d\",\n      \"key_1\": \"e635de19-771e-8fb2-4418-2eb26bea0dd2\",\n      \"key_2\": \"0639a4a8-bee3-fb83-b76b-14634965f543\"\n    },\n    \"encoder_name\": {\n      \"key_0\": \"string\"\n    },\n    \"extra_config\": {\n      \"composite_settings\": {\n        \"key_0\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    \"hybrid_search\": {\n      \"weights\": {\n        \"key_0\": 1581.2947336993689,\n        \"key_1\": 3419.638825947211\n      }\n    },\n    \"context_studio_enabled\": false,\n    \"metadata_fields_to_embed\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata_fields_to_index\": [\n      \"string\",\n      \"string\"\n    ],\n    \"celebrity_detection_enabled\": false,\n    \"agentic_search_metadata_description\": {\n      \"key_0\": \"string\"\n    },\n    \"asset_identifier_key\": \"string\",\n    \"context_studio_export_json_connection_name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ee9ed6b-8def-4ad6-9087-f400816fe8d3",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets",
+                    ":dataset_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string,null>\",\n  \"description\": \"<string,null>\",\n  \"status\": \"active\",\n  \"store_original\": \"<boolean,null>\",\n  \"store_preview\": \"<boolean,null>\",\n  \"dataset_config\": {\n    \"embedding_id\": {\n      \"key_0\": \"52a63f02-010c-cee0-1477-b16b9021a102\",\n      \"key_1\": \"89d15db2-de57-4dfc-5542-7bafb792fb8c\"\n    },\n    \"encoder_name\": {\n      \"key_0\": \"string\"\n    },\n    \"extra_config\": {\n      \"composite_settings\": {\n        \"key_0\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_1\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_2\": {\n          \"maximum_slice_duration_seconds\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    \"hybrid_search\": {\n      \"weights\": {\n        \"key_0\": 4232.235238802794,\n        \"key_1\": 822.935502396509\n      }\n    },\n    \"context_studio_enabled\": false,\n    \"metadata_fields_to_embed\": [\n      \"string\",\n      \"string\"\n    ],\n    \"metadata_fields_to_index\": [\n      \"string\",\n      \"string\"\n    ],\n    \"celebrity_detection_enabled\": false,\n    \"agentic_search_metadata_description\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"asset_identifier_key\": \"string\",\n    \"context_studio_export_json_connection_name\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.coactive.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4f1156fc-e940-416a-9b4b-255c703de578",
+    "name": "API Reference agentic-search > agenticSearch datasets > dataset API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

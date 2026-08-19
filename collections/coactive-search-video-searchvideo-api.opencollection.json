@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch search-video > searchVideo API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "search-video > searchVideo",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Detailed Video Search By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/search/video",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "query",
+                "description": "Dataset identifier"
+              },
+              {
+                "name": "text_query",
+                "value": "",
+                "type": "query",
+                "description": "Text query for search"
+              },
+              {
+                "name": "video_id",
+                "value": "",
+                "type": "query",
+                "description": "Video identifier"
+              },
+              {
+                "name": "composite_type",
+                "value": "",
+                "type": "query",
+                "description": "Type of composite"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of slices to return"
+              }
+            ]
+          },
+          "docs": "Retrieves composite slices (shots, scenes, etc.) within a specific video ranked by their similarity to a text query. Given a video_id and text_query, this endpoint performs a drill-down search to find moments within that video. The text query is encoded using the dataset's configured shot-level encoder (e.g., Perception Encoder or other vision-language embedding models), then searched against shot embeddings for that specific video. Returns a ranked list of composite slices ordered by similarity"
+        },
+        {
+          "info": {
+            "name": "Video Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/search/video",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a semantic video search using a natural language text query (e.g., 'person walking in park' or 'cityscape at sunset') within a specified dataset (dataset_id). The text query is encoded into an embedding using the dataset's configured encoder (e.g., Perception Encoder or other vision-language embedding models for visual modalities, or Qwen or other text encoders for audio transcript modality), then searched against video content embeddings using vector similarity. The search behavior is "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

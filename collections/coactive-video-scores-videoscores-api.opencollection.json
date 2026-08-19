@@ -1,0 +1,250 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch video-scores > videoScores API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "video-scores > videoScores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get shot scores for a video",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v0/video-scores/groups/:group_id/tags/:tag_id/versions/:version_id/videos/:video_id/shot-scores",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Dynamic Tag group."
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the tag within the group."
+              },
+              {
+                "name": "version_id",
+                "value": "",
+                "type": "path",
+                "description": "The tag version ID."
+              },
+              {
+                "name": "video_id",
+                "value": "",
+                "type": "path",
+                "description": "The Coactive Video ID to retrieve shot scores for."
+              },
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "query",
+                "description": "Dataset ID (used to locate the shot scores table)."
+              },
+              {
+                "name": "min_conf",
+                "value": "",
+                "type": "query",
+                "description": "Minimum confidence threshold (score >= min_conf). Must be greater than 0.1."
+              }
+            ]
+          },
+          "docs": "Retrieve shot-level scores for a given video and tag version: score, start/end time, and duration for each shot (only shots with score >= min_conf)."
+        },
+        {
+          "info": {
+            "name": "Get video scores result",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v0/video-scores/groups/:group_id/tags/:tag_id/aggregations/:aggregation_id/result",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Dynamic Tag group."
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the tag within the group."
+              },
+              {
+                "name": "aggregation_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the aggregation to retrieve results for."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (1-indexed)."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page."
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for scores (ascending or descending)."
+              }
+            ]
+          },
+          "docs": "Retrieve video scores based on an existing aggregation ID with pagination support."
+        },
+        {
+          "info": {
+            "name": "Get video scores result count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v0/video-scores/groups/:group_id/tags/:tag_id/aggregations/:aggregation_id/result/count",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Dynamic Tag group."
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the tag within the group."
+              },
+              {
+                "name": "aggregation_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the aggregation to retrieve count for."
+              },
+              {
+                "name": "criteria_met",
+                "value": "",
+                "type": "query",
+                "description": "Filter by whether criteria were met."
+              },
+              {
+                "name": "accepted",
+                "value": "",
+                "type": "query",
+                "description": "Filter by whether the score was accepted."
+              }
+            ]
+          },
+          "docs": "Retrieve the count of video scores based on an aggregation ID with filtering options."
+        },
+        {
+          "info": {
+            "name": "Get video scores result preview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v0/video-scores/groups/:group_id/tags/:tag_id/aggregations/-/result",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Dynamic Tag group."
+              },
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the tag within the group."
+              },
+              {
+                "name": "tag_version_id",
+                "value": "",
+                "type": "query",
+                "description": "The version ID of the tag."
+              },
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the dataset to query."
+              },
+              {
+                "name": "strategy",
+                "value": "",
+                "type": "query",
+                "description": "The aggregation strategy/methodology to use."
+              },
+              {
+                "name": "min_conf",
+                "value": "",
+                "type": "query",
+                "description": "Minimum confidence threshold."
+              },
+              {
+                "name": "coverage_threshold",
+                "value": "",
+                "type": "query",
+                "description": "Coverage threshold (required for COVERAGE_THRESHOLD strategy)."
+              },
+              {
+                "name": "engine",
+                "value": "",
+                "type": "query",
+                "description": "Backend engine used to query shot scores. DUCKDB (default) supports all strategies; PINOT supports ANY_HIT and COVERAGE_THRESHOLD only."
+              },
+              {
+                "name": "max_shot_length",
+                "value": "",
+                "type": "query",
+                "description": "Maximum shot length in seconds. Videos with any shot longer than this value are excluded from results. Omit or set to null to disable filtering."
+              }
+            ]
+          },
+          "docs": "Retrieve a preview of video scores based on aggregation strategy. Use this endpoint to preview results before creating an aggregation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

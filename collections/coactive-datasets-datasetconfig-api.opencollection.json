@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch datasets > datasetConfig API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "datasets > datasetConfig",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Dataset Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/datasets/:dataset_id/config",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include_deleted",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve configuration for a dataset from the dataset_config JSONB column."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

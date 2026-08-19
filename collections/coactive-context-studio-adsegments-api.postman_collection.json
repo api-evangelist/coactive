@@ -1,0 +1,795 @@
+{
+  "item": [
+    {
+      "id": "06b86a0e-6d2f-4fae-bce6-72915a66b0e3",
+      "name": "context-studio > adSegments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "27bb0b11-0f04-4d14-a38c-109ce92d3921",
+          "name": "Create ad segments for a video",
+          "request": {
+            "name": "Create ad segments for a video",
+            "description": {
+              "content": "Creates ad segments for the video identified by the provided asset identifier value.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "datasets",
+                ":dataset_id",
+                "videos",
+                "external-identifier",
+                ":asset_identifier_value",
+                "ad-segments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "dataset_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "asset_identifier_value",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ad_segments\": [\n    {\n      \"segment_start_time_ms\": \"<double>\",\n      \"segment_end_time_ms\": \"<double>\",\n      \"segment_start_frame_number\": \"<integer>\",\n      \"segment_end_frame_number\": \"<integer>\",\n      \"metadata\": {\n        \"segment_type\": \"<string>\",\n        \"segment_number\": \"<integer>\",\n        \"incode\": \"<string>\",\n        \"outcode\": \"<string>\"\n      }\n    },\n    {\n      \"segment_start_time_ms\": \"<double>\",\n      \"segment_end_time_ms\": \"<double>\",\n      \"segment_start_frame_number\": \"<integer>\",\n      \"segment_end_frame_number\": \"<integer>\",\n      \"metadata\": {\n        \"segment_type\": \"<string>\",\n        \"segment_number\": \"<integer>\",\n        \"incode\": \"<string>\",\n        \"outcode\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "33aa41b6-0a37-4e14-837b-3f65f50a8e0f",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets",
+                    ":dataset_id",
+                    "videos",
+                    "external-identifier",
+                    ":asset_identifier_value",
+                    "ad-segments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset_identifier_value",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ad_segments\": [\n    {\n      \"segment_start_time_ms\": 3066.588620299512,\n      \"segment_end_time_ms\": 7446.131485973816,\n      \"segment_start_frame_number\": 100,\n      \"segment_end_frame_number\": 610,\n      \"metadata\": {\n        \"segment_type\": \"string\",\n        \"segment_number\": 3335,\n        \"incode\": \"string\",\n        \"outcode\": \"string\"\n      }\n    },\n    {\n      \"segment_start_time_ms\": 1159.5996909782803,\n      \"segment_end_time_ms\": 7248.278442453673,\n      \"segment_start_frame_number\": 7471,\n      \"segment_end_frame_number\": 9226,\n      \"metadata\": {\n        \"segment_type\": \"string\",\n        \"segment_number\": 5647,\n        \"incode\": \"string\",\n        \"outcode\": \"string\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"asset_identifier_value\": \"string\",\n  \"ad_segments_created\": 3671,\n  \"segments\": [\n    {\n      \"segment_number\": 2846,\n      \"id\": \"39446b0d-24f4-740c-6248-8eac808f44f2\"\n    },\n    {\n      \"segment_number\": 2436,\n      \"id\": \"78887132-787e-6d9a-d85f-319b27ebf660\"\n    }\n  ],\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77688e04-6cdb-41f6-89a2-180c114fd94d",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets",
+                    ":dataset_id",
+                    "videos",
+                    "external-identifier",
+                    ":asset_identifier_value",
+                    "ad-segments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset_identifier_value",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ad_segments\": [\n    {\n      \"segment_start_time_ms\": 3066.588620299512,\n      \"segment_end_time_ms\": 7446.131485973816,\n      \"segment_start_frame_number\": 100,\n      \"segment_end_frame_number\": 610,\n      \"metadata\": {\n        \"segment_type\": \"string\",\n        \"segment_number\": 3335,\n        \"incode\": \"string\",\n        \"outcode\": \"string\"\n      }\n    },\n    {\n      \"segment_start_time_ms\": 1159.5996909782803,\n      \"segment_end_time_ms\": 7248.278442453673,\n      \"segment_start_frame_number\": 7471,\n      \"segment_end_frame_number\": 9226,\n      \"metadata\": {\n        \"segment_type\": \"string\",\n        \"segment_number\": 5647,\n        \"incode\": \"string\",\n        \"outcode\": \"string\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "844dce6b-5991-4191-b97e-82ca8f24f8a0",
+          "name": "Delete ad segment metadata for a video",
+          "request": {
+            "name": "Delete ad segment metadata for a video",
+            "description": {
+              "content": "Soft-deletes the ad-segment composite for the video identified by the provided asset identifier value. If no ad segments exist for the video, the request still succeeds with 204 No Content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "datasets",
+                ":dataset_id",
+                "videos",
+                "external-identifier",
+                ":asset_identifier_value",
+                "ad-segments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "dataset_id",
+                  "description": "(Required) The Coactive-internal unique identifier for the dataset the video belongs to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "asset_identifier_value",
+                  "description": "(Required) The customer's own internal asset identifier for the video."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "092787c9-df9d-443a-a877-ea580c1a9527",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets",
+                    ":dataset_id",
+                    "videos",
+                    "external-identifier",
+                    ":asset_identifier_value",
+                    "ad-segments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) The Coactive-internal unique identifier for the dataset the video belongs to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset_identifier_value",
+                      "description": "(Required) The customer's own internal asset identifier for the video."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3774d40a-57ab-4815-b098-42753f562bd6",
+              "name": "Missing or invalid authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets",
+                    ":dataset_id",
+                    "videos",
+                    "external-identifier",
+                    ":asset_identifier_value",
+                    "ad-segments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) The Coactive-internal unique identifier for the dataset the video belongs to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset_identifier_value",
+                      "description": "(Required) The customer's own internal asset identifier for the video."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3151491c-a671-4248-be0d-1667e585c400",
+              "name": "Caller is not authorized to delete assets in this dataset.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets",
+                    ":dataset_id",
+                    "videos",
+                    "external-identifier",
+                    ":asset_identifier_value",
+                    "ad-segments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) The Coactive-internal unique identifier for the dataset the video belongs to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset_identifier_value",
+                      "description": "(Required) The customer's own internal asset identifier for the video."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1868c55e-59d6-45db-9580-64d66792feda",
+              "name": "No video found matching the provided asset_identifier_value, or the dataset does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets",
+                    ":dataset_id",
+                    "videos",
+                    "external-identifier",
+                    ":asset_identifier_value",
+                    "ad-segments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) The Coactive-internal unique identifier for the dataset the video belongs to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset_identifier_value",
+                      "description": "(Required) The customer's own internal asset identifier for the video."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04ee7df2-de43-4ea4-b185-fd8bcfa56476",
+              "name": "Invalid path parameter, missing gateway identity headers, or multiple videos match the provided asset_identifier_value.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets",
+                    ":dataset_id",
+                    "videos",
+                    "external-identifier",
+                    ":asset_identifier_value",
+                    "ad-segments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) The Coactive-internal unique identifier for the dataset the video belongs to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset_identifier_value",
+                      "description": "(Required) The customer's own internal asset identifier for the video."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6aa7f0c1-1922-4b42-b4eb-50b60be6d41d",
+          "name": "Retrieve ad segments for a video",
+          "request": {
+            "name": "Retrieve ad segments for a video",
+            "description": {
+              "content": "Returns all ad segments stored for the video identified by the provided asset identifier value.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "datasets",
+                ":dataset_id",
+                "videos",
+                "external-identifier",
+                ":asset_identifier_value",
+                "ad-segments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "dataset_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "asset_identifier_value",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a90f7ef8-2653-4abe-b507-5a3ff72b10e0",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets",
+                    ":dataset_id",
+                    "videos",
+                    "external-identifier",
+                    ":asset_identifier_value",
+                    "ad-segments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset_identifier_value",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ad_segments\": [\n    {\n      \"id\": \"c5a81f02-a38e-e5bb-d668-d4244169180f\",\n      \"segment_start_time_ms\": 7813.6621272816765,\n      \"segment_end_time_ms\": 1527.1021978482536,\n      \"segment_start_frame_number\": 6803,\n      \"segment_end_frame_number\": 6225,\n      \"metadata\": {\n        \"segment_type\": \"string\",\n        \"segment_number\": 8836,\n        \"incode\": \"string\",\n        \"outcode\": \"string\"\n      }\n    },\n    {\n      \"id\": \"c70596a8-17b5-bbef-212e-a4f943d7efbb\",\n      \"segment_start_time_ms\": 1848.0646432099502,\n      \"segment_end_time_ms\": 8892.732688240878,\n      \"segment_start_frame_number\": 9899,\n      \"segment_end_frame_number\": 5381,\n      \"metadata\": {\n        \"segment_type\": \"string\",\n        \"segment_number\": 9390,\n        \"incode\": \"string\",\n        \"outcode\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c926c99-4ffb-4780-a069-78ec4e9e8b80",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "datasets",
+                    ":dataset_id",
+                    "videos",
+                    "external-identifier",
+                    ":asset_identifier_value",
+                    "ad-segments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset_identifier_value",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.coactive.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "399a0ece-00d1-47b0-bbc8-331c3b20d244",
+    "name": "API Reference agentic-search > agenticSearch context-studio > adSegments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch search-metadata-filter API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "search-metadata-filter",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Audio Sound (with Metadata Filters)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/search/metadata-filters/audio-sound",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Triggers an asynchronous search for video segments containing the specified `audio_class` (e.g., 'Music', 'Dog', 'Explosion') within the specified dataset (`dataset_id`), restricted to videos whose metadata matches every entry in `metadata_filters` (e.g., `genre = documentary`). Audio chunks are scored using the Audio Spectrogram Transformer (AST) model, which predicts confidence scores for 527 AudioSet sound classes across fixed-length audio segments extracted from ingested videos; no text embe"
+        },
+        {
+          "info": {
+            "name": "Job Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v0/search/metadata-filters/job/result/:run_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Job Result"
+        },
+        {
+          "info": {
+            "name": "Job Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v0/search/metadata-filters/job/status/:run_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Job Status"
+        },
+        {
+          "info": {
+            "name": "Text to Image (with Metadata Filters)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/search/metadata-filters/text-to-image",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Triggers an asynchronous text-to-image search within the specified dataset (`dataset_id`), restricted to image assets matching every entry in `metadata_filters` (e.g., `category = sports`, `tag contains outdoor`). The `text_query` is encoded into an embedding using the dataset's configured vision-language encoder (e.g., CLIP, SigLIP, Perception Encoder) and ranked against image embeddings via vector similarity, while the metadata filters are applied as a pre-scoring constraint on the asset metad"
+        },
+        {
+          "info": {
+            "name": "Text to Keyframe (with Metadata Filters)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/search/metadata-filters/text-to-keyframe",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Text to Keyframe (with Metadata Filters)"
+        },
+        {
+          "info": {
+            "name": "Text to Shot (with Metadata Filters)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/search/metadata-filters/text-to-shot",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Text to Shot (with Metadata Filters)"
+        },
+        {
+          "info": {
+            "name": "Text to Transcript (with Metadata Filters)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/search/metadata-filters/text-to-transcript",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Triggers an asynchronous transcript search within the specified dataset (`dataset_id`), restricted to videos whose metadata matches every entry in `metadata_filters` (e.g., `rating = PG`, `genre = documentary`). When `match_mode=\"semantic\"`, the `text_query` is encoded with the dataset's configured audio/transcript encoder (e.g., sentence transformers, Qwen) and ranked against transcript embeddings via vector similarity. When `match_mode=\"exact\"`, no embedding is computed and the raw `text_query"
+        },
+        {
+          "info": {
+            "name": "Text to Video (with Metadata Filters)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/search/metadata-filters/text-to-video",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Triggers an asynchronous text-to-video search within the specified dataset (`dataset_id`), restricted to assets matching every entry in `metadata_filters` (e.g., `genre = musical`, `rating != PG`, `headline contains olympics`, `impressions > 1000`). The `text_query` is encoded into an embedding using the dataset's configured vision-language encoder (e.g., CLIP, SigLIP, Perception Encoder) and ranked against video keyframe embeddings via vector similarity, while the metadata filters are applied a"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

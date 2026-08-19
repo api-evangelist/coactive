@@ -1,0 +1,31 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.coactive.ai/contact
+plan_count: 0
+model: contact-sales
+currency: null
+free_tier: false
+trial: false
+self_serve_purchase: false
+plans: []
+notes: >-
+  Coactive publishes no pricing or plans page. https://www.coactive.ai/pricing returns HTTP 404,
+  and neither the marketing site (www.coactive.ai) nor the developer docs (docs.coactive.ai)
+  carry a tier table, quota schedule, overage rate, or machine-readable pricing/catalog endpoint.
+  Access is enterprise contact-sales only: the public Postman workspace Coactive publishes tells
+  developers to "Reach out to us on https://www.coactive.ai/contact to get a dedicated space set
+  up for you and to retrieve your authorization keys," and app.coactive.ai offers login only, with
+  no self-serve signup or purchase path. Third-party review sites quote an annual figure, but that
+  is not provider-published and is deliberately NOT recorded here. plan_count is an honest zero.
+evidence:
+- url: https://www.coactive.ai/pricing
+  status: 404
+- url: https://www.coactive.ai/security
+  status: 200
+- url: https://www.postman.com/coactive-all/coactive-rest-api
+  status: 200
+  note: provider-published workspace directs pricing/credential requests to sales
+- url: https://docs.coactive.ai/_mcp/server
+  status: 200
+  note: 'anonymous searchDocs over docs.coactive.ai returned no pricing, plan, trial or free-tier page'
+checked: '2026-08-13'

@@ -1,0 +1,32 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.coactive.ai/api-reference/api-reference
+limit_count: 0
+limits: []
+response_headers:
+  standard_ratelimit: null
+  x_ratelimit: null
+  retry_after: null
+  observed: []
+exhaustion_status: null
+notes: >-
+  Coactive documents no rate limits. The 118-operation OpenAPI 3.1.0 published at
+  https://docs.coactive.ai/openapi.json declares no 429 response on any operation and no
+  RateLimit-*, X-RateLimit-* or Retry-After response header on any operation; a grep of all 22
+  refined specs in openapi/ for ratelimit/x-ratelimit returns nothing. An anonymous searchDocs
+  call against Coactive's own hosted docs MCP server for "rate limit throttling requests per
+  minute quota 429" answered: "Coactive's documentation does not contain specific information
+  about rate limits, throttling, requests per minute quotas, or HTTP 429 (Too Many Requests)
+  responses." Because the platform is enterprise contact-sales, per-tenant limits are presumably
+  contractual rather than published. limit_count is an honest zero, not an unchecked field.
+  A consuming agent has NO published runtime backoff signal for this API.
+evidence:
+- url: https://docs.coactive.ai/openapi.json
+  status: 200
+  note: no 429 responses, no rate-limit response headers in 118 operations
+- url: https://docs.coactive.ai/_mcp/server
+  status: 200
+  note: searchDocs confirmed no rate-limit documentation exists
+- url: https://docs.coactive.ai/api-reference/api-reference
+  status: 200
+checked: '2026-08-13'

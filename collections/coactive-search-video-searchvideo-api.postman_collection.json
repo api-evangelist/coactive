@@ -1,0 +1,386 @@
+{
+  "item": [
+    {
+      "id": "03445ae4-6855-4ebf-b4e1-15f1c28dbada",
+      "name": "search-video > searchVideo",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "398bad7e-c150-46f9-a1c7-1e4ccf222574",
+          "name": "Get Detailed Video Search By Id",
+          "request": {
+            "name": "Get Detailed Video Search By Id",
+            "description": {
+              "content": "Retrieves composite slices (shots, scenes, etc.) within a specific video ranked by their similarity to a text query. Given a video_id and text_query, this endpoint performs a drill-down search to find moments within that video. The text query is encoded using the dataset's configured shot-level encoder (e.g., Perception Encoder or other vision-language embedding models), then searched against shot embeddings for that specific video. Returns a ranked list of composite slices ordered by similarity score, including timestamps (start_time_ms, end_time_ms), frame numbers, and representative keyframes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "search",
+                "video"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dataset_id",
+                  "value": "<string>",
+                  "description": "(Required) Dataset identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "text_query",
+                  "value": "<string>",
+                  "description": "(Required) Text query for search"
+                },
+                {
+                  "disabled": false,
+                  "key": "video_id",
+                  "value": "<string>",
+                  "description": "(Required) Video identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "composite_type",
+                  "value": "shot",
+                  "description": "Type of composite"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of slices to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "013aa011-cc5e-4472-a72b-8f36dafa665a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "video"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataset_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "text_query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "video_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composite_type",
+                      "value": "shot"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataset_id\": \"e4652736-b691-8a30-e5db-4accc456d392\",\n  \"text_query\": \"string\",\n  \"video_id\": \"string\",\n  \"composite_type\": \"string\",\n  \"source_path\": \"string\",\n  \"slices\": [\n    {\n      \"id\": \"ba3d85ec-2859-0a92-8271-976ec2c58757\",\n      \"index\": 4673,\n      \"start_frame_num\": 6302,\n      \"end_frame_num\": 9939,\n      \"start_time_ms\": 9863,\n      \"end_time_ms\": 1288,\n      \"composite_id\": \"9a04292c-a979-6401-313d-31659a2fc6b7\",\n      \"composite_type\": \"shot\",\n      \"composite_slice_score\": 6642.44190582822\n    },\n    {\n      \"id\": \"0854b9b2-2927-6ed3-301b-addd932de360\",\n      \"index\": 9853,\n      \"start_frame_num\": 3320,\n      \"end_frame_num\": 7304,\n      \"start_time_ms\": 756,\n      \"end_time_ms\": 2111,\n      \"composite_id\": \"bc19520a-086e-52cb-23b2-a4af7858f37f\",\n      \"composite_type\": \"shot\",\n      \"composite_slice_score\": 1969.6087704923548\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b30074c-3510-42e3-829f-2b5d6155ac0d",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "video"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataset_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "text_query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "video_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composite_type",
+                      "value": "shot"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66d12d3b-3cd1-4019-8727-32fca8ac117d",
+          "name": "Video Search",
+          "request": {
+            "name": "Video Search",
+            "description": {
+              "content": "Executes a semantic video search using a natural language text query (e.g., 'person walking in park' or 'cityscape at sunset') within a specified dataset (dataset_id). The text query is encoded into an embedding using the dataset's configured encoder (e.g., Perception Encoder or other vision-language embedding models for visual modalities, or Qwen or other text encoders for audio transcript modality), then searched against video content embeddings using vector similarity. The search behavior is controlled by the modality parameter: 'video' (default) searches video-level embeddings for overall video similarity, 'shot' searches shot-level embeddings to find videos with similar scenes, 'image' searches frame-level embeddings to find videos with similar individual frames, and 'audio_speech_to_text' searches transcript text embeddings for spoken content. All modalities return one result per video, surfacing the most relevant composite slice (shot or scene) and a preview frame. Results can be filtered using optional metadata filters and include the composite slice with start/end timestamps, frame numbers, relevance scores, and video metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "search",
+                "video"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"operator\": \"<string>\",\n        \"value\": \"<boolean>\"\n      }\n    ]\n  },\n  \"offset\": 0,\n  \"limit\": 60,\n  \"modality\": \"<string>\",\n  \"skip_moderation\": false,\n  \"moderation_score_type\": \"<string>\",\n  \"ignore_keyframes\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "206015a2-6b53-42c8-be8b-f884b4242485",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "video"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      }\n    ]\n  },\n  \"offset\": 0,\n  \"limit\": 60,\n  \"modality\": \"video\",\n  \"skip_moderation\": false,\n  \"moderation_score_type\": \"level\",\n  \"ignore_keyframes\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"dataset_id\": \"c03b0b9c-0fcd-c94d-0300-ef833f4aa9c8\",\n      \"text_query\": \"string\",\n      \"video_id\": \"142ca3fe-e3c1-cc40-32ff-4f01290a1f29\",\n      \"source_path\": \"string\",\n      \"video_score\": 8935.0200097297,\n      \"metadata\": {\n        \"data\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"top_composite_slice\": {\n        \"id\": \"20898928-652d-2c9d-9b8a-c7e450d8a140\",\n        \"index\": 7045,\n        \"start_frame_num\": 1213,\n        \"end_frame_num\": 6982,\n        \"start_time_ms\": 8186,\n        \"end_time_ms\": 1129,\n        \"composite_id\": \"8d1b86d1-9a13-d64f-6ebb-cd01fb53480e\",\n        \"composite_type\": \"shot\"\n      },\n      \"top_keyframe\": {\n        \"id\": \"42023f34-d147-e8a8-1ed2-225dd1713517\",\n        \"frame_time_ms\": 6701\n      },\n      \"moderation_score\": 7229.305882355002\n    },\n    {\n      \"dataset_id\": \"c73d838a-e931-38ef-cd56-d8e85e106b2f\",\n      \"text_query\": \"string\",\n      \"video_id\": \"59784f41-2100-7dea-5db5-b8c0b93144ee\",\n      \"source_path\": \"string\",\n      \"video_score\": 7176.1630512672855,\n      \"metadata\": {\n        \"data\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"top_composite_slice\": {\n        \"id\": \"88a260db-884d-78e4-9d30-e8655c76043b\",\n        \"index\": 6301,\n        \"start_frame_num\": 290,\n        \"end_frame_num\": 9345,\n        \"start_time_ms\": 4966,\n        \"end_time_ms\": 2968,\n        \"composite_id\": \"89c36a9c-fdb7-82cd-863e-a7787c03f65c\",\n        \"composite_type\": \"shot\"\n      },\n      \"top_keyframe\": {\n        \"id\": \"413a4ab9-cc14-f646-e34e-d15d2d20256c\",\n        \"frame_time_ms\": 170\n      },\n      \"moderation_score\": 8572.296032727592\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e33589e-8de5-4650-b35d-02d5ee832d11",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    "video"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"metadata_filters\": {\n    \"filters\": [\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      },\n      {\n        \"key\": \"string\",\n        \"operator\": \"==\",\n        \"value\": false\n      }\n    ]\n  },\n  \"offset\": 0,\n  \"limit\": 60,\n  \"modality\": \"video\",\n  \"skip_moderation\": false,\n  \"moderation_score_type\": \"level\",\n  \"ignore_keyframes\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.coactive.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "20d95480-b4f6-4b22-9769-395fdf908d9f",
+    "name": "API Reference agentic-search > agenticSearch search-video > searchVideo API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

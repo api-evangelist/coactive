@@ -1,0 +1,157 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch dynamicTags API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dynamicTags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a paginated list of groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v3/dynamic-tags/groups",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by group name"
+              },
+              {
+                "name": "name_contains",
+                "value": "",
+                "type": "query",
+                "description": "Filter by group name containing this string"
+              },
+              {
+                "name": "version_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by version name"
+              },
+              {
+                "name": "group_status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by status"
+              },
+              {
+                "name": "group_ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter by group IDs"
+              },
+              {
+                "name": "visual_encoder",
+                "value": "",
+                "type": "query",
+                "description": "Filter by visual encoder"
+              },
+              {
+                "name": "transcript_encoder",
+                "value": "",
+                "type": "query",
+                "description": "Filter by transcript encoder"
+              },
+              {
+                "name": "exclude_group_ids",
+                "value": "",
+                "type": "query",
+                "description": "Exclude groups with these IDs"
+              },
+              {
+                "name": "is_shareable",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return only shareable groups"
+              },
+              {
+                "name": "created_user_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user who created the group"
+              },
+              {
+                "name": "created_dt_from",
+                "value": "",
+                "type": "query",
+                "description": "Filter groups created on or after this date"
+              },
+              {
+                "name": "created_dt_to",
+                "value": "",
+                "type": "query",
+                "description": "Filter groups created before this date"
+              },
+              {
+                "name": "training_dataset_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by associated training dataset ID"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (1-indexed)"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page"
+              },
+              {
+                "name": "sort_field",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction"
+              },
+              {
+                "name": "include_training_datasets",
+                "value": "",
+                "type": "query",
+                "description": "Include at most 10 associated datasets in the response"
+              },
+              {
+                "name": "include_versions",
+                "value": "",
+                "type": "query",
+                "description": "Include the latest draft and published versions of the group in the response"
+              },
+              {
+                "name": "include_tags",
+                "value": "",
+                "type": "query",
+                "description": "Include at most 10 tag names in the response"
+              }
+            ]
+          },
+          "docs": "Retrieves a paginated list of dynamic tag groups. Supports filtering by name, version name, or status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

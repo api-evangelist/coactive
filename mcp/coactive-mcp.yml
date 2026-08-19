@@ -1,24 +1,57 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
 status: published
 source: https://docs.coactive.ai/_mcp/server
 server:
   name: fern-docs-mcp-server
   version: 1.0.0
+  protocol_version: '2025-11-25'
   transport: http
   transport_detail: streamable-http
   url: https://docs.coactive.ai/_mcp/server
-  description: Hosted MCP server over the Coactive documentation. Provides AI-powered
-    search across docs.coactive.ai. Published by the Fern docs platform, not the Coactive
-    data API itself.
+  description: Hosted MCP server over the Coactive documentation. Provides AI-powered search across docs.coactive.ai.
+    Published by the Fern docs platform, not the Coactive data API itself.
+  capabilities:
+    tools:
+      listChanged: true
 install:
   claude_code: claude mcp add --transport http fern_mcp_docs-coactive-ai https://docs.coactive.ai/_mcp/server
   cursor: Add "https://docs.coactive.ai/_mcp/server" to your MCP server configuration
 tools:
 - name: searchDocs
-  description: Search the documentation at https://docs.coactive.ai. Returns relevant
-    doc passages with source URLs.
+  title: Search docs.coactive.ai Docs
+  description: Search the documentation at https://docs.coactive.ai. Returns relevant doc passages with
+    source URLs.
   read_only: true
-notes: This is a documentation-search MCP server (readOnly). Coactive does not publish a
-  hosted MCP server that fronts the data API; the 118 REST operations could be exposed as
-  candidate MCP tools via the OpenAPI (see agentic-access/ and openapi/).
+  input_schema:
+    type: object
+    properties:
+      query:
+        type: string
+        description: The search query to run against the docs
+    required:
+    - query
+    additionalProperties: false
+notes: >-
+  This is a documentation-search MCP server (readOnly). Coactive does not publish a hosted MCP
+  server that fronts the data API; the 118 REST operations could be exposed as candidate MCP tools
+  via the OpenAPI (see mcp/coactive-tool-crosswalk.yml, agentic-access/ and openapi/). The tool
+  list and inputSchema above were read from a live anonymous tools/list call, not from prose.
+deployment:
+  mode: remote
+  endpoint: https://docs.coactive.ai/_mcp/server
+  auth: none
+  verified: probed
+  tools: 1
+  checked: '2026-08-13'
+  source: >-
+    POST initialize + tools/list with Accept: application/json, text/event-stream — both HTTP 200
+    anonymously; serverInfo fern-docs-mcp-server 1.0.0, protocolVersion 2025-11-25.
+  note: >-
+    No stdio/npx package is published, so mode is remote only. An MCP client can call this endpoint
+    today without credentials, but it reaches documentation, not the Coactive API.
+x-evidence:
+  fetched: '2026-08-13'
+  url: https://docs.coactive.ai/_mcp/server
+  http_status: 200
+  content_type: text/event-stream

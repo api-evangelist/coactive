@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch ingestion API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ingestion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete Assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/delete/assets",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete assets from a dataset by creating deletion jobs.  Supports deletion of up to 100 assets per request.  Assets can be identified by their Coactive Video/Image ID or path string."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

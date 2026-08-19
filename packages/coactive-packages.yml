@@ -1,6 +1,6 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
-source: https://pypi.org/project/coactive/
+source: https://pypi.org/pypi/coactive/json
 packages:
 - language: python
   registry: pypi
@@ -8,9 +8,31 @@ packages:
   url: https://pypi.org/project/coactive/
   install: pip install coactive
   version: 1.0.27
+  published: '2025-01-30'
   official: true
   generated_by: Fern
-  notes: Official Coactive Python SDK (sync + async clients, typed, mypy annotations).
-    Maintained by Coactive (PyPI maintainers coactive-dahoon, coactive-jacob).
-notes: Searched npm, Maven Central, NuGet, pkg.go.dev, RubyGems, Packagist, crates.io —
-  only a first-party Python SDK was found published. No first-party CLI package located.
+  notes: >-
+    Official Coactive Python SDK (sync + async clients, typed, mypy annotations). Maintained by
+    Coactive (PyPI maintainers coactive-dahoon, coactive-jacob). DECAY SIGNAL: 1.0.27 was published
+    2025-01-30, while Coactive's own dated release notes record API changes through 2026-07-17,
+    including two breaking removals (2026-02-11 legacy GET search endpoints, 2026-07-17 asset-detail
+    endpoints) and whole new product surfaces (Context Studio ad segments, Dynamic Tags v0, NOVA
+    search, agentic search). The generated SDK is roughly eighteen months behind the API it wraps.
+notes: >-
+  Re-searched 2026-08-13 across npm, PyPI, Maven Central, NuGet, pkg.go.dev, RubyGems, Packagist and
+  crates.io. Only the first-party Python SDK is published. The npm registry search for "coactive"
+  returns only unrelated third-party packages (DataVoke coactive-react / coactive-client-extensions,
+  switchsystems coactive-node-api-recruitment) — none are Coactive AI and none are wired here. No
+  first-party CLI package, JS/TS SDK, or Go/Java/Ruby client exists. The public GitHub org
+  github.com/CoactiveAI publishes research repos (mediaperf, dollarstreet, dataperf-vision-selection)
+  but no client library.
+registries_checked:
+- {registry: pypi, result: 'coactive 1.0.27 (2025-01-30)'}
+- {registry: npm, result: no first-party package}
+- {registry: maven-central, result: none}
+- {registry: nuget, result: none}
+- {registry: pkg.go.dev, result: none}
+- {registry: rubygems, result: none}
+- {registry: packagist, result: none}
+- {registry: crates.io, result: none}
+checked: '2026-08-13'

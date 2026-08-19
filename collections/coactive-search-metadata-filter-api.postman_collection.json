@@ -1,0 +1,1320 @@
+{
+  "item": [
+    {
+      "id": "127dab3e-0712-4b60-928d-ee0bd05c689a",
+      "name": "search-metadata-filter",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "be6bdd20-4d11-4a4e-975a-7fa999e9927f",
+          "name": "Audio Sound (with Metadata Filters)",
+          "request": {
+            "name": "Audio Sound (with Metadata Filters)",
+            "description": {
+              "content": "Triggers an asynchronous search for video segments containing the specified `audio_class` (e.g., 'Music', 'Dog', 'Explosion') within the specified dataset (`dataset_id`), restricted to videos whose metadata matches every entry in `metadata_filters` (e.g., `genre = documentary`). Audio chunks are scored using the Audio Spectrogram Transformer (AST) model, which predicts confidence scores for 527 AudioSet sound classes across fixed-length audio segments extracted from ingested videos; no text embedding is computed. Returns the Databricks `run_id` immediately; use the status and result endpoints to poll for the final ranked list of sound segments (each with the parent video, time boundaries, the nearest keyframe, score, and optional moderation score).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "search",
+                "metadata-filters",
+                "audio-sound"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"audio_class\": \"<string>\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\",\n      \"op\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\",\n      \"op\": \"<string>\"\n    }\n  ],\n  \"skip_moderation\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7e3541a3-a328-4c00-bc20-88b66406f5ed",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "search",
+                    "metadata-filters",
+                    "audio-sound"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"audio_class\": \"Sewing machine\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \"=\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \"<\"\n    }\n  ],\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"run_id\": 1842\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b9ddc3c-0a28-41f7-8cd4-74e862205083",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "search",
+                    "metadata-filters",
+                    "audio-sound"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"audio_class\": \"Sewing machine\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \"=\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \"<\"\n    }\n  ],\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea116158-d744-4f91-b54f-3c072ae5c592",
+          "name": "Job Result",
+          "request": {
+            "name": "Job Result",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "search",
+                "metadata-filters",
+                "job",
+                "result",
+                ":run_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dataset_id",
+                  "value": "<uuid>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "run_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "23dd6c1b-d719-4c78-9b6f-5839cb0efc3b",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "search",
+                    "metadata-filters",
+                    "job",
+                    "result",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataset_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "run_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"search_target\": \"video\",\n  \"results\": [\n    {\n      \"dataset_id\": \"8b0927a9-65ab-12b0-c93c-34bff69a56d4\",\n      \"video_id\": \"8b13e02b-1dfd-1f8c-5f31-c45e8c39b9c2\",\n      \"source_path\": \"string\",\n      \"video_score\": 7002.669759313577,\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"top_composite_slice\": {\n        \"id\": \"770b08ab-8f40-6b1d-2ffc-c5656b79d038\",\n        \"composite_id\": \"03599028-8f2e-fd8c-e9fc-689040e90650\",\n        \"composite_type\": \"string\",\n        \"index\": 1578,\n        \"start_time_ms\": 9427,\n        \"end_time_ms\": 3176,\n        \"start_frame_num\": 5170,\n        \"end_frame_num\": 7311\n      },\n      \"top_keyframe\": {\n        \"id\": \"62229fd8-fba8-7886-7ed2-c5249cafdd1f\",\n        \"frame_time_ms\": 4002\n      },\n      \"moderation_score\": 5807.0688028339155\n    },\n    {\n      \"dataset_id\": \"d58bc3e5-a8f3-4e02-5422-8c58b66d6523\",\n      \"video_id\": \"e264fe46-d728-0146-6824-59650ebda874\",\n      \"source_path\": \"string\",\n      \"video_score\": 5146.685043399145,\n      \"metadata\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"top_composite_slice\": {\n        \"id\": \"dace1161-f73b-c491-d93f-376e084dc48b\",\n        \"composite_id\": \"74008d98-1226-b8fa-ebee-164467845bda\",\n        \"composite_type\": \"string\",\n        \"index\": 1725,\n        \"start_time_ms\": 9880,\n        \"end_time_ms\": 6682,\n        \"start_frame_num\": 2340,\n        \"end_frame_num\": 3215\n      },\n      \"top_keyframe\": {\n        \"id\": \"30548a3c-6de2-0b3a-eb5c-ea92c8e4594e\",\n        \"frame_time_ms\": 7476\n      },\n      \"moderation_score\": 2464.4894520800663\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "492ef688-1a50-45b9-b334-6072878a1ba0",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "search",
+                    "metadata-filters",
+                    "job",
+                    "result",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataset_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "run_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37c947e5-4c84-4cfa-a215-943752151c4a",
+          "name": "Job Status",
+          "request": {
+            "name": "Job Status",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "search",
+                "metadata-filters",
+                "job",
+                "status",
+                ":run_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dataset_id",
+                  "value": "<uuid>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "run_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13b6694c-b5d2-4598-8778-b9857dc623ae",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "search",
+                    "metadata-filters",
+                    "job",
+                    "status",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataset_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "run_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"run_id\": 8654,\n  \"state\": \"WAITING\",\n  \"termination_type\": \"CLOUD_FAILURE\",\n  \"termination_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d766d80-d9c7-489e-a441-e408c6242947",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "search",
+                    "metadata-filters",
+                    "job",
+                    "status",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataset_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "run_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c169834d-2f8a-45d4-93a3-d8d5ad00ee66",
+          "name": "Text to Image (with Metadata Filters)",
+          "request": {
+            "name": "Text to Image (with Metadata Filters)",
+            "description": {
+              "content": "Triggers an asynchronous text-to-image search within the specified dataset (`dataset_id`), restricted to image assets matching every entry in `metadata_filters` (e.g., `category = sports`, `tag contains outdoor`). The `text_query` is encoded into an embedding using the dataset's configured vision-language encoder (e.g., CLIP, SigLIP, Perception Encoder) and ranked against image embeddings via vector similarity, while the metadata filters are applied as a pre-scoring constraint on the asset metadata fields. Returns the Databricks `run_id` immediately; use the status and result endpoints to poll for the final ranked list of images (each with the asset id, path, metadata, relevance score, and optional moderation score).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "search",
+                "metadata-filters",
+                "text-to-image"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\",\n      \"op\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\",\n      \"op\": \"<string>\"\n    }\n  ],\n  \"skip_moderation\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b69aa3d2-77c6-457c-a09e-bcc35cf1955d",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "search",
+                    "metadata-filters",
+                    "text-to-image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \">\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \"=\"\n    }\n  ],\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"run_id\": 1842\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6db05afc-c2c9-4a56-93ac-519ee9482748",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "search",
+                    "metadata-filters",
+                    "text-to-image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \">\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \"=\"\n    }\n  ],\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "091d4580-0f84-4f43-979c-98b80fe1bac6",
+          "name": "Text to Keyframe (with Metadata Filters)",
+          "request": {
+            "name": "Text to Keyframe (with Metadata Filters)",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "search",
+                "metadata-filters",
+                "text-to-keyframe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\",\n      \"op\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\",\n      \"op\": \"<string>\"\n    }\n  ],\n  \"skip_moderation\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0070dad3-c6d2-4605-be1c-156db7848a53",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "search",
+                    "metadata-filters",
+                    "text-to-keyframe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \">\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \"=\"\n    }\n  ],\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"run_id\": 1842\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "509adc51-d4af-4c4e-9e03-b9688bafa7b5",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "search",
+                    "metadata-filters",
+                    "text-to-keyframe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \">\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \"=\"\n    }\n  ],\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c91f2361-71e2-48f0-bf74-757b7608dad7",
+          "name": "Text to Shot (with Metadata Filters)",
+          "request": {
+            "name": "Text to Shot (with Metadata Filters)",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "search",
+                "metadata-filters",
+                "text-to-shot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\",\n      \"op\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\",\n      \"op\": \"<string>\"\n    }\n  ],\n  \"skip_moderation\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f6d3e850-aa78-4520-b959-ee189d0864f1",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "search",
+                    "metadata-filters",
+                    "text-to-shot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \">\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \"=\"\n    }\n  ],\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"run_id\": 1842\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93f452cd-f87d-43f4-8c4b-4d59dc6e9fa6",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "search",
+                    "metadata-filters",
+                    "text-to-shot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \">\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \"=\"\n    }\n  ],\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e41cb45d-05fb-4178-8ea0-a867db737f52",
+          "name": "Text to Transcript (with Metadata Filters)",
+          "request": {
+            "name": "Text to Transcript (with Metadata Filters)",
+            "description": {
+              "content": "Triggers an asynchronous transcript search within the specified dataset (`dataset_id`), restricted to videos whose metadata matches every entry in `metadata_filters` (e.g., `rating = PG`, `genre = documentary`). When `match_mode=\"semantic\"`, the `text_query` is encoded with the dataset's configured audio/transcript encoder (e.g., sentence transformers, Qwen) and ranked against transcript embeddings via vector similarity. When `match_mode=\"exact\"`, no embedding is computed and the raw `text_query` is matched lexically against transcript text. Returns the Databricks `run_id` immediately; use the status and result endpoints to poll for the final ranked list of transcript segments (each with the parent video, audio segment, timestamp, score, coverage score, and optional moderation score).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "search",
+                "metadata-filters",
+                "text-to-transcript"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\",\n      \"op\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\",\n      \"op\": \"<string>\"\n    }\n  ],\n  \"skip_moderation\": false,\n  \"match_mode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6bfcd72c-4827-493f-8f4e-99af4293330c",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "search",
+                    "metadata-filters",
+                    "text-to-transcript"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \"=\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \"!=\"\n    }\n  ],\n  \"skip_moderation\": false,\n  \"match_mode\": \"semantic\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"run_id\": 1842\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "717e1d04-ef89-43db-828a-bbe9209c9f82",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "search",
+                    "metadata-filters",
+                    "text-to-transcript"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \"=\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \"!=\"\n    }\n  ],\n  \"skip_moderation\": false,\n  \"match_mode\": \"semantic\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb232fe3-8bc0-4af2-8603-4457a6d6d464",
+          "name": "Text to Video (with Metadata Filters)",
+          "request": {
+            "name": "Text to Video (with Metadata Filters)",
+            "description": {
+              "content": "Triggers an asynchronous text-to-video search within the specified dataset (`dataset_id`), restricted to assets matching every entry in `metadata_filters` (e.g., `genre = musical`, `rating != PG`, `headline contains olympics`, `impressions > 1000`). The `text_query` is encoded into an embedding using the dataset's configured vision-language encoder (e.g., CLIP, SigLIP, Perception Encoder) and ranked against video keyframe embeddings via vector similarity, while the metadata filters are applied as a pre-scoring constraint on the asset metadata fields. Returns the Databricks `run_id` immediately; use the status and result endpoints to poll for the final ranked list of videos (each with the parent video, top composite slice, top keyframe, metadata, score, and optional moderation score).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "search",
+                "metadata-filters",
+                "text-to-video"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\",\n      \"op\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\",\n      \"op\": \"<string>\"\n    }\n  ],\n  \"skip_moderation\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "47d0beb3-49ea-4d2d-a04c-3cd1b4ab3277",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "search",
+                    "metadata-filters",
+                    "text-to-video"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \">\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \"=\"\n    }\n  ],\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"run_id\": 1842\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8e1cb35-69b2-49de-a4ec-7347e1120433",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "search",
+                    "metadata-filters",
+                    "text-to-video"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<uuid>\",\n  \"text_query\": \"<string>\",\n  \"limit\": 40,\n  \"offset\": 0,\n  \"metadata_filters\": [\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \">\"\n    },\n    {\n      \"key\": \"string\",\n      \"value\": \"string\",\n      \"op\": \"=\"\n    }\n  ],\n  \"skip_moderation\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.coactive.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "27d0f8de-5af2-4596-8695-c0266cf7dbd3",
+    "name": "API Reference agentic-search > agenticSearch search-metadata-filter API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

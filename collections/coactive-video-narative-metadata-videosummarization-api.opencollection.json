@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch video-narative-metadata > videoSummarization API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "video-narative-metadata > videoSummarization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request keyframe captioning for a video",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/video-summarization/datasets/:dataset_id/videos/:video_id/caption-keyframes",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "video_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Request keyframe captioning for a video."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

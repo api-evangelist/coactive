@@ -1,0 +1,1132 @@
+{
+  "item": [
+    {
+      "id": "b4e4a9d8-45c2-4b08-9916-682014dc1728",
+      "name": "celebrity-detection",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4b0516fe-4a80-43ea-af34-15b9453cca10",
+          "name": "Get a person by id",
+          "request": {
+            "name": "Get a person by id",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "celebrity-detection",
+                "person",
+                ":person_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "person_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ccd37209-97a6-4603-a29c-f63b8b51772d",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "celebrity-detection",
+                    "person",
+                    ":person_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "person_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"98bf587c-ff11-a31f-988d-961d64741752\",\n  \"name\": \"string\",\n  \"aliases\": [\n    \"string\",\n    \"string\"\n  ],\n  \"upload_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"ingested_images\": [\n    {\n      \"coactive_image_id\": \"f9c97476-605b-3689-c92f-60a18fae4968\",\n      \"dataset_id\": \"667ac898-ab18-ac0f-09ae-b4165734489f\"\n    },\n    {\n      \"coactive_image_id\": \"e1012e29-e624-99d1-9d0d-f7c9d9d1fb1c\",\n      \"dataset_id\": \"cfbe00cf-cd8e-a202-b59f-acfdc03f6e23\"\n    }\n  ],\n  \"status\": \"in_progress\",\n  \"created_user_id\": \"string\",\n  \"created_dt\": \"2023-11-27T15:38:38.186Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "118c85a9-bb16-4678-9b3b-fabe29155875",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "celebrity-detection",
+                    "person",
+                    ":person_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "person_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "44164675-25b7-46a8-98cc-93aa6d3e2400",
+          "name": "Get all enrolled persons in org",
+          "request": {
+            "name": "Get all enrolled persons in org",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "celebrity-detection",
+                "persons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (1-indexed)"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "25",
+                  "description": "Number of items per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_field",
+                  "value": "<string,null>",
+                  "description": "Field to sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "Sort direction"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "038a7515-4e88-4d19-be10-04d90db72f8e",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "celebrity-detection",
+                    "persons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort_field",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"6f007a9b-0361-a01e-5c11-5c01546878bc\",\n      \"name\": \"string\",\n      \"aliases\": [\n        \"string\",\n        \"string\"\n      ],\n      \"upload_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"ingested_images\": [\n        {\n          \"coactive_image_id\": \"b29540bf-7fc4-82fe-ba20-931b5db78f25\",\n          \"dataset_id\": \"3fd404f8-bb0b-b711-c048-06fa40e70193\"\n        },\n        {\n          \"coactive_image_id\": \"a3f048e7-75e4-765f-a6f3-9b838448d3c2\",\n          \"dataset_id\": \"5d525bb8-2660-c179-1a50-34c9f902f79b\"\n        }\n      ],\n      \"status\": \"in_progress\",\n      \"created_user_id\": \"string\",\n      \"created_dt\": \"1952-12-20T09:27:14.873Z\"\n    },\n    {\n      \"id\": \"b1abf1ca-82b3-8205-9c7f-c33c533d6f3e\",\n      \"name\": \"string\",\n      \"aliases\": [\n        \"string\",\n        \"string\"\n      ],\n      \"upload_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"ingested_images\": [\n        {\n          \"coactive_image_id\": \"92c72f06-0e35-592a-3f7b-00da1de757cd\",\n          \"dataset_id\": \"0afe37df-fff2-cc3b-7e48-127ff0281996\"\n        },\n        {\n          \"coactive_image_id\": \"be354b49-57ff-34fd-d857-e7a9024fc387\",\n          \"dataset_id\": \"cf4b37d0-f1fb-94ba-fbb7-64baa87c2edd\"\n        }\n      ],\n      \"status\": \"in_progress\",\n      \"created_user_id\": \"string\",\n      \"created_dt\": \"1967-05-28T07:49:59.970Z\"\n    }\n  ],\n  \"meta\": {\n    \"page\": {\n      \"page\": 3658,\n      \"per_page\": 4224\n    },\n    \"has_next_page\": false\n  },\n  \"sort\": [\n    {\n      \"field\": \"string\",\n      \"direction\": \"asc\"\n    },\n    {\n      \"field\": \"string\",\n      \"direction\": \"desc\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "095369a7-448e-43dc-ae46-7d94119cc520",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "celebrity-detection",
+                    "persons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort_field",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "279d6d61-87f5-46bf-846a-e66bfa717ef6",
+          "name": "Get faces with a person",
+          "request": {
+            "name": "Get faces with a person",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "celebrity-detection",
+                "faces-with-person"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "person_id",
+                  "value": "<string,null-uuid>",
+                  "description": "Person ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "person_name",
+                  "value": "<string,null>",
+                  "description": "Person name"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fbda47ba-d353-4542-94a5-a729755a85a5",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "celebrity-detection",
+                    "faces-with-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "person_id",
+                      "value": "<string,null-uuid>"
+                    },
+                    {
+                      "key": "person_name",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"faces\": [\n    {\n      \"id\": \"fa3a8f18-1a07-9c20-8d5b-1ef1c909bf3f\",\n      \"image_id\": \"3b1c1b22-7508-a237-8c1e-498e866fc6da\",\n      \"dataset_id\": \"90ae3cf2-732b-06c7-05d0-fcbbf45e3c0f\",\n      \"bbox\": {\n        \"x1\": 832.4281216088681,\n        \"y1\": 4088.8795133575018,\n        \"x2\": 8058.832802569561,\n        \"y2\": 9094.67456823927\n      },\n      \"confidence\": 8395.267600385398\n    },\n    {\n      \"id\": \"8e901bd2-1f41-96f9-6736-3ecf2509e6b0\",\n      \"image_id\": \"ff6b6544-a1bb-2fa2-37e1-68540a676fb3\",\n      \"dataset_id\": \"eef87a82-2061-1305-3d84-4da05d97d72e\",\n      \"bbox\": {\n        \"x1\": 6275.42301067053,\n        \"y1\": 2995.979686866411,\n        \"x2\": 5401.062570990285,\n        \"y2\": 1166.6305995165949\n      },\n      \"confidence\": 1444.3319231368657\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5bcd75e-7802-481b-9078-12a54fb5315b",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "celebrity-detection",
+                    "faces-with-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "person_id",
+                      "value": "<string,null-uuid>"
+                    },
+                    {
+                      "key": "person_name",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d668d654-22e1-4747-a1b4-68d19e7d989a",
+          "name": "Get person IDs from a list of names or aliases",
+          "request": {
+            "name": "Get person IDs from a list of names or aliases",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "celebrity-detection",
+                "persons",
+                "by-names-and-aliases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "person_names_or_aliases",
+                  "value": "<string>",
+                  "description": "(Required) List of person names or aliases to search for"
+                },
+                {
+                  "disabled": false,
+                  "key": "person_names_or_aliases",
+                  "value": "<string>",
+                  "description": "(Required) List of person names or aliases to search for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b086c4da-84ee-4d4e-b72e-d1a8b1a01baa",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "celebrity-detection",
+                    "persons",
+                    "by-names-and-aliases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "person_names_or_aliases",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "person_names_or_aliases",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"matches\": [\n    {\n      \"name\": \"string\",\n      \"person_id\": \"375d3649-5429-e69a-83dd-ffc38395d342\"\n    },\n    {\n      \"name\": \"string\",\n      \"person_id\": \"bab4e267-7072-4d76-0276-a91e5bbb3f27\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cfedf256-f370-4913-a2f1-4fbea1811a81",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "celebrity-detection",
+                    "persons",
+                    "by-names-and-aliases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "person_names_or_aliases",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "person_names_or_aliases",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f18c982-9173-4d44-b9a3-6961061abe86",
+          "name": "Get persons in an image",
+          "request": {
+            "name": "Get persons in an image",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "celebrity-detection",
+                "persons-in-image",
+                ":image_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "image_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e395ca99-b26e-4c14-9401-8b96442deeed",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "celebrity-detection",
+                    "persons-in-image",
+                    ":image_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "image_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"persons\": [\n    {\n      \"id\": \"726cf688-71ba-fd9d-62f9-0039c9bfe5a4\",\n      \"name\": \"string\",\n      \"aliases\": [\n        \"string\",\n        \"string\"\n      ],\n      \"bbox\": {\n        \"x1\": 5096.635266415112,\n        \"y1\": 7360.796330147349,\n        \"x2\": 1987.2543347601413,\n        \"y2\": 6159.9162886706345\n      }\n    },\n    {\n      \"id\": \"71cf1072-b2a6-b3fb-42ef-4ce4553ac8ba\",\n      \"name\": \"string\",\n      \"aliases\": [\n        \"string\",\n        \"string\"\n      ],\n      \"bbox\": {\n        \"x1\": 8945.466558114524,\n        \"y1\": 2930.9080110301697,\n        \"x2\": 8537.865600952151,\n        \"y2\": 7916.478999664193\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98800ddd-557a-4f0d-bc70-1420a440ac0f",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "celebrity-detection",
+                    "persons-in-image",
+                    ":image_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "image_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae3aecad-f104-4881-af40-3290904835a1",
+          "name": "Identify celebrities in an external image",
+          "request": {
+            "name": "Identify celebrities in an external image",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "celebrity-detection",
+                "identify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"image\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "251b9866-0dbb-4489-bb40-5af6e4378a73",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "celebrity-detection",
+                    "identify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"persons\": [\n    {\n      \"id\": \"acb65a91-6629-5d16-3032-c26a0c899e31\",\n      \"name\": \"string\",\n      \"aliases\": [\n        \"string\",\n        \"string\"\n      ],\n      \"bbox\": {\n        \"x1\": 7792.014725671307,\n        \"y1\": 6465.478054832415,\n        \"x2\": 1841.2512716245221,\n        \"y2\": 6963.0268530115\n      }\n    },\n    {\n      \"id\": \"51486b26-ebfd-a9c6-f282-154a515976a5\",\n      \"name\": \"string\",\n      \"aliases\": [\n        \"string\",\n        \"string\"\n      ],\n      \"bbox\": {\n        \"x1\": 7772.826426574839,\n        \"y1\": 577.8316669722672,\n        \"x2\": 7008.2966325145135,\n        \"y2\": 1087.4948038391929\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "555f4577-6b7a-4cb9-92ca-e64e99858156",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "celebrity-detection",
+                    "identify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5a86c7e-1083-4f18-b16d-f640a04d18ed",
+          "name": "Update person aliases",
+          "request": {
+            "name": "Update person aliases",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "celebrity-detection",
+                "person",
+                "aliases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"person_id\": \"<uuid>\",\n  \"aliases\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "99d42542-801e-47b4-ae88-40773862aa0d",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "celebrity-detection",
+                    "person",
+                    "aliases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"person_id\": \"<uuid>\",\n  \"aliases\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"98bf587c-ff11-a31f-988d-961d64741752\",\n  \"name\": \"string\",\n  \"aliases\": [\n    \"string\",\n    \"string\"\n  ],\n  \"upload_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"ingested_images\": [\n    {\n      \"coactive_image_id\": \"f9c97476-605b-3689-c92f-60a18fae4968\",\n      \"dataset_id\": \"667ac898-ab18-ac0f-09ae-b4165734489f\"\n    },\n    {\n      \"coactive_image_id\": \"e1012e29-e624-99d1-9d0d-f7c9d9d1fb1c\",\n      \"dataset_id\": \"cfbe00cf-cd8e-a202-b59f-acfdc03f6e23\"\n    }\n  ],\n  \"status\": \"in_progress\",\n  \"created_user_id\": \"string\",\n  \"created_dt\": \"2023-11-27T15:38:38.186Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ccb55b74-9be3-46eb-bcbf-baa1c63d65a5",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "celebrity-detection",
+                    "person",
+                    "aliases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"person_id\": \"<uuid>\",\n  \"aliases\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.coactive.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8c4670e7-2743-4398-9aa0-de78f13fa99c",
+    "name": "API Reference agentic-search > agenticSearch celebrity-detection API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

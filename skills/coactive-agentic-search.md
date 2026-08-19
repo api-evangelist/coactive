@@ -1,7 +1,7 @@
 ---
 name: Conversational agentic search over a dataset
 description: Use Coactive's agentic search to answer natural-language questions over multimodal content, scoped to a dataset, and drill down conversationally.
-api: openapi/coactive-ai-openapi-original.json
+api: openapi/coactive-agentic-search-agenticsearch-api-openapi.yml
 operations:
   - chat
   - chat-dataset
@@ -24,4 +24,4 @@ Agentic Search is Coactive's natural-language interface for finding and refining
 ## Conventions
 - Agentic results typically return within ~30s; treat calls as synchronous request/response (no webhooks).
 - Auth tokens expire after 3600s — refresh mid-conversation if needed.
-- Errors follow the FastAPI envelope (`errors/coactive-ai-problem-types.yml`).
+- Errors follow the FastAPI envelope (`errors/coactive-problem-types.yml`).

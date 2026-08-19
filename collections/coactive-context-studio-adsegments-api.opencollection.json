@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch context-studio > adSegments API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "context-studio > adSegments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve ad segments for a video",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/datasets/:dataset_id/videos/external-identifier/:asset_identifier_value/ad-segments",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "asset_identifier_value",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all ad segments stored for the video identified by the provided asset identifier value."
+        },
+        {
+          "info": {
+            "name": "Create ad segments for a video",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/datasets/:dataset_id/videos/external-identifier/:asset_identifier_value/ad-segments",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "asset_identifier_value",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates ad segments for the video identified by the provided asset identifier value."
+        },
+        {
+          "info": {
+            "name": "Delete ad segment metadata for a video",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.coactive.ai/api/v1/datasets/:dataset_id/videos/external-identifier/:asset_identifier_value/ad-segments",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path",
+                "description": "The Coactive-internal unique identifier for the dataset the video belongs to."
+              },
+              {
+                "name": "asset_identifier_value",
+                "value": "",
+                "type": "path",
+                "description": "The customer's own internal asset identifier for the video."
+              }
+            ]
+          },
+          "docs": "Soft-deletes the ad-segment composite for the video identified by the provided asset identifier value. If no ad segments exist for the video, the request still succeeds with 204 No Content."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

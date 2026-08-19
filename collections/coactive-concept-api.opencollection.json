@@ -1,0 +1,301 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch concept API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "concept",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List concepts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/concepts",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "datasets",
+                "value": "",
+                "type": "query",
+                "description": "Datasets to use to filter concepts"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Starting index to return"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of items to return"
+              }
+            ]
+          },
+          "docs": "Get paginated concepts, optionally filtered by datasets"
+        },
+        {
+          "info": {
+            "name": "Create concept",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/concepts",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new concept"
+        },
+        {
+          "info": {
+            "name": "Get concept",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/concepts/:concept_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "concept_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the concept"
+              }
+            ]
+          },
+          "docs": "Get concept"
+        },
+        {
+          "info": {
+            "name": "Update concept",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.coactive.ai/api/v1/concepts/:concept_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "concept_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the concept"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update concept"
+        },
+        {
+          "info": {
+            "name": "Delete concept",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.coactive.ai/api/v1/concepts/:concept_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "concept_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the concept"
+              }
+            ]
+          },
+          "docs": "Delete concept"
+        },
+        {
+          "info": {
+            "name": "Get concept's prediction estimation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/concepts/:concept_id/prediction_estimation",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "concept_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the concept"
+              },
+              {
+                "name": "threshold",
+                "value": "",
+                "type": "query",
+                "description": "Threshold above which classification is positive"
+              },
+              {
+                "name": "confidence_level",
+                "value": "",
+                "type": "query",
+                "description": "A higher value results in wider confidence intervals, with more confidence of correctness. A lower value results in narrower confidence intervals, with less confidence of correctness"
+              },
+              {
+                "name": "estimation_fidelity",
+                "value": "",
+                "type": "query",
+                "description": "A higher value makes estimation slower, but more accurate. A lower value makes estimation faster, but less accurate"
+              }
+            ]
+          },
+          "docs": "Get concept's prediction estimation"
+        },
+        {
+          "info": {
+            "name": "Get label candidates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/concepts/:concept_id/candidates",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "concept_id",
+                "value": "",
+                "type": "path",
+                "description": "The concept id to get candidates to label"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of items to return"
+              }
+            ]
+          },
+          "docs": "Get images and keyframes to label in order to improve the concept"
+        },
+        {
+          "info": {
+            "name": "Get labels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/concepts/:concept_id/labels",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "concept_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the concept"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Starting index to return"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of items to return"
+              },
+              {
+                "name": "labels_to_include",
+                "value": "",
+                "type": "query",
+                "description": "List of labels types to include, leave blank to return all"
+              }
+            ]
+          },
+          "docs": "Get all labels for a concept"
+        },
+        {
+          "info": {
+            "name": "Update labels",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.coactive.ai/api/v1/concepts/:concept_id/labels",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "concept_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the concept"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update labels for a concept. Label requests containing coactive image ids or image paths already in use will overwrite existing labels. Label requests with an empty label value will delete an existing label for that image/keyframe identifier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,332 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch queries API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cancel Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/queries/:query_id/cancel",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "query_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel Query"
+        },
+        {
+          "info": {
+            "name": "List Queries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/queries",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "exclude_no_code",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "exclude_code",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query_types",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List Queries"
+        },
+        {
+          "info": {
+            "name": "Create Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/queries",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Query"
+        },
+        {
+          "info": {
+            "name": "Get Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/queries/:query_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "query_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Query"
+        },
+        {
+          "info": {
+            "name": "Delete Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.coactive.ai/api/v1/queries/:query_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "query_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Query"
+        },
+        {
+          "info": {
+            "name": "Export Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/queries/:query_id/exports",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "query_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Export Query"
+        },
+        {
+          "info": {
+            "name": "Get Query Results Url",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/queries/:query_id/results",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "query_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "url_format",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expiration_seconds",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Query Results Url"
+        },
+        {
+          "info": {
+            "name": "Get Table",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/datasets/:dataset_id/tables/:table_name",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "table_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Table"
+        },
+        {
+          "info": {
+            "name": "List Tables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v1/datasets/:dataset_id/tables",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Tables"
+        },
+        {
+          "info": {
+            "name": "Run Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/queries/:query_id/run",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "query_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Run Query"
+        },
+        {
+          "info": {
+            "name": "Stop Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v1/queries/:query_id/stop",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "query_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Stop Query"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

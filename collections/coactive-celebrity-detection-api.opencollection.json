@@ -1,0 +1,207 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch celebrity-detection API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "celebrity-detection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a person by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v0/celebrity-detection/person/:person_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "person_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a person by id"
+        },
+        {
+          "info": {
+            "name": "Get all enrolled persons in org",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v0/celebrity-detection/persons",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (1-indexed)"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page"
+              },
+              {
+                "name": "sort_field",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction"
+              }
+            ]
+          },
+          "docs": "Get all enrolled persons in org"
+        },
+        {
+          "info": {
+            "name": "Get faces with a person",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v0/celebrity-detection/faces-with-person",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "person_id",
+                "value": "",
+                "type": "query",
+                "description": "Person ID"
+              },
+              {
+                "name": "person_name",
+                "value": "",
+                "type": "query",
+                "description": "Person name"
+              }
+            ]
+          },
+          "docs": "Get faces with a person"
+        },
+        {
+          "info": {
+            "name": "Get person IDs from a list of names or aliases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v0/celebrity-detection/persons/by-names-and-aliases",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "person_names_or_aliases",
+                "value": "",
+                "type": "query",
+                "description": "List of person names or aliases to search for"
+              }
+            ]
+          },
+          "docs": "Get person IDs from a list of names or aliases"
+        },
+        {
+          "info": {
+            "name": "Get persons in an image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v0/celebrity-detection/persons-in-image/:image_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "image_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get persons in an image"
+        },
+        {
+          "info": {
+            "name": "Identify celebrities in an external image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.coactive.ai/api/v0/celebrity-detection/identify",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Identify celebrities in an external image"
+        },
+        {
+          "info": {
+            "name": "Update person aliases",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.coactive.ai/api/v0/celebrity-detection/person/aliases",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update person aliases"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

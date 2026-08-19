@@ -1,0 +1,366 @@
+{
+  "item": [
+    {
+      "id": "8d202c4c-7327-4f5b-a584-1a88f0afbf8f",
+      "name": "agentic-search > agenticSearch",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9a8bfd1e-80ed-4c5c-93da-0355a7b9c667",
+          "name": "Chat",
+          "request": {
+            "name": "Chat",
+            "description": {
+              "content": "Chat endpoint that processes user input with LLM and MCP video search integration for select datasets in the org. Please contact Coactive Support to configure the datasets required.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "chat"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"chat_request_text\": \"<string,null>\",\n  \"upload_id\": \"<string,null>\",\n  \"history_chat_messages\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "87fb68c8-e710-44e2-b9fe-6fd24f762cbc",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "chat"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chat_request_text\": \"<string,null>\",\n  \"upload_id\": \"<string,null>\",\n  \"history_chat_messages\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"chat_response_text\": \"string\",\n  \"tool_results\": [\n    {\n      \"tool_name\": \"metadata_filter_search_audio_sound_with_metadata_filters\",\n      \"dataset_id\": \"606d8d1a-48f8-88f5-2074-7ee32952184b\",\n      \"dataset_type\": \"native_video\",\n      \"invocation_timestamp\": \"string\",\n      \"result\": {\n        \"results\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      }\n    },\n    {\n      \"tool_name\": \"apollo_search_transcript_exact_match\",\n      \"dataset_id\": \"efcbfe7f-71b5-f08a-2baf-f3bc4cbc0369\",\n      \"dataset_type\": \"native_video\",\n      \"invocation_timestamp\": \"string\",\n      \"result\": {\n        \"results\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      }\n    }\n  ],\n  \"history_chat_messages\": [\n    {\n      \"key_0\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ],\n  \"suggested_follow_ups\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6811a8d-919c-41cc-a1ff-bf54ad575db2",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "chat"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chat_request_text\": \"<string,null>\",\n  \"upload_id\": \"<string,null>\",\n  \"history_chat_messages\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a4fac9e-25d1-452a-adf7-fd27c54f66fc",
+          "name": "Chat Dataset",
+          "request": {
+            "name": "Chat Dataset",
+            "description": {
+              "content": "Chat endpoint that processes user input with LLM and MCP video search integration for a specific dataset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "chat",
+                "dataset",
+                ":dataset_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "dataset_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"chat_request_text\": \"<string,null>\",\n  \"upload_id\": \"<string,null>\",\n  \"history_chat_messages\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "86e5313b-8001-446c-add5-0b852e12208a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "chat",
+                    "dataset",
+                    ":dataset_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chat_request_text\": \"<string,null>\",\n  \"upload_id\": \"<string,null>\",\n  \"history_chat_messages\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"chat_response_text\": \"string\",\n  \"tool_results\": [\n    {\n      \"tool_name\": \"metadata_filter_search_audio_sound_with_metadata_filters\",\n      \"dataset_id\": \"606d8d1a-48f8-88f5-2074-7ee32952184b\",\n      \"dataset_type\": \"native_video\",\n      \"invocation_timestamp\": \"string\",\n      \"result\": {\n        \"results\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      }\n    },\n    {\n      \"tool_name\": \"apollo_search_transcript_exact_match\",\n      \"dataset_id\": \"efcbfe7f-71b5-f08a-2baf-f3bc4cbc0369\",\n      \"dataset_type\": \"native_video\",\n      \"invocation_timestamp\": \"string\",\n      \"result\": {\n        \"results\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      }\n    }\n  ],\n  \"history_chat_messages\": [\n    {\n      \"key_0\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ],\n  \"suggested_follow_ups\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c1d9ae3-d326-401d-aa7e-ef00274ab2bb",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "chat",
+                    "dataset",
+                    ":dataset_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "dataset_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chat_request_text\": \"<string,null>\",\n  \"upload_id\": \"<string,null>\",\n  \"history_chat_messages\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.coactive.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "12a3630f-2947-4e9b-b99a-51f893c5c31c",
+    "name": "API Reference agentic-search > agenticSearch API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,10 +1,11 @@
-generated: '2026-07-18'
-method: searched
+generated: '2026-08-13'
+method: probed
 source: live probes of Coactive hosts
 hosts_probed:
 - https://api.coactive.ai
 - https://www.coactive.ai
 - https://app.coactive.ai
+- https://docs.coactive.ai
 documents:
 - host: https://api.coactive.ai
   path: /.well-known/security.txt
@@ -16,20 +17,56 @@ documents:
   path: /.well-known/oauth-authorization-server
   status: 404
 - host: https://api.coactive.ai
+  path: /.well-known/oauth-protected-resource
+  status: 404
+- host: https://api.coactive.ai
   path: /.well-known/api-catalog
   status: 404
 - host: https://api.coactive.ai
   path: /.well-known/ai-plugin.json
   status: 404
+- host: https://api.coactive.ai
+  path: /.well-known/agent-card.json
+  status: 404
+- host: https://api.coactive.ai
+  path: /.well-known/agent.json
+  status: 404
 - host: https://www.coactive.ai
   path: /.well-known/security.txt
   status: 404
+  body: '<p>Invalid .well-known request</p>'
 - host: https://www.coactive.ai
   path: /.well-known/openid-configuration
   status: 404
 - host: https://www.coactive.ai
   path: /.well-known/api-catalog
   status: 404
+- host: https://www.coactive.ai
+  path: /.well-known/agent-card.json
+  status: 404
+- host: https://www.coactive.ai
+  path: /.well-known/agent.json
+  status: 404
+- host: https://docs.coactive.ai
+  path: /.well-known/oauth-authorization-server
+  status: 404
+  content_type: text/html
+  genuine: false
+- host: https://docs.coactive.ai
+  path: /.well-known/oauth-protected-resource
+  status: 404
+  content_type: text/html
+  genuine: false
+- host: https://docs.coactive.ai
+  path: /.well-known/agent-card.json
+  status: 404
+  content_type: text/html
+  genuine: false
+- host: https://docs.coactive.ai
+  path: /.well-known/agent.json
+  status: 404
+  content_type: text/html
+  genuine: false
 - host: https://app.coactive.ai
   path: /.well-known/security.txt
   status: 200
@@ -40,8 +77,26 @@ documents:
   status: 200
   content_type: text/html
   genuine: false
-notes: No genuine .well-known documents are published. api.coactive.ai and www.coactive.ai
-  return 404 for all probed paths; app.coactive.ai is a single-page app that returns its
-  HTML shell (content-type text/html) for every path, so its 200s are false positives —
-  no security.txt, OIDC discovery, OAuth authorization-server metadata, api-catalog, or
-  ai-plugin.json exists. No WellKnown/SecurityTxt pointer emitted.
+- host: https://app.coactive.ai
+  path: /.well-known/agent-card.json
+  status: 200
+  content_type: text/html
+  genuine: false
+- host: https://app.coactive.ai
+  path: /.well-known/agent.json
+  status: 200
+  content_type: text/html
+  genuine: false
+notes: >-
+  Re-probed 2026-08-13. No genuine .well-known document is published on any Coactive host.
+  api.coactive.ai and www.coactive.ai return 404 for every probed path (www serves an explicit
+  "Invalid .well-known request" page); docs.coactive.ai returns its Next.js 404 shell; and
+  app.coactive.ai is a single-page app that answers 200 with its HTML shell for EVERY path, so all
+  four of its 200s are false positives, not documents. There is no security.txt, no OIDC discovery,
+  no OAuth authorization-server or protected-resource metadata (consistent with the API using a
+  bearer-token exchange at POST /api/v0/login rather than OAuth), no api-catalog, no ai-plugin.json,
+  and no A2A agent card at either the canonical or legacy path.
+  Because nothing genuine was returned, NO WellKnown, SecurityTxt or AgentCard pointer is emitted —
+  a recorded absence is data, not a served surface. The stale WellKnown pointer that had been wired
+  into apis.yml against this all-404 probe was removed this round.
+checked: '2026-08-13'

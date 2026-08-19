@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference agentic-search > agenticSearch API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "agentic-search > agenticSearch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Chat",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/chat",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Chat endpoint that processes user input with LLM and MCP video search integration for select datasets in the org. Please contact Coactive Support to configure the datasets required."
+        },
+        {
+          "info": {
+            "name": "Chat Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.coactive.ai/api/v0/chat/dataset/:dataset_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Chat endpoint that processes user input with LLM and MCP video search integration for a specific dataset."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
