@@ -34,6 +34,19 @@ modified: '2026-08-13'
 image: https://www.coactive.ai/favicon.ico
 tags:
 - Company
+- Artificial Intelligence
+- Multimodal AI
+- Computer-Vision
+- Video Intelligence
+- Image Search
+- Content Intelligence
+- Semantic Search
+- Contextual Advertising
+- Metadata
+- Machine-Learning
+- Media
+tags_raw:
+- Company
 - Ai
 - Multimodal AI
 - Computer Vision
@@ -97,6 +110,8 @@ apis:
   humanURL: https://docs.coactive.ai/
   baseURL: https://api.coactive.ai
   tags:
+  - Classification
+  tags_raw:
   - classification
   properties:
   - type: OpenAPI
@@ -251,7 +266,8 @@ apis:
   description: The dynamicTags API from Coactive — 1 operation(s) for dynamictags.
   humanURL: https://docs.coactive.ai/
   baseURL: https://api.coactive.ai
-  tags:
+  tags: []
+  tags_raw:
   - dynamicTags
   properties:
   - type: OpenAPI
@@ -274,6 +290,8 @@ apis:
   humanURL: https://docs.coactive.ai/
   baseURL: https://api.coactive.ai
   tags:
+  - Ingestion
+  tags_raw:
   - ingestion
   properties:
   - type: OpenAPI
@@ -318,6 +336,8 @@ apis:
   humanURL: https://docs.coactive.ai/
   baseURL: https://api.coactive.ai
   tags:
+  - IngestionStatus
+  tags_raw:
   - ingestion > status
   properties:
   - type: OpenAPI
@@ -340,6 +360,8 @@ apis:
   humanURL: https://docs.coactive.ai/
   baseURL: https://api.coactive.ai
   tags:
+  - Query
+  tags_raw:
   - queries
   properties:
   - type: OpenAPI
@@ -427,7 +449,8 @@ apis:
   description: The systemCredentials API from Coactive — 2 operation(s) for systemcredentials.
   humanURL: https://docs.coactive.ai/
   baseURL: https://api.coactive.ai
-  tags:
+  tags: []
+  tags_raw:
   - systemCredentials
   properties:
   - type: OpenAPI
@@ -450,6 +473,8 @@ apis:
   humanURL: https://docs.coactive.ai/
   baseURL: https://api.coactive.ai
   tags:
+  - User Management
+  tags_raw:
   - userManagement
   properties:
   - type: OpenAPI
