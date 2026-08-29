@@ -1,0 +1,33 @@
+slug: coactive
+provider: Coactive
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Media, Entertainment & Telecom Content
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: ingestion > ingest
+  spec_file: coactive-ingestion-ingest-api-openapi.yml
+  capability_id: BC-3710.10
+  capability_id_l1: BC-3710
+  capability_name: Asset Ingest & Quality Control
+  confidence: 0.8
+  evidence: '"Create Ingest Job From Videos", "Create Ingest Job From Bucket", "Add/Update Metadata"'
+  reason: Operations onboard image and video source material into the asset platform via ingest jobs and
+    attach metadata, which is precisely asset ingest onto a media asset platform.
+- tag: video-narative-metadata > videoNarrativeMetadata
+  spec_file: coactive-video-narative-metadata-videonarrativemetadata-api-openapi.yml
+  capability_id: BC-3710.20
+  capability_id_l1: BC-3710
+  capability_name: Metadata Cataloguing
+  confidence: 0.8
+  evidence: Generate a video synopsis; Predict composite slice mood(s); Create a metadata value; PredictVideoGenreResponse
+  reason: Operations author and predict descriptive metadata (synopsis, summary, genre, mood, subject)
+    for video assets in datasets — descriptive metadata cataloguing that makes assets usable and discoverable.

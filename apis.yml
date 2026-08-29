@@ -577,6 +577,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/coactive-capability-edges.yml
+  name: Coactive Business Capability Map
 - type: TrustCenter
   url: security/coactive-trust-center.yml
 - type: DomainSecurity
