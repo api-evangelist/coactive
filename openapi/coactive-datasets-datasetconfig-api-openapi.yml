@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference agentic-search > agenticSearch datasets > datasetConfig API
+  title: Reference datasets > datasetConfig API
   version: 1.0.0
 servers:
 - url: https://api.coactive.ai
@@ -42,30 +42,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/datasets:DatasetConfigResponse'
+                $ref: '#/components/schemas/datasets_DatasetConfigResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/datasets:HTTPValidationError'
+                $ref: '#/components/schemas/datasets_HTTPValidationError'
 components:
   schemas:
-    datasets:HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/datasets:ValidationError'
-      title: HTTPValidationError
-    datasets:ValidationError:
+    datasets_ValidationError:
       type: object
       properties:
         loc:
           type: array
           items:
-            $ref: '#/components/schemas/datasets:ValidationErrorLocItems'
+            $ref: '#/components/schemas/datasets_ValidationErrorLocItems'
         msg:
           type: string
         type:
@@ -75,12 +67,20 @@ components:
       - msg
       - type
       title: ValidationError
-    datasets:ValidationErrorLocItems:
+    datasets_HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets_ValidationError'
+      title: HTTPValidationError
+    datasets_ValidationErrorLocItems:
       oneOf:
       - type: string
       - type: integer
       title: ValidationErrorLocItems
-    datasets:DatasetConfigResponse:
+    datasets_DatasetConfigResponse:
       type: object
       properties:
         dataset_id:

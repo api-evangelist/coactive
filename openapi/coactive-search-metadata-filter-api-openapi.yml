@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference agentic-search > agenticSearch search-metadata-filter API
+  title: Reference Search Metadata Filter API
   version: 1.0.0
 servers:
 - url: https://api.coactive.ai
@@ -30,18 +30,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/search-metadata-filter:MetadataSearchTriggerResponse'
+                $ref: '#/components/schemas/search-metadata-filter_MetadataSearchTriggerResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/search-metadata-filter:HTTPValidationError'
+                $ref: '#/components/schemas/search-metadata-filter_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/search-metadata-filter:MetadataSoundSearchRequest'
+              $ref: '#/components/schemas/search-metadata-filter_MetadataSoundSearchRequest'
   /api/v0/search/metadata-filters/job/result/{run_id}:
     get:
       operationId: get-metadata-filter-search-result
@@ -72,13 +72,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/search-metadata-filter:get_metadata_filter_search_result_Response_200'
+                $ref: '#/components/schemas/search-metadata-filter_get_metadata_filter_search_result_Response_200'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/search-metadata-filter:HTTPValidationError'
+                $ref: '#/components/schemas/search-metadata-filter_HTTPValidationError'
   /api/v0/search/metadata-filters/job/status/{run_id}:
     get:
       operationId: get-metadata-filter-search-status
@@ -109,13 +109,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/search-metadata-filter:MetadataSearchStatusResponse'
+                $ref: '#/components/schemas/search-metadata-filter_MetadataSearchStatusResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/search-metadata-filter:HTTPValidationError'
+                $ref: '#/components/schemas/search-metadata-filter_HTTPValidationError'
   /api/v0/search/metadata-filters/text-to-image:
     post:
       operationId: search-text-to-image-with-metadata-filters
@@ -136,18 +136,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/search-metadata-filter:MetadataSearchTriggerResponse'
+                $ref: '#/components/schemas/search-metadata-filter_MetadataSearchTriggerResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/search-metadata-filter:HTTPValidationError'
+                $ref: '#/components/schemas/search-metadata-filter_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/search-metadata-filter:MetadataSearchRequest'
+              $ref: '#/components/schemas/search-metadata-filter_MetadataSearchRequest'
   /api/v0/search/metadata-filters/text-to-keyframe:
     post:
       operationId: search-text-to-keyframe-with-metadata-filters
@@ -167,18 +167,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/search-metadata-filter:MetadataSearchTriggerResponse'
+                $ref: '#/components/schemas/search-metadata-filter_MetadataSearchTriggerResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/search-metadata-filter:HTTPValidationError'
+                $ref: '#/components/schemas/search-metadata-filter_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/search-metadata-filter:MetadataSearchRequest'
+              $ref: '#/components/schemas/search-metadata-filter_MetadataSearchRequest'
   /api/v0/search/metadata-filters/text-to-shot:
     post:
       operationId: search-text-to-shot-with-metadata-filters
@@ -198,18 +198,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/search-metadata-filter:MetadataSearchTriggerResponse'
+                $ref: '#/components/schemas/search-metadata-filter_MetadataSearchTriggerResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/search-metadata-filter:HTTPValidationError'
+                $ref: '#/components/schemas/search-metadata-filter_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/search-metadata-filter:MetadataSearchRequest'
+              $ref: '#/components/schemas/search-metadata-filter_MetadataSearchRequest'
   /api/v0/search/metadata-filters/text-to-transcript:
     post:
       operationId: search-text-to-transcript-with-metadata-filters
@@ -230,18 +230,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/search-metadata-filter:MetadataSearchTriggerResponse'
+                $ref: '#/components/schemas/search-metadata-filter_MetadataSearchTriggerResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/search-metadata-filter:HTTPValidationError'
+                $ref: '#/components/schemas/search-metadata-filter_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/search-metadata-filter:MetadataTranscriptSearchRequest'
+              $ref: '#/components/schemas/search-metadata-filter_MetadataTranscriptSearchRequest'
   /api/v0/search/metadata-filters/text-to-video:
     post:
       operationId: search-text-to-video-with-metadata-filters
@@ -262,47 +262,55 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/search-metadata-filter:MetadataSearchTriggerResponse'
+                $ref: '#/components/schemas/search-metadata-filter_MetadataSearchTriggerResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/search-metadata-filter:HTTPValidationError'
+                $ref: '#/components/schemas/search-metadata-filter_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/search-metadata-filter:MetadataSearchRequest'
+              $ref: '#/components/schemas/search-metadata-filter_MetadataSearchRequest'
 components:
   schemas:
-    search-metadata-filter:ImageSearchResult:
-      type: object
-      properties:
-        coactive_image_id:
-          type: string
-          format: uuid
-        path:
-          type: string
-        metadata:
-          type: object
-          additionalProperties:
-            description: Any type
-        relevance_score:
-          type: number
-          format: double
-        moderation_score:
-          type:
-          - number
-          - 'null'
-          format: double
-      required:
-      - coactive_image_id
-      - path
-      - metadata
-      - relevance_score
-      title: ImageSearchResult
-    search-metadata-filter:MetadataSearchRequest:
+    search-metadata-filter_DatabricksLifeCycleState:
+      type: string
+      enum:
+      - BLOCKED
+      - PENDING
+      - QUEUED
+      - RUNNING
+      - TERMINATING
+      - TERMINATED
+      - WAITING
+      description: 'Databricks job run lifecycle states returned in status.state from the runs/get API.
+
+
+        These are the standard values as documented at:
+
+        https://docs.databricks.com/api/workspace/jobs/getrun (see RunStatus > state)
+
+
+        If Databricks adds or changes values, _parse_lifecycle_state in job.py handles unknown
+
+        values gracefully by falling back to PENDING and emitting a warning log.'
+      title: DatabricksLifeCycleState
+    search-metadata-filter_MetadataFilterOperator:
+      type: string
+      enum:
+      - '='
+      - '!='
+      - contains
+      - '>'
+      - <
+      - '>='
+      - <=
+      description: Comparison operator applied between a metadata field value and the filter `value`.
+      title: MetadataFilterOperator
+    search-metadata-filter_MetadataSearchRequest:
       type: object
       properties:
         limit:
@@ -316,7 +324,7 @@ components:
         metadata_filters:
           type: array
           items:
-            $ref: '#/components/schemas/search-metadata-filter:MetadataFilter'
+            $ref: '#/components/schemas/search-metadata-filter_MetadataFilter'
           description: List of filter objects applied against asset metadata fields before scoring. All filters are combined with AND.
         skip_moderation:
           type: boolean
@@ -334,151 +342,23 @@ components:
       - text_query
       description: Body for POST /search/metadata.
       title: MetadataSearchRequest
-    search-metadata-filter:MetadataSearchTriggerResponse:
+    search-metadata-filter_SoundMetadataSearchResponse:
       type: object
       properties:
-        run_id:
-          type: integer
-          description: Databricks job run ID to use for status polling and result retrieval
+        status:
+          type: string
+        search_target:
+          type: string
+          enum:
+          - sound
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/search-metadata-filter_SoundSearchResult'
       required:
-      - run_id
-      description: Returned immediately after triggering a Databricks job run.
-      title: MetadataSearchTriggerResponse
-    search-metadata-filter:VideoCompositeSlice:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        composite_id:
-          type: string
-          format: uuid
-        composite_type:
-          type: string
-        index:
-          type: integer
-        start_time_ms:
-          type: integer
-        end_time_ms:
-          type: integer
-        start_frame_num:
-          type: integer
-        end_frame_num:
-          type: integer
-      required:
-      - id
-      - composite_id
-      - composite_type
-      - index
-      - start_time_ms
-      - end_time_ms
-      - start_frame_num
-      - end_frame_num
-      title: VideoCompositeSlice
-    search-metadata-filter:VideoSearchResult:
-      type: object
-      properties:
-        dataset_id:
-          type: string
-          format: uuid
-        video_id:
-          type: string
-          format: uuid
-        source_path:
-          type: string
-        video_score:
-          type: number
-          format: double
-        metadata:
-          type: object
-          additionalProperties:
-            description: Any type
-        top_composite_slice:
-          $ref: '#/components/schemas/search-metadata-filter:VideoCompositeSlice'
-        top_keyframe:
-          $ref: '#/components/schemas/search-metadata-filter:VideoKeyframe'
-        moderation_score:
-          type:
-          - number
-          - 'null'
-          format: double
-      required:
-      - dataset_id
-      - video_id
-      - source_path
-      - video_score
-      - metadata
-      - top_composite_slice
-      - top_keyframe
-      title: VideoSearchResult
-    search-metadata-filter:ShotSearchResult:
-      type: object
-      properties:
-        composite_slice_id:
-          type: string
-          format: uuid
-        video_id:
-          type: string
-          format: uuid
-        video_metadata:
-          type: object
-          additionalProperties:
-            description: Any type
-        slice_start_time_ms:
-          type: integer
-        slice_end_time_ms:
-          type: integer
-        max_cosine_sim:
-          type: number
-          format: double
-        keyframe_count:
-          type: integer
-        moderation_score:
-          type:
-          - number
-          - 'null'
-          format: double
-      required:
-      - composite_slice_id
-      - video_id
-      - video_metadata
-      - slice_start_time_ms
-      - slice_end_time_ms
-      - max_cosine_sim
-      - keyframe_count
-      title: ShotSearchResult
-    search-metadata-filter:SoundSearchResult:
-      type: object
-      properties:
-        coactive_image_id:
-          type: string
-          format: uuid
-        video:
-          $ref: '#/components/schemas/search-metadata-filter:Video'
-        start_time_ms:
-          type: integer
-        end_time_ms:
-          type: integer
-        score:
-          type:
-          - number
-          - 'null'
-          format: double
-        timestamp:
-          type: integer
-        moderation_score:
-          type:
-          - number
-          - 'null'
-          format: double
-      required:
-      - coactive_image_id
-      - video
-      - start_time_ms
-      - end_time_ms
-      - timestamp
-      title: SoundSearchResult
-    search-metadata-filter:KeyframeSearchResult:
+      - status
+      title: SoundMetadataSearchResponse
+    search-metadata-filter_KeyframeSearchResult:
       type: object
       properties:
         keyframe_id:
@@ -518,309 +398,15 @@ components:
       - slice_end_time_ms
       - cosine_sim
       title: KeyframeSearchResult
-    search-metadata-filter:TranscriptMetadataSearchResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        search_target:
-          type: string
-          enum:
-          - transcript
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/search-metadata-filter:TranscriptSearchResult'
-      required:
-      - status
-      title: TranscriptMetadataSearchResponse
-    search-metadata-filter:Video:
-      type: object
-      properties:
-        coactive_video_id:
-          type: string
-          format: uuid
-        path:
-          type: string
-        metadata:
-          type: object
-          additionalProperties:
-            description: Any type
-      required:
-      - coactive_video_id
-      - path
-      - metadata
-      title: Video
-    search-metadata-filter:DatabricksLifeCycleState:
-      type: string
-      enum:
-      - BLOCKED
-      - PENDING
-      - QUEUED
-      - RUNNING
-      - TERMINATING
-      - TERMINATED
-      - WAITING
-      description: 'Databricks job run lifecycle states returned in status.state from the runs/get API.
-
-
-        These are the standard values as documented at:
-
-        https://docs.databricks.com/api/workspace/jobs/getrun (see RunStatus > state)
-
-
-        If Databricks adds or changes values, _parse_lifecycle_state in job.py handles unknown
-
-        values gracefully by falling back to PENDING and emitting a warning log.'
-      title: DatabricksLifeCycleState
-    search-metadata-filter:MetadataSoundSearchRequest:
-      type: object
-      properties:
-        limit:
-          type: integer
-          default: 40
-          description: Max number of results to return
-        offset:
-          type: integer
-          default: 0
-          description: Number of results to skip before returning
-        metadata_filters:
-          type: array
-          items:
-            $ref: '#/components/schemas/search-metadata-filter:MetadataFilter'
-          description: List of filter objects applied against asset metadata fields before scoring. All filters are combined with AND.
-        skip_moderation:
-          type: boolean
-          default: false
-          description: When true, moderation scoring is skipped and moderation_score will be null on all results.
-        dataset_id:
-          type: string
-          format: uuid
-          description: Dataset to search within
-        audio_class:
-          $ref: '#/components/schemas/search-metadata-filter:AudioClass'
-          description: AudioSet sound class label to search for (e.g. AudioClass.DOG, AudioClass.MUSIC)
-      required:
-      - dataset_id
-      - audio_class
-      description: Body for audio sound-class metadata-filter search.
-      title: MetadataSoundSearchRequest
-    search-metadata-filter:KeyframeMetadataSearchResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        search_target:
-          type: string
-          enum:
-          - keyframe
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/search-metadata-filter:KeyframeSearchResult'
-      required:
-      - status
-      title: KeyframeMetadataSearchResponse
-    search-metadata-filter:MetadataTranscriptSearchRequest:
-      type: object
-      properties:
-        limit:
-          type: integer
-          default: 40
-          description: Max number of results to return
-        offset:
-          type: integer
-          default: 0
-          description: Number of results to skip before returning
-        metadata_filters:
-          type: array
-          items:
-            $ref: '#/components/schemas/search-metadata-filter:MetadataFilter'
-          description: List of filter objects applied against asset metadata fields before scoring. All filters are combined with AND.
-        skip_moderation:
-          type: boolean
-          default: false
-          description: When true, moderation scoring is skipped and moderation_score will be null on all results.
-        dataset_id:
-          type: string
-          format: uuid
-          description: Dataset to search within
-        text_query:
-          type: string
-          description: Query text matched against transcripts. In semantic mode it is encoded into an embedding and ranked via vector similarity; in exact mode it is matched lexically without embedding.
-        match_mode:
-          $ref: '#/components/schemas/search-metadata-filter:TranscriptMatchMode'
-          description: 'semantic: encode query with the dataset audio/transcript encoder; exact: pass text to the job without embedding for literal phrase matching.'
-      required:
-      - dataset_id
-      - text_query
-      description: Body for transcript metadata-filter search.
-      title: MetadataTranscriptSearchRequest
-    search-metadata-filter:DatabricksTerminationType:
-      type: string
-      enum:
-      - SUCCESS
-      - INTERNAL_ERROR
-      - CLIENT_ERROR
-      - CLOUD_FAILURE
-      description: 'Why a Databricks run terminated, returned in status.termination_details.type.
-
-
-        These are the standard values as documented at:
-
-        https://docs.databricks.com/api/workspace/jobs/getrun (see TerminationDetails > type)
-
-
-        If Databricks adds or changes values, _parse_termination_type in job.py handles unknown
-
-        values gracefully by returning None and emitting a warning log.'
-      title: DatabricksTerminationType
-    search-metadata-filter:HTTPValidationError:
+    search-metadata-filter_HTTPValidationError:
       type: object
       properties:
         detail:
           type: array
           items:
-            $ref: '#/components/schemas/search-metadata-filter:ValidationError'
+            $ref: '#/components/schemas/search-metadata-filter_ValidationError'
       title: HTTPValidationError
-    search-metadata-filter:ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    search-metadata-filter:SoundMetadataSearchResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        search_target:
-          type: string
-          enum:
-          - sound
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/search-metadata-filter:SoundSearchResult'
-      required:
-      - status
-      title: SoundMetadataSearchResponse
-    search-metadata-filter:ImageMetadataSearchResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        search_target:
-          type: string
-          enum:
-          - image
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/search-metadata-filter:ImageSearchResult'
-      required:
-      - status
-      title: ImageMetadataSearchResponse
-    search-metadata-filter:MetadataFilterOperator:
-      type: string
-      enum:
-      - '='
-      - '!='
-      - contains
-      - '>'
-      - <
-      - '>='
-      - <=
-      description: Comparison operator applied between a metadata field value and the filter `value`.
-      title: MetadataFilterOperator
-    search-metadata-filter:ShotMetadataSearchResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        search_target:
-          type: string
-          enum:
-          - shot
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/search-metadata-filter:ShotSearchResult'
-      required:
-      - status
-      title: ShotMetadataSearchResponse
-    search-metadata-filter:MetadataSearchStatusResponse:
-      type: object
-      properties:
-        run_id:
-          type: integer
-        state:
-          $ref: '#/components/schemas/search-metadata-filter:DatabricksLifeCycleState'
-          description: Current lifecycle state of the run
-        termination_type:
-          oneOf:
-          - $ref: '#/components/schemas/search-metadata-filter:DatabricksTerminationType'
-          - type: 'null'
-          description: Termination type, populated when run is complete
-        termination_message:
-          type:
-          - string
-          - 'null'
-          description: Human-readable termination message from Databricks
-      required:
-      - run_id
-      - state
-      description: Current status of a Databricks job run.
-      title: MetadataSearchStatusResponse
-    search-metadata-filter:MetadataFilter:
-      type: object
-      properties:
-        key:
-          type: string
-          description: Name of the metadata field to filter on (must exist on the dataset's assets).
-        value:
-          type: string
-          description: Value to compare the metadata field against. Always provided as a string; numerical operators (>, <, >=, <=) parse it as a number.
-        op:
-          $ref: '#/components/schemas/search-metadata-filter:MetadataFilterOperator'
-          description: Comparison operator. Defaults to `=` (equality).
-      required:
-      - key
-      - value
-      description: A single filter applied against an asset metadata field before scoring.
-      title: MetadataFilter
-    search-metadata-filter:ValidationError:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/search-metadata-filter:ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    search-metadata-filter:TranscriptMatchMode:
-      type: string
-      enum:
-      - semantic
-      - exact
-      description: 'Transcript search: vector/semantic vs lexical/exact (exact skips query embedding).'
-      title: TranscriptMatchMode
-    search-metadata-filter:get_metadata_filter_search_result_Response_200:
-      oneOf:
-      - $ref: '#/components/schemas/search-metadata-filter:VideoMetadataSearchResponse'
-      - $ref: '#/components/schemas/search-metadata-filter:ShotMetadataSearchResponse'
-      - $ref: '#/components/schemas/search-metadata-filter:TranscriptMetadataSearchResponse'
-      - $ref: '#/components/schemas/search-metadata-filter:ImageMetadataSearchResponse'
-      - $ref: '#/components/schemas/search-metadata-filter:KeyframeMetadataSearchResponse'
-      - $ref: '#/components/schemas/search-metadata-filter:SoundMetadataSearchResponse'
-      title: get_metadata_filter_search_result_Response_200
-    search-metadata-filter:AudioClass:
+    search-metadata-filter_AudioClass:
       type: string
       enum:
       - Speech
@@ -1352,7 +938,7 @@ components:
       - Field recording
       description: AudioSet audio class labels (527 classes)
       title: AudioClass
-    search-metadata-filter:VideoMetadataSearchResponse:
+    search-metadata-filter_ShotMetadataSearchResponse:
       type: object
       properties:
         status:
@@ -1360,15 +946,90 @@ components:
         search_target:
           type: string
           enum:
-          - video
+          - shot
         results:
           type: array
           items:
-            $ref: '#/components/schemas/search-metadata-filter:VideoSearchResult'
+            $ref: '#/components/schemas/search-metadata-filter_ShotSearchResult'
       required:
       - status
-      title: VideoMetadataSearchResponse
-    search-metadata-filter:AudioSegment:
+      title: ShotMetadataSearchResponse
+    search-metadata-filter_VideoCompositeSlice:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        composite_id:
+          type: string
+          format: uuid
+        composite_type:
+          type: string
+        index:
+          type: integer
+        start_time_ms:
+          type: integer
+        end_time_ms:
+          type: integer
+        start_frame_num:
+          type: integer
+        end_frame_num:
+          type: integer
+      required:
+      - id
+      - composite_id
+      - composite_type
+      - index
+      - start_time_ms
+      - end_time_ms
+      - start_frame_num
+      - end_frame_num
+      title: VideoCompositeSlice
+    search-metadata-filter_get_metadata_filter_search_result_Response_200:
+      oneOf:
+      - $ref: '#/components/schemas/search-metadata-filter_VideoMetadataSearchResponse'
+      - $ref: '#/components/schemas/search-metadata-filter_ShotMetadataSearchResponse'
+      - $ref: '#/components/schemas/search-metadata-filter_TranscriptMetadataSearchResponse'
+      - $ref: '#/components/schemas/search-metadata-filter_ImageMetadataSearchResponse'
+      - $ref: '#/components/schemas/search-metadata-filter_KeyframeMetadataSearchResponse'
+      - $ref: '#/components/schemas/search-metadata-filter_SoundMetadataSearchResponse'
+      title: get_metadata_filter_search_result_Response_200
+    search-metadata-filter_MetadataSearchStatusResponse:
+      type: object
+      properties:
+        run_id:
+          type: integer
+        state:
+          $ref: '#/components/schemas/search-metadata-filter_DatabricksLifeCycleState'
+          description: Current lifecycle state of the run
+        termination_type:
+          oneOf:
+          - $ref: '#/components/schemas/search-metadata-filter_DatabricksTerminationType'
+          - type: 'null'
+          description: Termination type, populated when run is complete
+        termination_message:
+          type:
+          - string
+          - 'null'
+          description: Human-readable termination message from Databricks
+      required:
+      - run_id
+      - state
+      description: Current status of a Databricks job run.
+      title: MetadataSearchStatusResponse
+    search-metadata-filter_VideoKeyframe:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        frame_time_ms:
+          type: integer
+      required:
+      - id
+      - frame_time_ms
+      title: VideoKeyframe
+    search-metadata-filter_AudioSegment:
       type: object
       properties:
         start_time_ms:
@@ -1382,28 +1043,274 @@ components:
       - end_time_ms
       - speech_to_text_transcription
       title: AudioSegment
-    search-metadata-filter:VideoKeyframe:
+    search-metadata-filter_VideoMetadataSearchResponse:
       type: object
       properties:
-        id:
+        status:
+          type: string
+        search_target:
+          type: string
+          enum:
+          - video
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/search-metadata-filter_VideoSearchResult'
+      required:
+      - status
+      title: VideoMetadataSearchResponse
+    search-metadata-filter_MetadataSoundSearchRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          default: 40
+          description: Max number of results to return
+        offset:
+          type: integer
+          default: 0
+          description: Number of results to skip before returning
+        metadata_filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/search-metadata-filter_MetadataFilter'
+          description: List of filter objects applied against asset metadata fields before scoring. All filters are combined with AND.
+        skip_moderation:
+          type: boolean
+          default: false
+          description: When true, moderation scoring is skipped and moderation_score will be null on all results.
+        dataset_id:
           type: string
           format: uuid
-        frame_time_ms:
-          type: integer
+          description: Dataset to search within
+        audio_class:
+          $ref: '#/components/schemas/search-metadata-filter_AudioClass'
+          description: AudioSet sound class label to search for (e.g. AudioClass.DOG, AudioClass.MUSIC)
       required:
-      - id
-      - frame_time_ms
-      title: VideoKeyframe
-    search-metadata-filter:TranscriptSearchResult:
+      - dataset_id
+      - audio_class
+      description: Body for audio sound-class metadata-filter search.
+      title: MetadataSoundSearchRequest
+    search-metadata-filter_SoundSearchResult:
       type: object
       properties:
         coactive_image_id:
           type: string
           format: uuid
         video:
-          $ref: '#/components/schemas/search-metadata-filter:Video'
+          $ref: '#/components/schemas/search-metadata-filter_Video'
+        start_time_ms:
+          type: integer
+        end_time_ms:
+          type: integer
+        score:
+          type:
+          - number
+          - 'null'
+          format: double
+        timestamp:
+          type: integer
+        moderation_score:
+          type:
+          - number
+          - 'null'
+          format: double
+      required:
+      - coactive_image_id
+      - video
+      - start_time_ms
+      - end_time_ms
+      - timestamp
+      title: SoundSearchResult
+    search-metadata-filter_ImageSearchResult:
+      type: object
+      properties:
+        coactive_image_id:
+          type: string
+          format: uuid
+        path:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            description: Any type
+        relevance_score:
+          type: number
+          format: double
+        moderation_score:
+          type:
+          - number
+          - 'null'
+          format: double
+      required:
+      - coactive_image_id
+      - path
+      - metadata
+      - relevance_score
+      title: ImageSearchResult
+    search-metadata-filter_ShotSearchResult:
+      type: object
+      properties:
+        composite_slice_id:
+          type: string
+          format: uuid
+        video_id:
+          type: string
+          format: uuid
+        video_metadata:
+          type: object
+          additionalProperties:
+            description: Any type
+        slice_start_time_ms:
+          type: integer
+        slice_end_time_ms:
+          type: integer
+        max_cosine_sim:
+          type: number
+          format: double
+        keyframe_count:
+          type: integer
+        moderation_score:
+          type:
+          - number
+          - 'null'
+          format: double
+      required:
+      - composite_slice_id
+      - video_id
+      - video_metadata
+      - slice_start_time_ms
+      - slice_end_time_ms
+      - max_cosine_sim
+      - keyframe_count
+      title: ShotSearchResult
+    search-metadata-filter_ImageMetadataSearchResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        search_target:
+          type: string
+          enum:
+          - image
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/search-metadata-filter_ImageSearchResult'
+      required:
+      - status
+      title: ImageMetadataSearchResponse
+    search-metadata-filter_Video:
+      type: object
+      properties:
+        coactive_video_id:
+          type: string
+          format: uuid
+        path:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            description: Any type
+      required:
+      - coactive_video_id
+      - path
+      - metadata
+      title: Video
+    search-metadata-filter_TranscriptMatchMode:
+      type: string
+      enum:
+      - semantic
+      - exact
+      description: 'Transcript search: vector/semantic vs lexical/exact (exact skips query embedding).'
+      title: TranscriptMatchMode
+    search-metadata-filter_KeyframeMetadataSearchResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        search_target:
+          type: string
+          enum:
+          - keyframe
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/search-metadata-filter_KeyframeSearchResult'
+      required:
+      - status
+      title: KeyframeMetadataSearchResponse
+    search-metadata-filter_TranscriptMetadataSearchResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        search_target:
+          type: string
+          enum:
+          - transcript
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/search-metadata-filter_TranscriptSearchResult'
+      required:
+      - status
+      title: TranscriptMetadataSearchResponse
+    search-metadata-filter_DatabricksTerminationType:
+      type: string
+      enum:
+      - SUCCESS
+      - INTERNAL_ERROR
+      - CLIENT_ERROR
+      - CLOUD_FAILURE
+      description: 'Why a Databricks run terminated, returned in status.termination_details.type.
+
+
+        These are the standard values as documented at:
+
+        https://docs.databricks.com/api/workspace/jobs/getrun (see TerminationDetails > type)
+
+
+        If Databricks adds or changes values, _parse_termination_type in job.py handles unknown
+
+        values gracefully by returning None and emitting a warning log.'
+      title: DatabricksTerminationType
+    search-metadata-filter_MetadataSearchTriggerResponse:
+      type: object
+      properties:
+        run_id:
+          type: integer
+          description: Databricks job run ID to use for status polling and result retrieval
+      required:
+      - run_id
+      description: Returned immediately after triggering a Databricks job run.
+      title: MetadataSearchTriggerResponse
+    search-metadata-filter_ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/search-metadata-filter_ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    search-metadata-filter_TranscriptSearchResult:
+      type: object
+      properties:
+        coactive_image_id:
+          type: string
+          format: uuid
+        video:
+          $ref: '#/components/schemas/search-metadata-filter_Video'
         audio_segment:
-          $ref: '#/components/schemas/search-metadata-filter:AudioSegment'
+          $ref: '#/components/schemas/search-metadata-filter_AudioSegment'
         timestamp:
           type: integer
         score:
@@ -1427,6 +1334,99 @@ components:
       - audio_segment
       - timestamp
       title: TranscriptSearchResult
+    search-metadata-filter_MetadataTranscriptSearchRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          default: 40
+          description: Max number of results to return
+        offset:
+          type: integer
+          default: 0
+          description: Number of results to skip before returning
+        metadata_filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/search-metadata-filter_MetadataFilter'
+          description: List of filter objects applied against asset metadata fields before scoring. All filters are combined with AND.
+        skip_moderation:
+          type: boolean
+          default: false
+          description: When true, moderation scoring is skipped and moderation_score will be null on all results.
+        dataset_id:
+          type: string
+          format: uuid
+          description: Dataset to search within
+        text_query:
+          type: string
+          description: Query text matched against transcripts. In semantic mode it is encoded into an embedding and ranked via vector similarity; in exact mode it is matched lexically without embedding.
+        match_mode:
+          $ref: '#/components/schemas/search-metadata-filter_TranscriptMatchMode'
+          description: 'semantic: encode query with the dataset audio/transcript encoder; exact: pass text to the job without embedding for literal phrase matching.'
+      required:
+      - dataset_id
+      - text_query
+      description: Body for transcript metadata-filter search.
+      title: MetadataTranscriptSearchRequest
+    search-metadata-filter_MetadataFilter:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Name of the metadata field to filter on (must exist on the dataset's assets).
+        value:
+          type: string
+          description: Value to compare the metadata field against. Always provided as a string; numerical operators (>, <, >=, <=) parse it as a number.
+        op:
+          $ref: '#/components/schemas/search-metadata-filter_MetadataFilterOperator'
+          description: Comparison operator. Defaults to `=` (equality).
+      required:
+      - key
+      - value
+      description: A single filter applied against an asset metadata field before scoring.
+      title: MetadataFilter
+    search-metadata-filter_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    search-metadata-filter_VideoSearchResult:
+      type: object
+      properties:
+        dataset_id:
+          type: string
+          format: uuid
+        video_id:
+          type: string
+          format: uuid
+        source_path:
+          type: string
+        video_score:
+          type: number
+          format: double
+        metadata:
+          type: object
+          additionalProperties:
+            description: Any type
+        top_composite_slice:
+          $ref: '#/components/schemas/search-metadata-filter_VideoCompositeSlice'
+        top_keyframe:
+          $ref: '#/components/schemas/search-metadata-filter_VideoKeyframe'
+        moderation_score:
+          type:
+          - number
+          - 'null'
+          format: double
+      required:
+      - dataset_id
+      - video_id
+      - source_path
+      - video_score
+      - metadata
+      - top_composite_slice
+      - top_keyframe
+      title: VideoSearchResult
   securitySchemes:
     HTTPBearer:
       type: http

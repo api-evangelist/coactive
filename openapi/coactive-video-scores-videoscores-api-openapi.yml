@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference agentic-search > agenticSearch video-scores > videoScores API
+  title: Reference video-scores > videoScores API
   version: 1.0.0
 servers:
 - url: https://api.coactive.ai
@@ -73,7 +73,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-scores:GetVideoShotScoresResponse'
+                $ref: '#/components/schemas/video-scores_GetVideoShotScoresResponse'
         '404':
           description: Shot scores table not found for dataset
           content:
@@ -85,7 +85,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-scores:HTTPValidationError'
+                $ref: '#/components/schemas/video-scores_HTTPValidationError'
   /api/v0/video-scores/groups/{group_id}/tags/{tag_id}/aggregations/{aggregation_id}/result:
     get:
       operationId: get-video-scores-result
@@ -134,7 +134,7 @@ paths:
         description: Sort order for scores (ascending or descending).
         required: false
         schema:
-          $ref: '#/components/schemas/video-scores:SortDirection'
+          $ref: '#/components/schemas/video-scores_SortDirection'
       - name: Authorization
         in: header
         description: Bearer authentication
@@ -147,13 +147,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-scores:GetVideoScoresResponse'
+                $ref: '#/components/schemas/video-scores_GetVideoScoresResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-scores:HTTPValidationError'
+                $ref: '#/components/schemas/video-scores_HTTPValidationError'
   /api/v0/video-scores/groups/{group_id}/tags/{tag_id}/aggregations/{aggregation_id}/result/count:
     get:
       operationId: get-video-scores-result-count
@@ -208,13 +208,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-scores:GetVideoScoresResultCountResponse'
+                $ref: '#/components/schemas/video-scores_GetVideoScoresResultCountResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-scores:HTTPValidationError'
+                $ref: '#/components/schemas/video-scores_HTTPValidationError'
   /api/v0/video-scores/groups/{group_id}/tags/{tag_id}/aggregations/-/result:
     get:
       operationId: get-video-scores-result-preview
@@ -256,7 +256,7 @@ paths:
         description: The aggregation strategy/methodology to use.
         required: true
         schema:
-          $ref: '#/components/schemas/video-scores:AggregationMethodology'
+          $ref: '#/components/schemas/video-scores_AggregationMethodology'
       - name: min_conf
         in: query
         description: Minimum confidence threshold.
@@ -276,7 +276,7 @@ paths:
         description: Backend engine used to query shot scores. DUCKDB (default) supports all strategies; PINOT supports ANY_HIT and COVERAGE_THRESHOLD only.
         required: false
         schema:
-          $ref: '#/components/schemas/video-scores:AggregationEngine'
+          $ref: '#/components/schemas/video-scores_AggregationEngine'
       - name: max_shot_length
         in: query
         description: Maximum shot length in seconds. Videos with any shot longer than this value are excluded from results. Omit or set to null to disable filtering.
@@ -295,7 +295,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-scores:GetVideoScoresResponse'
+                $ref: '#/components/schemas/video-scores_GetVideoScoresResponse'
         '400':
           description: Bad Request - LONGEST_RUN strategy is not supported with PINOT engine
           content:
@@ -307,30 +307,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-scores:HTTPValidationError'
+                $ref: '#/components/schemas/video-scores_HTTPValidationError'
 components:
   schemas:
-    video-scores:GetVideoScoresResponse:
+    video-scores_VideoModelInternalMetadata:
       type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/video-scores:PageMetadata'
-          description: Metadata for pagination.
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/video-scores:VideoScore'
-          description: The paginated data.
-        sort:
-          type: array
-          items:
-            $ref: '#/components/schemas/video-scores:SortField'
-          description: Sort details.
-      required:
-      - meta
-      description: Response for getting video scores.
-      title: GetVideoScoresResponse
-    video-scores:AggregationEngine:
+      properties: {}
+      title: VideoModelInternalMetadata
+    video-scores_AggregationEngine:
       type: string
       enum:
       - DUCKDB
@@ -338,210 +322,20 @@ components:
       default: DUCKDB
       description: Backend engine used to query shot scores. DUCKDB (default) supports all aggregation strategies; PINOT supports ANY_HIT and COVERAGE_THRESHOLD only.
       title: AggregationEngine
-    video-scores:GetVideoScoresResultCountResponse:
+    video-scores_SortField:
       type: object
       properties:
-        group_id:
+        field:
           type: string
-          format: uuid
-          description: Group ID.
-        tag_id:
-          type: string
-          format: uuid
-          description: Tag ID.
-        aggregation_id:
-          type: string
-          format: uuid
-          description: Aggregation ID.
-        count:
-          type: integer
-          description: Total count of video scores matching the criteria.
-        predicate:
-          $ref: '#/components/schemas/video-scores:GetVideoScoresResultCountPredicate'
-          description: Predicate used for counting.
+          description: Field name to sort by.
+        direction:
+          $ref: '#/components/schemas/video-scores_SortDirection'
+          description: Sort direction.
       required:
-      - group_id
-      - tag_id
-      - aggregation_id
-      - count
-      - predicate
-      description: Response for getting video scores result count.
-      title: GetVideoScoresResultCountResponse
-    video-scores:VideoModel:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Coactive Video ID.
-        dataset_id:
-          type: string
-          format: uuid
-        created_user_id:
-          type: string
-        updated_user_id:
-          type: string
-        created_dt:
-          type: string
-          format: date-time
-        updated_dt:
-          type: string
-          format: date-time
-        status:
-          type: string
-        path:
-          type: string
-          description: Path to the video file.
-        video_key:
-          type: string
-        internal_metadata:
-          $ref: '#/components/schemas/video-scores:VideoModelInternalMetadata'
-      required:
-      - id
-      - dataset_id
-      - created_user_id
-      - updated_user_id
-      - created_dt
-      - updated_dt
-      - status
-      - path
-      description: Video details.
-      title: VideoModel
-    video-scores:AggregationMethodology:
-      type: string
-      enum:
-      - ANY_HIT
-      - COVERAGE_THRESHOLD
-      - LONGEST_RUN
-      description: The methodology used for aggregating shot scores into video scores. LONGEST_RUN is only supported with the DUCKDB engine.
-      title: AggregationMethodology
-    video-scores:ShotTextPrompt:
-      type: object
-      properties:
-        modality:
-          type: string
-          description: The modality of the prompt (e.g., "Visual" or "Transcript").
-        prompt:
-          type: string
-          description: The text prompt used to score this shot.
-      required:
-      - modality
-      - prompt
-      description: Text prompt with modality information for shot scoring.
-      title: ShotTextPrompt
-    video-scores:ShotScore:
-      type: object
-      properties:
-        shot_id:
-          type: string
-          format: uuid
-          description: Shot identifier.
-        score:
-          type: number
-          format: double
-          description: Computed score for the shot.
-        start_time:
-          type: number
-          format: double
-          description: Shot start time in seconds.
-        end_time:
-          type: number
-          format: double
-          description: Shot end time in seconds.
-        duration:
-          type: number
-          format: double
-          description: Shot duration in seconds.
-        textPrompts:
-          type: array
-          items:
-            $ref: '#/components/schemas/video-scores:ShotTextPrompt'
-          description: Text prompts for this shot from the asset-check endpoint.
-      required:
-      - shot_id
-      - score
-      - start_time
-      - end_time
-      - duration
-      description: Shot-level score for a single shot in a video (only shots meeting min_conf are returned).
-      title: ShotScore
-    video-scores:ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    video-scores:ValidationError:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/video-scores:ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    video-scores:HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/video-scores:ValidationError'
-      title: HTTPValidationError
-    video-scores:PageDetails:
-      type: object
-      properties:
-        page:
-          type: integer
-          description: Current page number (1-indexed).
-        per_page:
-          type: integer
-          description: Number of items per page.
-      required:
-      - page
-      - per_page
-      description: Pagination metadata.
-      title: PageDetails
-    video-scores:VideoModelInternalMetadata:
-      type: object
-      properties: {}
-      title: VideoModelInternalMetadata
-    video-scores:PageMetadata:
-      type: object
-      properties:
-        page:
-          $ref: '#/components/schemas/video-scores:PageDetails'
-          description: Details about pagination.
-        has_next_page:
-          type: boolean
-          description: Whether another page exists.
-      required:
-      - page
-      - has_next_page
-      description: Metadata about the paginated response.
-      title: PageMetadata
-    video-scores:GetVideoScoresResultCountPredicate:
-      type: object
-      properties:
-        criteria_met:
-          type: boolean
-          description: Whether the criteria was met.
-        accepted:
-          type:
-          - boolean
-          - 'null'
-          description: Whether the result is accepted.
-      required:
-      - criteria_met
-      description: Predicate used for counting video scores.
-      title: GetVideoScoresResultCountPredicate
-    video-scores:VideoMetadata:
+      - field
+      description: Sort field details.
+      title: SortField
+    video-scores_VideoMetadata:
       type: object
       properties:
         title:
@@ -581,20 +375,7 @@ components:
           description: Content ID.
       description: Video metadata from the metadata service.
       title: VideoMetadata
-    video-scores:SortField:
-      type: object
-      properties:
-        field:
-          type: string
-          description: Field name to sort by.
-        direction:
-          $ref: '#/components/schemas/video-scores:SortDirection'
-          description: Sort direction.
-      required:
-      - field
-      description: Sort field details.
-      title: SortField
-    video-scores:VideoScore:
+    video-scores_VideoScore:
       type: object
       properties:
         group_id:
@@ -635,12 +416,12 @@ components:
           description: When the score was computed.
         video:
           oneOf:
-          - $ref: '#/components/schemas/video-scores:VideoModel'
+          - $ref: '#/components/schemas/video-scores_VideoModel'
           - type: 'null'
           description: Video details associated with the score.
         video_metadata:
           oneOf:
-          - $ref: '#/components/schemas/video-scores:VideoMetadata'
+          - $ref: '#/components/schemas/video-scores_VideoMetadata'
           - type: 'null'
           description: Video metadata from the metadata service.
         preview_s3_path:
@@ -673,13 +454,240 @@ components:
       - computed_dt
       description: Video score result.
       title: VideoScore
-    video-scores:GetVideoShotScoresResponse:
+    video-scores_GetVideoScoresResultCountResponse:
+      type: object
+      properties:
+        group_id:
+          type: string
+          format: uuid
+          description: Group ID.
+        tag_id:
+          type: string
+          format: uuid
+          description: Tag ID.
+        aggregation_id:
+          type: string
+          format: uuid
+          description: Aggregation ID.
+        count:
+          type: integer
+          description: Total count of video scores matching the criteria.
+        predicate:
+          $ref: '#/components/schemas/video-scores_GetVideoScoresResultCountPredicate'
+          description: Predicate used for counting.
+      required:
+      - group_id
+      - tag_id
+      - aggregation_id
+      - count
+      - predicate
+      description: Response for getting video scores result count.
+      title: GetVideoScoresResultCountResponse
+    video-scores_VideoModel:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Coactive Video ID.
+        dataset_id:
+          type: string
+          format: uuid
+        created_user_id:
+          type: string
+        updated_user_id:
+          type: string
+        created_dt:
+          type: string
+          format: date-time
+        updated_dt:
+          type: string
+          format: date-time
+        status:
+          type: string
+        path:
+          type: string
+          description: Path to the video file.
+        video_key:
+          type: string
+        internal_metadata:
+          $ref: '#/components/schemas/video-scores_VideoModelInternalMetadata'
+      required:
+      - id
+      - dataset_id
+      - created_user_id
+      - updated_user_id
+      - created_dt
+      - updated_dt
+      - status
+      - path
+      description: Video details.
+      title: VideoModel
+    video-scores_SortDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      default: desc
+      description: Sort direction for results.
+      title: SortDirection
+    video-scores_ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/video-scores_ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    video-scores_HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/video-scores_ValidationError'
+      title: HTTPValidationError
+    video-scores_ShotTextPrompt:
+      type: object
+      properties:
+        modality:
+          type: string
+          description: The modality of the prompt (e.g., "Visual" or "Transcript").
+        prompt:
+          type: string
+          description: The text prompt used to score this shot.
+      required:
+      - modality
+      - prompt
+      description: Text prompt with modality information for shot scoring.
+      title: ShotTextPrompt
+    video-scores_GetVideoScoresResultCountPredicate:
+      type: object
+      properties:
+        criteria_met:
+          type: boolean
+          description: Whether the criteria was met.
+        accepted:
+          type:
+          - boolean
+          - 'null'
+          description: Whether the result is accepted.
+      required:
+      - criteria_met
+      description: Predicate used for counting video scores.
+      title: GetVideoScoresResultCountPredicate
+    video-scores_PageMetadata:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/video-scores_PageDetails'
+          description: Details about pagination.
+        has_next_page:
+          type: boolean
+          description: Whether another page exists.
+      required:
+      - page
+      - has_next_page
+      description: Metadata about the paginated response.
+      title: PageMetadata
+    video-scores_GetVideoScoresResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/video-scores_PageMetadata'
+          description: Metadata for pagination.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/video-scores_VideoScore'
+          description: The paginated data.
+        sort:
+          type: array
+          items:
+            $ref: '#/components/schemas/video-scores_SortField'
+          description: Sort details.
+      required:
+      - meta
+      description: Response for getting video scores.
+      title: GetVideoScoresResponse
+    video-scores_AggregationMethodology:
+      type: string
+      enum:
+      - ANY_HIT
+      - COVERAGE_THRESHOLD
+      - LONGEST_RUN
+      description: The methodology used for aggregating shot scores into video scores. LONGEST_RUN is only supported with the DUCKDB engine.
+      title: AggregationMethodology
+    video-scores_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    video-scores_PageDetails:
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number (1-indexed).
+        per_page:
+          type: integer
+          description: Number of items per page.
+      required:
+      - page
+      - per_page
+      description: Pagination metadata.
+      title: PageDetails
+    video-scores_ShotScore:
+      type: object
+      properties:
+        shot_id:
+          type: string
+          format: uuid
+          description: Shot identifier.
+        score:
+          type: number
+          format: double
+          description: Computed score for the shot.
+        start_time:
+          type: number
+          format: double
+          description: Shot start time in seconds.
+        end_time:
+          type: number
+          format: double
+          description: Shot end time in seconds.
+        duration:
+          type: number
+          format: double
+          description: Shot duration in seconds.
+        textPrompts:
+          type: array
+          items:
+            $ref: '#/components/schemas/video-scores_ShotTextPrompt'
+          description: Text prompts for this shot from the asset-check endpoint.
+      required:
+      - shot_id
+      - score
+      - start_time
+      - end_time
+      - duration
+      description: Shot-level score for a single shot in a video (only shots meeting min_conf are returned).
+      title: ShotScore
+    video-scores_GetVideoShotScoresResponse:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/video-scores:ShotScore'
+            $ref: '#/components/schemas/video-scores_ShotScore'
           description: Shot scores for the video.
         total_shot_count:
           type:
@@ -688,14 +696,6 @@ components:
           description: Total number of shots in the video (from Pinot composite keyframes); null if unavailable.
       description: Response for getting shot scores for a video.
       title: GetVideoShotScoresResponse
-    video-scores:SortDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      default: desc
-      description: Sort direction for results.
-      title: SortDirection
   securitySchemes:
     HTTPBearer:
       type: http

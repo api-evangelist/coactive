@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference agentic-search > agenticSearch queries API
+  title: Reference Queries API
   version: 1.0.0
 servers:
 - url: https://api.coactive.ai
@@ -8,14 +8,14 @@ servers:
 - url: https://app.coactive.ai
   description: Production
 tags:
-- name: queries
+- name: Queries
 paths:
   /api/v1/queries/{query_id}/cancel:
     post:
       operationId: cancel-query-api-v-1-queries-query-id-cancel-post
       summary: Cancel Query
       tags:
-      - queries
+      - Queries
       parameters:
       - name: query_id
         in: path
@@ -35,19 +35,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:app__api__v1__schema__GetQueryResponse'
+                $ref: '#/components/schemas/queries_app__api__v1__schema__GetQueryResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:HTTPValidationError'
+                $ref: '#/components/schemas/queries_HTTPValidationError'
   /api/v1/queries:
     post:
       operationId: create-query-api-v-1-queries-post
       summary: Create Query
       tags:
-      - queries
+      - Queries
       parameters:
       - name: Authorization
         in: header
@@ -61,30 +61,30 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:app__api__v1__schema__GetQueryResponse'
+                $ref: '#/components/schemas/queries_app__api__v1__schema__GetQueryResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:HTTPValidationError'
+                $ref: '#/components/schemas/queries_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/queries:app__api__v1__schema__CreateQueryRequest'
+              $ref: '#/components/schemas/queries_app__api__v1__schema__CreateQueryRequest'
     get:
       operationId: list-queries-api-v-1-queries-get
       summary: List Queries
       tags:
-      - queries
+      - Queries
       parameters:
       - name: status
         in: query
         required: false
         schema:
           oneOf:
-          - $ref: '#/components/schemas/queries:QueryStatus'
+          - $ref: '#/components/schemas/queries_QueryStatus'
           - type: 'null'
       - name: dataset_id
         in: query
@@ -113,7 +113,7 @@ paths:
         required: false
         schema:
           oneOf:
-          - $ref: '#/components/schemas/queries:QueryType'
+          - $ref: '#/components/schemas/queries_QueryType'
           - type: 'null'
       - name: offset
         in: query
@@ -139,24 +139,24 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:app__api__v1__schema__ListQueriesResponse'
+                $ref: '#/components/schemas/queries_app__api__v1__schema__ListQueriesResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:HTTPValidationError'
+                $ref: '#/components/schemas/queries_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/queries:Body_list_queries_api_v1_queries_get'
+              $ref: '#/components/schemas/queries_Body_list_queries_api_v1_queries_get'
   /api/v1/queries/{query_id}:
     delete:
       operationId: delete-query-api-v-1-queries-query-id-delete
       summary: Delete Query
       tags:
-      - queries
+      - Queries
       parameters:
       - name: query_id
         in: path
@@ -176,18 +176,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:app__api__v1__schema__GetQueryResponse'
+                $ref: '#/components/schemas/queries_app__api__v1__schema__GetQueryResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:HTTPValidationError'
+                $ref: '#/components/schemas/queries_HTTPValidationError'
     get:
       operationId: get-query-api-v-1-queries-query-id-get
       summary: Get Query
       tags:
-      - queries
+      - Queries
       parameters:
       - name: query_id
         in: path
@@ -207,19 +207,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:app__api__v1__schema__GetQueryResponse'
+                $ref: '#/components/schemas/queries_app__api__v1__schema__GetQueryResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:HTTPValidationError'
+                $ref: '#/components/schemas/queries_HTTPValidationError'
   /api/v1/queries/{query_id}/exports:
     post:
       operationId: export-query-api-v-1-queries-query-id-exports-post
       summary: Export Query
       tags:
-      - queries
+      - Queries
       parameters:
       - name: query_id
         in: path
@@ -239,24 +239,24 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:app__api__v1__schema__ExportQueryResponse'
+                $ref: '#/components/schemas/queries_app__api__v1__schema__ExportQueryResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:HTTPValidationError'
+                $ref: '#/components/schemas/queries_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/queries:ExportQueryRequest'
+              $ref: '#/components/schemas/queries_ExportQueryRequest'
   /api/v1/queries/{query_id}/results:
     get:
       operationId: get-query-results-url-api-v-1-queries-query-id-results-get
       summary: Get Query Results Url
       tags:
-      - queries
+      - Queries
       parameters:
       - name: query_id
         in: path
@@ -268,7 +268,7 @@ paths:
         in: query
         required: false
         schema:
-          $ref: '#/components/schemas/queries:ApiV1QueriesQueryIdResultsGetParametersUrlFormat'
+          $ref: '#/components/schemas/queries_ApiV1QueriesQueryIdResultsGetParametersUrlFormat'
       - name: expiration_seconds
         in: query
         required: false
@@ -287,19 +287,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:GetQueryResultsResponse'
+                $ref: '#/components/schemas/queries_GetQueryResultsResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:HTTPValidationError'
+                $ref: '#/components/schemas/queries_HTTPValidationError'
   /api/v1/datasets/{dataset_id}/tables/{table_name}:
     get:
       operationId: get-table-api-v-1-datasets-dataset-id-tables-table-name-get
       summary: Get Table
       tags:
-      - queries
+      - Queries
       parameters:
       - name: dataset_id
         in: path
@@ -324,19 +324,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:Table'
+                $ref: '#/components/schemas/queries_Table'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:HTTPValidationError'
+                $ref: '#/components/schemas/queries_HTTPValidationError'
   /api/v1/datasets/{dataset_id}/tables:
     get:
       operationId: list-tables-api-v-1-datasets-dataset-id-tables-get
       summary: List Tables
       tags:
-      - queries
+      - Queries
       parameters:
       - name: dataset_id
         in: path
@@ -356,19 +356,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:ListTablesResponse'
+                $ref: '#/components/schemas/queries_ListTablesResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:HTTPValidationError'
+                $ref: '#/components/schemas/queries_HTTPValidationError'
   /api/v1/queries/{query_id}/run:
     post:
       operationId: run-query-api-v-1-queries-query-id-run-post
       summary: Run Query
       tags:
-      - queries
+      - Queries
       parameters:
       - name: query_id
         in: path
@@ -388,19 +388,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:app__api__v1__schema__GetQueryResponse'
+                $ref: '#/components/schemas/queries_app__api__v1__schema__GetQueryResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:HTTPValidationError'
+                $ref: '#/components/schemas/queries_HTTPValidationError'
   /api/v1/queries/{query_id}/stop:
     post:
       operationId: stop-query-api-v-1-queries-query-id-stop-post
       summary: Stop Query
       tags:
-      - queries
+      - Queries
       parameters:
       - name: query_id
         in: path
@@ -420,38 +420,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:app__api__v1__schema__GetQueryResponse'
+                $ref: '#/components/schemas/queries_app__api__v1__schema__GetQueryResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/queries:HTTPValidationError'
+                $ref: '#/components/schemas/queries_HTTPValidationError'
 components:
   schemas:
-    queries:ExportType:
-      type: string
-      enum:
-      - DELTA
-      - CSV
-      - UNITY
-      description: All possible export types
-      title: ExportType
-    queries:ApiV1QueriesQueryIdResultsGetParametersUrlFormat:
-      type: string
-      enum:
-      - download
-      - direct
-      default: download
-      title: ApiV1QueriesQueryIdResultsGetParametersUrlFormat
-    queries:QueryType:
-      type: string
-      enum:
-      - NATURAL_LANGUAGE
-      - SQL
-      description: All possible query types
-      title: QueryType
-    queries:Body_list_queries_api_v1_queries_get:
+    queries_Table:
+      type: object
+      properties:
+        name:
+          type: string
+        table_schema:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+      - name
+      - table_schema
+      title: Table
+    queries_Body_list_queries_api_v1_queries_get:
       type: object
       properties:
         query_ids:
@@ -474,40 +467,22 @@ components:
           items:
             type: string
       title: Body_list_queries_api_v1_queries_get
-    queries:ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    queries:ValidationError:
+    queries_app__api__v1__schema__ListQueriesResponse:
       type: object
       properties:
-        loc:
+        meta:
+          $ref: '#/components/schemas/queries_PagedMetaResponse'
+          description: Metadata for the set of data returned
+        data:
           type: array
           items:
-            $ref: '#/components/schemas/queries:ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
+            $ref: '#/components/schemas/queries_app__api__v1__schema__GetQueryResponse'
+          description: The paginated data
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    queries:GetQueryResultsResponse:
-      type: object
-      properties:
-        query_id:
-          type: string
-          format: uuid
-        download_url:
-          type: string
-      required:
-      - query_id
-      - download_url
-      title: GetQueryResultsResponse
-    queries:app__api__v1__schema__ExportQueryResponse:
+      - meta
+      - data
+      title: app__api__v1__schema__ListQueriesResponse
+    queries_app__api__v1__schema__ExportQueryResponse:
       type: object
       properties:
         query_id:
@@ -526,91 +501,7 @@ components:
       - status
       - message
       title: app__api__v1__schema__ExportQueryResponse
-    queries:app__api__v1__schema__ListQueriesResponse:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/queries:PagedMetaResponse'
-          description: Metadata for the set of data returned
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/queries:app__api__v1__schema__GetQueryResponse'
-          description: The paginated data
-      required:
-      - meta
-      - data
-      title: app__api__v1__schema__ListQueriesResponse
-    queries:PagedPageDetailsResponse:
-      type: object
-      properties:
-        current_page:
-          type: integer
-          description: Current page number
-        limit:
-          type: integer
-          description: Number of items returned in the list response
-        offset:
-          type: integer
-          description: Starting index returned for the list response
-      required:
-      - current_page
-      - limit
-      - offset
-      description: Pagination metadata
-      title: PagedPageDetailsResponse
-    queries:QueryStatus:
-      type: string
-      enum:
-      - Queued
-      - Running
-      - Stopping
-      - Stopped
-      - Complete
-      - Error
-      description: All possible query status values
-      title: QueryStatus
-    queries:ExportQueryRequest:
-      type: object
-      properties:
-        connection_name:
-          type:
-          - string
-          - 'null'
-          default: coactive
-        export_type:
-          $ref: '#/components/schemas/queries:ExportType'
-        target_bucket:
-          type: string
-        target_prefix:
-          type: string
-      required:
-      - target_bucket
-      - target_prefix
-      title: ExportQueryRequest
-    queries:PagedLinksDetailsResponse:
-      type: object
-      properties:
-        current:
-          type: string
-          description: The current page link
-        previous:
-          type:
-          - string
-          - 'null'
-          description: The previous page, if applicable
-        next:
-          type:
-          - string
-          - 'null'
-          description: The next page link, if applicable
-      required:
-      - current
-      - previous
-      - next
-      description: Pagination metadata
-      title: PagedLinksDetailsResponse
-    queries:app__api__v1__schema__GetQueryResponse:
+    queries_app__api__v1__schema__GetQueryResponse:
       type: object
       properties:
         query_id:
@@ -619,9 +510,9 @@ components:
         query:
           type: string
         type:
-          $ref: '#/components/schemas/queries:QueryType'
+          $ref: '#/components/schemas/queries_QueryType'
         status:
-          $ref: '#/components/schemas/queries:QueryStatus'
+          $ref: '#/components/schemas/queries_QueryStatus'
         results:
           type:
           - string
@@ -672,54 +563,63 @@ components:
       - updated_dt
       - created_user_id
       title: app__api__v1__schema__GetQueryResponse
-    queries:ListTablesResponse:
+    queries_GetQueryResultsResponse:
+      type: object
+      properties:
+        query_id:
+          type: string
+          format: uuid
+        download_url:
+          type: string
+      required:
+      - query_id
+      - download_url
+      title: GetQueryResultsResponse
+    queries_ExportType:
+      type: string
+      enum:
+      - DELTA
+      - CSV
+      - UNITY
+      description: All possible export types
+      title: ExportType
+    queries_ApiV1QueriesQueryIdResultsGetParametersUrlFormat:
+      type: string
+      enum:
+      - download
+      - direct
+      default: download
+      title: ApiV1QueriesQueryIdResultsGetParametersUrlFormat
+    queries_ListTablesResponse:
       type: object
       properties:
         tables:
           type: array
           items:
-            $ref: '#/components/schemas/queries:Table'
+            $ref: '#/components/schemas/queries_Table'
       required:
       - tables
       title: ListTablesResponse
-    queries:HTTPValidationError:
+    queries_QueryStatus:
+      type: string
+      enum:
+      - Queued
+      - Running
+      - Stopping
+      - Stopped
+      - Complete
+      - Error
+      description: All possible query status values
+      title: QueryStatus
+    queries_HTTPValidationError:
       type: object
       properties:
         detail:
           type: array
           items:
-            $ref: '#/components/schemas/queries:ValidationError'
+            $ref: '#/components/schemas/queries_ValidationError'
       title: HTTPValidationError
-    queries:PagedMetaResponse:
-      type: object
-      properties:
-        page:
-          $ref: '#/components/schemas/queries:PagedPageDetailsResponse'
-          description: Details about the response page
-        links:
-          $ref: '#/components/schemas/queries:PagedLinksDetailsResponse'
-          description: Links for easy page traversal
-      required:
-      - page
-      - links
-      description: Metadata about the paginated response
-      title: PagedMetaResponse
-    queries:Table:
-      type: object
-      properties:
-        name:
-          type: string
-        table_schema:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            description: Any type
-      required:
-      - name
-      - table_schema
-      title: Table
-    queries:app__api__v1__schema__CreateQueryRequest:
+    queries_app__api__v1__schema__CreateQueryRequest:
       type: object
       properties:
         dataset_id:
@@ -728,7 +628,7 @@ components:
         query:
           type: string
         type:
-          $ref: '#/components/schemas/queries:QueryType'
+          $ref: '#/components/schemas/queries_QueryType'
         parameters:
           type:
           - object
@@ -750,6 +650,106 @@ components:
       - dataset_id
       - query
       title: app__api__v1__schema__CreateQueryRequest
+    queries_ExportQueryRequest:
+      type: object
+      properties:
+        connection_name:
+          type:
+          - string
+          - 'null'
+          default: coactive
+        export_type:
+          $ref: '#/components/schemas/queries_ExportType'
+        target_bucket:
+          type: string
+        target_prefix:
+          type: string
+      required:
+      - target_bucket
+      - target_prefix
+      title: ExportQueryRequest
+    queries_PagedMetaResponse:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/queries_PagedPageDetailsResponse'
+          description: Details about the response page
+        links:
+          $ref: '#/components/schemas/queries_PagedLinksDetailsResponse'
+          description: Links for easy page traversal
+      required:
+      - page
+      - links
+      description: Metadata about the paginated response
+      title: PagedMetaResponse
+    queries_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    queries_QueryType:
+      type: string
+      enum:
+      - NATURAL_LANGUAGE
+      - SQL
+      description: All possible query types
+      title: QueryType
+    queries_ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/queries_ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    queries_PagedLinksDetailsResponse:
+      type: object
+      properties:
+        current:
+          type: string
+          description: The current page link
+        previous:
+          type:
+          - string
+          - 'null'
+          description: The previous page, if applicable
+        next:
+          type:
+          - string
+          - 'null'
+          description: The next page link, if applicable
+      required:
+      - current
+      - previous
+      - next
+      description: Pagination metadata
+      title: PagedLinksDetailsResponse
+    queries_PagedPageDetailsResponse:
+      type: object
+      properties:
+        current_page:
+          type: integer
+          description: Current page number
+        limit:
+          type: integer
+          description: Number of items returned in the list response
+        offset:
+          type: integer
+          description: Starting index returned for the list response
+      required:
+      - current_page
+      - limit
+      - offset
+      description: Pagination metadata
+      title: PagedPageDetailsResponse
   securitySchemes:
     HTTPBearer:
       type: http

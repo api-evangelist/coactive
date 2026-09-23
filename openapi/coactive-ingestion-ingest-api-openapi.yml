@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference agentic-search > agenticSearch ingestion > ingest API
+  title: Reference ingestion > ingest API
   version: 1.0.0
 servers:
 - url: https://api.coactive.ai
@@ -30,18 +30,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ingestion:CreateIngestJobResponse'
+                $ref: '#/components/schemas/ingestion_CreateIngestJobResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ingestion:HTTPValidationError'
+                $ref: '#/components/schemas/ingestion_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ingestion:CreateIngestJobForMetadataRequest'
+              $ref: '#/components/schemas/ingestion_CreateIngestJobForMetadataRequest'
   /api/v1/ingestion/assets:
     post:
       operationId: create-ingest-job-from-assets-api-v-1-ingestion-assets-post
@@ -62,18 +62,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ingestion:CreateIngestJobResponse'
+                $ref: '#/components/schemas/ingestion_CreateIngestJobResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ingestion:HTTPValidationError'
+                $ref: '#/components/schemas/ingestion_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ingestion:CreateIngestJobFromAssetsRequest'
+              $ref: '#/components/schemas/ingestion_CreateIngestJobFromAssetsRequest'
   /api/v1/ingestion/buckets:
     post:
       operationId: create-ingest-job-from-bucket-api-v-1-ingestion-buckets-post
@@ -94,18 +94,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ingestion:CreateIngestJobResponse'
+                $ref: '#/components/schemas/ingestion_CreateIngestJobResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ingestion:HTTPValidationError'
+                $ref: '#/components/schemas/ingestion_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ingestion:CreateIngestJobFromBucketRequest'
+              $ref: '#/components/schemas/ingestion_CreateIngestJobFromBucketRequest'
   /api/v1/ingestion/files:
     post:
       operationId: create-ingest-job-from-file-api-v-1-ingestion-files-post
@@ -126,18 +126,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ingestion:CreateIngestJobResponse'
+                $ref: '#/components/schemas/ingestion_CreateIngestJobResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ingestion:HTTPValidationError'
+                $ref: '#/components/schemas/ingestion_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ingestion:CreateIngestJobFromFileRequest'
+              $ref: '#/components/schemas/ingestion_CreateIngestJobFromFileRequest'
   /api/v1/ingestion/images:
     post:
       operationId: create-ingest-job-from-images-api-v-1-ingestion-images-post
@@ -158,18 +158,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ingestion:CreateIngestJobResponse'
+                $ref: '#/components/schemas/ingestion_CreateIngestJobResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ingestion:HTTPValidationError'
+                $ref: '#/components/schemas/ingestion_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ingestion:CreateIngestJobFromImagesRequest'
+              $ref: '#/components/schemas/ingestion_CreateIngestJobFromImagesRequest'
   /api/v1/ingestion/videos:
     post:
       operationId: create-ingest-job-from-videos-api-v-1-ingestion-videos-post
@@ -190,31 +190,84 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ingestion:CreateIngestJobResponse'
+                $ref: '#/components/schemas/ingestion_CreateIngestJobResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ingestion:HTTPValidationError'
+                $ref: '#/components/schemas/ingestion_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ingestion:CreateIngestJobFromVideosRequest'
+              $ref: '#/components/schemas/ingestion_CreateIngestJobFromVideosRequest'
 components:
   schemas:
-    ingestion:ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    ingestion:ExternalCloudStorageProvider:
+    ingestion_AssetJobDetail:
+      type: object
+      properties:
+        asset:
+          $ref: '#/components/schemas/ingestion_IngestJobAsset'
+        asset_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        error:
+          type:
+          - string
+          - 'null'
+      required:
+      - asset
+      title: AssetJobDetail
+    ingestion_ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion_ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ingestion_MetadataUpdateType:
       type: string
       enum:
-      - aws
-      title: ExternalCloudStorageProvider
-    ingestion:CreateIngestJobFromImagesRequest:
+      - overwrite
+      - upsert
+      - remove
+      title: MetadataUpdateType
+    ingestion_InternalAssetMetadataUpdate:
+      type: object
+      properties:
+        asset_id:
+          type: string
+          format: uuid
+        source_path:
+          type:
+          - string
+          - 'null'
+        asset_type:
+          $ref: '#/components/schemas/ingestion_ExplicitExternalAssetType'
+        metadata:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            $ref: '#/components/schemas/ingestion_InternalAssetMetadataUpdateMetadata'
+      required:
+      - asset_id
+      - source_path
+      - asset_type
+      title: InternalAssetMetadataUpdate
+    ingestion_CreateIngestJobFromBucketRequest:
       type: object
       properties:
         dataset_id:
@@ -224,15 +277,101 @@ components:
           type:
           - string
           - 'null'
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion:IngestJobImage'
+        path:
+          type:
+          - string
+          - 'null'
+        spec:
+          oneOf:
+          - $ref: '#/components/schemas/ingestion_BucketSpec'
+          - type: 'null'
+        source_path:
+          type:
+          - string
+          - 'null'
+        source_spec:
+          oneOf:
+          - $ref: '#/components/schemas/ingestion_BucketSpec'
+          - type: 'null'
+        max_depth:
+          type: integer
+          default: 0
+          description: Max depth of recursion under a prefix
       required:
       - dataset_id
-      - images
-      title: CreateIngestJobFromImagesRequest
-    ingestion:InternalAssetMetadataUpdateMetadata:
+      title: CreateIngestJobFromBucketRequest
+    ingestion_IngestJobType:
+      type: string
+      enum:
+      - unspecified
+      - assets
+      - file
+      - bucket
+      - metadata
+      title: IngestJobType
+    ingestion_BucketJobDetails:
+      type: object
+      properties:
+        path:
+          type: string
+        spec:
+          $ref: '#/components/schemas/ingestion_BucketSpec'
+        max_depth:
+          type: integer
+          default: 0
+      required:
+      - path
+      - spec
+      title: BucketJobDetails
+    ingestion_CreateIngestJobForMetadataRequest:
+      type: object
+      properties:
+        dataset_id:
+          type: string
+          format: uuid
+        update_assets:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ingestion_ExistingAssetMetadataUpdate'
+        source_path:
+          type:
+          - string
+          - 'null'
+        update_type:
+          $ref: '#/components/schemas/ingestion_MetadataUpdateType'
+      required:
+      - dataset_id
+      title: CreateIngestJobForMetadataRequest
+    ingestion_BucketSpec:
+      type: object
+      properties:
+        bucket:
+          type: string
+        prefix:
+          type: string
+          default: /
+        provider:
+          $ref: '#/components/schemas/ingestion_ExternalCloudStorageProvider'
+      required:
+      - bucket
+      title: BucketSpec
+    ingestion_FileJobDetails:
+      type: object
+      properties:
+        file:
+          $ref: '#/components/schemas/ingestion_CreateIngestJobFromFileRequest'
+      required:
+      - file
+      title: FileJobDetails
+    ingestion_ExplicitExternalAssetType:
+      type: string
+      enum:
+      - image
+      - video
+      title: ExplicitExternalAssetType
+    ingestion_IngestJobVideoMetadata:
       oneOf:
       - type: boolean
       - type: integer
@@ -241,8 +380,80 @@ components:
       - type: string
       - type: string
         format: date-time
-      title: InternalAssetMetadataUpdateMetadata
-    ingestion:CreateIngestJobResponse:
+      title: IngestJobVideoMetadata
+    ingestion_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    ingestion_ExistingAssetMetadataUpdateMetadata:
+      oneOf:
+      - type: boolean
+      - type: integer
+      - type: number
+        format: double
+      - type: string
+      - type: string
+        format: date-time
+      title: ExistingAssetMetadataUpdateMetadata
+    ingestion_IngestJobImage:
+      type: object
+      properties:
+        source_path:
+          type: string
+        metadata:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            $ref: '#/components/schemas/ingestion_IngestJobImageMetadata'
+      required:
+      - source_path
+      title: IngestJobImage
+    ingestion_IngestJobAssetMetadata:
+      oneOf:
+      - type: boolean
+      - type: integer
+      - type: number
+        format: double
+      - type: string
+      - type: string
+        format: date-time
+      title: IngestJobAssetMetadata
+    ingestion_HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion_ValidationError'
+      title: HTTPValidationError
+    ingestion_ExternalAssetType:
+      type: string
+      enum:
+      - unspecified
+      - image
+      - video
+      title: ExternalAssetType
+    ingestion_CreateIngestJobFromAssetsRequest:
+      type: object
+      properties:
+        dataset_id:
+          type: string
+          format: uuid
+        connection_name:
+          type:
+          - string
+          - 'null'
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion_IngestJobAsset'
+      required:
+      - dataset_id
+      - assets
+      title: CreateIngestJobFromAssetsRequest
+    ingestion_CreateIngestJobResponse:
       type: object
       properties:
         id:
@@ -257,15 +468,15 @@ components:
           - string
           - 'null'
         job_type:
-          $ref: '#/components/schemas/ingestion:IngestJobType'
+          $ref: '#/components/schemas/ingestion_IngestJobType'
         details:
           oneOf:
-          - $ref: '#/components/schemas/ingestion:CreateIngestJobResponseDetails'
+          - $ref: '#/components/schemas/ingestion_CreateIngestJobResponseDetails'
           - type: 'null'
         request_type:
-          $ref: '#/components/schemas/ingestion:RequestType'
+          $ref: '#/components/schemas/ingestion_RequestType'
         status:
-          $ref: '#/components/schemas/ingestion:IngestJobStatusEnum'
+          $ref: '#/components/schemas/ingestion_IngestJobStatusEnum'
         created_dt:
           type: string
           format: date-time
@@ -296,35 +507,22 @@ components:
       - details
       - created_dt
       title: CreateIngestJobResponse
-    ingestion:CreateIngestJobFromVideosRequest:
+    ingestion_MetadataUpdateJobDetails:
       type: object
       properties:
-        dataset_id:
-          type: string
-          format: uuid
-        connection_name:
-          type:
-          - string
-          - 'null'
-        videos:
+        accepted:
           type: array
           items:
-            $ref: '#/components/schemas/ingestion:IngestJobVideo'
+            $ref: '#/components/schemas/ingestion_InternalAssetMetadataUpdate'
+        invalid_assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion_ExistingAssetMetadataUpdate'
       required:
-      - dataset_id
-      - videos
-      title: CreateIngestJobFromVideosRequest
-    ingestion:IngestJobImageMetadata:
-      oneOf:
-      - type: boolean
-      - type: integer
-      - type: number
-        format: double
-      - type: string
-      - type: string
-        format: date-time
-      title: IngestJobImageMetadata
-    ingestion:CreateIngestJobFromFileRequest:
+      - accepted
+      - invalid_assets
+      title: MetadataUpdateJobDetails
+    ingestion_CreateIngestJobFromFileRequest:
       type: object
       properties:
         dataset_id:
@@ -337,60 +535,62 @@ components:
           - string
           - 'null'
         file_type:
-          $ref: '#/components/schemas/ingestion:ExternalFileType'
+          $ref: '#/components/schemas/ingestion_ExternalFileType'
       required:
       - dataset_id
       - source_path
       title: CreateIngestJobFromFileRequest
-    ingestion:BucketJobDetails:
-      type: object
-      properties:
-        path:
-          type: string
-        spec:
-          $ref: '#/components/schemas/ingestion:BucketSpec'
-        max_depth:
-          type: integer
-          default: 0
-      required:
-      - path
-      - spec
-      title: BucketJobDetails
-    ingestion:CreateIngestJobResponseDetails:
+    ingestion_InternalAssetMetadataUpdateMetadata:
       oneOf:
-      - $ref: '#/components/schemas/ingestion:AssetsJobDetails'
-      - $ref: '#/components/schemas/ingestion:FileJobDetails'
-      - $ref: '#/components/schemas/ingestion:BucketJobDetails'
-      - $ref: '#/components/schemas/ingestion:MetadataUpdateJobDetails'
+      - type: boolean
+      - type: integer
+      - type: number
+        format: double
+      - type: string
+      - type: string
+        format: date-time
+      title: InternalAssetMetadataUpdateMetadata
+    ingestion_RequestType:
+      type: string
+      enum:
+      - submit
+      title: RequestType
+    ingestion_CreateIngestJobResponseDetails:
+      oneOf:
+      - $ref: '#/components/schemas/ingestion_AssetsJobDetails'
+      - $ref: '#/components/schemas/ingestion_FileJobDetails'
+      - $ref: '#/components/schemas/ingestion_BucketJobDetails'
+      - $ref: '#/components/schemas/ingestion_MetadataUpdateJobDetails'
       title: CreateIngestJobResponseDetails
-    ingestion:IngestJobImage:
+    ingestion_CreateIngestJobFromImagesRequest:
       type: object
       properties:
-        source_path:
+        dataset_id:
           type: string
-        metadata:
+          format: uuid
+        connection_name:
           type:
-          - object
+          - string
           - 'null'
-          additionalProperties:
-            $ref: '#/components/schemas/ingestion:IngestJobImageMetadata'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion_IngestJobImage'
       required:
-      - source_path
-      title: IngestJobImage
-    ingestion:ExternalAssetType:
-      type: string
-      enum:
-      - unspecified
-      - image
-      - video
-      title: ExternalAssetType
-    ingestion:ExplicitExternalAssetType:
-      type: string
-      enum:
-      - image
-      - video
-      title: ExplicitExternalAssetType
-    ingestion:IngestJobStatusEnum:
+      - dataset_id
+      - images
+      title: CreateIngestJobFromImagesRequest
+    ingestion_AssetsJobDetails:
+      type: object
+      properties:
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion_AssetJobDetail'
+      required:
+      - assets
+      title: AssetsJobDetails
+    ingestion_IngestJobStatusEnum:
       type: string
       enum:
       - completed
@@ -402,70 +602,17 @@ components:
       - stopped
       description: Enum of Ingest Job Status.
       title: IngestJobStatusEnum
-    ingestion:IngestJobVideo:
-      type: object
-      properties:
-        source_path:
-          type: string
-        metadata:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            $ref: '#/components/schemas/ingestion:IngestJobVideoMetadata'
-      required:
-      - source_path
-      title: IngestJobVideo
-    ingestion:InternalAssetMetadataUpdate:
-      type: object
-      properties:
-        asset_id:
-          type: string
-          format: uuid
-        source_path:
-          type:
-          - string
-          - 'null'
-        asset_type:
-          $ref: '#/components/schemas/ingestion:ExplicitExternalAssetType'
-        metadata:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            $ref: '#/components/schemas/ingestion:InternalAssetMetadataUpdateMetadata'
-      required:
-      - asset_id
-      - source_path
-      - asset_type
-      title: InternalAssetMetadataUpdate
-    ingestion:AssetJobDetail:
-      type: object
-      properties:
-        asset:
-          $ref: '#/components/schemas/ingestion:IngestJobAsset'
-        asset_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        error:
-          type:
-          - string
-          - 'null'
-      required:
-      - asset
-      title: AssetJobDetail
-    ingestion:IngestJobType:
-      type: string
-      enum:
-      - unspecified
-      - assets
-      - file
-      - bucket
-      - metadata
-      title: IngestJobType
-    ingestion:ExistingAssetMetadataUpdate:
+    ingestion_IngestJobImageMetadata:
+      oneOf:
+      - type: boolean
+      - type: integer
+      - type: number
+        format: double
+      - type: string
+      - type: string
+        format: date-time
+      title: IngestJobImageMetadata
+    ingestion_ExistingAssetMetadataUpdate:
       type: object
       properties:
         asset_id:
@@ -478,208 +625,24 @@ components:
           - string
           - 'null'
         asset_type:
-          $ref: '#/components/schemas/ingestion:ExplicitExternalAssetType'
+          $ref: '#/components/schemas/ingestion_ExplicitExternalAssetType'
         metadata:
           type:
           - object
           - 'null'
           additionalProperties:
-            $ref: '#/components/schemas/ingestion:ExistingAssetMetadataUpdateMetadata'
+            $ref: '#/components/schemas/ingestion_ExistingAssetMetadataUpdateMetadata'
       required:
       - asset_type
       title: ExistingAssetMetadataUpdate
-    ingestion:BucketSpec:
-      type: object
-      properties:
-        bucket:
-          type: string
-        prefix:
-          type: string
-          default: /
-        provider:
-          $ref: '#/components/schemas/ingestion:ExternalCloudStorageProvider'
-      required:
-      - bucket
-      title: BucketSpec
-    ingestion:MetadataUpdateJobDetails:
-      type: object
-      properties:
-        accepted:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion:InternalAssetMetadataUpdate'
-        invalid_assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion:ExistingAssetMetadataUpdate'
-      required:
-      - accepted
-      - invalid_assets
-      title: MetadataUpdateJobDetails
-    ingestion:ExistingAssetMetadataUpdateMetadata:
-      oneOf:
-      - type: boolean
-      - type: integer
-      - type: number
-        format: double
-      - type: string
-      - type: string
-        format: date-time
-      title: ExistingAssetMetadataUpdateMetadata
-    ingestion:AssetsJobDetails:
-      type: object
-      properties:
-        assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion:AssetJobDetail'
-      required:
-      - assets
-      title: AssetsJobDetails
-    ingestion:CreateIngestJobFromBucketRequest:
-      type: object
-      properties:
-        dataset_id:
-          type: string
-          format: uuid
-        connection_name:
-          type:
-          - string
-          - 'null'
-        path:
-          type:
-          - string
-          - 'null'
-        spec:
-          oneOf:
-          - $ref: '#/components/schemas/ingestion:BucketSpec'
-          - type: 'null'
-        source_path:
-          type:
-          - string
-          - 'null'
-        source_spec:
-          oneOf:
-          - $ref: '#/components/schemas/ingestion:BucketSpec'
-          - type: 'null'
-        max_depth:
-          type: integer
-          default: 0
-          description: Max depth of recursion under a prefix
-      required:
-      - dataset_id
-      title: CreateIngestJobFromBucketRequest
-    ingestion:RequestType:
-      type: string
-      enum:
-      - submit
-      title: RequestType
-    ingestion:CreateIngestJobForMetadataRequest:
-      type: object
-      properties:
-        dataset_id:
-          type: string
-          format: uuid
-        update_assets:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ingestion:ExistingAssetMetadataUpdate'
-        source_path:
-          type:
-          - string
-          - 'null'
-        update_type:
-          $ref: '#/components/schemas/ingestion:MetadataUpdateType'
-      required:
-      - dataset_id
-      title: CreateIngestJobForMetadataRequest
-    ingestion:IngestJobAssetMetadata:
-      oneOf:
-      - type: boolean
-      - type: integer
-      - type: number
-        format: double
-      - type: string
-      - type: string
-        format: date-time
-      title: IngestJobAssetMetadata
-    ingestion:ValidationError:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion:ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    ingestion:MetadataUpdateType:
-      type: string
-      enum:
-      - overwrite
-      - upsert
-      - remove
-      title: MetadataUpdateType
-    ingestion:CreateIngestJobFromAssetsRequest:
-      type: object
-      properties:
-        dataset_id:
-          type: string
-          format: uuid
-        connection_name:
-          type:
-          - string
-          - 'null'
-        assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion:IngestJobAsset'
-      required:
-      - dataset_id
-      - assets
-      title: CreateIngestJobFromAssetsRequest
-    ingestion:FileJobDetails:
-      type: object
-      properties:
-        file:
-          $ref: '#/components/schemas/ingestion:CreateIngestJobFromFileRequest'
-      required:
-      - file
-      title: FileJobDetails
-    ingestion:IngestJobVideoMetadata:
-      oneOf:
-      - type: boolean
-      - type: integer
-      - type: number
-        format: double
-      - type: string
-      - type: string
-        format: date-time
-      title: IngestJobVideoMetadata
-    ingestion:HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion:ValidationError'
-      title: HTTPValidationError
-    ingestion:ExternalFileType:
+    ingestion_ExternalFileType:
       type: string
       enum:
       - unspecified
       - csv
       - json
       title: ExternalFileType
-    ingestion:IngestJobAsset:
+    ingestion_IngestJobVideo:
       type: object
       properties:
         source_path:
@@ -689,12 +652,49 @@ components:
           - object
           - 'null'
           additionalProperties:
-            $ref: '#/components/schemas/ingestion:IngestJobAssetMetadata'
+            $ref: '#/components/schemas/ingestion_IngestJobVideoMetadata'
+      required:
+      - source_path
+      title: IngestJobVideo
+    ingestion_IngestJobAsset:
+      type: object
+      properties:
+        source_path:
+          type: string
+        metadata:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            $ref: '#/components/schemas/ingestion_IngestJobAssetMetadata'
         asset_type:
-          $ref: '#/components/schemas/ingestion:ExternalAssetType'
+          $ref: '#/components/schemas/ingestion_ExternalAssetType'
       required:
       - source_path
       title: IngestJobAsset
+    ingestion_CreateIngestJobFromVideosRequest:
+      type: object
+      properties:
+        dataset_id:
+          type: string
+          format: uuid
+        connection_name:
+          type:
+          - string
+          - 'null'
+        videos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion_IngestJobVideo'
+      required:
+      - dataset_id
+      - videos
+      title: CreateIngestJobFromVideosRequest
+    ingestion_ExternalCloudStorageProvider:
+      type: string
+      enum:
+      - aws
+      title: ExternalCloudStorageProvider
   securitySchemes:
     HTTPBearer:
       type: http

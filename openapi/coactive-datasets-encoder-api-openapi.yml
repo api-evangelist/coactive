@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference agentic-search > agenticSearch datasets > encoder API
+  title: Reference datasets > encoder API
   version: 1.0.0
 servers:
 - url: https://api.coactive.ai
@@ -32,20 +32,20 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/datasets:EncoderDescription'
+                  $ref: '#/components/schemas/datasets_EncoderDescription'
 components:
   schemas:
-    datasets:EncoderDescriptionName:
+    datasets_EncoderDescriptionName:
       oneOf:
-      - $ref: '#/components/schemas/datasets:VisualEncoderNameEnum'
-      - $ref: '#/components/schemas/datasets:AudioEncoderNameEnum'
+      - $ref: '#/components/schemas/datasets_VisualEncoderNameEnum'
+      - $ref: '#/components/schemas/datasets_AudioEncoderNameEnum'
       description: The name of the encoder.
       title: EncoderDescriptionName
-    datasets:EncoderDescription:
+    datasets_EncoderDescription:
       type: object
       properties:
         name:
-          $ref: '#/components/schemas/datasets:EncoderDescriptionName'
+          $ref: '#/components/schemas/datasets_EncoderDescriptionName'
           description: The name of the encoder.
         description:
           type:
@@ -53,14 +53,22 @@ components:
           - 'null'
           description: A short summary of what the encoder is used for.
         modality:
-          $ref: '#/components/schemas/datasets:ModalityEnum'
+          $ref: '#/components/schemas/datasets_ModalityEnum'
           description: The modality of the encoder.
       required:
       - name
       - modality
       description: An encoder
       title: EncoderDescription
-    datasets:VisualEncoderNameEnum:
+    datasets_ModalityEnum:
+      type: string
+      enum:
+      - image
+      - audio_speech_to_text
+      - video
+      description: Indicates the modality of an encoder
+      title: ModalityEnum
+    datasets_VisualEncoderNameEnum:
       type: string
       enum:
       - multimodal
@@ -71,20 +79,12 @@ components:
       - resnet-50
       - resnet-50-reduced
       title: VisualEncoderNameEnum
-    datasets:AudioEncoderNameEnum:
+    datasets_AudioEncoderNameEnum:
       type: string
       enum:
       - audio
       - text-llm
       title: AudioEncoderNameEnum
-    datasets:ModalityEnum:
-      type: string
-      enum:
-      - image
-      - audio_speech_to_text
-      - video
-      description: Indicates the modality of an encoder
-      title: ModalityEnum
   securitySchemes:
     HTTPBearer:
       type: http

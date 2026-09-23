@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference agentic-search > agenticSearch dynamicTags API
+  title: Reference Dynamic Tags API
   version: 1.0.0
 servers:
 - url: https://api.coactive.ai
@@ -199,7 +199,31 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    DynamicTagGroupVersionStatus:
+    DynamicTagGetGroupsResponse:
+      type: object
+      properties:
+        meta:
+          oneOf:
+          - $ref: '#/components/schemas/DynamicTagPagedMetaResponse'
+          - type: 'null'
+          description: Metadata for pagination
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamicTagGroupVersionResponse'
+          description: The paginated data
+        sort:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DynamicTagSortField'
+          description: Sort details
+      required:
+      - data
+      description: Response model for retrieving a paginated list of groups.
+      title: DynamicTagGetGroupsResponse
+    DynamicTagTagVersionStatus:
       type: string
       enum:
       - creating
@@ -207,27 +231,47 @@ components:
       - draft
       - unpublished_changes
       - published
-      - validated
-      - superseded
       - error
       - deleting
       - deleted
-      description: Status of a group version.
-      title: DynamicTagGroupVersionStatus
-    DynamicTagPagedMetaResponse:
+      description: Status of a tag version.
+      title: DynamicTagTagVersionStatus
+    DynamicTagSortField:
       type: object
       properties:
-        page:
-          $ref: '#/components/schemas/DynamicTagPagedPageDetailsResponse'
-          description: Details about pagination
-        has_next_page:
-          type: boolean
-          default: false
-          description: Whether another page exists
+        field:
+          type: string
+          description: Field name to sort by
+        direction:
+          $ref: '#/components/schemas/DynamicTagSortDirection'
+          description: Sort direction
       required:
-      - page
-      description: Metadata about the paginated response.
-      title: DynamicTagPagedMetaResponse
+      - field
+      description: Sort field details.
+      title: DynamicTagSortField
+    ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
     DynamicTagGroupVersionResponse:
       type: object
       properties:
@@ -328,57 +372,6 @@ components:
       - review_tags_visited_at
       description: Response model for a group version.
       title: DynamicTagGroupVersionResponse
-    DynamicTagTagVersionStatus:
-      type: string
-      enum:
-      - creating
-      - updating
-      - draft
-      - unpublished_changes
-      - published
-      - error
-      - deleting
-      - deleted
-      description: Status of a tag version.
-      title: DynamicTagTagVersionStatus
-    ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    DynamicTagSortDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      description: Sort direction.
-      title: DynamicTagSortDirection
-    HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-      title: HTTPValidationError
-    ValidationError:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     DynamicTagTagVersionSummary:
       type: object
       properties:
@@ -403,6 +396,27 @@ components:
       - status
       description: Response model for a tag with its current version.
       title: DynamicTagTagVersionSummary
+    DynamicTagSortDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      description: Sort direction.
+      title: DynamicTagSortDirection
+    DynamicTagPagedMetaResponse:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/DynamicTagPagedPageDetailsResponse'
+          description: Details about pagination
+        has_next_page:
+          type: boolean
+          default: false
+          description: Whether another page exists
+      required:
+      - page
+      description: Metadata about the paginated response.
+      title: DynamicTagPagedMetaResponse
     DynamicTagPagedPageDetailsResponse:
       type: object
       properties:
@@ -417,31 +431,6 @@ components:
       - per_page
       description: Pagination metadata.
       title: DynamicTagPagedPageDetailsResponse
-    DynamicTagSortField:
-      type: object
-      properties:
-        field:
-          type: string
-          description: Field name to sort by
-        direction:
-          $ref: '#/components/schemas/DynamicTagSortDirection'
-          description: Sort direction
-      required:
-      - field
-      description: Sort field details.
-      title: DynamicTagSortField
-    DynamicTagGroupDatasetAssociationStatus:
-      type: string
-      enum:
-      - unscored
-      - queued
-      - scoring
-      - scored
-      - error
-      - deleting
-      - deleted
-      description: Status of association between group and dataset.
-      title: DynamicTagGroupDatasetAssociationStatus
     DynamicTagDataset:
       type: object
       properties:
@@ -457,30 +446,41 @@ components:
       - status
       description: Summary information about associated datasets.
       title: DynamicTagDataset
-    DynamicTagGetGroupsResponse:
+    DynamicTagGroupDatasetAssociationStatus:
+      type: string
+      enum:
+      - unscored
+      - queued
+      - scoring
+      - scored
+      - error
+      - deleting
+      - deleted
+      description: Status of association between group and dataset.
+      title: DynamicTagGroupDatasetAssociationStatus
+    HTTPValidationError:
       type: object
       properties:
-        meta:
-          oneOf:
-          - $ref: '#/components/schemas/DynamicTagPagedMetaResponse'
-          - type: 'null'
-          description: Metadata for pagination
-        data:
+        detail:
           type: array
           items:
-            $ref: '#/components/schemas/DynamicTagGroupVersionResponse'
-          description: The paginated data
-        sort:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DynamicTagSortField'
-          description: Sort details
-      required:
-      - data
-      description: Response model for retrieving a paginated list of groups.
-      title: DynamicTagGetGroupsResponse
+            $ref: '#/components/schemas/ValidationError'
+      title: HTTPValidationError
+    DynamicTagGroupVersionStatus:
+      type: string
+      enum:
+      - creating
+      - updating
+      - draft
+      - unpublished_changes
+      - published
+      - validated
+      - superseded
+      - error
+      - deleting
+      - deleted
+      description: Status of a group version.
+      title: DynamicTagGroupVersionStatus
   securitySchemes:
     HTTPBearer:
       type: http

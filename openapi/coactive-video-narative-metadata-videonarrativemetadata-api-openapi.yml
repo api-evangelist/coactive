@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference agentic-search > agenticSearch video-narative-metadata > videoNarrativeMetadata API
+  title: Reference video-narative-metadata > videoNarrativeMetadata…
   version: 1.0.0
 servers:
 - url: https://api.coactive.ai
@@ -39,18 +39,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:CreateMetadataResponse'
+                $ref: '#/components/schemas/video-narative-metadata_CreateMetadataResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:HTTPValidationError'
+                $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/video-narative-metadata:CreateMetadataRequest'
+              $ref: '#/components/schemas/video-narative-metadata_CreateMetadataRequest'
     get:
       operationId: get-metadata-api-v-0-video-narrative-metadata-metadata-get
       summary: List metadata values by type
@@ -63,7 +63,7 @@ paths:
         description: Metadata type to list
         required: true
         schema:
-          $ref: '#/components/schemas/video-narative-metadata:MetadataType'
+          $ref: '#/components/schemas/video-narative-metadata_MetadataType'
       - name: Authorization
         in: header
         description: Bearer authentication
@@ -76,13 +76,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:GetMetadataResponse'
+                $ref: '#/components/schemas/video-narative-metadata_GetMetadataResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:HTTPValidationError'
+                $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
   /api/v0/video-narrative-metadata/metadata/{metadata_id}:
     delete:
       operationId: delete-metadata-api-v-0-video-narrative-metadata-metadata-metadata-id-delete
@@ -109,13 +109,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:DeleteMetadataResponse'
+                $ref: '#/components/schemas/video-narative-metadata_DeleteMetadataResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:HTTPValidationError'
+                $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
     patch:
       operationId: update-metadata-api-v-0-video-narrative-metadata-metadata-metadata-id-patch
       summary: Update a metadata value
@@ -150,18 +150,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:UpdateMetadataResponse'
+                $ref: '#/components/schemas/video-narative-metadata_UpdateMetadataResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:HTTPValidationError'
+                $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/video-narative-metadata:UpdateMetadataRequest'
+              $ref: '#/components/schemas/video-narative-metadata_UpdateMetadataRequest'
   /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/composite-slices/{composite_slice_id}/summary:
     post:
       operationId: generate-composite-slice-summary-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-composite-slices-composite-slice-id-summary-post
@@ -203,18 +203,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:GenerateCompositeSliceSummaryResponse'
+                $ref: '#/components/schemas/video-narative-metadata_GenerateCompositeSliceSummaryResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:HTTPValidationError'
+                $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/video-narative-metadata:GenerateCompositeSliceSummaryRequest'
+              $ref: '#/components/schemas/video-narative-metadata_GenerateCompositeSliceSummaryRequest'
   /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/description:
     post:
       operationId: generate-video-description-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-description-post
@@ -250,18 +250,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:GenerateVideoDescriptionResponse'
+                $ref: '#/components/schemas/video-narative-metadata_GenerateVideoDescriptionResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:HTTPValidationError'
+                $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/video-narative-metadata:GenerateVideoDescriptionRequest'
+              $ref: '#/components/schemas/video-narative-metadata_GenerateVideoDescriptionRequest'
   /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/summary:
     post:
       operationId: generate-video-summary-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-summary-post
@@ -297,18 +297,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:GenerateVideoSummaryResponse'
+                $ref: '#/components/schemas/video-narative-metadata_GenerateVideoSummaryResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:HTTPValidationError'
+                $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/video-narative-metadata:GenerateVideoSummaryRequest'
+              $ref: '#/components/schemas/video-narative-metadata_GenerateVideoSummaryRequest'
   /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/synopsis:
     post:
       operationId: generate-video-synopsis-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-synopsis-post
@@ -344,18 +344,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:GenerateVideoSynopsisResponse'
+                $ref: '#/components/schemas/video-narative-metadata_GenerateVideoSynopsisResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:HTTPValidationError'
+                $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/video-narative-metadata:GenerateVideoSynopsisRequest'
+              $ref: '#/components/schemas/video-narative-metadata_GenerateVideoSynopsisRequest'
   /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/composite-slices/{composite_slice_id}/format:
     post:
       operationId: predict-composite-slice-format-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-composite-slices-composite-slice-id-format-post
@@ -397,18 +397,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:PredictCompositeSliceFormatResponse'
+                $ref: '#/components/schemas/video-narative-metadata_PredictCompositeSliceFormatResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:HTTPValidationError'
+                $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/video-narative-metadata:PredictCompositeSliceFormatRequest'
+              $ref: '#/components/schemas/video-narative-metadata_PredictCompositeSliceFormatRequest'
   /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/composite-slices/{composite_slice_id}/mood:
     post:
       operationId: predict-composite-slice-mood-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-composite-slices-composite-slice-id-mood-post
@@ -450,18 +450,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:PredictCompositeSliceMoodResponse'
+                $ref: '#/components/schemas/video-narative-metadata_PredictCompositeSliceMoodResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:HTTPValidationError'
+                $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/video-narative-metadata:PredictCompositeSliceMoodRequest'
+              $ref: '#/components/schemas/video-narative-metadata_PredictCompositeSliceMoodRequest'
   /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/composite-slices/{composite_slice_id}/subject:
     post:
       operationId: predict-composite-slice-subject-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-composite-slices-composite-slice-id-subject-post
@@ -503,18 +503,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:PredictCompositeSliceSubjectResponse'
+                $ref: '#/components/schemas/video-narative-metadata_PredictCompositeSliceSubjectResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:HTTPValidationError'
+                $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/video-narative-metadata:PredictCompositeSliceSubjectRequest'
+              $ref: '#/components/schemas/video-narative-metadata_PredictCompositeSliceSubjectRequest'
   /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/format:
     post:
       operationId: predict-video-format-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-format-post
@@ -550,18 +550,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:PredictVideoFormatResponse'
+                $ref: '#/components/schemas/video-narative-metadata_PredictVideoFormatResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:HTTPValidationError'
+                $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/video-narative-metadata:PredictVideoFormatRequest'
+              $ref: '#/components/schemas/video-narative-metadata_PredictVideoFormatRequest'
   /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/genre:
     post:
       operationId: predict-video-genre-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-genre-post
@@ -597,18 +597,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:PredictVideoGenreResponse'
+                $ref: '#/components/schemas/video-narative-metadata_PredictVideoGenreResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:HTTPValidationError'
+                $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/video-narative-metadata:PredictVideoGenreRequest'
+              $ref: '#/components/schemas/video-narative-metadata_PredictVideoGenreRequest'
   /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/mood:
     post:
       operationId: predict-video-mood-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-mood-post
@@ -644,18 +644,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:PredictVideoMoodResponse'
+                $ref: '#/components/schemas/video-narative-metadata_PredictVideoMoodResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:HTTPValidationError'
+                $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/video-narative-metadata:PredictVideoMoodRequest'
+              $ref: '#/components/schemas/video-narative-metadata_PredictVideoMoodRequest'
   /api/v0/video-narrative-metadata/datasets/{dataset_id}/videos/{video_id}/subject:
     post:
       operationId: predict-video-subject-api-v-0-video-narrative-metadata-datasets-dataset-id-videos-video-id-subject-post
@@ -691,37 +691,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:PredictVideoSubjectResponse'
+                $ref: '#/components/schemas/video-narative-metadata_PredictVideoSubjectResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video-narative-metadata:HTTPValidationError'
+                $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/video-narative-metadata:PredictVideoSubjectRequest'
+              $ref: '#/components/schemas/video-narative-metadata_PredictVideoSubjectRequest'
 components:
   schemas:
-    video-narative-metadata:ValidationError:
+    video-narative-metadata_PredictCompositeSliceSubjectRequest:
       type: object
       properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/video-narative-metadata:ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    video-narative-metadata:GenerateVideoSummaryResponse:
+        composite_slice_context:
+          type:
+          - string
+          - 'null'
+          description: Optional context about the composite slice
+      description: Request body for predicting composite slice subjects.
+      title: PredictCompositeSliceSubjectRequest
+    video-narative-metadata_GenerateVideoSummaryResponse:
       type: object
       properties:
         summary:
@@ -731,26 +725,34 @@ components:
       - summary
       description: Response body for generating a video summary.
       title: GenerateVideoSummaryResponse
-    video-narative-metadata:PredictVideoFormatResponse:
+    video-narative-metadata_CreateMetadataRequest:
       type: object
       properties:
-        formats:
+        metadata_type:
+          $ref: '#/components/schemas/video-narative-metadata_MetadataType'
+        name:
+          type: string
+        description:
+          type: string
+        examples:
           type: array
           items:
             type: string
-          description: Predicted video formats
       required:
-      - formats
-      description: Response body for predicting video formats.
-      title: PredictVideoFormatResponse
-    video-narative-metadata:MetadataItem:
+      - metadata_type
+      - name
+      - description
+      - examples
+      description: Create a new metadata value.
+      title: CreateMetadataRequest
+    video-narative-metadata_MetadataItem:
       type: object
       properties:
         id:
           type: string
           format: uuid
         metadata_type:
-          $ref: '#/components/schemas/video-narative-metadata:MetadataType'
+          $ref: '#/components/schemas/video-narative-metadata_MetadataType'
         name:
           type: string
         description:
@@ -767,7 +769,7 @@ components:
       - examples
       description: A metadata value.
       title: MetadataItem
-    video-narative-metadata:GenerateVideoDescriptionRequest:
+    video-narative-metadata_PredictVideoSubjectRequest:
       type: object
       properties:
         video_context:
@@ -775,87 +777,9 @@ components:
           - string
           - 'null'
           description: Optional context about the video
-      description: Request body for generating a video description.
-      title: GenerateVideoDescriptionRequest
-    video-narative-metadata:PredictVideoMoodRequest:
-      type: object
-      properties:
-        video_context:
-          type:
-          - string
-          - 'null'
-          description: Optional context about the video
-      description: Request body for predicting video moods.
-      title: PredictVideoMoodRequest
-    video-narative-metadata:PredictCompositeSliceSubjectResponse:
-      type: object
-      properties:
-        subjects:
-          type: array
-          items:
-            type: string
-          description: Predicted composite slice subjects
-      required:
-      - subjects
-      description: Response body for predicting composite slice subjects.
-      title: PredictCompositeSliceSubjectResponse
-    video-narative-metadata:GenerateVideoSynopsisResponse:
-      type: object
-      properties:
-        synopsis:
-          type: string
-          description: Generated video synopsis
-      required:
-      - synopsis
-      description: Response body for generating a video synopsis.
-      title: GenerateVideoSynopsisResponse
-    video-narative-metadata:PredictVideoFormatRequest:
-      type: object
-      properties:
-        video_context:
-          type:
-          - string
-          - 'null'
-          description: Optional context about the video
-      description: Request body for predicting video formats.
-      title: PredictVideoFormatRequest
-    video-narative-metadata:ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    video-narative-metadata:PredictVideoMoodResponse:
-      type: object
-      properties:
-        moods:
-          type: array
-          items:
-            type: string
-          description: Predicted video moods
-      required:
-      - moods
-      description: Response body for predicting video moods.
-      title: PredictVideoMoodResponse
-    video-narative-metadata:GenerateVideoSummaryRequest:
-      type: object
-      properties:
-        video_context:
-          type:
-          - string
-          - 'null'
-          description: Optional context about the video
-      description: Request body for generating a video summary.
-      title: GenerateVideoSummaryRequest
-    video-narative-metadata:UpdateMetadataResponse:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/video-narative-metadata:MetadataItem'
-      required:
-      - item
-      description: Response for updated metadata.
-      title: UpdateMetadataResponse
-    video-narative-metadata:PredictCompositeSliceSubjectRequest:
+      description: Request body for predicting video subjects.
+      title: PredictVideoSubjectRequest
+    video-narative-metadata_PredictCompositeSliceFormatRequest:
       type: object
       properties:
         composite_slice_context:
@@ -863,9 +787,31 @@ components:
           - string
           - 'null'
           description: Optional context about the composite slice
-      description: Request body for predicting composite slice subjects.
-      title: PredictCompositeSliceSubjectRequest
-    video-narative-metadata:DeleteMetadataResponse:
+      description: Request body for predicting composite slice formats.
+      title: PredictCompositeSliceFormatRequest
+    video-narative-metadata_PredictCompositeSliceMoodResponse:
+      type: object
+      properties:
+        moods:
+          type: array
+          items:
+            type: string
+          description: Predicted composite slice moods
+      required:
+      - moods
+      description: Response body for predicting composite slice moods.
+      title: PredictCompositeSliceMoodResponse
+    video-narative-metadata_GenerateCompositeSliceSummaryResponse:
+      type: object
+      properties:
+        summary:
+          type: string
+          description: Generated composite slice summary
+      required:
+      - summary
+      description: Response body for generating a composite slice summary.
+      title: GenerateCompositeSliceSummaryResponse
+    video-narative-metadata_DeleteMetadataResponse:
       type: object
       properties:
         id:
@@ -878,7 +824,16 @@ components:
       - deleted
       description: Response for deleted metadata.
       title: DeleteMetadataResponse
-    video-narative-metadata:PredictVideoSubjectRequest:
+    video-narative-metadata_CreateMetadataResponse:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/video-narative-metadata_MetadataItem'
+      required:
+      - item
+      description: Response for created metadata.
+      title: CreateMetadataResponse
+    video-narative-metadata_PredictVideoMoodRequest:
       type: object
       properties:
         video_context:
@@ -886,71 +841,9 @@ components:
           - string
           - 'null'
           description: Optional context about the video
-      description: Request body for predicting video subjects.
-      title: PredictVideoSubjectRequest
-    video-narative-metadata:PredictCompositeSliceFormatResponse:
-      type: object
-      properties:
-        formats:
-          type: array
-          items:
-            type: string
-          description: Predicted composite slice formats
-      required:
-      - formats
-      description: Response body for predicting composite slice formats.
-      title: PredictCompositeSliceFormatResponse
-    video-narative-metadata:CreateMetadataResponse:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/video-narative-metadata:MetadataItem'
-      required:
-      - item
-      description: Response for created metadata.
-      title: CreateMetadataResponse
-    video-narative-metadata:GetMetadataResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/video-narative-metadata:MetadataItem'
-      required:
-      - items
-      description: Response for listing metadata values by type.
-      title: GetMetadataResponse
-    video-narative-metadata:GenerateVideoDescriptionResponse:
-      type: object
-      properties:
-        description:
-          type: string
-          description: Generated video description
-      required:
-      - description
-      description: Response body for generating a video description.
-      title: GenerateVideoDescriptionResponse
-    video-narative-metadata:CreateMetadataRequest:
-      type: object
-      properties:
-        metadata_type:
-          $ref: '#/components/schemas/video-narative-metadata:MetadataType'
-        name:
-          type: string
-        description:
-          type: string
-        examples:
-          type: array
-          items:
-            type: string
-      required:
-      - metadata_type
-      - name
-      - description
-      - examples
-      description: Create a new metadata value.
-      title: CreateMetadataRequest
-    video-narative-metadata:UpdateMetadataRequest:
+      description: Request body for predicting video moods.
+      title: PredictVideoMoodRequest
+    video-narative-metadata_UpdateMetadataRequest:
       type: object
       properties:
         name:
@@ -969,34 +862,7 @@ components:
             type: string
       description: Update fields of a metadata value.
       title: UpdateMetadataRequest
-    video-narative-metadata:MetadataType:
-      type: string
-      enum:
-      - genre
-      - mood
-      - subject
-      - format
-      description: Supported metadata types.
-      title: MetadataType
-    video-narative-metadata:GenerateCompositeSliceSummaryResponse:
-      type: object
-      properties:
-        summary:
-          type: string
-          description: Generated composite slice summary
-      required:
-      - summary
-      description: Response body for generating a composite slice summary.
-      title: GenerateCompositeSliceSummaryResponse
-    video-narative-metadata:HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/video-narative-metadata:ValidationError'
-      title: HTTPValidationError
-    video-narative-metadata:PredictVideoGenreRequest:
+    video-narative-metadata_PredictVideoFormatRequest:
       type: object
       properties:
         video_context:
@@ -1004,19 +870,33 @@ components:
           - string
           - 'null'
           description: Optional context about the video
-      description: Request body for predicting video genres.
-      title: PredictVideoGenreRequest
-    video-narative-metadata:PredictCompositeSliceFormatRequest:
+      description: Request body for predicting video formats.
+      title: PredictVideoFormatRequest
+    video-narative-metadata_PredictVideoFormatResponse:
       type: object
       properties:
-        composite_slice_context:
-          type:
-          - string
-          - 'null'
-          description: Optional context about the composite slice
-      description: Request body for predicting composite slice formats.
-      title: PredictCompositeSliceFormatRequest
-    video-narative-metadata:GenerateCompositeSliceSummaryRequest:
+        formats:
+          type: array
+          items:
+            type: string
+          description: Predicted video formats
+      required:
+      - formats
+      description: Response body for predicting video formats.
+      title: PredictVideoFormatResponse
+    video-narative-metadata_PredictCompositeSliceSubjectResponse:
+      type: object
+      properties:
+        subjects:
+          type: array
+          items:
+            type: string
+          description: Predicted composite slice subjects
+      required:
+      - subjects
+      description: Response body for predicting composite slice subjects.
+      title: PredictCompositeSliceSubjectResponse
+    video-narative-metadata_GenerateCompositeSliceSummaryRequest:
       type: object
       properties:
         composite_slice_context:
@@ -1026,7 +906,7 @@ components:
           description: Optional context about the composite slice
       description: Request body for generating a composite slice summary.
       title: GenerateCompositeSliceSummaryRequest
-    video-narative-metadata:GenerateVideoSynopsisRequest:
+    video-narative-metadata_GenerateVideoSynopsisRequest:
       type: object
       properties:
         video_context:
@@ -1036,19 +916,76 @@ components:
           description: Optional context about the video
       description: Request body for generating a video synopsis.
       title: GenerateVideoSynopsisRequest
-    video-narative-metadata:PredictCompositeSliceMoodResponse:
+    video-narative-metadata_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    video-narative-metadata_PredictVideoMoodResponse:
       type: object
       properties:
         moods:
           type: array
           items:
             type: string
-          description: Predicted composite slice moods
+          description: Predicted video moods
       required:
       - moods
-      description: Response body for predicting composite slice moods.
-      title: PredictCompositeSliceMoodResponse
-    video-narative-metadata:PredictVideoGenreResponse:
+      description: Response body for predicting video moods.
+      title: PredictVideoMoodResponse
+    video-narative-metadata_PredictCompositeSliceFormatResponse:
+      type: object
+      properties:
+        formats:
+          type: array
+          items:
+            type: string
+          description: Predicted composite slice formats
+      required:
+      - formats
+      description: Response body for predicting composite slice formats.
+      title: PredictCompositeSliceFormatResponse
+    video-narative-metadata_GenerateVideoDescriptionRequest:
+      type: object
+      properties:
+        video_context:
+          type:
+          - string
+          - 'null'
+          description: Optional context about the video
+      description: Request body for generating a video description.
+      title: GenerateVideoDescriptionRequest
+    video-narative-metadata_MetadataType:
+      type: string
+      enum:
+      - genre
+      - mood
+      - subject
+      - format
+      description: Supported metadata types.
+      title: MetadataType
+    video-narative-metadata_PredictCompositeSliceMoodRequest:
+      type: object
+      properties:
+        composite_slice_context:
+          type:
+          - string
+          - 'null'
+          description: Optional context about the composite slice
+      description: Request body for predicting composite slice moods.
+      title: PredictCompositeSliceMoodRequest
+    video-narative-metadata_GetMetadataResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/video-narative-metadata_MetadataItem'
+      required:
+      - items
+      description: Response for listing metadata values by type.
+      title: GetMetadataResponse
+    video-narative-metadata_PredictVideoGenreResponse:
       type: object
       properties:
         genres:
@@ -1060,7 +997,7 @@ components:
       - genres
       description: Response body for predicting video genres.
       title: PredictVideoGenreResponse
-    video-narative-metadata:PredictVideoSubjectResponse:
+    video-narative-metadata_PredictVideoSubjectResponse:
       type: object
       properties:
         subjects:
@@ -1072,16 +1009,79 @@ components:
       - subjects
       description: Response body for predicting video subjects.
       title: PredictVideoSubjectResponse
-    video-narative-metadata:PredictCompositeSliceMoodRequest:
+    video-narative-metadata_GenerateVideoSynopsisResponse:
       type: object
       properties:
-        composite_slice_context:
+        synopsis:
+          type: string
+          description: Generated video synopsis
+      required:
+      - synopsis
+      description: Response body for generating a video synopsis.
+      title: GenerateVideoSynopsisResponse
+    video-narative-metadata_GenerateVideoDescriptionResponse:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Generated video description
+      required:
+      - description
+      description: Response body for generating a video description.
+      title: GenerateVideoDescriptionResponse
+    video-narative-metadata_HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/video-narative-metadata_ValidationError'
+      title: HTTPValidationError
+    video-narative-metadata_PredictVideoGenreRequest:
+      type: object
+      properties:
+        video_context:
           type:
           - string
           - 'null'
-          description: Optional context about the composite slice
-      description: Request body for predicting composite slice moods.
-      title: PredictCompositeSliceMoodRequest
+          description: Optional context about the video
+      description: Request body for predicting video genres.
+      title: PredictVideoGenreRequest
+    video-narative-metadata_UpdateMetadataResponse:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/video-narative-metadata_MetadataItem'
+      required:
+      - item
+      description: Response for updated metadata.
+      title: UpdateMetadataResponse
+    video-narative-metadata_ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/video-narative-metadata_ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    video-narative-metadata_GenerateVideoSummaryRequest:
+      type: object
+      properties:
+        video_context:
+          type:
+          - string
+          - 'null'
+          description: Optional context about the video
+      description: Request body for generating a video summary.
+      title: GenerateVideoSummaryRequest
   securitySchemes:
     HTTPBearer:
       type: http

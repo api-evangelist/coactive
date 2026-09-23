@@ -32,24 +32,16 @@ tools:
     required:
     - query
     additionalProperties: false
-notes: >-
-  This is a documentation-search MCP server (readOnly). Coactive does not publish a hosted MCP
-  server that fronts the data API; the 118 REST operations could be exposed as candidate MCP tools
-  via the OpenAPI (see mcp/coactive-tool-crosswalk.yml, agentic-access/ and openapi/). The tool
-  list and inputSchema above were read from a live anonymous tools/list call, not from prose.
+notes: This is a documentation-search MCP server (readOnly). Coactive does not publish a hosted MCP server
+  that fronts the data API; the 118 REST operations could be exposed as candidate MCP tools via the OpenAPI
+  (see mcp/coactive-tool-crosswalk.yml, agentic-access/ and openapi/). The tool list and inputSchema above
+  were read from a live anonymous tools/list call, not from prose.
 deployment:
   mode: remote
-  endpoint: https://docs.coactive.ai/_mcp/server
-  auth: none
-  verified: probed
+  verified: searched
   tools: 1
-  checked: '2026-08-13'
-  source: >-
-    POST initialize + tools/list with Accept: application/json, text/event-stream — both HTTP 200
-    anonymously; serverInfo fern-docs-mcp-server 1.0.0, protocolVersion 2025-11-25.
-  note: >-
-    No stdio/npx package is published, so mode is remote only. An MCP client can call this endpoint
-    today without credentials, but it reaches documentation, not the Coactive API.
+  checked: '2026-08-12'
+  source: catalog MCP census
 x-evidence:
   fetched: '2026-08-13'
   url: https://docs.coactive.ai/_mcp/server

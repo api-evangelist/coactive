@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference agentic-search > agenticSearch classification API
+  title: Reference Classification API
   version: 1.0.0
 servers:
 - url: https://api.coactive.ai
@@ -8,7 +8,7 @@ servers:
 - url: https://app.coactive.ai
   description: Production
 tags:
-- name: classification
+- name: Classification
 paths:
   /api/v1/classify/image/url:
     post:
@@ -16,7 +16,7 @@ paths:
       summary: Classify image at public url
       description: Classify an image downloadable via a public url for specific concepts or all concepts within a dataset
       tags:
-      - classification
+      - Classification
       parameters:
       - name: threshold
         in: query
@@ -87,6 +87,59 @@ components:
       - score
       description: A classification of an asset for a single concept
       title: ClassificationScore
+    ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    Classification:
+      type: object
+      properties:
+        scores:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassificationScore'
+          description: Classifications of images for the relevant concept(s)
+      required:
+      - scores
+      description: A classification of an asset for one or more concepts
+      title: Classification
+    ErrorResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Details about the encountered error
+      required:
+      - detail
+      description: Details about an error that occurred
+      title: ErrorResponse
+    HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+      title: HTTPValidationError
     PublicUrlClassificationRequest:
       type: object
       properties:
@@ -113,59 +166,6 @@ components:
 
         for a dataset. Either concept ids of a dataset id must be provided.'
       title: PublicUrlClassificationRequest
-    ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    ValidationError:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    ErrorResponse:
-      type: object
-      properties:
-        detail:
-          type: string
-          description: Details about the encountered error
-      required:
-      - detail
-      description: Details about an error that occurred
-      title: ErrorResponse
-    Classification:
-      type: object
-      properties:
-        scores:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClassificationScore'
-          description: Classifications of images for the relevant concept(s)
-      required:
-      - scores
-      description: A classification of an asset for one or more concepts
-      title: Classification
-    HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-      title: HTTPValidationError
   securitySchemes:
     HTTPBearer:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference agentic-search > agenticSearch connections > connections API
+  title: Reference connections > connections API
   version: 1.0.0
 servers:
 - url: https://api.coactive.ai
@@ -30,18 +30,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connections:GetConnectionResponse'
+                $ref: '#/components/schemas/connections_GetConnectionResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connections:HTTPValidationError'
+                $ref: '#/components/schemas/connections_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/connections:Connections_create_connection_api_v0_connections_post_Request'
+              $ref: '#/components/schemas/connections_Connections_create_connection_api_v0_connections_post_Request'
     get:
       operationId: list-connections-api-v-0-connections-get
       summary: List Connections
@@ -55,7 +55,7 @@ paths:
         required: false
         schema:
           oneOf:
-          - $ref: '#/components/schemas/connections:ConnectionStatus'
+          - $ref: '#/components/schemas/connections_ConnectionStatus'
           - type: 'null'
       - name: connection_type
         in: query
@@ -63,7 +63,7 @@ paths:
         required: false
         schema:
           oneOf:
-          - $ref: '#/components/schemas/connections:ConnectionType'
+          - $ref: '#/components/schemas/connections_ConnectionType'
           - type: 'null'
       - name: offset
         in: query
@@ -91,13 +91,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connections:ListConnectionsResponse'
+                $ref: '#/components/schemas/connections_ListConnectionsResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connections:HTTPValidationError'
+                $ref: '#/components/schemas/connections_HTTPValidationError'
       requestBody:
         content:
           application/json:
@@ -121,7 +121,7 @@ paths:
         description: The connection name or UUID
         required: true
         schema:
-          $ref: '#/components/schemas/connections:ApiV0ConnectionsConnectionNameOrIdDeleteParametersConnectionNameOrId'
+          $ref: '#/components/schemas/connections_ApiV0ConnectionsConnectionNameOrIdDeleteParametersConnectionNameOrId'
       - name: Authorization
         in: header
         description: Bearer authentication
@@ -134,13 +134,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connections:GetConnectionResponse'
+                $ref: '#/components/schemas/connections_GetConnectionResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connections:HTTPValidationError'
+                $ref: '#/components/schemas/connections_HTTPValidationError'
     get:
       operationId: get-connection-api-v-0-connections-connection-name-or-id-get
       summary: Get Connection
@@ -153,7 +153,7 @@ paths:
         description: The connection name or UUID
         required: true
         schema:
-          $ref: '#/components/schemas/connections:ApiV0ConnectionsConnectionNameOrIdGetParametersConnectionNameOrId'
+          $ref: '#/components/schemas/connections_ApiV0ConnectionsConnectionNameOrIdGetParametersConnectionNameOrId'
       - name: Authorization
         in: header
         description: Bearer authentication
@@ -166,13 +166,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connections:GetConnectionResponse'
+                $ref: '#/components/schemas/connections_GetConnectionResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connections:HTTPValidationError'
+                $ref: '#/components/schemas/connections_HTTPValidationError'
     patch:
       operationId: update-connection-api-v-0-connections-connection-name-or-id-patch
       summary: Update Connection
@@ -185,7 +185,7 @@ paths:
         description: The connection name or UUID
         required: true
         schema:
-          $ref: '#/components/schemas/connections:ApiV0ConnectionsConnectionNameOrIdPatchParametersConnectionNameOrId'
+          $ref: '#/components/schemas/connections_ApiV0ConnectionsConnectionNameOrIdPatchParametersConnectionNameOrId'
       - name: Authorization
         in: header
         description: Bearer authentication
@@ -198,18 +198,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connections:GetConnectionResponse'
+                $ref: '#/components/schemas/connections_GetConnectionResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connections:HTTPValidationError'
+                $ref: '#/components/schemas/connections_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/connections:UpdateConnectionRequest'
+              $ref: '#/components/schemas/connections_UpdateConnectionRequest'
   /api/v0/connections/{connection_name_or_id}/credentials:
     get:
       operationId: get-connection-credentials-api-v-0-connections-connection-name-or-id-credentials-get
@@ -223,7 +223,7 @@ paths:
         description: The connection name or UUID
         required: true
         schema:
-          $ref: '#/components/schemas/connections:ApiV0ConnectionsConnectionNameOrIdCredentialsGetParametersConnectionNameOrId'
+          $ref: '#/components/schemas/connections_ApiV0ConnectionsConnectionNameOrIdCredentialsGetParametersConnectionNameOrId'
       - name: Authorization
         in: header
         description: Bearer authentication
@@ -236,13 +236,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connections:GetConnectionCredentialsResponse'
+                $ref: '#/components/schemas/connections_GetConnectionCredentialsResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connections:HTTPValidationError'
+                $ref: '#/components/schemas/connections_HTTPValidationError'
   /api/v0/connections/{connection_name_or_id}/list:
     post:
       operationId: list-with-connection-api-v-0-connections-connection-name-or-id-list-post
@@ -256,7 +256,7 @@ paths:
         description: The connection name or UUID
         required: true
         schema:
-          $ref: '#/components/schemas/connections:ApiV0ConnectionsConnectionNameOrIdListPostParametersConnectionNameOrId'
+          $ref: '#/components/schemas/connections_ApiV0ConnectionsConnectionNameOrIdListPostParametersConnectionNameOrId'
       - name: Authorization
         in: header
         description: Bearer authentication
@@ -269,18 +269,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connections:ListWithConnectionResponse'
+                $ref: '#/components/schemas/connections_ListWithConnectionResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connections:HTTPValidationError'
+                $ref: '#/components/schemas/connections_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/connections:ListWithConnectionRequest'
+              $ref: '#/components/schemas/connections_ListWithConnectionRequest'
   /api/v0/connections/{connection_name_or_id}/test:
     post:
       operationId: test-connection-api-v-0-connections-connection-name-or-id-test-post
@@ -294,7 +294,7 @@ paths:
         description: The connection name or UUID
         required: true
         schema:
-          $ref: '#/components/schemas/connections:ApiV0ConnectionsConnectionNameOrIdTestPostParametersConnectionNameOrId'
+          $ref: '#/components/schemas/connections_ApiV0ConnectionsConnectionNameOrIdTestPostParametersConnectionNameOrId'
       - name: Authorization
         in: header
         description: Bearer authentication
@@ -307,43 +307,114 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connections:GetConnectionResponse'
+                $ref: '#/components/schemas/connections_GetConnectionResponse'
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/connections:HTTPValidationError'
+                $ref: '#/components/schemas/connections_HTTPValidationError'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/connections:TestConnectionRequest'
+              $ref: '#/components/schemas/connections_TestConnectionRequest'
 components:
   schemas:
-    connections:ConnectionType:
-      type: string
-      enum:
-      - https_basic
-      - https_bearer
-      - aws_iam_role
-      description: The type of connection
-      title: ConnectionType
-    connections:PagedMetaResponse:
+    connections_GetConnectionResponse:
       type: object
       properties:
-        page:
-          $ref: '#/components/schemas/connections:PagedPageDetailsResponse'
-          description: Details about the response page
-        links:
-          $ref: '#/components/schemas/connections:PagedLinksDetailsResponse'
-          description: Links for easy page traversal
+        connection_id:
+          type: string
+          format: uuid
+          description: The unique identifier for the connection
+        name:
+          type: string
+          description: The connection name
+        description:
+          type:
+          - string
+          - 'null'
+          description: The connection description
+        type:
+          $ref: '#/components/schemas/connections_ConnectionType'
+          description: The type of connection
+        status:
+          $ref: '#/components/schemas/connections_ConnectionStatus'
+          description: The current status of the connection
+        config:
+          $ref: '#/components/schemas/connections_GetConnectionResponseConfig'
+          description: The connection configuration
+        created_dt:
+          type: string
+          format: date-time
+          description: When the connection was created
+        updated_dt:
+          type: string
+          format: date-time
+          description: When the connection was last updated
       required:
-      - page
-      - links
-      description: Metadata about the paginated response
-      title: PagedMetaResponse
-    connections:HTTPSBasicAuthConfig:
+      - connection_id
+      - name
+      - type
+      - status
+      - config
+      - created_dt
+      - updated_dt
+      title: GetConnectionResponse
+    connections_ApiV0ConnectionsConnectionNameOrIdListPostParametersConnectionNameOrId:
+      oneOf:
+      - type: string
+        format: uuid
+      - type: string
+      title: ApiV0ConnectionsConnectionNameOrIdListPostParametersConnectionNameOrId
+    connections_ApiV0ConnectionsConnectionNameOrIdCredentialsGetParametersConnectionNameOrId:
+      oneOf:
+      - type: string
+        format: uuid
+      - type: string
+      title: ApiV0ConnectionsConnectionNameOrIdCredentialsGetParametersConnectionNameOrId
+    connections_ApiV0ConnectionsConnectionNameOrIdGetParametersConnectionNameOrId:
+      oneOf:
+      - type: string
+        format: uuid
+      - type: string
+      title: ApiV0ConnectionsConnectionNameOrIdGetParametersConnectionNameOrId
+    connections_ListWithConnectionRequest:
+      type: object
+      properties:
+        bucket:
+          type: string
+          description: The S3 bucket name
+        prefix:
+          type: string
+          description: The S3 prefix to list
+        max_keys:
+          type: integer
+          default: 1000
+          description: Maximum number of keys to return
+        continuation_token:
+          type:
+          - string
+          - 'null'
+          description: Token for paginating results
+      required:
+      - bucket
+      - prefix
+      title: ListWithConnectionRequest
+    connections_TestConnectionRequest:
+      type: object
+      properties:
+        location:
+          type: string
+          default: /
+          description: Specific location to use to test the connection
+        update_state:
+          type: boolean
+          default: true
+          description: Set to true update the status of the connection, false to dry run
+      title: TestConnectionRequest
+    connections_HTTPSBasicAuthConfig:
       type: object
       properties:
         hostname:
@@ -360,21 +431,7 @@ components:
       - username
       - password
       title: HTTPSBasicAuthConfig
-    connections:HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/connections:ValidationError'
-      title: HTTPValidationError
-    connections:ApiV0ConnectionsConnectionNameOrIdGetParametersConnectionNameOrId:
-      oneOf:
-      - type: string
-        format: uuid
-      - type: string
-      title: ApiV0ConnectionsConnectionNameOrIdGetParametersConnectionNameOrId
-    connections:CreateAWSConnectionRequest:
+    connections_CreateHTTPSBasicAuthConnectionRequest:
       type: object
       properties:
         name:
@@ -391,70 +448,28 @@ components:
           - 'null'
           description: Optional location to test the connection
         type:
-          $ref: '#/components/schemas/connections:ConnectionType'
+          $ref: '#/components/schemas/connections_ConnectionType'
         config:
-          $ref: '#/components/schemas/connections:AWSIAMRoleConfig'
+          $ref: '#/components/schemas/connections_HTTPSBasicAuthConfig'
       required:
       - name
       - config
-      title: CreateAWSConnectionRequest
-    connections:PagedLinksDetailsResponse:
+      title: CreateHTTPSBasicAuthConnectionRequest
+    connections_HTTPValidationError:
       type: object
       properties:
-        current:
-          type: string
-          description: The current page link
-        previous:
-          type:
-          - string
-          - 'null'
-          description: The previous page, if applicable
-        next:
-          type:
-          - string
-          - 'null'
-          description: The next page link, if applicable
-      required:
-      - current
-      - previous
-      - next
-      description: Pagination metadata
-      title: PagedLinksDetailsResponse
-    connections:PagedPageDetailsResponse:
-      type: object
-      properties:
-        current_page:
-          type: integer
-          description: Current page number
-        limit:
-          type: integer
-          description: Number of items returned in the list response
-        offset:
-          type: integer
-          description: Starting index returned for the list response
-      required:
-      - current_page
-      - limit
-      - offset
-      description: Pagination metadata
-      title: PagedPageDetailsResponse
-    connections:ValidationError:
-      type: object
-      properties:
-        loc:
+        detail:
           type: array
           items:
-            $ref: '#/components/schemas/connections:ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    connections:ListWithConnectionResponse:
+            $ref: '#/components/schemas/connections_ValidationError'
+      title: HTTPValidationError
+    connections_Connections_create_connection_api_v0_connections_post_Request:
+      oneOf:
+      - $ref: '#/components/schemas/connections_CreateHTTPSBasicAuthConnectionRequest'
+      - $ref: '#/components/schemas/connections_CreateHTTPSBearerAuthConnectionRequest'
+      - $ref: '#/components/schemas/connections_CreateAWSConnectionRequest'
+      title: Connections_create_connection_api_v0_connections_post_Request
+    connections_ListWithConnectionResponse:
       type: object
       properties:
         bucket:
@@ -484,121 +499,129 @@ components:
       - keys
       - common_prefixes
       title: ListWithConnectionResponse
-    connections:ApiV0ConnectionsConnectionNameOrIdTestPostParametersConnectionNameOrId:
-      oneOf:
-      - type: string
-        format: uuid
-      - type: string
-      title: ApiV0ConnectionsConnectionNameOrIdTestPostParametersConnectionNameOrId
-    connections:HTTPSBearerAuthConfig:
-      type: object
-      properties:
-        hostname:
-          type: string
-          description: The hostname to connect to
-        bearer_token:
-          type: string
-          description: The bearer token for authentication
-      required:
-      - hostname
-      - bearer_token
-      title: HTTPSBearerAuthConfig
-    connections:GetConnectionResponseConfig:
-      oneOf:
-      - $ref: '#/components/schemas/connections:HTTPSBasicAuthConfig'
-      - $ref: '#/components/schemas/connections:HTTPSBearerAuthConfig'
-      - $ref: '#/components/schemas/connections:AWSIAMRoleConfig'
-      description: The connection configuration
-      title: GetConnectionResponseConfig
-    connections:CreateHTTPSBearerAuthConnectionRequest:
+    connections_UpdateConnectionRequest:
       type: object
       properties:
         name:
           type: string
-          description: The connection name (3-255 characters, lowercase alphanumeric with underscores)
+          description: The new connection name
         description:
           type:
           - string
           - 'null'
-          description: Optional description for the connection
-        test_location:
-          type:
-          - string
-          - 'null'
-          description: Optional location to test the connection
-        type:
-          $ref: '#/components/schemas/connections:ConnectionType'
-        config:
-          $ref: '#/components/schemas/connections:HTTPSBearerAuthConfig'
+          description: The new connection description
       required:
       - name
-      - config
-      title: CreateHTTPSBearerAuthConnectionRequest
-    connections:GetConnectionResponse:
+      title: UpdateConnectionRequest
+    connections_AWSIAMRoleConfig:
       type: object
       properties:
-        connection_id:
+        iam_role_arn:
           type: string
-          format: uuid
-          description: The unique identifier for the connection
-        name:
-          type: string
-          description: The connection name
-        description:
+          description: The ARN of the IAM role to assume
+        scope:
+          $ref: '#/components/schemas/connections_AWSIAMRoleScope'
+          description: The scope of permissions for the IAM role. Defaults to s3.
+        bucket_name:
           type:
           - string
           - 'null'
-          description: The connection description
-        type:
-          $ref: '#/components/schemas/connections:ConnectionType'
-          description: The type of connection
-        status:
-          $ref: '#/components/schemas/connections:ConnectionStatus'
-          description: The current status of the connection
-        config:
-          $ref: '#/components/schemas/connections:GetConnectionResponseConfig'
-          description: The connection configuration
-        created_dt:
-          type: string
-          format: date-time
-          description: When the connection was created
-        updated_dt:
-          type: string
-          format: date-time
-          description: When the connection was last updated
+          description: The S3 bucket name associated with this connection
+        session_ttl_seconds:
+          type: integer
+          default: 3600
+          description: Session duration in seconds (60-3600)
       required:
-      - connection_id
-      - name
+      - iam_role_arn
+      title: AWSIAMRoleConfig
+    connections_PagedLinksDetailsResponse:
+      type: object
+      properties:
+        current:
+          type: string
+          description: The current page link
+        previous:
+          type:
+          - string
+          - 'null'
+          description: The previous page, if applicable
+        next:
+          type:
+          - string
+          - 'null'
+          description: The next page link, if applicable
+      required:
+      - current
+      - previous
+      - next
+      description: Pagination metadata
+      title: PagedLinksDetailsResponse
+    connections_ConnectionStatus:
+      type: string
+      enum:
+      - pending
+      - ready
+      - error
+      description: The status of a connection
+      title: ConnectionStatus
+    connections_ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/connections_ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
       - type
-      - status
-      - config
-      - created_dt
-      - updated_dt
-      title: GetConnectionResponse
-    connections:ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    connections:TestConnectionRequest:
+      title: ValidationError
+    connections_PagedPageDetailsResponse:
       type: object
       properties:
-        location:
-          type: string
-          default: /
-          description: Specific location to use to test the connection
-        update_state:
-          type: boolean
-          default: true
-          description: Set to true update the status of the connection, false to dry run
-      title: TestConnectionRequest
-    connections:ApiV0ConnectionsConnectionNameOrIdListPostParametersConnectionNameOrId:
-      oneOf:
-      - type: string
-        format: uuid
-      - type: string
-      title: ApiV0ConnectionsConnectionNameOrIdListPostParametersConnectionNameOrId
-    connections:GetConnectionCredentialsResponse:
+        current_page:
+          type: integer
+          description: Current page number
+        limit:
+          type: integer
+          description: Number of items returned in the list response
+        offset:
+          type: integer
+          description: Starting index returned for the list response
+      required:
+      - current_page
+      - limit
+      - offset
+      description: Pagination metadata
+      title: PagedPageDetailsResponse
+    connections_ConnectionType:
+      type: string
+      enum:
+      - https_basic
+      - https_bearer
+      - aws_iam_role
+      description: The type of connection
+      title: ConnectionType
+    connections_ListConnectionsResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/connections_PagedMetaResponse'
+          description: Metadata for the set of data returned
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/connections_GetConnectionResponse'
+          description: The paginated data
+      required:
+      - meta
+      - data
+      title: ListConnectionsResponse
+    connections_GetConnectionCredentialsResponse:
       type: object
       properties:
         access_key_id:
@@ -619,49 +642,28 @@ components:
       - session_token
       - expires_in
       title: GetConnectionCredentialsResponse
-    connections:ListConnectionsResponse:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/connections:PagedMetaResponse'
-          description: Metadata for the set of data returned
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/connections:GetConnectionResponse'
-          description: The paginated data
-      required:
-      - meta
-      - data
-      title: ListConnectionsResponse
-    connections:ApiV0ConnectionsConnectionNameOrIdCredentialsGetParametersConnectionNameOrId:
-      oneOf:
-      - type: string
-        format: uuid
-      - type: string
-      title: ApiV0ConnectionsConnectionNameOrIdCredentialsGetParametersConnectionNameOrId
-    connections:Connections_create_connection_api_v0_connections_post_Request:
-      oneOf:
-      - $ref: '#/components/schemas/connections:CreateHTTPSBasicAuthConnectionRequest'
-      - $ref: '#/components/schemas/connections:CreateHTTPSBearerAuthConnectionRequest'
-      - $ref: '#/components/schemas/connections:CreateAWSConnectionRequest'
-      title: Connections_create_connection_api_v0_connections_post_Request
-    connections:AWSIAMRoleScope:
+    connections_AWSIAMRoleScope:
       type: string
       enum:
       - s3
       - bedrock
       description: The scope of permissions for an AWS IAM role connection
       title: AWSIAMRoleScope
-    connections:ConnectionStatus:
-      type: string
-      enum:
-      - pending
-      - ready
-      - error
-      description: The status of a connection
-      title: ConnectionStatus
-    connections:CreateHTTPSBasicAuthConnectionRequest:
+    connections_PagedMetaResponse:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/connections_PagedPageDetailsResponse'
+          description: Details about the response page
+        links:
+          $ref: '#/components/schemas/connections_PagedLinksDetailsResponse'
+          description: Links for easy page traversal
+      required:
+      - page
+      - links
+      description: Metadata about the paginated response
+      title: PagedMetaResponse
+    connections_CreateAWSConnectionRequest:
       type: object
       properties:
         name:
@@ -678,82 +680,80 @@ components:
           - 'null'
           description: Optional location to test the connection
         type:
-          $ref: '#/components/schemas/connections:ConnectionType'
+          $ref: '#/components/schemas/connections_ConnectionType'
         config:
-          $ref: '#/components/schemas/connections:HTTPSBasicAuthConfig'
+          $ref: '#/components/schemas/connections_AWSIAMRoleConfig'
       required:
       - name
       - config
-      title: CreateHTTPSBasicAuthConnectionRequest
-    connections:ListWithConnectionRequest:
-      type: object
-      properties:
-        bucket:
-          type: string
-          description: The S3 bucket name
-        prefix:
-          type: string
-          description: The S3 prefix to list
-        max_keys:
-          type: integer
-          default: 1000
-          description: Maximum number of keys to return
-        continuation_token:
-          type:
-          - string
-          - 'null'
-          description: Token for paginating results
-      required:
-      - bucket
-      - prefix
-      title: ListWithConnectionRequest
-    connections:AWSIAMRoleConfig:
-      type: object
-      properties:
-        iam_role_arn:
-          type: string
-          description: The ARN of the IAM role to assume
-        scope:
-          $ref: '#/components/schemas/connections:AWSIAMRoleScope'
-          description: The scope of permissions for the IAM role. Defaults to s3.
-        bucket_name:
-          type:
-          - string
-          - 'null'
-          description: The S3 bucket name associated with this connection
-        session_ttl_seconds:
-          type: integer
-          default: 3600
-          description: Session duration in seconds (60-3600)
-      required:
-      - iam_role_arn
-      title: AWSIAMRoleConfig
-    connections:ApiV0ConnectionsConnectionNameOrIdPatchParametersConnectionNameOrId:
+      title: CreateAWSConnectionRequest
+    connections_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    connections_ApiV0ConnectionsConnectionNameOrIdTestPostParametersConnectionNameOrId:
       oneOf:
       - type: string
         format: uuid
       - type: string
-      title: ApiV0ConnectionsConnectionNameOrIdPatchParametersConnectionNameOrId
-    connections:ApiV0ConnectionsConnectionNameOrIdDeleteParametersConnectionNameOrId:
+      title: ApiV0ConnectionsConnectionNameOrIdTestPostParametersConnectionNameOrId
+    connections_GetConnectionResponseConfig:
+      oneOf:
+      - $ref: '#/components/schemas/connections_HTTPSBasicAuthConfig'
+      - $ref: '#/components/schemas/connections_HTTPSBearerAuthConfig'
+      - $ref: '#/components/schemas/connections_AWSIAMRoleConfig'
+      description: The connection configuration
+      title: GetConnectionResponseConfig
+    connections_CreateHTTPSBearerAuthConnectionRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The connection name (3-255 characters, lowercase alphanumeric with underscores)
+        description:
+          type:
+          - string
+          - 'null'
+          description: Optional description for the connection
+        test_location:
+          type:
+          - string
+          - 'null'
+          description: Optional location to test the connection
+        type:
+          $ref: '#/components/schemas/connections_ConnectionType'
+        config:
+          $ref: '#/components/schemas/connections_HTTPSBearerAuthConfig'
+      required:
+      - name
+      - config
+      title: CreateHTTPSBearerAuthConnectionRequest
+    connections_ApiV0ConnectionsConnectionNameOrIdDeleteParametersConnectionNameOrId:
       oneOf:
       - type: string
         format: uuid
       - type: string
       title: ApiV0ConnectionsConnectionNameOrIdDeleteParametersConnectionNameOrId
-    connections:UpdateConnectionRequest:
+    connections_ApiV0ConnectionsConnectionNameOrIdPatchParametersConnectionNameOrId:
+      oneOf:
+      - type: string
+        format: uuid
+      - type: string
+      title: ApiV0ConnectionsConnectionNameOrIdPatchParametersConnectionNameOrId
+    connections_HTTPSBearerAuthConfig:
       type: object
       properties:
-        name:
+        hostname:
           type: string
-          description: The new connection name
-        description:
-          type:
-          - string
-          - 'null'
-          description: The new connection description
+          description: The hostname to connect to
+        bearer_token:
+          type: string
+          description: The bearer token for authentication
       required:
-      - name
-      title: UpdateConnectionRequest
+      - hostname
+      - bearer_token
+      title: HTTPSBearerAuthConfig
   securitySchemes:
     HTTPBearer:
       type: http
