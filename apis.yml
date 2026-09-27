@@ -47,18 +47,22 @@ specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-08-13'
 image: https://www.coactive.ai/favicon.ico
+x-docs-platform: fern
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-24
+x-docs-hosting: vercel
 tags:
 - Company
 - Artificial Intelligence
 - Multimodal AI
-- Computer-Vision
+- Computer Vision
 - Video Intelligence
 - Image Search
 - Content Intelligence
 - Semantic Search
 - Contextual Advertising
 - Metadata
-- Machine-Learning
+- Machine Learning
 - Media
 tags_raw:
 - Company
@@ -73,6 +77,8 @@ tags_raw:
 - Metadata
 - Machine Learning
 - Media
+- Computer-Vision
+- Machine-Learning
 apis:
 - aid: coactive:coactive-agentic-search-agenticsearch-api
   name: Coactive agentic-search > agenticSearch API
@@ -98,7 +104,7 @@ apis:
   - type: DataModel
     url: data-model/coactive-data-model.yml
 - aid: coactive:coactive-celebrity-detection-api
-  name: Coactive celebrity-detection API
+  name: Coactive Celebrity Detection API
   description: The celebrity-detection API from Coactive — 7 operation(s) for celebrity-detection.
   humanURL: https://docs.coactive.ai/
   baseURL: https://api.coactive.ai
@@ -120,7 +126,7 @@ apis:
   - type: DataModel
     url: data-model/coactive-data-model.yml
 - aid: coactive:coactive-classification-api
-  name: Coactive classification API
+  name: Coactive Classification API
   description: The classification API from Coactive — 1 operation(s) for classification.
   humanURL: https://docs.coactive.ai/
   baseURL: https://api.coactive.ai
@@ -144,7 +150,7 @@ apis:
   - type: DataModel
     url: data-model/coactive-data-model.yml
 - aid: coactive:coactive-concept-api
-  name: Coactive concept API
+  name: Coactive Concept API
   description: The concept API from Coactive — 5 operation(s) for concept.
   humanURL: https://docs.coactive.ai/
   baseURL: https://api.coactive.ai
@@ -281,7 +287,7 @@ apis:
   - type: DataModel
     url: data-model/coactive-data-model.yml
 - aid: coactive:coactive-dynamictags-api
-  name: Coactive dynamicTags API
+  name: Coactive Dynamic Tags API
   description: The dynamicTags API from Coactive — 1 operation(s) for dynamictags.
   humanURL: https://docs.coactive.ai/
   baseURL: https://api.coactive.ai
@@ -304,7 +310,7 @@ apis:
   - type: DataModel
     url: data-model/coactive-data-model.yml
 - aid: coactive:coactive-ingestion-api
-  name: Coactive ingestion API
+  name: Coactive Ingestion API
   description: The ingestion API from Coactive — 1 operation(s) for ingestion.
   humanURL: https://docs.coactive.ai/
   baseURL: https://api.coactive.ai
@@ -374,7 +380,7 @@ apis:
   - type: DataModel
     url: data-model/coactive-data-model.yml
 - aid: coactive:coactive-queries-api
-  name: Coactive queries API
+  name: Coactive Queries API
   description: The queries API from Coactive — 9 operation(s) for queries.
   humanURL: https://docs.coactive.ai/
   baseURL: https://api.coactive.ai
@@ -398,7 +404,7 @@ apis:
   - type: DataModel
     url: data-model/coactive-data-model.yml
 - aid: coactive:coactive-search-metadata-filter-api
-  name: Coactive search-metadata-filter API
+  name: Coactive Search Metadata Filter API
   description: >-
     The search-metadata-filter API from Coactive — 8 operation(s) for search-metadata-filter.
   humanURL: https://docs.coactive.ai/

@@ -278,14 +278,49 @@ components:
       - desc
       description: Sort direction.
       title: SortDirection
-    celebrity-detection_EnrollmentStatus:
-      type: string
-      enum:
-      - draft
-      - active
-      - failed
-      - in_progress
-      title: EnrollmentStatus
+    celebrity-detection_GetFacesWithPersonResponse:
+      type: object
+      properties:
+        faces:
+          type: array
+          items:
+            $ref: '#/components/schemas/celebrity-detection_Face'
+          description: List of faces associated with the person (id, image_id, dataset_id, bbox, confidence)
+      required:
+      - faces
+      title: GetFacesWithPersonResponse
+    celebrity-detection_GetPersonsInImageResponse:
+      type: object
+      properties:
+        persons:
+          type: array
+          items:
+            $ref: '#/components/schemas/celebrity-detection_Person'
+          description: List of persons identified in the image
+      required:
+      - persons
+      title: GetPersonsInImageResponse
+    celebrity-detection_HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/celebrity-detection_ValidationError'
+      title: HTTPValidationError
+    celebrity-detection_IngestedImage:
+      type: object
+      properties:
+        coactive_image_id:
+          type: string
+          format: uuid
+        dataset_id:
+          type: string
+          format: uuid
+      required:
+      - coactive_image_id
+      - dataset_id
+      title: IngestedImage
     celebrity-detection_ValidationError:
       type: object
       properties:
@@ -302,20 +337,116 @@ components:
       - msg
       - type
       title: ValidationError
-    celebrity-detection_PagedPageDetailsResponse:
+    celebrity-detection_Face:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Face ID
+        image_id:
+          type: string
+          format: uuid
+          description: Asset ID (image_id or keyframe_id)
+        dataset_id:
+          type: string
+          format: uuid
+          description: Dataset ID
+        bbox:
+          $ref: '#/components/schemas/celebrity-detection_BoundingBox'
+          description: Relative bounding box coordinates (x1, y1, x2, y2)
+        confidence:
+          type: number
+          format: double
+          description: Confidence score of the face identification
+      required:
+      - id
+      - image_id
+      - dataset_id
+      - bbox
+      - confidence
+      title: Face
+    celebrity-detection_GetPersonsByNamesAliasesResponse:
+      type: object
+      properties:
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/celebrity-detection_PersonNameMatch'
+          description: List of name to person_id mappings
+      required:
+      - matches
+      title: GetPersonsByNamesAliasesResponse
+    celebrity-detection_IdentifyCelebritiesInExternalImageResponse:
+      type: object
+      properties:
+        persons:
+          type: array
+          items:
+            $ref: '#/components/schemas/celebrity-detection_Person'
+          description: List of persons identified in the image
+      required:
+      - persons
+      title: IdentifyCelebritiesInExternalImageResponse
+    celebrity-detection_EnrollmentStatus:
+      type: string
+      enum:
+      - draft
+      - active
+      - failed
+      - in_progress
+      title: EnrollmentStatus
+    celebrity-detection_PagedMetaResponse:
       type: object
       properties:
         page:
-          type: integer
-          description: Current page number (1-indexed)
-        per_page:
-          type: integer
-          description: Number of items per page
+          $ref: '#/components/schemas/celebrity-detection_PagedPageDetailsResponse'
+          description: Details about pagination
+        has_next_page:
+          type: boolean
+          default: false
+          description: Whether another page exists
       required:
       - page
-      - per_page
-      description: Pagination metadata.
-      title: PagedPageDetailsResponse
+      description: Metadata about the paginated response.
+      title: PagedMetaResponse
+    celebrity-detection_PersonNameMatch:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name or alias that was searched
+        person_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: The matched person ID, or None if not found
+      required:
+      - name
+      - person_id
+      title: PersonNameMatch
+    celebrity-detection_BoundingBox:
+      type: object
+      properties:
+        x1:
+          type: number
+          format: double
+        y1:
+          type: number
+          format: double
+        x2:
+          type: number
+          format: double
+        y2:
+          type: number
+          format: double
+      required:
+      - x1
+      - y1
+      - x2
+      - y2
+      title: BoundingBox
     celebrity-detection_GetPersonsResponse:
       type: object
       properties:
@@ -339,164 +470,6 @@ components:
       required:
       - data
       title: GetPersonsResponse
-    celebrity-detection_IdentifyCelebritiesInExternalImageResponse:
-      type: object
-      properties:
-        persons:
-          type: array
-          items:
-            $ref: '#/components/schemas/celebrity-detection_Person'
-          description: List of persons identified in the image
-      required:
-      - persons
-      title: IdentifyCelebritiesInExternalImageResponse
-    celebrity-detection_ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    celebrity-detection_HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/celebrity-detection_ValidationError'
-      title: HTTPValidationError
-    celebrity-detection_GetPersonsByNamesAliasesResponse:
-      type: object
-      properties:
-        matches:
-          type: array
-          items:
-            $ref: '#/components/schemas/celebrity-detection_PersonNameMatch'
-          description: List of name to person_id mappings
-      required:
-      - matches
-      title: GetPersonsByNamesAliasesResponse
-    celebrity-detection_PersonNameMatch:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name or alias that was searched
-        person_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          description: The matched person ID, or None if not found
-      required:
-      - name
-      - person_id
-      title: PersonNameMatch
-    celebrity-detection_GetPersonsInImageResponse:
-      type: object
-      properties:
-        persons:
-          type: array
-          items:
-            $ref: '#/components/schemas/celebrity-detection_Person'
-          description: List of persons identified in the image
-      required:
-      - persons
-      title: GetPersonsInImageResponse
-    celebrity-detection_PagedMetaResponse:
-      type: object
-      properties:
-        page:
-          $ref: '#/components/schemas/celebrity-detection_PagedPageDetailsResponse'
-          description: Details about pagination
-        has_next_page:
-          type: boolean
-          default: false
-          description: Whether another page exists
-      required:
-      - page
-      description: Metadata about the paginated response.
-      title: PagedMetaResponse
-    celebrity-detection_BoundingBox:
-      type: object
-      properties:
-        x1:
-          type: number
-          format: double
-        y1:
-          type: number
-          format: double
-        x2:
-          type: number
-          format: double
-        y2:
-          type: number
-          format: double
-      required:
-      - x1
-      - y1
-      - x2
-      - y2
-      title: BoundingBox
-    celebrity-detection_UpdatePersonAliasesRequest:
-      type: object
-      properties:
-        person_id:
-          type: string
-          format: uuid
-          description: Person ID
-        aliases:
-          type: array
-          items:
-            type: string
-          description: Updated list of person aliases
-      required:
-      - person_id
-      title: UpdatePersonAliasesRequest
-    celebrity-detection_GetFacesWithPersonResponse:
-      type: object
-      properties:
-        faces:
-          type: array
-          items:
-            $ref: '#/components/schemas/celebrity-detection_Face'
-          description: List of faces associated with the person (id, image_id, dataset_id, bbox, confidence)
-      required:
-      - faces
-      title: GetFacesWithPersonResponse
-    celebrity-detection_IngestedImage:
-      type: object
-      properties:
-        coactive_image_id:
-          type: string
-          format: uuid
-        dataset_id:
-          type: string
-          format: uuid
-      required:
-      - coactive_image_id
-      - dataset_id
-      title: IngestedImage
-    celebrity-detection_SortField:
-      type: object
-      properties:
-        field:
-          type: string
-          description: Field name to sort by
-        direction:
-          $ref: '#/components/schemas/celebrity-detection_SortDirection'
-          description: Sort direction
-      required:
-      - field
-      description: Sort field details.
-      title: SortField
-    celebrity-detection_IdentifyCelebritiesInExternalImageRequest:
-      type: object
-      properties:
-        image:
-          type: string
-          description: Base64 encoded JPEG image
-      required:
-      - image
-      title: IdentifyCelebritiesInExternalImageRequest
     celebrity-detection_GetPersonResponse:
       type: object
       properties:
@@ -542,35 +515,62 @@ components:
       - created_user_id
       - created_dt
       title: GetPersonResponse
-    celebrity-detection_Face:
+    celebrity-detection_SortField:
       type: object
       properties:
-        id:
+        field:
           type: string
-          format: uuid
-          description: Face ID
-        image_id:
-          type: string
-          format: uuid
-          description: Asset ID (image_id or keyframe_id)
-        dataset_id:
-          type: string
-          format: uuid
-          description: Dataset ID
-        bbox:
-          $ref: '#/components/schemas/celebrity-detection_BoundingBox'
-          description: Relative bounding box coordinates (x1, y1, x2, y2)
-        confidence:
-          type: number
-          format: double
-          description: Confidence score of the face identification
+          description: Field name to sort by
+        direction:
+          $ref: '#/components/schemas/celebrity-detection_SortDirection'
+          description: Sort direction
       required:
-      - id
-      - image_id
-      - dataset_id
-      - bbox
-      - confidence
-      title: Face
+      - field
+      description: Sort field details.
+      title: SortField
+    celebrity-detection_UpdatePersonAliasesRequest:
+      type: object
+      properties:
+        person_id:
+          type: string
+          format: uuid
+          description: Person ID
+        aliases:
+          type: array
+          items:
+            type: string
+          description: Updated list of person aliases
+      required:
+      - person_id
+      title: UpdatePersonAliasesRequest
+    celebrity-detection_PagedPageDetailsResponse:
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number (1-indexed)
+        per_page:
+          type: integer
+          description: Number of items per page
+      required:
+      - page
+      - per_page
+      description: Pagination metadata.
+      title: PagedPageDetailsResponse
+    celebrity-detection_IdentifyCelebritiesInExternalImageRequest:
+      type: object
+      properties:
+        image:
+          type: string
+          description: Base64 encoded JPEG image
+      required:
+      - image
+      title: IdentifyCelebritiesInExternalImageRequest
+    celebrity-detection_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
     celebrity-detection_Person:
       type: object
       properties:

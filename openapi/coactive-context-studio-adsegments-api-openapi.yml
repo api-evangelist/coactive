@@ -145,6 +145,48 @@ paths:
                 $ref: '#/components/schemas/context-studio_HTTPValidationError'
 components:
   schemas:
+    context-studio_AdSegmentInfo:
+      type: object
+      properties:
+        segment_number:
+          type: integer
+        id:
+          type: string
+          format: uuid
+      required:
+      - segment_number
+      - id
+      description: A single Break Pattern segment with its assigned ID.
+      title: AdSegmentInfo
+    context-studio_VideoAdSegmentsCreateRequest:
+      type: object
+      properties:
+        ad_segments:
+          type: array
+          items:
+            $ref: '#/components/schemas/context-studio_VideoAdSegmentCreateRequest'
+      required:
+      - ad_segments
+      description: Request model for creating ad segments for a video.
+      title: VideoAdSegmentsCreateRequest
+    context-studio_VideoAdSegmentMetadataResponse:
+      type: object
+      properties:
+        segment_type:
+          type: string
+        segment_number:
+          type: integer
+        incode:
+          type: string
+        outcode:
+          type: string
+      required:
+      - segment_type
+      - segment_number
+      - incode
+      - outcode
+      description: Response model for ad segment metadata stored in composite slice JSONB.
+      title: VideoAdSegmentMetadataResponse
     context-studio_HTTPValidationError:
       type: object
       properties:
@@ -153,22 +195,6 @@ components:
           items:
             $ref: '#/components/schemas/context-studio_ValidationError'
       title: HTTPValidationError
-    context-studio_ValidationError:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/context-studio_ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     context-studio_VideoAdSegmentResponse:
       type: object
       properties:
@@ -197,6 +223,22 @@ components:
       - segment_end_frame_number
       description: A single ad segment returned from the DB.
       title: VideoAdSegmentResponse
+    context-studio_ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/context-studio_ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     context-studio_VideoAdSegmentsCreateResponse:
       type: object
       properties:
@@ -228,53 +270,6 @@ components:
       - ad_segments
       description: Response wrapper for the GET ad-segments endpoint.
       title: VideoAdSegmentsGetResponse
-    context-studio_VideoAdSegmentMetadataResponse:
-      type: object
-      properties:
-        segment_type:
-          type: string
-        segment_number:
-          type: integer
-        incode:
-          type: string
-        outcode:
-          type: string
-      required:
-      - segment_type
-      - segment_number
-      - incode
-      - outcode
-      description: Response model for ad segment metadata stored in composite slice JSONB.
-      title: VideoAdSegmentMetadataResponse
-    context-studio_VideoAdSegmentMetadataRequest:
-      type: object
-      properties:
-        segment_type:
-          type: string
-        segment_number:
-          type: integer
-        incode:
-          type: string
-        outcode:
-          type: string
-      required:
-      - segment_type
-      - segment_number
-      - incode
-      - outcode
-      description: Request model for ad segment metadata.
-      title: VideoAdSegmentMetadataRequest
-    context-studio_VideoAdSegmentsCreateRequest:
-      type: object
-      properties:
-        ad_segments:
-          type: array
-          items:
-            $ref: '#/components/schemas/context-studio_VideoAdSegmentCreateRequest'
-      required:
-      - ad_segments
-      description: Request model for creating ad segments for a video.
-      title: VideoAdSegmentsCreateRequest
     context-studio_ValidationErrorLocItems:
       oneOf:
       - type: string
@@ -304,19 +299,24 @@ components:
       - segment_end_frame_number
       description: Request model for creating an ad segment.
       title: VideoAdSegmentCreateRequest
-    context-studio_AdSegmentInfo:
+    context-studio_VideoAdSegmentMetadataRequest:
       type: object
       properties:
+        segment_type:
+          type: string
         segment_number:
           type: integer
-        id:
+        incode:
           type: string
-          format: uuid
+        outcode:
+          type: string
       required:
+      - segment_type
       - segment_number
-      - id
-      description: A single Break Pattern segment with its assigned ID.
-      title: AdSegmentInfo
+      - incode
+      - outcode
+      description: Request model for ad segment metadata.
+      title: VideoAdSegmentMetadataRequest
   securitySchemes:
     HTTPBearer:
       type: http

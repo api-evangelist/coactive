@@ -58,6 +58,85 @@ paths:
               $ref: '#/components/schemas/PublicUrlClassificationRequest'
 components:
   schemas:
+    ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    PublicUrlClassificationRequest:
+      type: object
+      properties:
+        url:
+          type: string
+          description: A public url for downloading the image
+        conceptIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+            format: uuid4
+          description: The ids of concepts to use to classify an image
+        datasetId:
+          type:
+          - string
+          - 'null'
+          format: uuid4
+          description: The id of the dataset related to the concepts to use to classify an image
+      required:
+      - url
+      description: 'A request to classify a publicly downloadable image for specific concepts or all concepts
+
+        for a dataset. Either concept ids of a dataset id must be provided.'
+      title: PublicUrlClassificationRequest
+    HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+      title: HTTPValidationError
+    Classification:
+      type: object
+      properties:
+        scores:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassificationScore'
+          description: Classifications of images for the relevant concept(s)
+      required:
+      - scores
+      description: A classification of an asset for one or more concepts
+      title: Classification
+    ErrorResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Details about the encountered error
+      required:
+      - detail
+      description: Details about an error that occurred
+      title: ErrorResponse
+    ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     ClassificationScore:
       type: object
       properties:
@@ -87,85 +166,6 @@ components:
       - score
       description: A classification of an asset for a single concept
       title: ClassificationScore
-    ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    ValidationError:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    Classification:
-      type: object
-      properties:
-        scores:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClassificationScore'
-          description: Classifications of images for the relevant concept(s)
-      required:
-      - scores
-      description: A classification of an asset for one or more concepts
-      title: Classification
-    ErrorResponse:
-      type: object
-      properties:
-        detail:
-          type: string
-          description: Details about the encountered error
-      required:
-      - detail
-      description: Details about an error that occurred
-      title: ErrorResponse
-    HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-      title: HTTPValidationError
-    PublicUrlClassificationRequest:
-      type: object
-      properties:
-        url:
-          type: string
-          description: A public url for downloading the image
-        conceptIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-            format: uuid4
-          description: The ids of concepts to use to classify an image
-        datasetId:
-          type:
-          - string
-          - 'null'
-          format: uuid4
-          description: The id of the dataset related to the concepts to use to classify an image
-      required:
-      - url
-      description: 'A request to classify a publicly downloadable image for specific concepts or all concepts
-
-        for a dataset. Either concept ids of a dataset id must be provided.'
-      title: PublicUrlClassificationRequest
   securitySchemes:
     HTTPBearer:
       type: http

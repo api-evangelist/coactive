@@ -56,14 +56,6 @@ components:
       - type: string
       - type: integer
       title: ValidationErrorLocItems
-    video-narative-metadata_HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/video-narative-metadata_ValidationError'
-      title: HTTPValidationError
     video-narative-metadata_ValidationError:
       type: object
       properties:
@@ -89,6 +81,14 @@ components:
       - message
       description: Response body for video keyframes captioning.
       title: CaptionVideoKeyframesResponse
+    video-narative-metadata_HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/video-narative-metadata_ValidationError'
+      title: HTTPValidationError
   securitySchemes:
     HTTPBearer:
       type: http

@@ -429,6 +429,51 @@ paths:
                 $ref: '#/components/schemas/queries_HTTPValidationError'
 components:
   schemas:
+    queries_ExportType:
+      type: string
+      enum:
+      - DELTA
+      - CSV
+      - UNITY
+      description: All possible export types
+      title: ExportType
+    queries_PagedLinksDetailsResponse:
+      type: object
+      properties:
+        current:
+          type: string
+          description: The current page link
+        previous:
+          type:
+          - string
+          - 'null'
+          description: The previous page, if applicable
+        next:
+          type:
+          - string
+          - 'null'
+          description: The next page link, if applicable
+      required:
+      - current
+      - previous
+      - next
+      description: Pagination metadata
+      title: PagedLinksDetailsResponse
+    queries_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    queries_ListTablesResponse:
+      type: object
+      properties:
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/queries_Table'
+      required:
+      - tables
+      title: ListTablesResponse
     queries_Table:
       type: object
       properties:
@@ -444,6 +489,106 @@ components:
       - name
       - table_schema
       title: Table
+    queries_app__api__v1__schema__CreateQueryRequest:
+      type: object
+      properties:
+        dataset_id:
+          type: string
+          format: uuid
+        query:
+          type: string
+        type:
+          $ref: '#/components/schemas/queries_QueryType'
+        parameters:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            description: Any type
+        embedding_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        check_validity:
+          type: boolean
+          default: true
+        dynamic_tags_version:
+          type: string
+          default: v2
+      required:
+      - dataset_id
+      - query
+      title: app__api__v1__schema__CreateQueryRequest
+    queries_ExportQueryRequest:
+      type: object
+      properties:
+        connection_name:
+          type:
+          - string
+          - 'null'
+          default: coactive
+        export_type:
+          $ref: '#/components/schemas/queries_ExportType'
+        target_bucket:
+          type: string
+        target_prefix:
+          type: string
+      required:
+      - target_bucket
+      - target_prefix
+      title: ExportQueryRequest
+    queries_app__api__v1__schema__ListQueriesResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/queries_PagedMetaResponse'
+          description: Metadata for the set of data returned
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/queries_app__api__v1__schema__GetQueryResponse'
+          description: The paginated data
+      required:
+      - meta
+      - data
+      title: app__api__v1__schema__ListQueriesResponse
+    queries_HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/queries_ValidationError'
+      title: HTTPValidationError
+    queries_GetQueryResultsResponse:
+      type: object
+      properties:
+        query_id:
+          type: string
+          format: uuid
+        download_url:
+          type: string
+      required:
+      - query_id
+      - download_url
+      title: GetQueryResultsResponse
+    queries_ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/queries_ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     queries_Body_list_queries_api_v1_queries_get:
       type: object
       properties:
@@ -467,21 +612,42 @@ components:
           items:
             type: string
       title: Body_list_queries_api_v1_queries_get
-    queries_app__api__v1__schema__ListQueriesResponse:
+    queries_PagedPageDetailsResponse:
       type: object
       properties:
-        meta:
-          $ref: '#/components/schemas/queries_PagedMetaResponse'
-          description: Metadata for the set of data returned
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/queries_app__api__v1__schema__GetQueryResponse'
-          description: The paginated data
+        current_page:
+          type: integer
+          description: Current page number
+        limit:
+          type: integer
+          description: Number of items returned in the list response
+        offset:
+          type: integer
+          description: Starting index returned for the list response
       required:
-      - meta
-      - data
-      title: app__api__v1__schema__ListQueriesResponse
+      - current_page
+      - limit
+      - offset
+      description: Pagination metadata
+      title: PagedPageDetailsResponse
+    queries_QueryType:
+      type: string
+      enum:
+      - NATURAL_LANGUAGE
+      - SQL
+      description: All possible query types
+      title: QueryType
+    queries_QueryStatus:
+      type: string
+      enum:
+      - Queued
+      - Running
+      - Stopping
+      - Stopped
+      - Complete
+      - Error
+      description: All possible query status values
+      title: QueryStatus
     queries_app__api__v1__schema__ExportQueryResponse:
       type: object
       properties:
@@ -501,6 +667,20 @@ components:
       - status
       - message
       title: app__api__v1__schema__ExportQueryResponse
+    queries_PagedMetaResponse:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/queries_PagedPageDetailsResponse'
+          description: Details about the response page
+        links:
+          $ref: '#/components/schemas/queries_PagedLinksDetailsResponse'
+          description: Links for easy page traversal
+      required:
+      - page
+      - links
+      description: Metadata about the paginated response
+      title: PagedMetaResponse
     queries_app__api__v1__schema__GetQueryResponse:
       type: object
       properties:
@@ -563,26 +743,6 @@ components:
       - updated_dt
       - created_user_id
       title: app__api__v1__schema__GetQueryResponse
-    queries_GetQueryResultsResponse:
-      type: object
-      properties:
-        query_id:
-          type: string
-          format: uuid
-        download_url:
-          type: string
-      required:
-      - query_id
-      - download_url
-      title: GetQueryResultsResponse
-    queries_ExportType:
-      type: string
-      enum:
-      - DELTA
-      - CSV
-      - UNITY
-      description: All possible export types
-      title: ExportType
     queries_ApiV1QueriesQueryIdResultsGetParametersUrlFormat:
       type: string
       enum:
@@ -590,166 +750,6 @@ components:
       - direct
       default: download
       title: ApiV1QueriesQueryIdResultsGetParametersUrlFormat
-    queries_ListTablesResponse:
-      type: object
-      properties:
-        tables:
-          type: array
-          items:
-            $ref: '#/components/schemas/queries_Table'
-      required:
-      - tables
-      title: ListTablesResponse
-    queries_QueryStatus:
-      type: string
-      enum:
-      - Queued
-      - Running
-      - Stopping
-      - Stopped
-      - Complete
-      - Error
-      description: All possible query status values
-      title: QueryStatus
-    queries_HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/queries_ValidationError'
-      title: HTTPValidationError
-    queries_app__api__v1__schema__CreateQueryRequest:
-      type: object
-      properties:
-        dataset_id:
-          type: string
-          format: uuid
-        query:
-          type: string
-        type:
-          $ref: '#/components/schemas/queries_QueryType'
-        parameters:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            description: Any type
-        embedding_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        check_validity:
-          type: boolean
-          default: true
-        dynamic_tags_version:
-          type: string
-          default: v2
-      required:
-      - dataset_id
-      - query
-      title: app__api__v1__schema__CreateQueryRequest
-    queries_ExportQueryRequest:
-      type: object
-      properties:
-        connection_name:
-          type:
-          - string
-          - 'null'
-          default: coactive
-        export_type:
-          $ref: '#/components/schemas/queries_ExportType'
-        target_bucket:
-          type: string
-        target_prefix:
-          type: string
-      required:
-      - target_bucket
-      - target_prefix
-      title: ExportQueryRequest
-    queries_PagedMetaResponse:
-      type: object
-      properties:
-        page:
-          $ref: '#/components/schemas/queries_PagedPageDetailsResponse'
-          description: Details about the response page
-        links:
-          $ref: '#/components/schemas/queries_PagedLinksDetailsResponse'
-          description: Links for easy page traversal
-      required:
-      - page
-      - links
-      description: Metadata about the paginated response
-      title: PagedMetaResponse
-    queries_ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    queries_QueryType:
-      type: string
-      enum:
-      - NATURAL_LANGUAGE
-      - SQL
-      description: All possible query types
-      title: QueryType
-    queries_ValidationError:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/queries_ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    queries_PagedLinksDetailsResponse:
-      type: object
-      properties:
-        current:
-          type: string
-          description: The current page link
-        previous:
-          type:
-          - string
-          - 'null'
-          description: The previous page, if applicable
-        next:
-          type:
-          - string
-          - 'null'
-          description: The next page link, if applicable
-      required:
-      - current
-      - previous
-      - next
-      description: Pagination metadata
-      title: PagedLinksDetailsResponse
-    queries_PagedPageDetailsResponse:
-      type: object
-      properties:
-        current_page:
-          type: integer
-          description: Current page number
-        limit:
-          type: integer
-          description: Number of items returned in the list response
-        offset:
-          type: integer
-          description: Starting index returned for the list response
-      required:
-      - current_page
-      - limit
-      - offset
-      description: Pagination metadata
-      title: PagedPageDetailsResponse
   securitySchemes:
     HTTPBearer:
       type: http

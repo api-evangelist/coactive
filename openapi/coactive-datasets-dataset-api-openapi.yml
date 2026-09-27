@@ -305,172 +305,6 @@ paths:
               $ref: '#/components/schemas/datasets_DatasetUpdateRequest'
 components:
   schemas:
-    datasets_PagedPageDetailsResponse:
-      type: object
-      properties:
-        current_page:
-          type: integer
-          description: Current page number
-        last_page:
-          type:
-          - integer
-          - 'null'
-          description: Max page number based on limit and total number of items
-        limit:
-          type: integer
-          description: Number of items to return
-        offset:
-          type: integer
-          description: Starting index to return
-        total:
-          type:
-          - integer
-          - 'null'
-          description: Total number of items
-      required:
-      - current_page
-      - last_page
-      - limit
-      - offset
-      - total
-      description: Pagination metadata
-      title: PagedPageDetailsResponse
-    datasets_DatasetGetManyResponse:
-      type: object
-      properties:
-        meta:
-          oneOf:
-          - $ref: '#/components/schemas/datasets_PagedMetaResponse'
-          - type: 'null'
-          description: Metadata for the set of data returned
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/datasets_DatasetResponse'
-          description: The paginated data
-      required:
-      - meta
-      - data
-      title: DatasetGetManyResponse
-    datasets_DatasetConfig:
-      type: object
-      properties:
-        embedding_id:
-          type: object
-          additionalProperties:
-            type: string
-            format: uuid
-          description: Mapping from encoder modality to the UUID of the embedding model used for that modality.
-        encoder_name:
-          type: object
-          additionalProperties:
-            type: string
-          description: Mapping from encoder modality to the name of the encoder model used for that modality.
-        extra_config:
-          oneOf:
-          - $ref: '#/components/schemas/datasets_ExtraConfig'
-          - type: 'null'
-          description: Optional extra configuration for composite types.
-        hybrid_search:
-          oneOf:
-          - $ref: '#/components/schemas/datasets_HybridSearchConfig'
-          - type: 'null'
-          description: Optional hybrid search configuration specifying modality weights.
-        context_studio_enabled:
-          type:
-          - boolean
-          - 'null'
-          default: false
-          description: Whether Context Studio is enabled for this dataset.
-        metadata_fields_to_embed:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-          description: Metadata fields whose values are embedded.
-        metadata_fields_to_index:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-          description: Metadata fields that are indexed for filtering and search.
-        celebrity_detection_enabled:
-          type:
-          - boolean
-          - 'null'
-          default: false
-          description: Whether celebrity detection is enabled for this dataset.
-        agentic_search_metadata_description:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type: string
-          description: Per-key descriptions of metadata fields.
-        asset_identifier_key:
-          type:
-          - string
-          - 'null'
-          description: The metadata field name that uniquely identifies each asset in the dataset.
-        context_studio_export_json_connection_name:
-          type:
-          - string
-          - 'null'
-          description: The name of the connection required for external s3 export. (this is related to context_studio feature).
-      required:
-      - embedding_id
-      - encoder_name
-      title: DatasetConfig
-    datasets_Encoder:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: The unique identifier for the encoder.
-        name:
-          $ref: '#/components/schemas/datasets_EncoderName'
-          description: The model used to extract visual and audio features from assets.
-        modality:
-          type: string
-          description: The supported modality of the encoder.
-        modalities:
-          type: array
-          items:
-            type: string
-          description: The supported modalities of the encoder.
-      required:
-      - id
-      - name
-      - modality
-      - modalities
-      title: Encoder
-    datasets_ValidationError:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/datasets_ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    datasets_HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/datasets_ValidationError'
-      title: HTTPValidationError
     datasets_DatasetResponse:
       type: object
       properties:
@@ -582,6 +416,16 @@ components:
       - store_original
       - store_preview
       title: DatasetResponse
+    datasets_PagedMetaResponse:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/datasets_PagedPageDetailsResponse'
+          description: Details about the total set of data
+      required:
+      - page
+      description: Metadata about the paginated response
+      title: PagedMetaResponse
     datasets_DatasetUpdateRequest:
       type: object
       properties:
@@ -614,13 +458,6 @@ components:
           - type: 'null'
       description: Update a dataset schema
       title: DatasetUpdateRequest
-    datasets_AssetTypeEnum:
-      type: string
-      enum:
-      - image
-      - video
-      description: Indicates the type of asset
-      title: AssetTypeEnum
     datasets_DatasetStatusEnum:
       type: string
       enum:
@@ -630,16 +467,153 @@ components:
       - deleted
       description: Indicates the operational status of a dataset
       title: DatasetStatusEnum
-    datasets_PagedMetaResponse:
+    datasets_ValidationError:
       type: object
       properties:
-        page:
-          $ref: '#/components/schemas/datasets_PagedPageDetailsResponse'
-          description: Details about the total set of data
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets_ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
       required:
-      - page
-      description: Metadata about the paginated response
-      title: PagedMetaResponse
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    datasets_HybridSearchConfig:
+      type: object
+      properties:
+        weights:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
+          description: Weights for each modality used in hybrid search scoring.
+      required:
+      - weights
+      title: HybridSearchConfig
+    datasets_ExtraConfig:
+      type: object
+      properties:
+        composite_settings:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/datasets_CompositeSettings'
+          description: Mapping of composite type name to its settings.
+      required:
+      - composite_settings
+      title: ExtraConfig
+    datasets_Encoder:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier for the encoder.
+        name:
+          $ref: '#/components/schemas/datasets_EncoderName'
+          description: The model used to extract visual and audio features from assets.
+        modality:
+          type: string
+          description: The supported modality of the encoder.
+        modalities:
+          type: array
+          items:
+            type: string
+          description: The supported modalities of the encoder.
+      required:
+      - id
+      - name
+      - modality
+      - modalities
+      title: Encoder
+    datasets_DatasetConfig:
+      type: object
+      properties:
+        embedding_id:
+          type: object
+          additionalProperties:
+            type: string
+            format: uuid
+          description: Mapping from encoder modality to the UUID of the embedding model used for that modality.
+        encoder_name:
+          type: object
+          additionalProperties:
+            type: string
+          description: Mapping from encoder modality to the name of the encoder model used for that modality.
+        extra_config:
+          oneOf:
+          - $ref: '#/components/schemas/datasets_ExtraConfig'
+          - type: 'null'
+          description: Optional extra configuration for composite types.
+        hybrid_search:
+          oneOf:
+          - $ref: '#/components/schemas/datasets_HybridSearchConfig'
+          - type: 'null'
+          description: Optional hybrid search configuration specifying modality weights.
+        context_studio_enabled:
+          type:
+          - boolean
+          - 'null'
+          default: false
+          description: Whether Context Studio is enabled for this dataset.
+        metadata_fields_to_embed:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: Metadata fields whose values are embedded.
+        metadata_fields_to_index:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: Metadata fields that are indexed for filtering and search.
+        celebrity_detection_enabled:
+          type:
+          - boolean
+          - 'null'
+          default: false
+          description: Whether celebrity detection is enabled for this dataset.
+        agentic_search_metadata_description:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: string
+          description: Per-key descriptions of metadata fields.
+        asset_identifier_key:
+          type:
+          - string
+          - 'null'
+          description: The metadata field name that uniquely identifies each asset in the dataset.
+        context_studio_export_json_connection_name:
+          type:
+          - string
+          - 'null'
+          description: The name of the connection required for external s3 export. (this is related to context_studio feature).
+      required:
+      - embedding_id
+      - encoder_name
+      title: DatasetConfig
+    datasets_EncoderName:
+      oneOf:
+      - $ref: '#/components/schemas/datasets_VisualEncoderNameEnum'
+      - type: string
+      description: The model used to extract visual and audio features from assets.
+      title: EncoderName
+    datasets_AssetTypeEnum:
+      type: string
+      enum:
+      - image
+      - video
+      description: Indicates the type of asset
+      title: AssetTypeEnum
     datasets_DatasetCreateRequest:
       type: object
       properties:
@@ -704,6 +678,15 @@ components:
       - type: string
       - type: integer
       title: ValidationErrorLocItems
+    datasets_CompositeSettings:
+      type: object
+      properties:
+        maximum_slice_duration_seconds:
+          type: integer
+          description: Maximum duration in seconds for a single composite slice.
+      required:
+      - maximum_slice_duration_seconds
+      title: CompositeSettings
     datasets_VisualEncoderNameEnum:
       type: string
       enum:
@@ -715,35 +698,14 @@ components:
       - resnet-50
       - resnet-50-reduced
       title: VisualEncoderNameEnum
-    datasets_EncoderName:
-      oneOf:
-      - $ref: '#/components/schemas/datasets_VisualEncoderNameEnum'
-      - type: string
-      description: The model used to extract visual and audio features from assets.
-      title: EncoderName
-    datasets_HybridSearchConfig:
+    datasets_HTTPValidationError:
       type: object
       properties:
-        weights:
-          type: object
-          additionalProperties:
-            type: number
-            format: double
-          description: Weights for each modality used in hybrid search scoring.
-      required:
-      - weights
-      title: HybridSearchConfig
-    datasets_ExtraConfig:
-      type: object
-      properties:
-        composite_settings:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/datasets_CompositeSettings'
-          description: Mapping of composite type name to its settings.
-      required:
-      - composite_settings
-      title: ExtraConfig
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets_ValidationError'
+      title: HTTPValidationError
     datasets_DatasetUpdateRequestStatus:
       type: string
       enum:
@@ -751,6 +713,36 @@ components:
       - inactive
       description: The status of the dataset (ACTIVE or INACTIVE)
       title: DatasetUpdateRequestStatus
+    datasets_PagedPageDetailsResponse:
+      type: object
+      properties:
+        current_page:
+          type: integer
+          description: Current page number
+        last_page:
+          type:
+          - integer
+          - 'null'
+          description: Max page number based on limit and total number of items
+        limit:
+          type: integer
+          description: Number of items to return
+        offset:
+          type: integer
+          description: Starting index to return
+        total:
+          type:
+          - integer
+          - 'null'
+          description: Total number of items
+      required:
+      - current_page
+      - last_page
+      - limit
+      - offset
+      - total
+      description: Pagination metadata
+      title: PagedPageDetailsResponse
     datasets_KeyframeSamplingMethodEnum:
       type: string
       enum:
@@ -758,15 +750,23 @@ components:
       - uniform
       description: Indicates the method used to sample keyframes from a video
       title: KeyframeSamplingMethodEnum
-    datasets_CompositeSettings:
+    datasets_DatasetGetManyResponse:
       type: object
       properties:
-        maximum_slice_duration_seconds:
-          type: integer
-          description: Maximum duration in seconds for a single composite slice.
+        meta:
+          oneOf:
+          - $ref: '#/components/schemas/datasets_PagedMetaResponse'
+          - type: 'null'
+          description: Metadata for the set of data returned
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets_DatasetResponse'
+          description: The paginated data
       required:
-      - maximum_slice_duration_seconds
-      title: CompositeSettings
+      - meta
+      - data
+      title: DatasetGetManyResponse
   securitySchemes:
     HTTPBearer:
       type: http

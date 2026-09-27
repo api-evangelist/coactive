@@ -44,7 +44,7 @@ paths:
               $ref: '#/components/schemas/DeleteAssetsRequest'
 components:
   schemas:
-    DeleteJobAsset:
+    DeleteAssetsResponseAssetsItems:
       type: object
       properties:
         asset_type:
@@ -52,10 +52,35 @@ components:
         identifier:
           $ref: '#/components/schemas/DeleteJobAssetIdentifier'
           description: Either the Coactive Video/Image ID of the asset or a path string
+        delete_job_id:
+          type: string
+          description: Beanie ObjectId as string
       required:
       - asset_type
       - identifier
-      title: DeleteJobAsset
+      - delete_job_id
+      title: DeleteAssetsResponseAssetsItems
+    DeleteAssetsRequest:
+      type: object
+      properties:
+        dataset_id:
+          type: string
+          format: uuid
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeleteJobAsset'
+      required:
+      - dataset_id
+      - assets
+      title: DeleteAssetsRequest
+    ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
     DeleteAssetsResponse:
       type: object
       properties:
@@ -73,13 +98,40 @@ components:
       - dataset_id
       - assets
       title: DeleteAssetsResponse
-    ValidationErrorLocItems:
+    HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+      title: HTTPValidationError
+    DeleteJobAsset:
+      type: object
+      properties:
+        asset_type:
+          $ref: '#/components/schemas/AssetType'
+        identifier:
+          $ref: '#/components/schemas/DeleteJobAssetIdentifier'
+          description: Either the Coactive Video/Image ID of the asset or a path string
+      required:
+      - asset_type
+      - identifier
+      title: DeleteJobAsset
+    DeleteJobAssetIdentifier:
       oneOf:
       - type: string
-      - type: integer
+        format: uuid
       - type: string
-      - type: integer
-      title: ValidationErrorLocItems
+      description: Either the Coactive Video/Image ID of the asset or a path string
+      title: DeleteJobAssetIdentifier
+    AssetType:
+      type: string
+      enum:
+      - image
+      - video
+      description: An enumeration.
+      title: AssetType
     ValidationError:
       type: object
       properties:
@@ -96,58 +148,6 @@ components:
       - msg
       - type
       title: ValidationError
-    AssetType:
-      type: string
-      enum:
-      - image
-      - video
-      description: An enumeration.
-      title: AssetType
-    DeleteAssetsRequest:
-      type: object
-      properties:
-        dataset_id:
-          type: string
-          format: uuid
-        assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteJobAsset'
-      required:
-      - dataset_id
-      - assets
-      title: DeleteAssetsRequest
-    DeleteJobAssetIdentifier:
-      oneOf:
-      - type: string
-        format: uuid
-      - type: string
-      description: Either the Coactive Video/Image ID of the asset or a path string
-      title: DeleteJobAssetIdentifier
-    HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-      title: HTTPValidationError
-    DeleteAssetsResponseAssetsItems:
-      type: object
-      properties:
-        asset_type:
-          $ref: '#/components/schemas/AssetType'
-        identifier:
-          $ref: '#/components/schemas/DeleteJobAssetIdentifier'
-          description: Either the Coactive Video/Image ID of the asset or a path string
-        delete_job_id:
-          type: string
-          description: Beanie ObjectId as string
-      required:
-      - asset_type
-      - identifier
-      - delete_job_id
-      title: DeleteAssetsResponseAssetsItems
   securitySchemes:
     HTTPBearer:
       type: http
