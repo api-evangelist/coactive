@@ -705,16 +705,37 @@ paths:
               $ref: '#/components/schemas/video-narative-metadata_PredictVideoSubjectRequest'
 components:
   schemas:
-    video-narative-metadata_GenerateVideoDescriptionResponse:
+    video-narative-metadata_GetMetadataResponse:
       type: object
       properties:
-        description:
-          type: string
-          description: Generated video description
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/video-narative-metadata_MetadataItem'
       required:
-      - description
-      description: Response body for generating a video description.
-      title: GenerateVideoDescriptionResponse
+      - items
+      description: Response for listing metadata values by type.
+      title: GetMetadataResponse
+    video-narative-metadata_PredictCompositeSliceFormatRequest:
+      type: object
+      properties:
+        composite_slice_context:
+          type:
+          - string
+          - 'null'
+          description: Optional context about the composite slice
+      description: Request body for predicting composite slice formats.
+      title: PredictCompositeSliceFormatRequest
+    video-narative-metadata_GenerateVideoSummaryResponse:
+      type: object
+      properties:
+        summary:
+          type: string
+          description: Generated video summary
+      required:
+      - summary
+      description: Response body for generating a video summary.
+      title: GenerateVideoSummaryResponse
     video-narative-metadata_PredictVideoGenreResponse:
       type: object
       properties:
@@ -727,18 +748,47 @@ components:
       - genres
       description: Response body for predicting video genres.
       title: PredictVideoGenreResponse
-    video-narative-metadata_PredictVideoSubjectResponse:
+    video-narative-metadata_CreateMetadataResponse:
       type: object
       properties:
-        subjects:
+        item:
+          $ref: '#/components/schemas/video-narative-metadata_MetadataItem'
+      required:
+      - item
+      description: Response for created metadata.
+      title: CreateMetadataResponse
+    video-narative-metadata_GenerateVideoSynopsisResponse:
+      type: object
+      properties:
+        synopsis:
+          type: string
+          description: Generated video synopsis
+      required:
+      - synopsis
+      description: Response body for generating a video synopsis.
+      title: GenerateVideoSynopsisResponse
+    video-narative-metadata_GenerateVideoDescriptionRequest:
+      type: object
+      properties:
+        video_context:
+          type:
+          - string
+          - 'null'
+          description: Optional context about the video
+      description: Request body for generating a video description.
+      title: GenerateVideoDescriptionRequest
+    video-narative-metadata_PredictVideoFormatResponse:
+      type: object
+      properties:
+        formats:
           type: array
           items:
             type: string
-          description: Predicted video subjects
+          description: Predicted video formats
       required:
-      - subjects
-      description: Response body for predicting video subjects.
-      title: PredictVideoSubjectResponse
+      - formats
+      description: Response body for predicting video formats.
+      title: PredictVideoFormatResponse
     video-narative-metadata_UpdateMetadataRequest:
       type: object
       properties:
@@ -758,26 +808,99 @@ components:
             type: string
       description: Update fields of a metadata value.
       title: UpdateMetadataRequest
-    video-narative-metadata_GenerateCompositeSliceSummaryRequest:
+    video-narative-metadata_PredictCompositeSliceFormatResponse:
       type: object
       properties:
-        composite_slice_context:
+        formats:
+          type: array
+          items:
+            type: string
+          description: Predicted composite slice formats
+      required:
+      - formats
+      description: Response body for predicting composite slice formats.
+      title: PredictCompositeSliceFormatResponse
+    video-narative-metadata_UpdateMetadataResponse:
+      type: object
+      properties:
+        item:
+          $ref: '#/components/schemas/video-narative-metadata_MetadataItem'
+      required:
+      - item
+      description: Response for updated metadata.
+      title: UpdateMetadataResponse
+    video-narative-metadata_GenerateVideoSynopsisRequest:
+      type: object
+      properties:
+        video_context:
           type:
           - string
           - 'null'
-          description: Optional context about the composite slice
-      description: Request body for generating a composite slice summary.
-      title: GenerateCompositeSliceSummaryRequest
-    video-narative-metadata_PredictCompositeSliceMoodRequest:
+          description: Optional context about the video
+      description: Request body for generating a video synopsis.
+      title: GenerateVideoSynopsisRequest
+    video-narative-metadata_PredictVideoMoodResponse:
       type: object
       properties:
-        composite_slice_context:
+        moods:
+          type: array
+          items:
+            type: string
+          description: Predicted video moods
+      required:
+      - moods
+      description: Response body for predicting video moods.
+      title: PredictVideoMoodResponse
+    video-narative-metadata_PredictCompositeSliceMoodResponse:
+      type: object
+      properties:
+        moods:
+          type: array
+          items:
+            type: string
+          description: Predicted composite slice moods
+      required:
+      - moods
+      description: Response body for predicting composite slice moods.
+      title: PredictCompositeSliceMoodResponse
+    video-narative-metadata_PredictVideoFormatRequest:
+      type: object
+      properties:
+        video_context:
           type:
           - string
           - 'null'
-          description: Optional context about the composite slice
-      description: Request body for predicting composite slice moods.
-      title: PredictCompositeSliceMoodRequest
+          description: Optional context about the video
+      description: Request body for predicting video formats.
+      title: PredictVideoFormatRequest
+    video-narative-metadata_PredictVideoSubjectResponse:
+      type: object
+      properties:
+        subjects:
+          type: array
+          items:
+            type: string
+          description: Predicted video subjects
+      required:
+      - subjects
+      description: Response body for predicting video subjects.
+      title: PredictVideoSubjectResponse
+    video-narative-metadata_ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/video-narative-metadata_ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     video-narative-metadata_DeleteMetadataResponse:
       type: object
       properties:
@@ -791,6 +914,55 @@ components:
       - deleted
       description: Response for deleted metadata.
       title: DeleteMetadataResponse
+    video-narative-metadata_GenerateCompositeSliceSummaryResponse:
+      type: object
+      properties:
+        summary:
+          type: string
+          description: Generated composite slice summary
+      required:
+      - summary
+      description: Response body for generating a composite slice summary.
+      title: GenerateCompositeSliceSummaryResponse
+    video-narative-metadata_PredictVideoSubjectRequest:
+      type: object
+      properties:
+        video_context:
+          type:
+          - string
+          - 'null'
+          description: Optional context about the video
+      description: Request body for predicting video subjects.
+      title: PredictVideoSubjectRequest
+    video-narative-metadata_MetadataType:
+      type: string
+      enum:
+      - genre
+      - mood
+      - subject
+      - format
+      description: Supported metadata types.
+      title: MetadataType
+    video-narative-metadata_GenerateCompositeSliceSummaryRequest:
+      type: object
+      properties:
+        composite_slice_context:
+          type:
+          - string
+          - 'null'
+          description: Optional context about the composite slice
+      description: Request body for generating a composite slice summary.
+      title: GenerateCompositeSliceSummaryRequest
+    video-narative-metadata_GenerateVideoDescriptionResponse:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Generated video description
+      required:
+      - description
+      description: Response body for generating a video description.
+      title: GenerateVideoDescriptionResponse
     video-narative-metadata_MetadataItem:
       type: object
       properties:
@@ -815,16 +987,6 @@ components:
       - examples
       description: A metadata value.
       title: MetadataItem
-    video-narative-metadata_PredictCompositeSliceSubjectRequest:
-      type: object
-      properties:
-        composite_slice_context:
-          type:
-          - string
-          - 'null'
-          description: Optional context about the composite slice
-      description: Request body for predicting composite slice subjects.
-      title: PredictCompositeSliceSubjectRequest
     video-narative-metadata_PredictVideoMoodRequest:
       type: object
       properties:
@@ -835,167 +997,26 @@ components:
           description: Optional context about the video
       description: Request body for predicting video moods.
       title: PredictVideoMoodRequest
-    video-narative-metadata_PredictCompositeSliceSubjectResponse:
+    video-narative-metadata_PredictCompositeSliceMoodRequest:
       type: object
       properties:
-        subjects:
-          type: array
-          items:
-            type: string
-          description: Predicted composite slice subjects
-      required:
-      - subjects
-      description: Response body for predicting composite slice subjects.
-      title: PredictCompositeSliceSubjectResponse
-    video-narative-metadata_ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    video-narative-metadata_GetMetadataResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/video-narative-metadata_MetadataItem'
-      required:
-      - items
-      description: Response for listing metadata values by type.
-      title: GetMetadataResponse
-    video-narative-metadata_PredictCompositeSliceFormatResponse:
-      type: object
-      properties:
-        formats:
-          type: array
-          items:
-            type: string
-          description: Predicted composite slice formats
-      required:
-      - formats
-      description: Response body for predicting composite slice formats.
-      title: PredictCompositeSliceFormatResponse
-    video-narative-metadata_GenerateVideoDescriptionRequest:
-      type: object
-      properties:
-        video_context:
+        composite_slice_context:
           type:
           - string
           - 'null'
-          description: Optional context about the video
-      description: Request body for generating a video description.
-      title: GenerateVideoDescriptionRequest
-    video-narative-metadata_PredictVideoSubjectRequest:
+          description: Optional context about the composite slice
+      description: Request body for predicting composite slice moods.
+      title: PredictCompositeSliceMoodRequest
+    video-narative-metadata_PredictCompositeSliceSubjectRequest:
       type: object
       properties:
-        video_context:
+        composite_slice_context:
           type:
           - string
           - 'null'
-          description: Optional context about the video
-      description: Request body for predicting video subjects.
-      title: PredictVideoSubjectRequest
-    video-narative-metadata_UpdateMetadataResponse:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/video-narative-metadata_MetadataItem'
-      required:
-      - item
-      description: Response for updated metadata.
-      title: UpdateMetadataResponse
-    video-narative-metadata_GenerateVideoSummaryRequest:
-      type: object
-      properties:
-        video_context:
-          type:
-          - string
-          - 'null'
-          description: Optional context about the video
-      description: Request body for generating a video summary.
-      title: GenerateVideoSummaryRequest
-    video-narative-metadata_PredictVideoMoodResponse:
-      type: object
-      properties:
-        moods:
-          type: array
-          items:
-            type: string
-          description: Predicted video moods
-      required:
-      - moods
-      description: Response body for predicting video moods.
-      title: PredictVideoMoodResponse
-    video-narative-metadata_GenerateCompositeSliceSummaryResponse:
-      type: object
-      properties:
-        summary:
-          type: string
-          description: Generated composite slice summary
-      required:
-      - summary
-      description: Response body for generating a composite slice summary.
-      title: GenerateCompositeSliceSummaryResponse
-    video-narative-metadata_ValidationError:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/video-narative-metadata_ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    video-narative-metadata_PredictCompositeSliceMoodResponse:
-      type: object
-      properties:
-        moods:
-          type: array
-          items:
-            type: string
-          description: Predicted composite slice moods
-      required:
-      - moods
-      description: Response body for predicting composite slice moods.
-      title: PredictCompositeSliceMoodResponse
-    video-narative-metadata_GenerateVideoSummaryResponse:
-      type: object
-      properties:
-        summary:
-          type: string
-          description: Generated video summary
-      required:
-      - summary
-      description: Response body for generating a video summary.
-      title: GenerateVideoSummaryResponse
-    video-narative-metadata_PredictVideoFormatResponse:
-      type: object
-      properties:
-        formats:
-          type: array
-          items:
-            type: string
-          description: Predicted video formats
-      required:
-      - formats
-      description: Response body for predicting video formats.
-      title: PredictVideoFormatResponse
-    video-narative-metadata_GenerateVideoSynopsisRequest:
-      type: object
-      properties:
-        video_context:
-          type:
-          - string
-          - 'null'
-          description: Optional context about the video
-      description: Request body for generating a video synopsis.
-      title: GenerateVideoSynopsisRequest
+          description: Optional context about the composite slice
+      description: Request body for predicting composite slice subjects.
+      title: PredictCompositeSliceSubjectRequest
     video-narative-metadata_CreateMetadataRequest:
       type: object
       properties:
@@ -1016,6 +1037,29 @@ components:
       - examples
       description: Create a new metadata value.
       title: CreateMetadataRequest
+    video-narative-metadata_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    video-narative-metadata_GenerateVideoSummaryRequest:
+      type: object
+      properties:
+        video_context:
+          type:
+          - string
+          - 'null'
+          description: Optional context about the video
+      description: Request body for generating a video summary.
+      title: GenerateVideoSummaryRequest
+    video-narative-metadata_HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/video-narative-metadata_ValidationError'
+      title: HTTPValidationError
     video-narative-metadata_PredictVideoGenreRequest:
       type: object
       properties:
@@ -1026,62 +1070,18 @@ components:
           description: Optional context about the video
       description: Request body for predicting video genres.
       title: PredictVideoGenreRequest
-    video-narative-metadata_PredictCompositeSliceFormatRequest:
+    video-narative-metadata_PredictCompositeSliceSubjectResponse:
       type: object
       properties:
-        composite_slice_context:
-          type:
-          - string
-          - 'null'
-          description: Optional context about the composite slice
-      description: Request body for predicting composite slice formats.
-      title: PredictCompositeSliceFormatRequest
-    video-narative-metadata_PredictVideoFormatRequest:
-      type: object
-      properties:
-        video_context:
-          type:
-          - string
-          - 'null'
-          description: Optional context about the video
-      description: Request body for predicting video formats.
-      title: PredictVideoFormatRequest
-    video-narative-metadata_HTTPValidationError:
-      type: object
-      properties:
-        detail:
+        subjects:
           type: array
           items:
-            $ref: '#/components/schemas/video-narative-metadata_ValidationError'
-      title: HTTPValidationError
-    video-narative-metadata_MetadataType:
-      type: string
-      enum:
-      - genre
-      - mood
-      - subject
-      - format
-      description: Supported metadata types.
-      title: MetadataType
-    video-narative-metadata_CreateMetadataResponse:
-      type: object
-      properties:
-        item:
-          $ref: '#/components/schemas/video-narative-metadata_MetadataItem'
+            type: string
+          description: Predicted composite slice subjects
       required:
-      - item
-      description: Response for created metadata.
-      title: CreateMetadataResponse
-    video-narative-metadata_GenerateVideoSynopsisResponse:
-      type: object
-      properties:
-        synopsis:
-          type: string
-          description: Generated video synopsis
-      required:
-      - synopsis
-      description: Response body for generating a video synopsis.
-      title: GenerateVideoSynopsisResponse
+      - subjects
+      description: Response body for predicting composite slice subjects.
+      title: PredictCompositeSliceSubjectResponse
   securitySchemes:
     HTTPBearer:
       type: http

@@ -35,29 +35,6 @@ paths:
                   $ref: '#/components/schemas/datasets_EncoderDescription'
 components:
   schemas:
-    datasets_AudioEncoderNameEnum:
-      type: string
-      enum:
-      - audio
-      - text-llm
-      title: AudioEncoderNameEnum
-    datasets_VisualEncoderNameEnum:
-      type: string
-      enum:
-      - multimodal
-      - multimodal-tx-large2
-      - multimodal-tx-large3
-      - multimodal-tx-large4
-      - nova2-multimodal
-      - resnet-50
-      - resnet-50-reduced
-      title: VisualEncoderNameEnum
-    datasets_EncoderDescriptionName:
-      oneOf:
-      - $ref: '#/components/schemas/datasets_VisualEncoderNameEnum'
-      - $ref: '#/components/schemas/datasets_AudioEncoderNameEnum'
-      description: The name of the encoder.
-      title: EncoderDescriptionName
     datasets_ModalityEnum:
       type: string
       enum:
@@ -85,6 +62,29 @@ components:
       - modality
       description: An encoder
       title: EncoderDescription
+    datasets_EncoderDescriptionName:
+      oneOf:
+      - $ref: '#/components/schemas/datasets_VisualEncoderNameEnum'
+      - $ref: '#/components/schemas/datasets_AudioEncoderNameEnum'
+      description: The name of the encoder.
+      title: EncoderDescriptionName
+    datasets_AudioEncoderNameEnum:
+      type: string
+      enum:
+      - audio
+      - text-llm
+      title: AudioEncoderNameEnum
+    datasets_VisualEncoderNameEnum:
+      type: string
+      enum:
+      - multimodal
+      - multimodal-tx-large2
+      - multimodal-tx-large3
+      - multimodal-tx-large4
+      - nova2-multimodal
+      - resnet-50
+      - resnet-50-reduced
+      title: VisualEncoderNameEnum
   securitySchemes:
     HTTPBearer:
       type: http

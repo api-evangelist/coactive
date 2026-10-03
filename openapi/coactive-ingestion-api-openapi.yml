@@ -44,6 +44,18 @@ paths:
               $ref: '#/components/schemas/DeleteAssetsRequest'
 components:
   schemas:
+    DeleteJobAsset:
+      type: object
+      properties:
+        asset_type:
+          $ref: '#/components/schemas/AssetType'
+        identifier:
+          $ref: '#/components/schemas/DeleteJobAssetIdentifier'
+          description: Either the Coactive Video/Image ID of the asset or a path string
+      required:
+      - asset_type
+      - identifier
+      title: DeleteJobAsset
     DeleteAssetsResponseAssetsItems:
       type: object
       properties:
@@ -60,27 +72,6 @@ components:
       - identifier
       - delete_job_id
       title: DeleteAssetsResponseAssetsItems
-    DeleteAssetsRequest:
-      type: object
-      properties:
-        dataset_id:
-          type: string
-          format: uuid
-        assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteJobAsset'
-      required:
-      - dataset_id
-      - assets
-      title: DeleteAssetsRequest
-    ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
     DeleteAssetsResponse:
       type: object
       properties:
@@ -98,26 +89,6 @@ components:
       - dataset_id
       - assets
       title: DeleteAssetsResponse
-    HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-      title: HTTPValidationError
-    DeleteJobAsset:
-      type: object
-      properties:
-        asset_type:
-          $ref: '#/components/schemas/AssetType'
-        identifier:
-          $ref: '#/components/schemas/DeleteJobAssetIdentifier'
-          description: Either the Coactive Video/Image ID of the asset or a path string
-      required:
-      - asset_type
-      - identifier
-      title: DeleteJobAsset
     DeleteJobAssetIdentifier:
       oneOf:
       - type: string
@@ -132,6 +103,13 @@ components:
       - video
       description: An enumeration.
       title: AssetType
+    ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
     ValidationError:
       type: object
       properties:
@@ -148,6 +126,28 @@ components:
       - msg
       - type
       title: ValidationError
+    DeleteAssetsRequest:
+      type: object
+      properties:
+        dataset_id:
+          type: string
+          format: uuid
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeleteJobAsset'
+      required:
+      - dataset_id
+      - assets
+      title: DeleteAssetsRequest
+    HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+      title: HTTPValidationError
   securitySchemes:
     HTTPBearer:
       type: http

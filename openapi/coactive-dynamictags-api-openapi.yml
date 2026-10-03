@@ -199,19 +199,45 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    DynamicTagTagVersionStatus:
-      type: string
-      enum:
-      - creating
-      - updating
-      - draft
-      - unpublished_changes
-      - published
-      - error
-      - deleting
-      - deleted
-      description: Status of a tag version.
-      title: DynamicTagTagVersionStatus
+    DynamicTagGetGroupsResponse:
+      type: object
+      properties:
+        meta:
+          oneOf:
+          - $ref: '#/components/schemas/DynamicTagPagedMetaResponse'
+          - type: 'null'
+          description: Metadata for pagination
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamicTagGroupVersionResponse'
+          description: The paginated data
+        sort:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DynamicTagSortField'
+          description: Sort details
+      required:
+      - data
+      description: Response model for retrieving a paginated list of groups.
+      title: DynamicTagGetGroupsResponse
+    DynamicTagDataset:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Dataset identifier
+        status:
+          $ref: '#/components/schemas/DynamicTagGroupDatasetAssociationStatus'
+          description: Dataset status
+      required:
+      - id
+      - status
+      description: Summary information about associated datasets.
+      title: DynamicTagDataset
     DynamicTagPagedMetaResponse:
       type: object
       properties:
@@ -226,41 +252,30 @@ components:
       - page
       description: Metadata about the paginated response.
       title: DynamicTagPagedMetaResponse
-    DynamicTagSortDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      description: Sort direction.
-      title: DynamicTagSortDirection
-    ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    HTTPValidationError:
+    DynamicTagTagVersionSummary:
       type: object
       properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-      title: HTTPValidationError
-    DynamicTagSortField:
-      type: object
-      properties:
-        field:
+        tag_id:
           type: string
-          description: Field name to sort by
-        direction:
-          $ref: '#/components/schemas/DynamicTagSortDirection'
-          description: Sort direction
+          format: uuid
+          description: Unique identifier for the tag
+        tag_version_id:
+          type: string
+          format: uuid
+          description: Unique identifier for the tag version
+        name:
+          type: string
+          description: Name of the tag
+        status:
+          $ref: '#/components/schemas/DynamicTagTagVersionStatus'
+          description: Status of the tag
       required:
-      - field
-      description: Sort field details.
-      title: DynamicTagSortField
+      - tag_id
+      - tag_version_id
+      - name
+      - status
+      description: Response model for a tag with its current version.
+      title: DynamicTagTagVersionSummary
     DynamicTagGroupVersionResponse:
       type: object
       properties:
@@ -361,60 +376,6 @@ components:
       - review_tags_visited_at
       description: Response model for a group version.
       title: DynamicTagGroupVersionResponse
-    DynamicTagGroupVersionStatus:
-      type: string
-      enum:
-      - creating
-      - updating
-      - draft
-      - unpublished_changes
-      - published
-      - validated
-      - superseded
-      - error
-      - deleting
-      - deleted
-      description: Status of a group version.
-      title: DynamicTagGroupVersionStatus
-    DynamicTagGetGroupsResponse:
-      type: object
-      properties:
-        meta:
-          oneOf:
-          - $ref: '#/components/schemas/DynamicTagPagedMetaResponse'
-          - type: 'null'
-          description: Metadata for pagination
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/DynamicTagGroupVersionResponse'
-          description: The paginated data
-        sort:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DynamicTagSortField'
-          description: Sort details
-      required:
-      - data
-      description: Response model for retrieving a paginated list of groups.
-      title: DynamicTagGetGroupsResponse
-    DynamicTagDataset:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Dataset identifier
-        status:
-          $ref: '#/components/schemas/DynamicTagGroupDatasetAssociationStatus'
-          description: Dataset status
-      required:
-      - id
-      - status
-      description: Summary information about associated datasets.
-      title: DynamicTagDataset
     DynamicTagPagedPageDetailsResponse:
       type: object
       properties:
@@ -429,42 +390,39 @@ components:
       - per_page
       description: Pagination metadata.
       title: DynamicTagPagedPageDetailsResponse
-    DynamicTagTagVersionSummary:
+    DynamicTagSortField:
       type: object
       properties:
-        tag_id:
+        field:
           type: string
-          format: uuid
-          description: Unique identifier for the tag
-        tag_version_id:
-          type: string
-          format: uuid
-          description: Unique identifier for the tag version
-        name:
-          type: string
-          description: Name of the tag
-        status:
-          $ref: '#/components/schemas/DynamicTagTagVersionStatus'
-          description: Status of the tag
+          description: Field name to sort by
+        direction:
+          $ref: '#/components/schemas/DynamicTagSortDirection'
+          description: Sort direction
       required:
-      - tag_id
-      - tag_version_id
-      - name
-      - status
-      description: Response model for a tag with its current version.
-      title: DynamicTagTagVersionSummary
-    DynamicTagGroupDatasetAssociationStatus:
+      - field
+      description: Sort field details.
+      title: DynamicTagSortField
+    ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    DynamicTagTagVersionStatus:
       type: string
       enum:
-      - unscored
-      - queued
-      - scoring
-      - scored
+      - creating
+      - updating
+      - draft
+      - unpublished_changes
+      - published
       - error
       - deleting
       - deleted
-      description: Status of association between group and dataset.
-      title: DynamicTagGroupDatasetAssociationStatus
+      description: Status of a tag version.
+      title: DynamicTagTagVersionStatus
     ValidationError:
       type: object
       properties:
@@ -481,6 +439,48 @@ components:
       - msg
       - type
       title: ValidationError
+    DynamicTagGroupDatasetAssociationStatus:
+      type: string
+      enum:
+      - unscored
+      - queued
+      - scoring
+      - scored
+      - error
+      - deleting
+      - deleted
+      description: Status of association between group and dataset.
+      title: DynamicTagGroupDatasetAssociationStatus
+    DynamicTagGroupVersionStatus:
+      type: string
+      enum:
+      - creating
+      - updating
+      - draft
+      - unpublished_changes
+      - published
+      - validated
+      - superseded
+      - error
+      - deleting
+      - deleted
+      description: Status of a group version.
+      title: DynamicTagGroupVersionStatus
+    DynamicTagSortDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      description: Sort direction.
+      title: DynamicTagSortDirection
+    HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+      title: HTTPValidationError
   securitySchemes:
     HTTPBearer:
       type: http

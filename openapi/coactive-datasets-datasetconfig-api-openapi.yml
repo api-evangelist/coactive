@@ -51,14 +51,6 @@ paths:
                 $ref: '#/components/schemas/datasets_HTTPValidationError'
 components:
   schemas:
-    datasets_HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/datasets_ValidationError'
-      title: HTTPValidationError
     datasets_ValidationError:
       type: object
       properties:
@@ -75,11 +67,14 @@ components:
       - msg
       - type
       title: ValidationError
-    datasets_ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
+    datasets_HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets_ValidationError'
+      title: HTTPValidationError
     datasets_DatasetConfigResponse:
       type: object
       properties:
@@ -148,6 +143,11 @@ components:
       - dataset_id
       description: Response schema for the dataset_config JSONB column.
       title: DatasetConfigResponse
+    datasets_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
   securitySchemes:
     HTTPBearer:
       type: http

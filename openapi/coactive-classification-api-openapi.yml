@@ -58,13 +58,6 @@ paths:
               $ref: '#/components/schemas/PublicUrlClassificationRequest'
 components:
   schemas:
-    ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
     PublicUrlClassificationRequest:
       type: object
       properties:
@@ -91,14 +84,6 @@ components:
 
         for a dataset. Either concept ids of a dataset id must be provided.'
       title: PublicUrlClassificationRequest
-    HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-      title: HTTPValidationError
     Classification:
       type: object
       properties:
@@ -111,32 +96,6 @@ components:
       - scores
       description: A classification of an asset for one or more concepts
       title: Classification
-    ErrorResponse:
-      type: object
-      properties:
-        detail:
-          type: string
-          description: Details about the encountered error
-      required:
-      - detail
-      description: Details about an error that occurred
-      title: ErrorResponse
-    ValidationError:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     ClassificationScore:
       type: object
       properties:
@@ -166,6 +125,47 @@ components:
       - score
       description: A classification of an asset for a single concept
       title: ClassificationScore
+    ErrorResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Details about the encountered error
+      required:
+      - detail
+      description: Details about an error that occurred
+      title: ErrorResponse
+    ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+      title: HTTPValidationError
   securitySchemes:
     HTTPBearer:
       type: http
