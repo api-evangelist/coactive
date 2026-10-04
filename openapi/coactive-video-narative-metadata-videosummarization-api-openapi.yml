@@ -59,6 +59,11 @@ components:
           items:
             $ref: '#/components/schemas/video-narative-metadata_ValidationError'
       title: HTTPValidationError
+    video-narative-metadata_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
     video-narative-metadata_ValidationError:
       type: object
       properties:
@@ -75,11 +80,6 @@ components:
       - msg
       - type
       title: ValidationError
-    video-narative-metadata_ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
     video-narative-metadata_CaptionVideoKeyframesResponse:
       type: object
       properties:

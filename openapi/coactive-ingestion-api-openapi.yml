@@ -44,6 +44,13 @@ paths:
               $ref: '#/components/schemas/DeleteAssetsRequest'
 components:
   schemas:
+    AssetType:
+      type: string
+      enum:
+      - image
+      - video
+      description: An enumeration.
+      title: AssetType
     DeleteJobAsset:
       type: object
       properties:
@@ -56,22 +63,43 @@ components:
       - asset_type
       - identifier
       title: DeleteJobAsset
-    DeleteAssetsResponseAssetsItems:
+    DeleteAssetsRequest:
       type: object
       properties:
-        asset_type:
-          $ref: '#/components/schemas/AssetType'
-        identifier:
-          $ref: '#/components/schemas/DeleteJobAssetIdentifier'
-          description: Either the Coactive Video/Image ID of the asset or a path string
-        delete_job_id:
+        dataset_id:
           type: string
-          description: Beanie ObjectId as string
+          format: uuid
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeleteJobAsset'
       required:
-      - asset_type
-      - identifier
-      - delete_job_id
-      title: DeleteAssetsResponseAssetsItems
+      - dataset_id
+      - assets
+      title: DeleteAssetsRequest
+    ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    DeleteJobAssetIdentifier:
+      oneOf:
+      - type: string
+        format: uuid
+      - type: string
+      description: Either the Coactive Video/Image ID of the asset or a path string
+      title: DeleteJobAssetIdentifier
     DeleteAssetsResponse:
       type: object
       properties:
@@ -89,57 +117,6 @@ components:
       - dataset_id
       - assets
       title: DeleteAssetsResponse
-    DeleteJobAssetIdentifier:
-      oneOf:
-      - type: string
-        format: uuid
-      - type: string
-      description: Either the Coactive Video/Image ID of the asset or a path string
-      title: DeleteJobAssetIdentifier
-    AssetType:
-      type: string
-      enum:
-      - image
-      - video
-      description: An enumeration.
-      title: AssetType
-    ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    ValidationError:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    DeleteAssetsRequest:
-      type: object
-      properties:
-        dataset_id:
-          type: string
-          format: uuid
-        assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteJobAsset'
-      required:
-      - dataset_id
-      - assets
-      title: DeleteAssetsRequest
     HTTPValidationError:
       type: object
       properties:
@@ -148,6 +125,29 @@ components:
           items:
             $ref: '#/components/schemas/ValidationError'
       title: HTTPValidationError
+    ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    DeleteAssetsResponseAssetsItems:
+      type: object
+      properties:
+        asset_type:
+          $ref: '#/components/schemas/AssetType'
+        identifier:
+          $ref: '#/components/schemas/DeleteJobAssetIdentifier'
+          description: Either the Coactive Video/Image ID of the asset or a path string
+        delete_job_id:
+          type: string
+          description: Beanie ObjectId as string
+      required:
+      - asset_type
+      - identifier
+      - delete_job_id
+      title: DeleteAssetsResponseAssetsItems
   securitySchemes:
     HTTPBearer:
       type: http

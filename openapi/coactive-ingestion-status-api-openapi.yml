@@ -397,194 +397,54 @@ paths:
                 $ref: '#/components/schemas/ingestion_HTTPValidationError'
 components:
   schemas:
-    ingestion_Status_get_image_asset_status_api_v1_ingestion_images__asset_id__status_get_Response_200:
-      oneOf:
-      - $ref: '#/components/schemas/ingestion_ImageAssetStatusResponse'
-      - $ref: '#/components/schemas/ingestion_EmptyResponse'
-      title: Status_get_image_asset_status_api_v1_ingestion_images__asset_id__status_get_Response_200
-    ingestion_AssetStatusEnum:
+    ingestion_EventFilter:
       type: string
       enum:
-      - pending
-      - in_progress
-      - received
-      - processing_started
       - completed
       - error
-      title: AssetStatusEnum
-    ingestion_EventEntity:
+      - in_progress
+      title: EventFilter
+    ingestion_ErrorCode:
+      type: string
+      enum:
+      - unknown
+      - unknown_content_type
+      - file_not_found
+      - permission_denied
+      - broken_url
+      - file_too_large
+      - video_too_short
+      - video_too_long
+      - resolution_out_of_spec
+      - unsupported_format
+      - unsupported_codec
+      - unsupported_source_type
+      - unsupported_uri_scheme
+      - audio_processing_failed
+      - asset_metadata_error
+      - transcription_failed
+      - composite_creation_failed
+      - composite_slice_creation_failed
+      title: ErrorCode
+    ingestion_ExternalFileType:
       type: string
       enum:
       - unspecified
-      - request
-      - image
-      - video
-      - audio
-      - shot
-      - visual_keyframe
-      - audio_keyframe
-      - audio_segment
-      - metadata
-      - csv_file
-      - json_file
-      - s3_prefix
-      - composite
-      description: "The kind of entity that the status event applies to.\n\nDetermines what collection of IDs show up in the event, e.g.:\n    - request (fewest):\n        - request_id\n        - ingest_job_id\n        - dataset_id\n        - org_id\n    - audio_keyframe (most):\n        - coactive_image_id\n        - coactive_audio_segment_id\n        - coactive_shot_id\n        - coactive_video_id\n        - request_id\n        - ingest_job_id\n        - dataset_id\n        - org_id"
-      title: EventEntity
-    ingestion_StatusSummary:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/ingestion_AssetStatusEnum'
-        asset_id:
-          type: string
-          format: uuid
-        dataset_id:
-          type: string
-          format: uuid
-        asset_type:
-          type: string
-        source_path:
-          type:
-          - string
-          - 'null'
-        ingestion_dt:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      required:
-      - status
-      - asset_id
-      - dataset_id
-      - asset_type
-      title: StatusSummary
-    ingestion_PagedPageDetailsResponse:
-      type: object
-      properties:
-        current_page:
-          type: integer
-          description: Current page number
-        last_page:
-          type:
-          - integer
-          - 'null'
-          description: Max page number based on limit and total number of items
-        limit:
-          type: integer
-          description: Number of items to return
-        offset:
-          type: integer
-          description: Starting index to return
-        total:
-          type:
-          - integer
-          - 'null'
-          description: Total number of items
-      required:
-      - current_page
-      - last_page
-      - limit
-      - offset
-      - total
-      description: Pagination metadata
-      title: PagedPageDetailsResponse
-    ingestion_DatasetAssetsStatusCountResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: integer
-          description: A dictionary of event filters and their counts
-      required:
-      - data
-      title: DatasetAssetsStatusCountResponse
-    ingestion_GetOneIngestJobResponseDetails:
-      oneOf:
-      - $ref: '#/components/schemas/ingestion_AssetsJobDetails'
-      - $ref: '#/components/schemas/ingestion_FileJobDetails'
-      - $ref: '#/components/schemas/ingestion_BucketJobDetails'
-      - $ref: '#/components/schemas/ingestion_MetadataUpdateJobDetails'
-      title: GetOneIngestJobResponseDetails
-    ingestion_PagedMetaResponse:
-      type: object
-      properties:
-        page:
-          $ref: '#/components/schemas/ingestion_PagedPageDetailsResponse'
-          description: Details about the total set of data
-      required:
-      - page
-      description: Metadata about the paginated response
-      title: PagedMetaResponse
-    ingestion_PagedDataResponse_Status:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/ingestion_PagedMetaResponse'
-          description: Metadata for the set of data returned
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion_Status'
-          description: The paginated data
-      required:
-      - meta
-      - data
-      title: PagedDataResponse_Status_
+      - csv
+      - json
+      title: ExternalFileType
     ? ingestion_Status_get_dataset_assets_status_summary_api_v1_ingestion_datasets__dataset_id__assets_status_summary_get_Response_200
     : oneOf:
       - $ref: '#/components/schemas/ingestion_PagedAssetsStatusSummaryResponse'
       - $ref: '#/components/schemas/ingestion_EmptyResponse'
       title: Status_get_dataset_assets_status_summary_api_v1_ingestion_datasets__dataset_id__assets_status_summary_get_Response_200
-    ingestion_ImageAssetStatusResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ingestion_Status'
-      required:
-      - data
-      title: ImageAssetStatusResponse
-    ingestion_AssetJobDetail:
-      type: object
-      properties:
-        asset:
-          $ref: '#/components/schemas/ingestion_IngestJobAsset'
-        asset_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        error:
-          type:
-          - string
-          - 'null'
-      required:
-      - asset
-      title: AssetJobDetail
-    ingestion_InternalAssetMetadataUpdate:
-      type: object
-      properties:
-        asset_id:
-          type: string
-          format: uuid
-        source_path:
-          type:
-          - string
-          - 'null'
-        asset_type:
-          $ref: '#/components/schemas/ingestion_ExplicitExternalAssetType'
-        metadata:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            $ref: '#/components/schemas/ingestion_InternalAssetMetadataUpdateMetadata'
-      required:
-      - asset_id
-      - source_path
-      - asset_type
-      title: InternalAssetMetadataUpdate
+    ingestion_ExternalAssetType:
+      type: string
+      enum:
+      - unspecified
+      - image
+      - video
+      title: ExternalAssetType
     ingestion_Status_get_job_status_api_v1_ingestion_jobs__ingest_job_id__status_get_Response_200:
       oneOf:
       - $ref: '#/components/schemas/ingestion_IngestJobStatusResponse'
@@ -601,52 +461,6 @@ components:
       required:
       - status
       title: JobStatus
-    ingestion_ExternalAssetType:
-      type: string
-      enum:
-      - unspecified
-      - image
-      - video
-      title: ExternalAssetType
-    ingestion_IngestJobStatusEnum:
-      type: string
-      enum:
-      - completed
-      - failed
-      - in_progress
-      - pending
-      - paused
-      - stopping
-      - stopped
-      description: Enum of Ingest Job Status.
-      title: IngestJobStatusEnum
-    ingestion_HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion_ValidationError'
-      title: HTTPValidationError
-    ingestion_AssetsJobDetails:
-      type: object
-      properties:
-        assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion_AssetJobDetail'
-      required:
-      - assets
-      title: AssetsJobDetails
-    ingestion_EmptyResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            description: Any type
-          description: Empty data list
-      title: EmptyResponse
     ingestion_DatasetIngestionInfo:
       type: object
       properties:
@@ -666,6 +480,14 @@ components:
       - ingest_job_id
       - ingestion_dt
       title: DatasetIngestionInfo
+    ingestion_ImageAssetStatusResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ingestion_Status'
+      required:
+      - data
+      title: ImageAssetStatusResponse
     ingestion_GetDatasetAssetsStatusRequest:
       type: object
       properties:
@@ -674,37 +496,21 @@ components:
           - string
           - 'null'
       title: GetDatasetAssetsStatusRequest
-    ingestion_FileJobDetails:
+    ingestion_MetadataUpdateJobDetails:
       type: object
       properties:
-        file:
-          $ref: '#/components/schemas/ingestion_CreateIngestJobFromFileRequest'
+        accepted:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion_InternalAssetMetadataUpdate'
+        invalid_assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion_ExistingAssetMetadataUpdate'
       required:
-      - file
-      title: FileJobDetails
-    ingestion_ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    ingestion_Status_get_dataset_assets_status_api_v1_ingestion_datasets__dataset_id__assets_status_post_Response_200:
-      oneOf:
-      - $ref: '#/components/schemas/ingestion_PagedAssetsStatusResponse'
-      - $ref: '#/components/schemas/ingestion_EmptyResponse'
-      title: Status_get_dataset_assets_status_api_v1_ingestion_datasets__dataset_id__assets_status_post_Response_200
-    ingestion_BucketSpec:
-      type: object
-      properties:
-        bucket:
-          type: string
-        prefix:
-          type: string
-          default: /
-        provider:
-          $ref: '#/components/schemas/ingestion_ExternalCloudStorageProvider'
-      required:
-      - bucket
-      title: BucketSpec
+      - accepted
+      - invalid_assets
+      title: MetadataUpdateJobDetails
     ingestion_PagedAssetsStatusResponse:
       type: object
       properties:
@@ -720,26 +526,42 @@ components:
       - meta
       - data
       title: PagedAssetsStatusResponse
-    ingestion_GetManyIngestJobsResponse:
+    ingestion_BucketSpec:
       type: object
       properties:
-        jobs:
+        bucket:
+          type: string
+        prefix:
+          type: string
+          default: /
+        provider:
+          $ref: '#/components/schemas/ingestion_ExternalCloudStorageProvider'
+      required:
+      - bucket
+      title: BucketSpec
+    ingestion_AssetType:
+      type: string
+      enum:
+      - unspecified
+      - image
+      - keyframe
+      - video
+      - audio
+      - metadata
+      - csv
+      - json
+      - s3_prefix
+      title: AssetType
+    ingestion_AssetsJobDetails:
+      type: object
+      properties:
+        assets:
           type: array
           items:
-            $ref: '#/components/schemas/ingestion_GetOneIngestJobResponse'
+            $ref: '#/components/schemas/ingestion_AssetJobDetail'
       required:
-      - jobs
-      title: GetManyIngestJobsResponse
-    ingestion_IngestJobAssetMetadata:
-      oneOf:
-      - type: boolean
-      - type: integer
-      - type: number
-        format: double
-      - type: string
-      - type: string
-        format: date-time
-      title: IngestJobAssetMetadata
+      - assets
+      title: AssetsJobDetails
     ingestion_IngestJobType:
       type: string
       enum:
@@ -749,6 +571,22 @@ components:
       - bucket
       - metadata
       title: IngestJobType
+    ingestion_ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion_ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     ingestion_Status:
       type: object
       properties:
@@ -784,65 +622,7 @@ components:
       - dataset_id
       - latest_event
       title: Status
-    ingestion_EventName:
-      type: string
-      enum:
-      - received
-      - assets_enumerated
-      - completed
-      - processing_started
-      - error
-      - kind_determined
-      - stored
-      - metadata_stored
-      - embedding_computed
-      - embedding_stored
-      - asset_copied
-      - timecodes_computed
-      - audio_extracted
-      - audio_processing_started
-      - audio_processing_finished
-      - keyframe_generation_started
-      - keyframe_generation_completed
-      - shot_boundary_detection_started
-      - shot_boundary_detection_completed
-      - file_downloaded
-      - keyframe_generated
-      - transcribed
-      - transcription_segmented
-      - transcripts_created
-      - composite_created
-      - composite_slices_created
-      description: The status-related event that applies to the entity.
-      title: EventName
-    ingestion_ErrorCode:
-      type: string
-      enum:
-      - unknown
-      - unknown_content_type
-      - file_not_found
-      - permission_denied
-      - broken_url
-      - file_too_large
-      - video_too_short
-      - video_too_long
-      - resolution_out_of_spec
-      - unsupported_format
-      - unsupported_codec
-      - unsupported_source_type
-      - unsupported_uri_scheme
-      - audio_processing_failed
-      - asset_metadata_error
-      - transcription_failed
-      - composite_creation_failed
-      - composite_slice_creation_failed
-      title: ErrorCode
-    ingestion_Status_get_video_asset_status_api_v1_ingestion_videos__asset_id__status_get_Response_200:
-      oneOf:
-      - $ref: '#/components/schemas/ingestion_VideoAssetStatusResponse'
-      - $ref: '#/components/schemas/ingestion_EmptyResponse'
-      title: Status_get_video_asset_status_api_v1_ingestion_videos__asset_id__status_get_Response_200
-    ingestion_ExistingAssetMetadataUpdateMetadata:
+    ingestion_InternalAssetMetadataUpdateMetadata:
       oneOf:
       - type: boolean
       - type: integer
@@ -851,60 +631,47 @@ components:
       - type: string
       - type: string
         format: date-time
-      title: ExistingAssetMetadataUpdateMetadata
-    ingestion_IngestJobAsset:
+      title: InternalAssetMetadataUpdateMetadata
+    ingestion_Status_get_dataset_assets_status_api_v1_ingestion_datasets__dataset_id__assets_status_post_Response_200:
+      oneOf:
+      - $ref: '#/components/schemas/ingestion_PagedAssetsStatusResponse'
+      - $ref: '#/components/schemas/ingestion_EmptyResponse'
+      title: Status_get_dataset_assets_status_api_v1_ingestion_datasets__dataset_id__assets_status_post_Response_200
+    ingestion_CreateIngestJobFromFileRequest:
       type: object
       properties:
+        dataset_id:
+          type: string
+          format: uuid
         source_path:
           type: string
-        metadata:
+        connection_name:
           type:
-          - object
+          - string
           - 'null'
-          additionalProperties:
-            $ref: '#/components/schemas/ingestion_IngestJobAssetMetadata'
-        asset_type:
-          $ref: '#/components/schemas/ingestion_ExternalAssetType'
+        file_type:
+          $ref: '#/components/schemas/ingestion_ExternalFileType'
       required:
+      - dataset_id
       - source_path
-      title: IngestJobAsset
-    ingestion_IngestJobStatusResponse:
+      title: CreateIngestJobFromFileRequest
+    ingestion_AssetJobDetail:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/ingestion_JobStatus'
+        asset:
+          $ref: '#/components/schemas/ingestion_IngestJobAsset'
+        asset_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        error:
+          type:
+          - string
+          - 'null'
       required:
-      - data
-      title: IngestJobStatusResponse
-    ingestion_EventFilter:
-      type: string
-      enum:
-      - completed
-      - error
-      - in_progress
-      title: EventFilter
-    ingestion_ValidationError:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion_ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    ingestion_ExplicitExternalAssetType:
-      type: string
-      enum:
-      - image
-      - video
-      title: ExplicitExternalAssetType
+      - asset
+      title: AssetJobDetail
     ingestion_ExistingAssetMetadataUpdate:
       type: object
       properties:
@@ -928,73 +695,42 @@ components:
       required:
       - asset_type
       title: ExistingAssetMetadataUpdate
-    ingestion_BucketJobDetails:
+    ingestion_FileJobDetails:
       type: object
       properties:
-        path:
+        file:
+          $ref: '#/components/schemas/ingestion_CreateIngestJobFromFileRequest'
+      required:
+      - file
+      title: FileJobDetails
+    ingestion_StatusSummary:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/ingestion_AssetStatusEnum'
+        asset_id:
           type: string
-        spec:
-          $ref: '#/components/schemas/ingestion_BucketSpec'
-        max_depth:
-          type: integer
-          default: 0
+          format: uuid
+        dataset_id:
+          type: string
+          format: uuid
+        asset_type:
+          type: string
+        source_path:
+          type:
+          - string
+          - 'null'
+        ingestion_dt:
+          type:
+          - string
+          - 'null'
+          format: date-time
       required:
-      - path
-      - spec
-      title: BucketJobDetails
-    ingestion_InternalAssetMetadataUpdateMetadata:
-      oneOf:
-      - type: boolean
-      - type: integer
-      - type: number
-        format: double
-      - type: string
-      - type: string
-        format: date-time
-      title: InternalAssetMetadataUpdateMetadata
-    ingestion_VideoAssetStatusResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ingestion_Status'
-      required:
-      - data
-      title: VideoAssetStatusResponse
-    ingestion_PagedAssetsStatusSummaryResponse:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/ingestion_PagedMetaResponse'
-          description: Metadata for the set of data returned
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion_StatusSummary'
-          description: The paginated data
-      required:
-      - meta
-      - data
-      title: PagedAssetsStatusSummaryResponse
-    ingestion_ExternalFileType:
-      type: string
-      enum:
-      - unspecified
-      - csv
-      - json
-      title: ExternalFileType
-    ingestion_AssetType:
-      type: string
-      enum:
-      - unspecified
-      - image
-      - keyframe
-      - video
-      - audio
-      - metadata
-      - csv
-      - json
-      - s3_prefix
-      title: AssetType
+      - status
+      - asset_id
+      - dataset_id
+      - asset_type
+      title: StatusSummary
     ingestion_GetOneIngestJobResponse:
       type: object
       properties:
@@ -1073,21 +809,51 @@ components:
       - file_path
       - total_assets
       title: GetOneIngestJobResponse
-    ingestion_DatasetIngestionStatusResponse:
+    ingestion_EventName:
+      type: string
+      enum:
+      - received
+      - assets_enumerated
+      - completed
+      - processing_started
+      - error
+      - kind_determined
+      - stored
+      - metadata_stored
+      - embedding_computed
+      - embedding_stored
+      - asset_copied
+      - timecodes_computed
+      - audio_extracted
+      - audio_processing_started
+      - audio_processing_finished
+      - keyframe_generation_started
+      - keyframe_generation_completed
+      - shot_boundary_detection_started
+      - shot_boundary_detection_completed
+      - file_downloaded
+      - keyframe_generated
+      - transcribed
+      - transcription_segmented
+      - transcripts_created
+      - composite_created
+      - composite_slices_created
+      description: The status-related event that applies to the entity.
+      title: EventName
+    ingestion_BucketJobDetails:
       type: object
       properties:
-        meta:
-          $ref: '#/components/schemas/ingestion_PagedMetaResponse'
-          description: Metadata for the set of data returned
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion_DatasetIngestionInfo'
-          description: The paginated data
+        path:
+          type: string
+        spec:
+          $ref: '#/components/schemas/ingestion_BucketSpec'
+        max_depth:
+          type: integer
+          default: 0
       required:
-      - meta
-      - data
-      title: DatasetIngestionStatusResponse
+      - path
+      - spec
+      title: BucketJobDetails
     ingestion_LatestEvent:
       type: object
       properties:
@@ -1105,49 +871,283 @@ components:
           - 'null'
           format: date-time
       title: LatestEvent
-    ingestion_Status_get_dataset_status_api_v1_ingestion_datasets__dataset_id__status_get_Response_200:
-      oneOf:
-      - $ref: '#/components/schemas/ingestion_DatasetIngestionStatusResponse'
-      - $ref: '#/components/schemas/ingestion_EmptyResponse'
-      title: Status_get_dataset_status_api_v1_ingestion_datasets__dataset_id__status_get_Response_200
-    ingestion_MetadataUpdateJobDetails:
-      type: object
-      properties:
-        accepted:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion_InternalAssetMetadataUpdate'
-        invalid_assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingestion_ExistingAssetMetadataUpdate'
-      required:
-      - accepted
-      - invalid_assets
-      title: MetadataUpdateJobDetails
     ingestion_ExternalCloudStorageProvider:
       type: string
       enum:
       - aws
       title: ExternalCloudStorageProvider
-    ingestion_CreateIngestJobFromFileRequest:
+    ingestion_IngestJobStatusResponse:
       type: object
       properties:
-        dataset_id:
+        data:
+          $ref: '#/components/schemas/ingestion_JobStatus'
+      required:
+      - data
+      title: IngestJobStatusResponse
+    ingestion_PagedAssetsStatusSummaryResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/ingestion_PagedMetaResponse'
+          description: Metadata for the set of data returned
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion_StatusSummary'
+          description: The paginated data
+      required:
+      - meta
+      - data
+      title: PagedAssetsStatusSummaryResponse
+    ingestion_EventEntity:
+      type: string
+      enum:
+      - unspecified
+      - request
+      - image
+      - video
+      - audio
+      - shot
+      - visual_keyframe
+      - audio_keyframe
+      - audio_segment
+      - metadata
+      - csv_file
+      - json_file
+      - s3_prefix
+      - composite
+      description: "The kind of entity that the status event applies to.\n\nDetermines what collection of IDs show up in the event, e.g.:\n    - request (fewest):\n        - request_id\n        - ingest_job_id\n        - dataset_id\n        - org_id\n    - audio_keyframe (most):\n        - coactive_image_id\n        - coactive_audio_segment_id\n        - coactive_shot_id\n        - coactive_video_id\n        - request_id\n        - ingest_job_id\n        - dataset_id\n        - org_id"
+      title: EventEntity
+    ingestion_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    ingestion_ExistingAssetMetadataUpdateMetadata:
+      oneOf:
+      - type: boolean
+      - type: integer
+      - type: number
+        format: double
+      - type: string
+      - type: string
+        format: date-time
+      title: ExistingAssetMetadataUpdateMetadata
+    ingestion_Status_get_dataset_status_api_v1_ingestion_datasets__dataset_id__status_get_Response_200:
+      oneOf:
+      - $ref: '#/components/schemas/ingestion_DatasetIngestionStatusResponse'
+      - $ref: '#/components/schemas/ingestion_EmptyResponse'
+      title: Status_get_dataset_status_api_v1_ingestion_datasets__dataset_id__status_get_Response_200
+    ingestion_IngestJobAsset:
+      type: object
+      properties:
+        source_path:
+          type: string
+        metadata:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            $ref: '#/components/schemas/ingestion_IngestJobAssetMetadata'
+        asset_type:
+          $ref: '#/components/schemas/ingestion_ExternalAssetType'
+      required:
+      - source_path
+      title: IngestJobAsset
+    ingestion_HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion_ValidationError'
+      title: HTTPValidationError
+    ingestion_GetManyIngestJobsResponse:
+      type: object
+      properties:
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion_GetOneIngestJobResponse'
+      required:
+      - jobs
+      title: GetManyIngestJobsResponse
+    ingestion_EmptyResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            description: Any type
+          description: Empty data list
+      title: EmptyResponse
+    ingestion_GetOneIngestJobResponseDetails:
+      oneOf:
+      - $ref: '#/components/schemas/ingestion_AssetsJobDetails'
+      - $ref: '#/components/schemas/ingestion_FileJobDetails'
+      - $ref: '#/components/schemas/ingestion_BucketJobDetails'
+      - $ref: '#/components/schemas/ingestion_MetadataUpdateJobDetails'
+      title: GetOneIngestJobResponseDetails
+    ingestion_InternalAssetMetadataUpdate:
+      type: object
+      properties:
+        asset_id:
           type: string
           format: uuid
         source_path:
-          type: string
-        connection_name:
           type:
           - string
           - 'null'
-        file_type:
-          $ref: '#/components/schemas/ingestion_ExternalFileType'
+        asset_type:
+          $ref: '#/components/schemas/ingestion_ExplicitExternalAssetType'
+        metadata:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            $ref: '#/components/schemas/ingestion_InternalAssetMetadataUpdateMetadata'
       required:
-      - dataset_id
+      - asset_id
       - source_path
-      title: CreateIngestJobFromFileRequest
+      - asset_type
+      title: InternalAssetMetadataUpdate
+    ingestion_Status_get_video_asset_status_api_v1_ingestion_videos__asset_id__status_get_Response_200:
+      oneOf:
+      - $ref: '#/components/schemas/ingestion_VideoAssetStatusResponse'
+      - $ref: '#/components/schemas/ingestion_EmptyResponse'
+      title: Status_get_video_asset_status_api_v1_ingestion_videos__asset_id__status_get_Response_200
+    ingestion_DatasetIngestionStatusResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/ingestion_PagedMetaResponse'
+          description: Metadata for the set of data returned
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion_DatasetIngestionInfo'
+          description: The paginated data
+      required:
+      - meta
+      - data
+      title: DatasetIngestionStatusResponse
+    ingestion_IngestJobStatusEnum:
+      type: string
+      enum:
+      - completed
+      - failed
+      - in_progress
+      - pending
+      - paused
+      - stopping
+      - stopped
+      description: Enum of Ingest Job Status.
+      title: IngestJobStatusEnum
+    ingestion_Status_get_image_asset_status_api_v1_ingestion_images__asset_id__status_get_Response_200:
+      oneOf:
+      - $ref: '#/components/schemas/ingestion_ImageAssetStatusResponse'
+      - $ref: '#/components/schemas/ingestion_EmptyResponse'
+      title: Status_get_image_asset_status_api_v1_ingestion_images__asset_id__status_get_Response_200
+    ingestion_PagedDataResponse_Status:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/ingestion_PagedMetaResponse'
+          description: Metadata for the set of data returned
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion_Status'
+          description: The paginated data
+      required:
+      - meta
+      - data
+      title: PagedDataResponse_Status_
+    ingestion_DatasetAssetsStatusCountResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: integer
+          description: A dictionary of event filters and their counts
+      required:
+      - data
+      title: DatasetAssetsStatusCountResponse
+    ingestion_PagedMetaResponse:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/ingestion_PagedPageDetailsResponse'
+          description: Details about the total set of data
+      required:
+      - page
+      description: Metadata about the paginated response
+      title: PagedMetaResponse
+    ingestion_AssetStatusEnum:
+      type: string
+      enum:
+      - pending
+      - in_progress
+      - received
+      - processing_started
+      - completed
+      - error
+      title: AssetStatusEnum
+    ingestion_IngestJobAssetMetadata:
+      oneOf:
+      - type: boolean
+      - type: integer
+      - type: number
+        format: double
+      - type: string
+      - type: string
+        format: date-time
+      title: IngestJobAssetMetadata
+    ingestion_VideoAssetStatusResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ingestion_Status'
+      required:
+      - data
+      title: VideoAssetStatusResponse
+    ingestion_PagedPageDetailsResponse:
+      type: object
+      properties:
+        current_page:
+          type: integer
+          description: Current page number
+        last_page:
+          type:
+          - integer
+          - 'null'
+          description: Max page number based on limit and total number of items
+        limit:
+          type: integer
+          description: Number of items to return
+        offset:
+          type: integer
+          description: Starting index to return
+        total:
+          type:
+          - integer
+          - 'null'
+          description: Total number of items
+      required:
+      - current_page
+      - last_page
+      - limit
+      - offset
+      - total
+      description: Pagination metadata
+      title: PagedPageDetailsResponse
+    ingestion_ExplicitExternalAssetType:
+      type: string
+      enum:
+      - image
+      - video
+      title: ExplicitExternalAssetType
   securitySchemes:
     HTTPBearer:
       type: http
