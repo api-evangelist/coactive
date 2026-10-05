@@ -1,0 +1,12 @@
+{
+ "url": "https://docs.coactive.ai/openapi.json",
+ "requested_url": "https://docs.coactive.ai/openapi.json",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 324544,
+ "sha256": "23dbda5f105c48c1d96ac6a386ed3acde82fe253d6c114e27168f4effde3f46b",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
