@@ -1,17 +1,27 @@
-generated: '2026-07-18'
+generated: '2026-09-23'
 method: generated
-source: openapi/coactive-openapi-original.json
+source: openapi/coactive-agentic-search-agenticsearch-api-openapi.yml, openapi/coactive-celebrity-detection-api-openapi.yml,
+  openapi/coactive-classification-api-openapi.yml, openapi/coactive-concept-api-openapi.yml,
+  openapi/coactive-connections-connections-api-openapi.yml, openapi/coactive-context-studio-adsegments-api-openapi.yml,
+  openapi/coactive-datasets-dataset-api-openapi.yml, openapi/coactive-datasets-datasetconfig-api-openapi.yml,
+  openapi/coactive-datasets-encoder-api-openapi.yml, openapi/coactive-dynamictags-api-openapi.yml,
+  openapi/coactive-ingestion-api-openapi.yml, openapi/coactive-ingestion-ingest-api-openapi.yml,
+  openapi/coactive-ingestion-status-api-openapi.yml, openapi/coactive-queries-api-openapi.yml,
+  openapi/coactive-search-metadata-filter-api-openapi.yml, openapi/coactive-search-search-api-openapi.yml,
+  openapi/coactive-search-video-searchvideo-api-openapi.yml, openapi/coactive-system-credentials-api-openapi.yml,
+  openapi/coactive-user-management-api-openapi.yml, openapi/coactive-video-narative-metadata-videonarrativemetadata-api-openapi.yml,
+  openapi/coactive-video-narative-metadata-videosummarization-api-openapi.yml, openapi/coactive-video-scores-videoscores-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 118
   by_action_class:
-    acting: 71
-    connected: 47
+    acting: 63
+    connected: 55
   by_consequence:
-    write: 70
-    read: 47
+    write: 62
+    read: 55
     safety-critical: 1
   human_in_the_loop_required: 1
 operations:
@@ -629,18 +639,12 @@ operations:
   method: post
   operationId: get-dataset-assets-status-api-v-1-ingestion-datasets-dataset-id-assets-status-post
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/v1/ingestion/datasets/{dataset_id}/assets/status/count
   method: get
   operationId: get-dataset-assets-status-count-api-v-1-ingestion-datasets-dataset-id-assets-status-count-get
@@ -857,6 +861,86 @@ operations:
     escalation:
       human-in-the-loop: required
     audit: required
+- path: /api/v0/search/metadata-filters/audio-sound
+  method: post
+  operationId: search-audio-sound-with-metadata-filters
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/search/metadata-filters/job/result/{run_id}
+  method: get
+  operationId: get-metadata-filter-search-result
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/search/metadata-filters/job/status/{run_id}
+  method: get
+  operationId: get-metadata-filter-search-status
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/search/metadata-filters/text-to-image
+  method: post
+  operationId: search-text-to-image-with-metadata-filters
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/search/metadata-filters/text-to-keyframe
+  method: post
+  operationId: search-text-to-keyframe-with-metadata-filters
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/search/metadata-filters/text-to-shot
+  method: post
+  operationId: search-text-to-shot-with-metadata-filters
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/search/metadata-filters/text-to-transcript
+  method: post
+  operationId: search-text-to-transcript-with-metadata-filters
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/v0/search/metadata-filters/text-to-video
+  method: post
+  operationId: search-text-to-video-with-metadata-filters
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /api/v1/search/audio
   method: post
   operationId: audio-search
@@ -1017,122 +1101,6 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/v0/search/metadata-filters/audio-sound
-  method: post
-  operationId: search-audio-sound-with-metadata-filters
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v0/search/metadata-filters/job/result/{run_id}
-  method: get
-  operationId: get-metadata-filter-search-result
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v0/search/metadata-filters/job/status/{run_id}
-  method: get
-  operationId: get-metadata-filter-search-status
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/v0/search/metadata-filters/text-to-image
-  method: post
-  operationId: search-text-to-image-with-metadata-filters
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v0/search/metadata-filters/text-to-keyframe
-  method: post
-  operationId: search-text-to-keyframe-with-metadata-filters
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v0/search/metadata-filters/text-to-shot
-  method: post
-  operationId: search-text-to-shot-with-metadata-filters
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v0/search/metadata-filters/text-to-transcript
-  method: post
-  operationId: search-text-to-transcript-with-metadata-filters
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/v0/search/metadata-filters/text-to-video
-  method: post
-  operationId: search-text-to-video-with-metadata-filters
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /api/v1/search/video
   method: get
   operationId: get-video-details
@@ -1147,18 +1115,12 @@ operations:
   method: post
   operationId: search-videos
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/v1/auth-management/clients
   method: post
   operationId: create-credentials
