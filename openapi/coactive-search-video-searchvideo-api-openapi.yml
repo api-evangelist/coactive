@@ -116,42 +116,33 @@ components:
       - id
       description: Response schema for video keyframe details.
       title: VideoKeyframe
-    search-video_ScoreType:
-      type: string
-      enum:
-      - probability
-      - level
-      description: 'Score type returned by the moderation service.
-
-        - PROBABILITY: Scores in range 0-1 (uses BGE Reranker model)
-
-        - LEVEL: Scores in range 0-5 (uses OpenAI model)'
-      title: ScoreType
-    search-video_ValidationError:
+    search-video_BooleanEqualsClause:
       type: object
       properties:
-        loc:
+        key:
+          type: string
+        operator:
+          type: string
+          enum:
+          - ==
+        value:
+          type: boolean
+      required:
+      - key
+      - operator
+      - value
+      title: BooleanEqualsClause
+    search-video_MetadataFilters:
+      type: object
+      properties:
+        filters:
           type: array
           items:
-            $ref: '#/components/schemas/search-video_ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
+            $ref: '#/components/schemas/search-video_MetadataFiltersFiltersItems'
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    search-video_VideoMetadata:
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            description: Any type
-      description: Metadata associated with a video shot.
-      title: VideoMetadata
+      - filters
+      description: Metadata filters for video search.
+      title: MetadataFilters
     search-video_VideoSearchResult:
       type: object
       properties:
@@ -194,109 +185,6 @@ components:
       - source_path
       description: Single result in the video search response.
       title: VideoSearchResult
-    search-video_VideoCompositeDrillDownResponse:
-      type: object
-      properties:
-        dataset_id:
-          type: string
-          format: uuid
-        text_query:
-          type: string
-        video_id:
-          type: string
-        composite_type:
-          type: string
-        source_path:
-          type: string
-        slices:
-          type: array
-          items:
-            $ref: '#/components/schemas/search-video_VideoCompositeSliceDrillDown'
-      required:
-      - dataset_id
-      - text_query
-      - video_id
-      - composite_type
-      - source_path
-      - slices
-      title: VideoCompositeDrillDownResponse
-    search-video_DateTimeRangeInclusiveClause:
-      type: object
-      properties:
-        key:
-          type: string
-        start_utc_epoch:
-          type: number
-          format: double
-        end_utc_epoch:
-          type: number
-          format: double
-        operator:
-          type: string
-          enum:
-          - DateTimeRangeInclusive
-      required:
-      - key
-      - start_utc_epoch
-      - end_utc_epoch
-      - operator
-      title: DateTimeRangeInclusiveClause
-    search-video_BooleanEqualsClause:
-      type: object
-      properties:
-        key:
-          type: string
-        operator:
-          type: string
-          enum:
-          - ==
-        value:
-          type: boolean
-      required:
-      - key
-      - operator
-      - value
-      title: BooleanEqualsClause
-    search-video_HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/search-video_ValidationError'
-      title: HTTPValidationError
-    search-video_EqualsClause:
-      type: object
-      properties:
-        key:
-          type: string
-        operator:
-          type: string
-          enum:
-          - ==
-        value:
-          type: string
-      required:
-      - key
-      - operator
-      - value
-      title: EqualsClause
-    search-video_MetadataFilters:
-      type: object
-      properties:
-        filters:
-          type: array
-          items:
-            $ref: '#/components/schemas/search-video_MetadataFiltersFiltersItems'
-      required:
-      - filters
-      description: Metadata filters for video search.
-      title: MetadataFilters
-    search-video_ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
     search-video_NotEqualsClause:
       type: object
       properties:
@@ -313,13 +201,6 @@ components:
       - operator
       - value
       title: NotEqualsClause
-    search-video_VideoSearchResultMetadata:
-      oneOf:
-      - $ref: '#/components/schemas/search-video_VideoMetadata'
-      - type: object
-        additionalProperties:
-          type: string
-      title: VideoSearchResultMetadata
     search-video_MetadataFiltersFiltersItems:
       oneOf:
       - $ref: '#/components/schemas/search-video_BooleanEqualsClause'
@@ -327,6 +208,41 @@ components:
       - $ref: '#/components/schemas/search-video_NotEqualsClause'
       - $ref: '#/components/schemas/search-video_DateTimeRangeInclusiveClause'
       title: MetadataFiltersFiltersItems
+    search-video_ScoreType:
+      type: string
+      enum:
+      - probability
+      - level
+      description: 'Score type returned by the moderation service.
+
+        - PROBABILITY: Scores in range 0-1 (uses BGE Reranker model)
+
+        - LEVEL: Scores in range 0-5 (uses OpenAI model)'
+      title: ScoreType
+    search-video_VideoSearchResultMetadata:
+      oneOf:
+      - $ref: '#/components/schemas/search-video_VideoMetadata'
+      - type: object
+        additionalProperties:
+          type: string
+      title: VideoSearchResultMetadata
+    search-video_VideoSearchResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/search-video_VideoSearchResult'
+          description: List of video search results
+      required:
+      - results
+      description: Response schema for video search endpoint.
+      title: VideoSearchResponse
+    search-video_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
     search-video_VideoCompositeSlice:
       type: object
       properties:
@@ -409,27 +325,35 @@ components:
       required:
       - id
       title: VideoCompositeSliceDrillDown
-    search-video_ModalityEnum:
-      type: string
-      enum:
-      - video
-      - shot
-      - image
-      - audio_speech_to_text
-      - capped-shot-segment
-      title: ModalityEnum
-    search-video_VideoSearchResponse:
+    search-video_DateTimeRangeInclusiveClause:
       type: object
       properties:
-        results:
+        key:
+          type: string
+        start_utc_epoch:
+          type: number
+          format: double
+        end_utc_epoch:
+          type: number
+          format: double
+        operator:
+          type: string
+          enum:
+          - DateTimeRangeInclusive
+      required:
+      - key
+      - start_utc_epoch
+      - end_utc_epoch
+      - operator
+      title: DateTimeRangeInclusiveClause
+    search-video_HTTPValidationError:
+      type: object
+      properties:
+        detail:
           type: array
           items:
-            $ref: '#/components/schemas/search-video_VideoSearchResult'
-          description: List of video search results
-      required:
-      - results
-      description: Response schema for video search endpoint.
-      title: VideoSearchResponse
+            $ref: '#/components/schemas/search-video_ValidationError'
+      title: HTTPValidationError
     search-video_VideoSearchRequest:
       type: object
       properties:
@@ -474,6 +398,82 @@ components:
       - text_query
       description: Request schema for video search endpoint.
       title: VideoSearchRequest
+    search-video_EqualsClause:
+      type: object
+      properties:
+        key:
+          type: string
+        operator:
+          type: string
+          enum:
+          - ==
+        value:
+          type: string
+      required:
+      - key
+      - operator
+      - value
+      title: EqualsClause
+    search-video_ModalityEnum:
+      type: string
+      enum:
+      - video
+      - shot
+      - image
+      - audio_speech_to_text
+      - capped-shot-segment
+      title: ModalityEnum
+    search-video_ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/search-video_ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    search-video_VideoMetadata:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            description: Any type
+      description: Metadata associated with a video shot.
+      title: VideoMetadata
+    search-video_VideoCompositeDrillDownResponse:
+      type: object
+      properties:
+        dataset_id:
+          type: string
+          format: uuid
+        text_query:
+          type: string
+        video_id:
+          type: string
+        composite_type:
+          type: string
+        source_path:
+          type: string
+        slices:
+          type: array
+          items:
+            $ref: '#/components/schemas/search-video_VideoCompositeSliceDrillDown'
+      required:
+      - dataset_id
+      - text_query
+      - video_id
+      - composite_type
+      - source_path
+      - slices
+      title: VideoCompositeDrillDownResponse
   securitySchemes:
     HTTPBearer:
       type: http

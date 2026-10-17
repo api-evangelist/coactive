@@ -429,27 +429,6 @@ paths:
                 $ref: '#/components/schemas/queries_HTTPValidationError'
 components:
   schemas:
-    queries_QueryStatus:
-      type: string
-      enum:
-      - Queued
-      - Running
-      - Stopping
-      - Stopped
-      - Complete
-      - Error
-      description: All possible query status values
-      title: QueryStatus
-    queries_ListTablesResponse:
-      type: object
-      properties:
-        tables:
-          type: array
-          items:
-            $ref: '#/components/schemas/queries_Table'
-      required:
-      - tables
-      title: ListTablesResponse
     queries_GetQueryResultsResponse:
       type: object
       properties:
@@ -528,6 +507,68 @@ components:
       - msg
       - type
       title: ValidationError
+    queries_HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/queries_ValidationError'
+      title: HTTPValidationError
+    queries_QueryType:
+      type: string
+      enum:
+      - NATURAL_LANGUAGE
+      - SQL
+      description: All possible query types
+      title: QueryType
+    queries_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    queries_PagedMetaResponse:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/queries_PagedPageDetailsResponse'
+          description: Details about the response page
+        links:
+          $ref: '#/components/schemas/queries_PagedLinksDetailsResponse'
+          description: Links for easy page traversal
+      required:
+      - page
+      - links
+      description: Metadata about the paginated response
+      title: PagedMetaResponse
+    queries_QueryStatus:
+      type: string
+      enum:
+      - Queued
+      - Running
+      - Stopping
+      - Stopped
+      - Complete
+      - Error
+      description: All possible query status values
+      title: QueryStatus
+    queries_ApiV1QueriesQueryIdResultsGetParametersUrlFormat:
+      type: string
+      enum:
+      - download
+      - direct
+      default: download
+      title: ApiV1QueriesQueryIdResultsGetParametersUrlFormat
+    queries_ListTablesResponse:
+      type: object
+      properties:
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/queries_Table'
+      required:
+      - tables
+      title: ListTablesResponse
     queries_Body_list_queries_api_v1_queries_get:
       type: object
       properties:
@@ -551,6 +592,21 @@ components:
           items:
             type: string
       title: Body_list_queries_api_v1_queries_get
+    queries_app__api__v1__schema__ListQueriesResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/queries_PagedMetaResponse'
+          description: Metadata for the set of data returned
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/queries_app__api__v1__schema__GetQueryResponse'
+          description: The paginated data
+      required:
+      - meta
+      - data
+      title: app__api__v1__schema__ListQueriesResponse
     queries_app__api__v1__schema__GetQueryResponse:
       type: object
       properties:
@@ -613,44 +669,6 @@ components:
       - updated_dt
       - created_user_id
       title: app__api__v1__schema__GetQueryResponse
-    queries_HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/queries_ValidationError'
-      title: HTTPValidationError
-    queries_ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    queries_ExportQueryRequest:
-      type: object
-      properties:
-        connection_name:
-          type:
-          - string
-          - 'null'
-          default: coactive
-        export_type:
-          $ref: '#/components/schemas/queries_ExportType'
-        target_bucket:
-          type: string
-        target_prefix:
-          type: string
-      required:
-      - target_bucket
-      - target_prefix
-      title: ExportQueryRequest
-    queries_ApiV1QueriesQueryIdResultsGetParametersUrlFormat:
-      type: string
-      enum:
-      - download
-      - direct
-      default: download
-      title: ApiV1QueriesQueryIdResultsGetParametersUrlFormat
     queries_PagedPageDetailsResponse:
       type: object
       properties:
@@ -669,6 +687,47 @@ components:
       - offset
       description: Pagination metadata
       title: PagedPageDetailsResponse
+    queries_Table:
+      type: object
+      properties:
+        name:
+          type: string
+        table_schema:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+      - name
+      - table_schema
+      title: Table
+    queries_ExportQueryRequest:
+      type: object
+      properties:
+        connection_name:
+          type:
+          - string
+          - 'null'
+          default: coactive
+        export_type:
+          $ref: '#/components/schemas/queries_ExportType'
+        target_bucket:
+          type: string
+        target_prefix:
+          type: string
+      required:
+      - target_bucket
+      - target_prefix
+      title: ExportQueryRequest
+    queries_ExportType:
+      type: string
+      enum:
+      - DELTA
+      - CSV
+      - UNITY
+      description: All possible export types
+      title: ExportType
     queries_PagedLinksDetailsResponse:
       type: object
       properties:
@@ -691,65 +750,6 @@ components:
       - next
       description: Pagination metadata
       title: PagedLinksDetailsResponse
-    queries_Table:
-      type: object
-      properties:
-        name:
-          type: string
-        table_schema:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            description: Any type
-      required:
-      - name
-      - table_schema
-      title: Table
-    queries_ExportType:
-      type: string
-      enum:
-      - DELTA
-      - CSV
-      - UNITY
-      description: All possible export types
-      title: ExportType
-    queries_app__api__v1__schema__ListQueriesResponse:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/queries_PagedMetaResponse'
-          description: Metadata for the set of data returned
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/queries_app__api__v1__schema__GetQueryResponse'
-          description: The paginated data
-      required:
-      - meta
-      - data
-      title: app__api__v1__schema__ListQueriesResponse
-    queries_PagedMetaResponse:
-      type: object
-      properties:
-        page:
-          $ref: '#/components/schemas/queries_PagedPageDetailsResponse'
-          description: Details about the response page
-        links:
-          $ref: '#/components/schemas/queries_PagedLinksDetailsResponse'
-          description: Links for easy page traversal
-      required:
-      - page
-      - links
-      description: Metadata about the paginated response
-      title: PagedMetaResponse
-    queries_QueryType:
-      type: string
-      enum:
-      - NATURAL_LANGUAGE
-      - SQL
-      description: All possible query types
-      title: QueryType
   securitySchemes:
     HTTPBearer:
       type: http

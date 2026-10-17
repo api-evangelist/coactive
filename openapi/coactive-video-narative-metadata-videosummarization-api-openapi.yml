@@ -51,14 +51,6 @@ paths:
                 $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
 components:
   schemas:
-    video-narative-metadata_HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/video-narative-metadata_ValidationError'
-      title: HTTPValidationError
     video-narative-metadata_ValidationErrorLocItems:
       oneOf:
       - type: string
@@ -80,6 +72,14 @@ components:
       - msg
       - type
       title: ValidationError
+    video-narative-metadata_HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/video-narative-metadata_ValidationError'
+      title: HTTPValidationError
     video-narative-metadata_CaptionVideoKeyframesResponse:
       type: object
       properties:

@@ -305,38 +305,13 @@ paths:
               $ref: '#/components/schemas/datasets_DatasetUpdateRequest'
 components:
   schemas:
-    datasets_HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/datasets_ValidationError'
-      title: HTTPValidationError
-    datasets_Encoder:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: The unique identifier for the encoder.
-        name:
-          $ref: '#/components/schemas/datasets_EncoderName'
-          description: The model used to extract visual and audio features from assets.
-        modality:
-          type: string
-          description: The supported modality of the encoder.
-        modalities:
-          type: array
-          items:
-            type: string
-          description: The supported modalities of the encoder.
-      required:
-      - id
-      - name
-      - modality
-      - modalities
-      title: Encoder
+    datasets_AssetTypeEnum:
+      type: string
+      enum:
+      - image
+      - video
+      description: Indicates the type of asset
+      title: AssetTypeEnum
     datasets_DatasetStatusEnum:
       type: string
       enum:
@@ -346,137 +321,6 @@ components:
       - deleted
       description: Indicates the operational status of a dataset
       title: DatasetStatusEnum
-    datasets_DatasetUpdateRequest:
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-          description: Name of the dataset, must be unique per organization and must only contain alphanumeric and underscore characters.
-        description:
-          type:
-          - string
-          - 'null'
-          description: A short summary of what the dataset includes or is intended for.
-        status:
-          $ref: '#/components/schemas/datasets_DatasetUpdateRequestStatus'
-          description: The status of the dataset (ACTIVE or INACTIVE)
-        store_original:
-          type:
-          - boolean
-          - 'null'
-          description: Whether the original file is stored.
-        store_preview:
-          type:
-          - boolean
-          - 'null'
-          description: Whether preview files are stored.
-        dataset_config:
-          oneOf:
-          - $ref: '#/components/schemas/datasets_DatasetConfig'
-          - type: 'null'
-      description: Update a dataset schema
-      title: DatasetUpdateRequest
-    datasets_KeyframeSamplingMethodEnum:
-      type: string
-      enum:
-      - intelligent
-      - uniform
-      description: Indicates the method used to sample keyframes from a video
-      title: KeyframeSamplingMethodEnum
-    datasets_DatasetUpdateRequestStatus:
-      type: string
-      enum:
-      - active
-      - inactive
-      description: The status of the dataset (ACTIVE or INACTIVE)
-      title: DatasetUpdateRequestStatus
-    datasets_DatasetCreateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Name of the dataset, must be unique per organization and must only contain alphanumeric and underscore characters.
-        encoder_name:
-          $ref: '#/components/schemas/datasets_VisualEncoderNameEnum'
-          description: The model used to extract visual and audio features from assets.
-        description:
-          type:
-          - string
-          - 'null'
-          description: A short summary of what the dataset includes or is intended for.
-        allowed_asset_types:
-          type: array
-          items:
-            $ref: '#/components/schemas/datasets_AssetTypeEnum'
-          description: Types of assets allowed in this dataset.
-        keyframe_sampling_method:
-          $ref: '#/components/schemas/datasets_KeyframeSamplingMethodEnum'
-          description: Sampling method to extract keyframes from videos in dataset.
-        keyframe_uniform_fps_sampling_rate:
-          type:
-          - number
-          - 'null'
-          format: double
-          description: 'If using uniform sampling method, number of keyframes/sec to sample from videos (allowed values: ≥ .00001 to 5 fps).'
-        store_original:
-          type: boolean
-          default: true
-          description: Whether to store original files.
-        store_preview:
-          type: boolean
-          default: true
-          description: Whether to store preview versions.
-        metadata_fields_to_index:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-          description: The metadata fields to index for the dataset.
-        metadata_fields_to_embed:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-          description: The metadata fields to embed for the dataset.
-        dataset_config:
-          oneOf:
-          - $ref: '#/components/schemas/datasets_DatasetConfig'
-          - type: 'null'
-      required:
-      - name
-      - encoder_name
-      description: Create a dataset schema
-      title: DatasetCreateRequest
-    datasets_DatasetGetManyResponse:
-      type: object
-      properties:
-        meta:
-          oneOf:
-          - $ref: '#/components/schemas/datasets_PagedMetaResponse'
-          - type: 'null'
-          description: Metadata for the set of data returned
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/datasets_DatasetResponse'
-          description: The paginated data
-      required:
-      - meta
-      - data
-      title: DatasetGetManyResponse
-    datasets_CompositeSettings:
-      type: object
-      properties:
-        maximum_slice_duration_seconds:
-          type: integer
-          description: Maximum duration in seconds for a single composite slice.
-      required:
-      - maximum_slice_duration_seconds
-      title: CompositeSettings
     datasets_DatasetConfig:
       type: object
       properties:
@@ -548,22 +392,6 @@ components:
       - embedding_id
       - encoder_name
       title: DatasetConfig
-    datasets_ValidationError:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/datasets_ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     datasets_PagedPageDetailsResponse:
       type: object
       properties:
@@ -594,6 +422,137 @@ components:
       - total
       description: Pagination metadata
       title: PagedPageDetailsResponse
+    datasets_ExtraConfig:
+      type: object
+      properties:
+        composite_settings:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/datasets_CompositeSettings'
+          description: Mapping of composite type name to its settings.
+      required:
+      - composite_settings
+      title: ExtraConfig
+    datasets_ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets_ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    datasets_DatasetGetManyResponse:
+      type: object
+      properties:
+        meta:
+          oneOf:
+          - $ref: '#/components/schemas/datasets_PagedMetaResponse'
+          - type: 'null'
+          description: Metadata for the set of data returned
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets_DatasetResponse'
+          description: The paginated data
+      required:
+      - meta
+      - data
+      title: DatasetGetManyResponse
+    datasets_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    datasets_EncoderName:
+      oneOf:
+      - $ref: '#/components/schemas/datasets_VisualEncoderNameEnum'
+      - type: string
+      description: The model used to extract visual and audio features from assets.
+      title: EncoderName
+    datasets_PagedMetaResponse:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/datasets_PagedPageDetailsResponse'
+          description: Details about the total set of data
+      required:
+      - page
+      description: Metadata about the paginated response
+      title: PagedMetaResponse
+    datasets_CompositeSettings:
+      type: object
+      properties:
+        maximum_slice_duration_seconds:
+          type: integer
+          description: Maximum duration in seconds for a single composite slice.
+      required:
+      - maximum_slice_duration_seconds
+      title: CompositeSettings
+    datasets_DatasetUpdateRequestStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+      description: The status of the dataset (ACTIVE or INACTIVE)
+      title: DatasetUpdateRequestStatus
+    datasets_HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets_ValidationError'
+      title: HTTPValidationError
+    datasets_VisualEncoderNameEnum:
+      type: string
+      enum:
+      - multimodal
+      - multimodal-tx-large2
+      - multimodal-tx-large3
+      - multimodal-tx-large4
+      - nova2-multimodal
+      - resnet-50
+      - resnet-50-reduced
+      title: VisualEncoderNameEnum
+    datasets_KeyframeSamplingMethodEnum:
+      type: string
+      enum:
+      - intelligent
+      - uniform
+      description: Indicates the method used to sample keyframes from a video
+      title: KeyframeSamplingMethodEnum
+    datasets_Encoder:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier for the encoder.
+        name:
+          $ref: '#/components/schemas/datasets_EncoderName'
+          description: The model used to extract visual and audio features from assets.
+        modality:
+          type: string
+          description: The supported modality of the encoder.
+        modalities:
+          type: array
+          items:
+            type: string
+          description: The supported modalities of the encoder.
+      required:
+      - id
+      - name
+      - modality
+      - modalities
+      title: Encoder
     datasets_DatasetResponse:
       type: object
       properties:
@@ -705,32 +664,97 @@ components:
       - store_original
       - store_preview
       title: DatasetResponse
-    datasets_ExtraConfig:
+    datasets_DatasetCreateRequest:
       type: object
       properties:
-        composite_settings:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/datasets_CompositeSettings'
-          description: Mapping of composite type name to its settings.
+        name:
+          type: string
+          description: Name of the dataset, must be unique per organization and must only contain alphanumeric and underscore characters.
+        encoder_name:
+          $ref: '#/components/schemas/datasets_VisualEncoderNameEnum'
+          description: The model used to extract visual and audio features from assets.
+        description:
+          type:
+          - string
+          - 'null'
+          description: A short summary of what the dataset includes or is intended for.
+        allowed_asset_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/datasets_AssetTypeEnum'
+          description: Types of assets allowed in this dataset.
+        keyframe_sampling_method:
+          $ref: '#/components/schemas/datasets_KeyframeSamplingMethodEnum'
+          description: Sampling method to extract keyframes from videos in dataset.
+        keyframe_uniform_fps_sampling_rate:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: 'If using uniform sampling method, number of keyframes/sec to sample from videos (allowed values: ≥ .00001 to 5 fps).'
+        store_original:
+          type: boolean
+          default: true
+          description: Whether to store original files.
+        store_preview:
+          type: boolean
+          default: true
+          description: Whether to store preview versions.
+        metadata_fields_to_index:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: The metadata fields to index for the dataset.
+        metadata_fields_to_embed:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: The metadata fields to embed for the dataset.
+        dataset_config:
+          oneOf:
+          - $ref: '#/components/schemas/datasets_DatasetConfig'
+          - type: 'null'
       required:
-      - composite_settings
-      title: ExtraConfig
-    datasets_PagedMetaResponse:
+      - name
+      - encoder_name
+      description: Create a dataset schema
+      title: DatasetCreateRequest
+    datasets_DatasetUpdateRequest:
       type: object
       properties:
-        page:
-          $ref: '#/components/schemas/datasets_PagedPageDetailsResponse'
-          description: Details about the total set of data
-      required:
-      - page
-      description: Metadata about the paginated response
-      title: PagedMetaResponse
-    datasets_ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
+        name:
+          type:
+          - string
+          - 'null'
+          description: Name of the dataset, must be unique per organization and must only contain alphanumeric and underscore characters.
+        description:
+          type:
+          - string
+          - 'null'
+          description: A short summary of what the dataset includes or is intended for.
+        status:
+          $ref: '#/components/schemas/datasets_DatasetUpdateRequestStatus'
+          description: The status of the dataset (ACTIVE or INACTIVE)
+        store_original:
+          type:
+          - boolean
+          - 'null'
+          description: Whether the original file is stored.
+        store_preview:
+          type:
+          - boolean
+          - 'null'
+          description: Whether preview files are stored.
+        dataset_config:
+          oneOf:
+          - $ref: '#/components/schemas/datasets_DatasetConfig'
+          - type: 'null'
+      description: Update a dataset schema
+      title: DatasetUpdateRequest
     datasets_HybridSearchConfig:
       type: object
       properties:
@@ -743,30 +767,6 @@ components:
       required:
       - weights
       title: HybridSearchConfig
-    datasets_VisualEncoderNameEnum:
-      type: string
-      enum:
-      - multimodal
-      - multimodal-tx-large2
-      - multimodal-tx-large3
-      - multimodal-tx-large4
-      - nova2-multimodal
-      - resnet-50
-      - resnet-50-reduced
-      title: VisualEncoderNameEnum
-    datasets_EncoderName:
-      oneOf:
-      - $ref: '#/components/schemas/datasets_VisualEncoderNameEnum'
-      - type: string
-      description: The model used to extract visual and audio features from assets.
-      title: EncoderName
-    datasets_AssetTypeEnum:
-      type: string
-      enum:
-      - image
-      - video
-      description: Indicates the type of asset
-      title: AssetTypeEnum
   securitySchemes:
     HTTPBearer:
       type: http

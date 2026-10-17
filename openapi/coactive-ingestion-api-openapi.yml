@@ -44,6 +44,23 @@ paths:
               $ref: '#/components/schemas/DeleteAssetsRequest'
 components:
   schemas:
+    DeleteAssetsResponse:
+      type: object
+      properties:
+        org_id:
+          type: string
+        dataset_id:
+          type: string
+          format: uuid
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeleteAssetsResponseAssetsItems'
+      required:
+      - org_id
+      - dataset_id
+      - assets
+      title: DeleteAssetsResponse
     AssetType:
       type: string
       enum:
@@ -63,6 +80,21 @@ components:
       - asset_type
       - identifier
       title: DeleteJobAsset
+    ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+      title: HTTPValidationError
     DeleteAssetsRequest:
       type: object
       properties:
@@ -77,6 +109,22 @@ components:
       - dataset_id
       - assets
       title: DeleteAssetsRequest
+    DeleteAssetsResponseAssetsItems:
+      type: object
+      properties:
+        asset_type:
+          $ref: '#/components/schemas/AssetType'
+        identifier:
+          $ref: '#/components/schemas/DeleteJobAssetIdentifier'
+          description: Either the Coactive Video/Image ID of the asset or a path string
+        delete_job_id:
+          type: string
+          description: Beanie ObjectId as string
+      required:
+      - asset_type
+      - identifier
+      - delete_job_id
+      title: DeleteAssetsResponseAssetsItems
     ValidationError:
       type: object
       properties:
@@ -100,54 +148,6 @@ components:
       - type: string
       description: Either the Coactive Video/Image ID of the asset or a path string
       title: DeleteJobAssetIdentifier
-    DeleteAssetsResponse:
-      type: object
-      properties:
-        org_id:
-          type: string
-        dataset_id:
-          type: string
-          format: uuid
-        assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteAssetsResponseAssetsItems'
-      required:
-      - org_id
-      - dataset_id
-      - assets
-      title: DeleteAssetsResponse
-    HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-      title: HTTPValidationError
-    ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    DeleteAssetsResponseAssetsItems:
-      type: object
-      properties:
-        asset_type:
-          $ref: '#/components/schemas/AssetType'
-        identifier:
-          $ref: '#/components/schemas/DeleteJobAssetIdentifier'
-          description: Either the Coactive Video/Image ID of the asset or a path string
-        delete_job_id:
-          type: string
-          description: Beanie ObjectId as string
-      required:
-      - asset_type
-      - identifier
-      - delete_job_id
-      title: DeleteAssetsResponseAssetsItems
   securitySchemes:
     HTTPBearer:
       type: http

@@ -271,85 +271,35 @@ paths:
               $ref: '#/components/schemas/celebrity-detection_UpdatePersonAliasesRequest'
 components:
   schemas:
-    celebrity-detection_IngestedImage:
-      type: object
-      properties:
-        coactive_image_id:
-          type: string
-          format: uuid
-        dataset_id:
-          type: string
-          format: uuid
-      required:
-      - coactive_image_id
-      - dataset_id
-      title: IngestedImage
-    celebrity-detection_GetPersonsByNamesAliasesResponse:
-      type: object
-      properties:
-        matches:
-          type: array
-          items:
-            $ref: '#/components/schemas/celebrity-detection_PersonNameMatch'
-          description: List of name to person_id mappings
-      required:
-      - matches
-      title: GetPersonsByNamesAliasesResponse
-    celebrity-detection_SortDirection:
-      type: string
-      enum:
-      - asc
-      - desc
-      description: Sort direction.
-      title: SortDirection
-    celebrity-detection_ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    celebrity-detection_Person:
+    celebrity-detection_Face:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: Person ID
-        name:
+          description: Face ID
+        image_id:
           type: string
-          description: Person name
-        aliases:
-          type: array
-          items:
-            type: string
-          description: Person aliases
+          format: uuid
+          description: Asset ID (image_id or keyframe_id)
+        dataset_id:
+          type: string
+          format: uuid
+          description: Dataset ID
         bbox:
           $ref: '#/components/schemas/celebrity-detection_BoundingBox'
           description: Relative bounding box coordinates (x1, y1, x2, y2)
+        confidence:
+          type: number
+          format: double
+          description: Confidence score of the face identification
       required:
       - id
-      - name
-      - aliases
+      - image_id
+      - dataset_id
       - bbox
-      title: Person
-    celebrity-detection_EnrollmentStatus:
-      type: string
-      enum:
-      - draft
-      - active
-      - failed
-      - in_progress
-      title: EnrollmentStatus
-    celebrity-detection_GetPersonsInImageResponse:
-      type: object
-      properties:
-        persons:
-          type: array
-          items:
-            $ref: '#/components/schemas/celebrity-detection_Person'
-          description: List of persons identified in the image
-      required:
-      - persons
-      title: GetPersonsInImageResponse
+      - confidence
+      title: Face
     celebrity-detection_IdentifyCelebritiesInExternalImageResponse:
       type: object
       properties:
@@ -382,58 +332,6 @@ components:
       - x2
       - y2
       title: BoundingBox
-    celebrity-detection_SortField:
-      type: object
-      properties:
-        field:
-          type: string
-          description: Field name to sort by
-        direction:
-          $ref: '#/components/schemas/celebrity-detection_SortDirection'
-          description: Sort direction
-      required:
-      - field
-      description: Sort field details.
-      title: SortField
-    celebrity-detection_PersonNameMatch:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name or alias that was searched
-        person_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          description: The matched person ID, or None if not found
-      required:
-      - name
-      - person_id
-      title: PersonNameMatch
-    celebrity-detection_GetPersonsResponse:
-      type: object
-      properties:
-        meta:
-          oneOf:
-          - $ref: '#/components/schemas/celebrity-detection_PagedMetaResponse'
-          - type: 'null'
-          description: Metadata for pagination
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/celebrity-detection_GetPersonResponse'
-          description: The paginated data
-        sort:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/celebrity-detection_SortField'
-          description: Sort details
-      required:
-      - data
-      title: GetPersonsResponse
     celebrity-detection_PagedMetaResponse:
       type: object
       properties:
@@ -448,52 +346,69 @@ components:
       - page
       description: Metadata about the paginated response.
       title: PagedMetaResponse
-    celebrity-detection_HTTPValidationError:
+    celebrity-detection_EnrollmentStatus:
+      type: string
+      enum:
+      - draft
+      - active
+      - failed
+      - in_progress
+      title: EnrollmentStatus
+    celebrity-detection_GetPersonsInImageResponse:
       type: object
       properties:
-        detail:
+        persons:
           type: array
           items:
-            $ref: '#/components/schemas/celebrity-detection_ValidationError'
-      title: HTTPValidationError
-    celebrity-detection_Face:
+            $ref: '#/components/schemas/celebrity-detection_Person'
+          description: List of persons identified in the image
+      required:
+      - persons
+      title: GetPersonsInImageResponse
+    celebrity-detection_GetFacesWithPersonResponse:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          description: Face ID
-        image_id:
-          type: string
-          format: uuid
-          description: Asset ID (image_id or keyframe_id)
-        dataset_id:
-          type: string
-          format: uuid
-          description: Dataset ID
-        bbox:
-          $ref: '#/components/schemas/celebrity-detection_BoundingBox'
-          description: Relative bounding box coordinates (x1, y1, x2, y2)
-        confidence:
-          type: number
-          format: double
-          description: Confidence score of the face identification
+        faces:
+          type: array
+          items:
+            $ref: '#/components/schemas/celebrity-detection_Face'
+          description: List of faces associated with the person (id, image_id, dataset_id, bbox, confidence)
       required:
-      - id
-      - image_id
-      - dataset_id
-      - bbox
-      - confidence
-      title: Face
-    celebrity-detection_IdentifyCelebritiesInExternalImageRequest:
+      - faces
+      title: GetFacesWithPersonResponse
+    celebrity-detection_UpdatePersonAliasesRequest:
       type: object
       properties:
-        image:
+        person_id:
           type: string
-          description: Base64 encoded JPEG image
+          format: uuid
+          description: Person ID
+        aliases:
+          type: array
+          items:
+            type: string
+          description: Updated list of person aliases
       required:
-      - image
-      title: IdentifyCelebritiesInExternalImageRequest
+      - person_id
+      title: UpdatePersonAliasesRequest
+    celebrity-detection_GetPersonsByNamesAliasesResponse:
+      type: object
+      properties:
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/celebrity-detection_PersonNameMatch'
+          description: List of name to person_id mappings
+      required:
+      - matches
+      title: GetPersonsByNamesAliasesResponse
+    celebrity-detection_SortDirection:
+      type: string
+      enum:
+      - asc
+      - desc
+      description: Sort direction.
+      title: SortDirection
     celebrity-detection_PagedPageDetailsResponse:
       type: object
       properties:
@@ -508,6 +423,81 @@ components:
       - per_page
       description: Pagination metadata.
       title: PagedPageDetailsResponse
+    celebrity-detection_ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/celebrity-detection_ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    celebrity-detection_HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/celebrity-detection_ValidationError'
+      title: HTTPValidationError
+    celebrity-detection_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
+    celebrity-detection_IngestedImage:
+      type: object
+      properties:
+        coactive_image_id:
+          type: string
+          format: uuid
+        dataset_id:
+          type: string
+          format: uuid
+      required:
+      - coactive_image_id
+      - dataset_id
+      title: IngestedImage
+    celebrity-detection_IdentifyCelebritiesInExternalImageRequest:
+      type: object
+      properties:
+        image:
+          type: string
+          description: Base64 encoded JPEG image
+      required:
+      - image
+      title: IdentifyCelebritiesInExternalImageRequest
+    celebrity-detection_Person:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Person ID
+        name:
+          type: string
+          description: Person name
+        aliases:
+          type: array
+          items:
+            type: string
+          description: Person aliases
+        bbox:
+          $ref: '#/components/schemas/celebrity-detection_BoundingBox'
+          description: Relative bounding box coordinates (x1, y1, x2, y2)
+      required:
+      - id
+      - name
+      - aliases
+      - bbox
+      title: Person
     celebrity-detection_GetPersonResponse:
       type: object
       properties:
@@ -553,48 +543,58 @@ components:
       - created_user_id
       - created_dt
       title: GetPersonResponse
-    celebrity-detection_GetFacesWithPersonResponse:
+    celebrity-detection_GetPersonsResponse:
       type: object
       properties:
-        faces:
+        meta:
+          oneOf:
+          - $ref: '#/components/schemas/celebrity-detection_PagedMetaResponse'
+          - type: 'null'
+          description: Metadata for pagination
+        data:
           type: array
           items:
-            $ref: '#/components/schemas/celebrity-detection_Face'
-          description: List of faces associated with the person (id, image_id, dataset_id, bbox, confidence)
+            $ref: '#/components/schemas/celebrity-detection_GetPersonResponse'
+          description: The paginated data
+        sort:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/celebrity-detection_SortField'
+          description: Sort details
       required:
-      - faces
-      title: GetFacesWithPersonResponse
-    celebrity-detection_UpdatePersonAliasesRequest:
+      - data
+      title: GetPersonsResponse
+    celebrity-detection_PersonNameMatch:
       type: object
       properties:
+        name:
+          type: string
+          description: The name or alias that was searched
         person_id:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uuid
-          description: Person ID
-        aliases:
-          type: array
-          items:
-            type: string
-          description: Updated list of person aliases
+          description: The matched person ID, or None if not found
       required:
+      - name
       - person_id
-      title: UpdatePersonAliasesRequest
-    celebrity-detection_ValidationError:
+      title: PersonNameMatch
+    celebrity-detection_SortField:
       type: object
       properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/celebrity-detection_ValidationErrorLocItems'
-        msg:
+        field:
           type: string
-        type:
-          type: string
+          description: Field name to sort by
+        direction:
+          $ref: '#/components/schemas/celebrity-detection_SortDirection'
+          description: Sort direction
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+      - field
+      description: Sort field details.
+      title: SortField
   securitySchemes:
     HTTPBearer:
       type: http

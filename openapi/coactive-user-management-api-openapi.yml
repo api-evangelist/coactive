@@ -367,200 +367,6 @@ paths:
               $ref: '#/components/schemas/UpdateUserRolesRequest'
 components:
   schemas:
-    SortDirection1:
-      type: string
-      enum:
-      - asc
-      - desc
-      description: Possible sort orders
-      title: SortDirection1
-    UpdateUserRolesRequest:
-      type: object
-      properties:
-        roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
-          description: New list of roles to assign to the user
-        roles_context:
-          type:
-          - string
-          - 'null'
-          description: Context for the roles to update. This can either be 'system' for system-level roles or 'dataset:{dataset_id}' for dataset-level roles.
-      required:
-      - roles
-      description: 'Request model for updating user roles.
-
-
-        This model is used when modifying a user''s role assignments. It allows for
-
-        updating the complete list of roles and optionally specifying the context
-
-        where these roles apply. For example, if the "system" context is used, the roles
-
-        provided will only replace roles at the system level (ex. dataset
-
-        roles would remain unchanged). If no context is provided, the role provided in the
-
-        request will replace all roles for the user.'
-      title: UpdateUserRolesRequest
-    ValidationError1:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError1LocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError1
-    Inviter:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Display name of the inviter
-      required:
-      - name
-      description: 'Model representing the user who sent the invitation.
-
-
-        This model contains the details of the user who sent the invitation, including
-
-        their display name.'
-      title: Inviter
-    SortItem1:
-      type: object
-      properties:
-        direction:
-          $ref: '#/components/schemas/SortDirection1'
-          description: Sort direction (ascending or descending)
-        field:
-          type: string
-          description: Field name to sort by
-      required:
-      - direction
-      - field
-      description: Metadata about the sort order of the response
-      title: SortItem1
-    UserResponse:
-      type: object
-      properties:
-        user_id:
-          type: string
-          description: Unique identifier for the user
-        name:
-          type: string
-          description: Display name of the user
-        email:
-          type:
-          - string
-          - 'null'
-          description: Email address of the user
-        picture:
-          type:
-          - string
-          - 'null'
-          description: URL to the user's profile picture
-        created_at:
-          type: string
-          format: date-time
-          description: Timestamp when the user was created
-        last_login:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: Timestamp of the user's last login
-        roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
-          description: List of roles assigned to the user
-      required:
-      - user_id
-      - name
-      - created_at
-      - roles
-      description: 'Complete user response model including roles.
-
-
-        This model extends the base user response to include the user''s assigned roles.
-
-        It is used when the complete user information, including roles, is required.'
-      title: UserResponse
-    PagedMeta:
-      type: object
-      properties:
-        page:
-          $ref: '#/components/schemas/PagedPageDetails'
-          description: Current page number (1-indexed)
-        links:
-          $ref: '#/components/schemas/PagedLinks'
-          description: Links to the previous, next, first, and last pages
-        sort:
-          type: array
-          items:
-            $ref: '#/components/schemas/SortItem1'
-          description: Sort order for the response
-      required:
-      - page
-      - links
-      - sort
-      description: Metadata for paginated responses
-      title: PagedMeta
-    UsersListResponse:
-      type: object
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/PartialUserResponse'
-          description: List of users with partial information
-        meta:
-          $ref: '#/components/schemas/PagedMeta'
-          description: Pagination metadata for the response
-      required:
-      - users
-      - meta
-      description: 'Response model for listing users with pagination.
-
-
-        This model contains a paginated list of users with partial information and
-
-        metadata about the pagination. It is used for endpoints that return multiple
-
-        users with their basic information.'
-      title: UsersListResponse
-    UserInvitationListResponse:
-      type: object
-      properties:
-        user_invitations:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserInvitation'
-          description: List of pending invitations
-        meta:
-          $ref: '#/components/schemas/PagedMeta'
-          description: Pagination metadata for the response
-      required:
-      - user_invitations
-      - meta
-      description: 'Response model for listing user invitations.
-
-
-        This model contains a list of pending user invitations and metadata about the
-
-        pagination of the results. Each invitation includes details about who sent it,
-
-        who it was sent to, and the roles that will be assigned upon acceptance.'
-      title: UserInvitationListResponse
     Invitee:
       type: object
       properties:
@@ -580,37 +386,21 @@ components:
       - name
       - roles
       title: Invitee
-    ValidationError1LocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationError1LocItems
-    CreateUserInvitationRequest:
+    Inviter:
       type: object
       properties:
         name:
           type: string
-          description: Display name for the invited user
-        email:
-          type: string
-          description: Email address to send the invitation to
-        roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/Role'
-          description: List of roles to assign to the user
+          description: Display name of the inviter
       required:
       - name
-      - email
-      description: 'Request model for creating a new user invitation.
+      description: 'Model representing the user who sent the invitation.
 
 
-        This model is used to invite a new user to join an organization. The invitation
+        This model contains the details of the user who sent the invitation, including
 
-        will be sent to the specified email address and will include the roles that will
-
-        be assigned to the user upon acceptance.'
-      title: CreateUserInvitationRequest
+        their display name.'
+      title: Inviter
     PagedLinks:
       type: object
       properties:
@@ -636,131 +426,25 @@ components:
           description: URL for the last page
       description: Metadata for retrieving paginated data
       title: PagedLinks
-    RoleDefinition:
+    SortDirection1:
+      type: string
+      enum:
+      - asc
+      - desc
+      description: Possible sort orders
+      title: SortDirection1
+    RolesListResponse:
       type: object
       properties:
-        role_id:
-          type: string
-          description: Unique identifier for the role
-        name:
-          type: string
-          description: Display name of the role
-        description:
-          type:
-          - string
-          - 'null'
-          description: Optional description of the role's purpose
-        resource:
-          type:
-          - string
-          - 'null'
-          description: Optional resource type this role applies to
-      required:
-      - role_id
-      - name
-      description: Role definition model for available roles
-      title: RoleDefinition
-    UserInvitation:
-      type: object
-      properties:
-        invitation_id:
-          type: string
-          description: Unique identifier for the invitation
-        inviter:
-          $ref: '#/components/schemas/Inviter'
-          description: Details about the user who sent the invitation
-        invitee:
-          $ref: '#/components/schemas/Invitee'
-          description: Details about the user being invited
-        invitation_url:
-          type: string
-          description: URL for the user to accept the invitation
-        created_at:
-          type: string
-          description: Timestamp when the invitation was created
-        expires_at:
-          type: string
-          description: Timestamp when the invitation expires
         roles:
           type: array
           items:
-            $ref: '#/components/schemas/Role'
-          description: List of roles that will be assigned upon acceptance
+            $ref: '#/components/schemas/RoleDefinition'
+          description: List of roles
       required:
-      - invitation_id
-      - inviter
-      - invitee
-      - invitation_url
-      - created_at
-      - expires_at
       - roles
-      description: 'Model representing a user invitation.
-
-
-        This model contains the details of an invitation sent to a user, including the
-
-        invitation ID, who sent it, who it was sent to, and the roles that will be
-
-        assigned upon acceptance. The invitation URL is included for the user to accept
-
-        the invitation.'
-      title: UserInvitation
-    HTTPValidationError1:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError1'
-      title: HTTPValidationError1
-    PagedPageDetails:
-      type: object
-      properties:
-        current_page:
-          type: integer
-          description: Current page number (1-indexed)
-        last_page:
-          type:
-          - integer
-          - 'null'
-          description: Last page number (if total is known)
-        limit:
-          type: integer
-          description: Number of items per page
-        offset:
-          type: integer
-          description: Offset of the first item in the current page
-        total:
-          type:
-          - integer
-          - 'null'
-          description: Total number of items across all pages
-      required:
-      - current_page
-      - limit
-      - offset
-      description: Pagination metadata
-      title: PagedPageDetails
-    Role:
-      type: object
-      properties:
-        role_id:
-          type: string
-          description: Name of the role (e.g., 'admin', 'editor', 'viewer')
-        resource:
-          type:
-          - string
-          - 'null'
-          description: Optional resource type the role applies to (e.g., 'dataset')
-        resource_instance:
-          type:
-          - string
-          - 'null'
-          description: Optional resource instance ID the role applies to
-      required:
-      - role_id
-      description: Role model for user and client roles
-      title: Role
+      description: Response model for listing all available roles.
+      title: RolesListResponse
     PartialUserResponse:
       type: object
       properties:
@@ -808,18 +492,334 @@ components:
 
         when roles information may not be available or required in the response.'
       title: PartialUserResponse
-    RolesListResponse:
+    ValidationError1LocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationError1LocItems
+    PagedMeta:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/PagedPageDetails'
+          description: Current page number (1-indexed)
+        links:
+          $ref: '#/components/schemas/PagedLinks'
+          description: Links to the previous, next, first, and last pages
+        sort:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortItem1'
+          description: Sort order for the response
+      required:
+      - page
+      - links
+      - sort
+      description: Metadata for paginated responses
+      title: PagedMeta
+    SortItem1:
+      type: object
+      properties:
+        direction:
+          $ref: '#/components/schemas/SortDirection1'
+          description: Sort direction (ascending or descending)
+        field:
+          type: string
+          description: Field name to sort by
+      required:
+      - direction
+      - field
+      description: Metadata about the sort order of the response
+      title: SortItem1
+    UsersListResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartialUserResponse'
+          description: List of users with partial information
+        meta:
+          $ref: '#/components/schemas/PagedMeta'
+          description: Pagination metadata for the response
+      required:
+      - users
+      - meta
+      description: 'Response model for listing users with pagination.
+
+
+        This model contains a paginated list of users with partial information and
+
+        metadata about the pagination. It is used for endpoints that return multiple
+
+        users with their basic information.'
+      title: UsersListResponse
+    CreateUserInvitationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Display name for the invited user
+        email:
+          type: string
+          description: Email address to send the invitation to
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+          description: List of roles to assign to the user
+      required:
+      - name
+      - email
+      description: 'Request model for creating a new user invitation.
+
+
+        This model is used to invite a new user to join an organization. The invitation
+
+        will be sent to the specified email address and will include the roles that will
+
+        be assigned to the user upon acceptance.'
+      title: CreateUserInvitationRequest
+    Role:
+      type: object
+      properties:
+        role_id:
+          type: string
+          description: Name of the role (e.g., 'admin', 'editor', 'viewer')
+        resource:
+          type:
+          - string
+          - 'null'
+          description: Optional resource type the role applies to (e.g., 'dataset')
+        resource_instance:
+          type:
+          - string
+          - 'null'
+          description: Optional resource instance ID the role applies to
+      required:
+      - role_id
+      description: Role model for user and client roles
+      title: Role
+    UserResponse:
+      type: object
+      properties:
+        user_id:
+          type: string
+          description: Unique identifier for the user
+        name:
+          type: string
+          description: Display name of the user
+        email:
+          type:
+          - string
+          - 'null'
+          description: Email address of the user
+        picture:
+          type:
+          - string
+          - 'null'
+          description: URL to the user's profile picture
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the user was created
+        last_login:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Timestamp of the user's last login
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+          description: List of roles assigned to the user
+      required:
+      - user_id
+      - name
+      - created_at
+      - roles
+      description: 'Complete user response model including roles.
+
+
+        This model extends the base user response to include the user''s assigned roles.
+
+        It is used when the complete user information, including roles, is required.'
+      title: UserResponse
+    UserInvitation:
+      type: object
+      properties:
+        invitation_id:
+          type: string
+          description: Unique identifier for the invitation
+        inviter:
+          $ref: '#/components/schemas/Inviter'
+          description: Details about the user who sent the invitation
+        invitee:
+          $ref: '#/components/schemas/Invitee'
+          description: Details about the user being invited
+        invitation_url:
+          type: string
+          description: URL for the user to accept the invitation
+        created_at:
+          type: string
+          description: Timestamp when the invitation was created
+        expires_at:
+          type: string
+          description: Timestamp when the invitation expires
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+          description: List of roles that will be assigned upon acceptance
+      required:
+      - invitation_id
+      - inviter
+      - invitee
+      - invitation_url
+      - created_at
+      - expires_at
+      - roles
+      description: 'Model representing a user invitation.
+
+
+        This model contains the details of an invitation sent to a user, including the
+
+        invitation ID, who sent it, who it was sent to, and the roles that will be
+
+        assigned upon acceptance. The invitation URL is included for the user to accept
+
+        the invitation.'
+      title: UserInvitation
+    RoleDefinition:
+      type: object
+      properties:
+        role_id:
+          type: string
+          description: Unique identifier for the role
+        name:
+          type: string
+          description: Display name of the role
+        description:
+          type:
+          - string
+          - 'null'
+          description: Optional description of the role's purpose
+        resource:
+          type:
+          - string
+          - 'null'
+          description: Optional resource type this role applies to
+      required:
+      - role_id
+      - name
+      description: Role definition model for available roles
+      title: RoleDefinition
+    UpdateUserRolesRequest:
       type: object
       properties:
         roles:
           type: array
           items:
-            $ref: '#/components/schemas/RoleDefinition'
-          description: List of roles
+            $ref: '#/components/schemas/Role'
+          description: New list of roles to assign to the user
+        roles_context:
+          type:
+          - string
+          - 'null'
+          description: Context for the roles to update. This can either be 'system' for system-level roles or 'dataset:{dataset_id}' for dataset-level roles.
       required:
       - roles
-      description: Response model for listing all available roles.
-      title: RolesListResponse
+      description: 'Request model for updating user roles.
+
+
+        This model is used when modifying a user''s role assignments. It allows for
+
+        updating the complete list of roles and optionally specifying the context
+
+        where these roles apply. For example, if the "system" context is used, the roles
+
+        provided will only replace roles at the system level (ex. dataset
+
+        roles would remain unchanged). If no context is provided, the role provided in the
+
+        request will replace all roles for the user.'
+      title: UpdateUserRolesRequest
+    HTTPValidationError1:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError1'
+      title: HTTPValidationError1
+    ValidationError1:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError1LocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError1
+    UserInvitationListResponse:
+      type: object
+      properties:
+        user_invitations:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserInvitation'
+          description: List of pending invitations
+        meta:
+          $ref: '#/components/schemas/PagedMeta'
+          description: Pagination metadata for the response
+      required:
+      - user_invitations
+      - meta
+      description: 'Response model for listing user invitations.
+
+
+        This model contains a list of pending user invitations and metadata about the
+
+        pagination of the results. Each invitation includes details about who sent it,
+
+        who it was sent to, and the roles that will be assigned upon acceptance.'
+      title: UserInvitationListResponse
+    PagedPageDetails:
+      type: object
+      properties:
+        current_page:
+          type: integer
+          description: Current page number (1-indexed)
+        last_page:
+          type:
+          - integer
+          - 'null'
+          description: Last page number (if total is known)
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Offset of the first item in the current page
+        total:
+          type:
+          - integer
+          - 'null'
+          description: Total number of items across all pages
+      required:
+      - current_page
+      - limit
+      - offset
+      description: Pagination metadata
+      title: PagedPageDetails
   securitySchemes:
     HTTPBearer:
       type: http
