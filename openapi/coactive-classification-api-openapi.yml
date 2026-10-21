@@ -12,7 +12,7 @@ tags:
 paths:
   /api/v1/classify/image/url:
     post:
-      operationId: classify-image-at-url
+      operationId: classification_classify_image_at_url
       summary: Classify image at public url
       description: Classify an image downloadable via a public url for specific concepts or all concepts within a dataset
       tags:
@@ -26,12 +26,6 @@ paths:
           type: number
           format: double
           default: 0.5
-      - name: Authorization
-        in: header
-        description: Bearer authentication
-        required: true
-        schema:
-          type: string
       responses:
         '200':
           description: Result of the classification
@@ -56,8 +50,20 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PublicUrlClassificationRequest'
+      security:
+      - HTTPBearer: []
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Details about the encountered error
+      required:
+      - detail
+      description: Details about an error that occurred
+      title: ErrorResponse
     PublicUrlClassificationRequest:
       type: object
       properties:
@@ -84,6 +90,30 @@ components:
 
         for a dataset. Either concept ids of a dataset id must be provided.'
       title: PublicUrlClassificationRequest
+    ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+      title: HTTPValidationError
     ClassificationScore:
       type: object
       properties:
@@ -120,24 +150,6 @@ components:
       - type: string
       - type: integer
       title: ValidationErrorLocItems
-    ErrorResponse:
-      type: object
-      properties:
-        detail:
-          type: string
-          description: Details about the encountered error
-      required:
-      - detail
-      description: Details about an error that occurred
-      title: ErrorResponse
-    HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-      title: HTTPValidationError
     Classification:
       type: object
       properties:
@@ -150,22 +162,6 @@ components:
       - scores
       description: A classification of an asset for one or more concepts
       title: Classification
-    ValidationError:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
   securitySchemes:
     HTTPBearer:
       type: http

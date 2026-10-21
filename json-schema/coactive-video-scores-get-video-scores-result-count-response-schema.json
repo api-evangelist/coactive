@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-video-scores-get-video-scores-result-count-response-schema.json",
+  "title": "GetVideoScoresResultCountResponse",
+  "description": "Response for getting video scores result count.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-video-scores-videoscores-api-openapi.yml#/components/schemas/video-scores_GetVideoScoresResultCountResponse",
+  "type": "object",
+  "properties": {
+    "group_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Group ID."
+    },
+    "tag_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Tag ID."
+    },
+    "aggregation_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Aggregation ID."
+    },
+    "count": {
+      "type": "integer",
+      "description": "Total count of video scores matching the criteria."
+    },
+    "predicate": {
+      "$ref": "#/$defs/video-scores_GetVideoScoresResultCountPredicate",
+      "description": "Predicate used for counting."
+    }
+  },
+  "required": [
+    "group_id",
+    "tag_id",
+    "aggregation_id",
+    "count",
+    "predicate"
+  ],
+  "$defs": {
+    "video-scores_GetVideoScoresResultCountPredicate": {
+      "type": "object",
+      "properties": {
+        "criteria_met": {
+          "type": "boolean",
+          "description": "Whether the criteria was met."
+        },
+        "accepted": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Whether the result is accepted."
+        }
+      },
+      "required": [
+        "criteria_met"
+      ],
+      "description": "Predicate used for counting video scores.",
+      "title": "GetVideoScoresResultCountPredicate"
+    }
+  }
+}

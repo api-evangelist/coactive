@@ -1,0 +1,338 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-dynamic-tag-get-groups-response-schema.json",
+  "title": "DynamicTagGetGroupsResponse",
+  "description": "Response model for retrieving a paginated list of groups.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-dynamictags-api-openapi.yml#/components/schemas/DynamicTagGetGroupsResponse",
+  "type": "object",
+  "properties": {
+    "meta": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/DynamicTagPagedMetaResponse"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Metadata for pagination"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DynamicTagGroupVersionResponse"
+      },
+      "description": "The paginated data"
+    },
+    "sort": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/DynamicTagSortField"
+      },
+      "description": "Sort details"
+    }
+  },
+  "required": [
+    "data"
+  ],
+  "$defs": {
+    "DynamicTagDataset": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Dataset identifier"
+        },
+        "status": {
+          "$ref": "#/$defs/DynamicTagGroupDatasetAssociationStatus",
+          "description": "Dataset status"
+        }
+      },
+      "required": [
+        "id",
+        "status"
+      ],
+      "description": "Summary information about associated datasets.",
+      "title": "DynamicTagDataset"
+    },
+    "DynamicTagGroupDatasetAssociationStatus": {
+      "type": "string",
+      "enum": [
+        "unscored",
+        "queued",
+        "scoring",
+        "scored",
+        "error",
+        "deleting",
+        "deleted"
+      ],
+      "description": "Status of association between group and dataset.",
+      "title": "DynamicTagGroupDatasetAssociationStatus"
+    },
+    "DynamicTagGroupVersionResponse": {
+      "type": "object",
+      "properties": {
+        "group_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Unique identifier for the group"
+        },
+        "group_version_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Version identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the group"
+        },
+        "version_name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Human-readable version name"
+        },
+        "status": {
+          "$ref": "#/$defs/DynamicTagGroupVersionStatus",
+          "description": "Current status of the group version"
+        },
+        "shareable": {
+          "type": "boolean",
+          "description": "Whether the group can be shared across datasets"
+        },
+        "created_user_id": {
+          "type": "string",
+          "description": "ID of the user who created this version"
+        },
+        "updated_user_id": {
+          "type": "string",
+          "description": "ID of the user who last updated this version"
+        },
+        "created_dt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the version was created"
+        },
+        "updated_dt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the version was last updated"
+        },
+        "group_created_user_id": {
+          "type": "string",
+          "description": "ID of the user who created this group"
+        },
+        "group_created_dt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the group was created"
+        },
+        "group_description": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Human-readable description of the group"
+        },
+        "tags_preview": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/DynamicTagTagVersionSummary"
+          },
+          "description": "The first 10 tags associated with the group version"
+        },
+        "tags_count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Total number of tags associated with the group version"
+        },
+        "all_draft_tags_reviewed_dt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time",
+          "description": "Timestamp when all draft tags were reviewed"
+        },
+        "review_tags_visited_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time",
+          "description": "Timestamp when a user first visited the Review Tags section for this group version"
+        },
+        "training_datasets": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/DynamicTagDataset"
+          },
+          "description": "List of training datasets associated with the group version"
+        }
+      },
+      "required": [
+        "group_id",
+        "group_version_id",
+        "name",
+        "status",
+        "shareable",
+        "created_user_id",
+        "updated_user_id",
+        "created_dt",
+        "updated_dt",
+        "group_created_user_id",
+        "group_created_dt",
+        "tags_preview",
+        "tags_count",
+        "all_draft_tags_reviewed_dt",
+        "review_tags_visited_at"
+      ],
+      "description": "Response model for a group version.",
+      "title": "DynamicTagGroupVersionResponse"
+    },
+    "DynamicTagGroupVersionStatus": {
+      "type": "string",
+      "enum": [
+        "creating",
+        "updating",
+        "draft",
+        "unpublished_changes",
+        "published",
+        "validated",
+        "superseded",
+        "error",
+        "deleting",
+        "deleted"
+      ],
+      "description": "Status of a group version.",
+      "title": "DynamicTagGroupVersionStatus"
+    },
+    "DynamicTagPagedMetaResponse": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "$ref": "#/$defs/DynamicTagPagedPageDetailsResponse",
+          "description": "Details about pagination"
+        },
+        "has_next_page": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether another page exists"
+        }
+      },
+      "required": [
+        "page"
+      ],
+      "description": "Metadata about the paginated response.",
+      "title": "DynamicTagPagedMetaResponse"
+    },
+    "DynamicTagPagedPageDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "description": "Current page number (1-indexed)"
+        },
+        "per_page": {
+          "type": "integer",
+          "description": "Number of items per page"
+        }
+      },
+      "required": [
+        "page",
+        "per_page"
+      ],
+      "description": "Pagination metadata.",
+      "title": "DynamicTagPagedPageDetailsResponse"
+    },
+    "DynamicTagSortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ],
+      "description": "Sort direction.",
+      "title": "DynamicTagSortDirection"
+    },
+    "DynamicTagSortField": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "Field name to sort by"
+        },
+        "direction": {
+          "$ref": "#/$defs/DynamicTagSortDirection",
+          "description": "Sort direction"
+        }
+      },
+      "required": [
+        "field"
+      ],
+      "description": "Sort field details.",
+      "title": "DynamicTagSortField"
+    },
+    "DynamicTagTagVersionStatus": {
+      "type": "string",
+      "enum": [
+        "creating",
+        "updating",
+        "draft",
+        "unpublished_changes",
+        "published",
+        "error",
+        "deleting",
+        "deleted"
+      ],
+      "description": "Status of a tag version.",
+      "title": "DynamicTagTagVersionStatus"
+    },
+    "DynamicTagTagVersionSummary": {
+      "type": "object",
+      "properties": {
+        "tag_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Unique identifier for the tag"
+        },
+        "tag_version_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Unique identifier for the tag version"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the tag"
+        },
+        "status": {
+          "$ref": "#/$defs/DynamicTagTagVersionStatus",
+          "description": "Status of the tag"
+        }
+      },
+      "required": [
+        "tag_id",
+        "tag_version_id",
+        "name",
+        "status"
+      ],
+      "description": "Response model for a tag with its current version.",
+      "title": "DynamicTagTagVersionSummary"
+    }
+  }
+}

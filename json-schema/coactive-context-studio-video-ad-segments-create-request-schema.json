@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-context-studio-video-ad-segments-create-request-schema.json",
+  "title": "VideoAdSegmentsCreateRequest",
+  "description": "Request model for creating ad segments for a video.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-context-studio-adsegments-api-openapi.yml#/components/schemas/context-studio_VideoAdSegmentsCreateRequest",
+  "type": "object",
+  "properties": {
+    "ad_segments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/context-studio_VideoAdSegmentCreateRequest"
+      }
+    }
+  },
+  "required": [
+    "ad_segments"
+  ],
+  "$defs": {
+    "context-studio_VideoAdSegmentCreateRequest": {
+      "type": "object",
+      "properties": {
+        "segment_start_time_ms": {
+          "type": "number",
+          "format": "double"
+        },
+        "segment_end_time_ms": {
+          "type": "number",
+          "format": "double"
+        },
+        "segment_start_frame_number": {
+          "type": "integer"
+        },
+        "segment_end_frame_number": {
+          "type": "integer"
+        },
+        "metadata": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/context-studio_VideoAdSegmentMetadataRequest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "segment_start_time_ms",
+        "segment_end_time_ms",
+        "segment_start_frame_number",
+        "segment_end_frame_number"
+      ],
+      "description": "Request model for creating an ad segment.",
+      "title": "VideoAdSegmentCreateRequest"
+    },
+    "context-studio_VideoAdSegmentMetadataRequest": {
+      "type": "object",
+      "properties": {
+        "segment_type": {
+          "type": "string"
+        },
+        "segment_number": {
+          "type": "integer"
+        },
+        "incode": {
+          "type": "string"
+        },
+        "outcode": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "segment_type",
+        "segment_number",
+        "incode",
+        "outcode"
+      ],
+      "description": "Request model for ad segment metadata.",
+      "title": "VideoAdSegmentMetadataRequest"
+    }
+  }
+}

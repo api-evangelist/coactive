@@ -1,8 +1,18 @@
-generated: '2026-10-13'
+generated: '2026-10-20'
 method: searched
+source:
+- https://zapier.com/apps/coactive/integrations
+- https://n8n.io/integrations/coactive/
+- https://composio.dev/toolkits/coactive
+- https://monid.ai/tools/coactive
 checked:
 - https://aws.amazon.com/marketplace/
 - https://azuremarketplace.microsoft.com/
+- https://composio.dev/toolkits/coactive
+- https://monid.ai/tools/coactive
+- https://n8n.io/integrations/coactive/
+- https://zapier.com/apps/coactive/integrations
+summary: null
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -38,3 +48,4 @@ edges:
   seller_name: Coactive AI
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
+templates: []

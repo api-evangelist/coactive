@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-delete-assets-response-schema.json",
+  "title": "DeleteAssetsResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-ingestion-api-openapi.yml#/components/schemas/DeleteAssetsResponse",
+  "type": "object",
+  "properties": {
+    "org_id": {
+      "type": "string"
+    },
+    "dataset_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DeleteAssetsResponseAssetsItems"
+      }
+    }
+  },
+  "required": [
+    "org_id",
+    "dataset_id",
+    "assets"
+  ],
+  "$defs": {
+    "AssetType": {
+      "type": "string",
+      "enum": [
+        "image",
+        "video"
+      ],
+      "description": "An enumeration.",
+      "title": "AssetType"
+    },
+    "DeleteAssetsResponseAssetsItems": {
+      "type": "object",
+      "properties": {
+        "asset_type": {
+          "$ref": "#/$defs/AssetType"
+        },
+        "identifier": {
+          "$ref": "#/$defs/DeleteJobAssetIdentifier",
+          "description": "Either the Coactive Video/Image ID of the asset or a path string"
+        },
+        "delete_job_id": {
+          "type": "string",
+          "description": "Beanie ObjectId as string"
+        }
+      },
+      "required": [
+        "asset_type",
+        "identifier",
+        "delete_job_id"
+      ],
+      "title": "DeleteAssetsResponseAssetsItems"
+    },
+    "DeleteJobAssetIdentifier": {
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uuid"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "description": "Either the Coactive Video/Image ID of the asset or a path string",
+      "title": "DeleteJobAssetIdentifier"
+    }
+  }
+}

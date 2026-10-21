@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-connections-list-with-connection-response-schema.json",
+  "title": "ListWithConnectionResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-connections-connections-api-openapi.yml#/components/schemas/connections_ListWithConnectionResponse",
+  "type": "object",
+  "properties": {
+    "bucket": {
+      "type": "string",
+      "description": "The S3 bucket name"
+    },
+    "prefix": {
+      "type": "string",
+      "description": "The S3 prefix that was listed"
+    },
+    "keys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The list of object keys"
+    },
+    "common_prefixes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Common prefixes (subdirectories)"
+    },
+    "continuation_token": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Token for fetching the next page of results"
+    }
+  },
+  "required": [
+    "bucket",
+    "prefix",
+    "keys",
+    "common_prefixes"
+  ]
+}

@@ -12,7 +12,7 @@ tags:
 paths:
   /api/v0/video-summarization/datasets/{dataset_id}/videos/{video_id}/caption-keyframes:
     post:
-      operationId: caption-video-keyframes-api-v-0-video-summarization-datasets-dataset-id-videos-video-id-caption-keyframes-post
+      operationId: videoNarativeMetadata_videoSummarization_caption_video_keyframes_api_v0_video_summarization_datasets__dataset_id__videos__video_id__caption_keyframes_post
       summary: Request keyframe captioning for a video
       description: Request keyframe captioning for a video.
       tags:
@@ -30,12 +30,6 @@ paths:
         schema:
           type: string
           format: uuid
-      - name: Authorization
-        in: header
-        description: Bearer authentication
-        required: true
-        schema:
-          type: string
       responses:
         '202':
           description: Successful Response
@@ -49,6 +43,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/video-narative-metadata_HTTPValidationError'
+      security:
+      - HTTPBearer: []
 components:
   schemas:
     video-narative-metadata_ValidationErrorLocItems:
@@ -56,6 +52,14 @@ components:
       - type: string
       - type: integer
       title: ValidationErrorLocItems
+    video-narative-metadata_HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/video-narative-metadata_ValidationError'
+      title: HTTPValidationError
     video-narative-metadata_ValidationError:
       type: object
       properties:
@@ -72,14 +76,6 @@ components:
       - msg
       - type
       title: ValidationError
-    video-narative-metadata_HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/video-narative-metadata_ValidationError'
-      title: HTTPValidationError
     video-narative-metadata_CaptionVideoKeyframesResponse:
       type: object
       properties:

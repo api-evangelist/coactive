@@ -1,0 +1,81 @@
+generated: '2026-10-20'
+method: probed
+source: pre-flight dossier (docs platform, portal detections) + CNAME chains and response headers of the hosts apis.yml names
+registry: all/0-working/vendors.yml
+areas_vocabulary:
+- documentation
+- developer-portal
+- api-gateway
+- cdn
+- hosting
+- sdk-generation
+- api-collections
+- status-page
+- support
+- community
+- identity
+- mcp-hosting
+vendors:
+- vendor: postman
+  name: Postman
+  area: api-collections
+  host: www.postman.com
+  evidence: https://www.postman.com/coactive-all/coactive-rest-api
+  signal: url:postman.com
+  confidence: high
+  kin_score:
+  - postman_collection
+- vendor: cloudflare
+  name: Cloudflare
+  area: cdn
+  host: www.coactive.ai
+  evidence: header:cf-ray
+  signal: header
+  confidence: high
+  kin_score:
+  - https_enforced
+  - hsts
+- vendor: fern
+  name: Fern
+  area: documentation
+  host: docs.coactive.ai
+  evidence: markup:buildwithfern
+  signal: docs-platform
+  confidence: medium
+  kin_score:
+  - openapi_published
+  - sdk_count_1
+  - sdk_count_3
+- vendor: vercel
+  name: Vercel
+  area: hosting
+  host: docs.coactive.ai
+  evidence: cname:cname.vercel-dns.com
+  signal: docs-platform
+  confidence: medium
+  kin_score: []
+reliance:
+  areas_vendor_served:
+  - api-collections
+  - cdn
+  - documentation
+  - hosting
+  vendor_count: 4
+  areas_observed: 12
+  share_of_observable_areas: 0.333
+  note: areas where a third party was DETECTED serving this provider; an area absent here was either self-run or not observed, and this script
+    cannot tell those apart
+checked:
+- 'docs-platform: fern'
+- www.coactive.ai (Website)
+- docs.coactive.ai (Documentation)
+- docs.coactive.ai (GettingStarted)
+- docs.coactive.ai (DeveloperPortal)
+- docs.coactive.ai (APIReference)
+- app.coactive.ai (SignUp)
+- app.coactive.ai (Login)
+- www.coactive.ai (Support)
+- status.coactive.ai (StatusPage)
+- www.postman.com (Postman)
+- api.coactive.ai (baseURL)
+- docs.coactive.ai (mcp)

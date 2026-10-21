@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-agentic-search-chat-request-schema.json",
+  "title": "ChatRequest",
+  "description": "Request schema for chat endpoint.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-agentic-search-agenticsearch-api-openapi.yml#/components/schemas/agentic-search_ChatRequest",
+  "type": "object",
+  "properties": {
+    "chat_request_text": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "User's chat input text"
+    },
+    "upload_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Upload ID of the user's input image"
+    },
+    "history_chat_messages": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "additionalProperties": {
+          "description": "Any type"
+        }
+      },
+      "description": "Conversation history (does not include current message)"
+    }
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-search-video-video-search-response-schema.json",
+  "title": "VideoSearchResponse",
+  "description": "Response schema for video search endpoint.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-search-video-searchvideo-api-openapi.yml#/components/schemas/search-video_VideoSearchResponse",
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/search-video_VideoSearchResult"
+      },
+      "description": "List of video search results"
+    }
+  },
+  "required": [
+    "results"
+  ],
+  "$defs": {
+    "search-video_VideoCompositeSlice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "index": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "start_frame_num": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "end_frame_num": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "start_time_ms": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "end_time_ms": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "composite_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uuid"
+        },
+        "composite_type": {
+          "type": "string",
+          "default": "shot",
+          "description": "Type of composite"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "description": "Response schema for video composite details.",
+      "title": "VideoCompositeSlice"
+    },
+    "search-video_VideoKeyframe": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "frame_time_ms": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "description": "Response schema for video keyframe details.",
+      "title": "VideoKeyframe"
+    },
+    "search-video_VideoMetadata": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "additionalProperties": {
+            "description": "Any type"
+          }
+        }
+      },
+      "description": "Metadata associated with a video shot.",
+      "title": "VideoMetadata"
+    },
+    "search-video_VideoSearchResult": {
+      "type": "object",
+      "properties": {
+        "dataset_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "text_query": {
+          "type": "string"
+        },
+        "video_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "source_path": {
+          "type": "string"
+        },
+        "video_score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "metadata": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/search-video_VideoSearchResultMetadata"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "top_composite_slice": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/search-video_VideoCompositeSlice"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "top_keyframe": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/search-video_VideoKeyframe"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "moderation_score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        }
+      },
+      "required": [
+        "dataset_id",
+        "text_query",
+        "video_id",
+        "source_path"
+      ],
+      "description": "Single result in the video search response.",
+      "title": "VideoSearchResult"
+    },
+    "search-video_VideoSearchResultMetadata": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/search-video_VideoMetadata"
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      ],
+      "title": "VideoSearchResultMetadata"
+    }
+  }
+}

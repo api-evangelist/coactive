@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-context-studio-video-ad-segments-get-response-schema.json",
+  "title": "VideoAdSegmentsGetResponse",
+  "description": "Response wrapper for the GET ad-segments endpoint.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-context-studio-adsegments-api-openapi.yml#/components/schemas/context-studio_VideoAdSegmentsGetResponse",
+  "type": "object",
+  "properties": {
+    "ad_segments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/context-studio_VideoAdSegmentResponse"
+      }
+    }
+  },
+  "required": [
+    "ad_segments"
+  ],
+  "$defs": {
+    "context-studio_VideoAdSegmentMetadataResponse": {
+      "type": "object",
+      "properties": {
+        "segment_type": {
+          "type": "string"
+        },
+        "segment_number": {
+          "type": "integer"
+        },
+        "incode": {
+          "type": "string"
+        },
+        "outcode": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "segment_type",
+        "segment_number",
+        "incode",
+        "outcode"
+      ],
+      "description": "Response model for ad segment metadata stored in composite slice JSONB.",
+      "title": "VideoAdSegmentMetadataResponse"
+    },
+    "context-studio_VideoAdSegmentResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "segment_start_time_ms": {
+          "type": "number",
+          "format": "double"
+        },
+        "segment_end_time_ms": {
+          "type": "number",
+          "format": "double"
+        },
+        "segment_start_frame_number": {
+          "type": "integer"
+        },
+        "segment_end_frame_number": {
+          "type": "integer"
+        },
+        "metadata": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/context-studio_VideoAdSegmentMetadataResponse"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "segment_start_time_ms",
+        "segment_end_time_ms",
+        "segment_start_frame_number",
+        "segment_end_frame_number"
+      ],
+      "description": "A single ad segment returned from the DB.",
+      "title": "VideoAdSegmentResponse"
+    }
+  }
+}

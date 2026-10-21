@@ -1,21 +1,19 @@
 aid: coactive
 name: Coactive
-description: Coactive is a multimodal AI platform that delivers a contextual intelligence layer for modern
-  media, turning unstructured images and video into structured, searchable intelligence. The platform
-  ingests visual assets at scale and provides agentic and semantic search, dynamic tagging, concept training
-  and classification, celebrity and face detection, video narrative metadata and summarization, ad-segment
-  context studio workflows, and analytics that plug into data warehouses and BI tools. Every capability
-  is exposed programmatically through a versioned REST API (api.coactive.ai) with an official Python SDK,
-  bearer-token authentication, and a hosted documentation MCP server. Coactive was founded to help enterprises
-  search, moderate, understand, and monetize their content libraries for contextual advertising, brand
-  safety, and content operations.
+description: Coactive is a multimodal AI platform that delivers a contextual intelligence layer for modern media, turning unstructured images
+  and video into structured, searchable intelligence. The platform ingests visual assets at scale and provides agentic and semantic search, dynamic
+  tagging, concept training and classification, celebrity and face detection, video narrative metadata and summarization, ad-segment context studio
+  workflows, and analytics that plug into data warehouses and BI tools. Every capability is exposed programmatically through a versioned REST
+  API (api.coactive.ai) with an official Python SDK, bearer-token authentication, and a hosted documentation MCP server. Coactive was founded
+  to help enterprises search, moderate, understand, and monetize their content libraries for contextual advertising, brand safety, and content
+  operations.
 url: https://raw.githubusercontent.com/api-evangelist/coactive/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - sv-angel
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-20 (local-v5; was portfolio-lead)
 deliveryModel:
   model: saas
   open_source: false
@@ -79,519 +77,34 @@ tags_raw:
 - Media
 - Computer-Vision
 - Machine-Learning
-apis:
-- aid: coactive:coactive-agentic-search-agenticsearch-api
-  name: Coactive agentic-search > agenticSearch API
-  description: >-
-    The agentic-search > agenticSearch API from Coactive — 2 operation(s) for agentic-search > agenticsearch.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - agentic-search > agenticSearch
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-agentic-search-agenticsearch-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-celebrity-detection-api
-  name: Coactive Celebrity Detection API
-  description: The celebrity-detection API from Coactive — 7 operation(s) for celebrity-detection.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - celebrity-detection
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-celebrity-detection-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-classification-api
-  name: Coactive Classification API
-  description: The classification API from Coactive — 1 operation(s) for classification.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - Classification
-  tags_raw:
-  - classification
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-classification-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-concept-api
-  name: Coactive Concept API
-  description: The concept API from Coactive — 5 operation(s) for concept.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - Concept
-  tags_raw:
-  - concept
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-concept-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-connections-connections-api
-  name: Coactive connections > connections API
-  description: >-
-    The connections > connections API from Coactive — 5 operation(s) for connections > connections.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - connections > connections
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-connections-connections-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-context-studio-adsegments-api
-  name: Coactive context-studio > adSegments API
-  description: >-
-    The context-studio > adSegments API from Coactive — 1 operation(s) for context-studio > adsegments.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - context-studio > adSegments
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-context-studio-adsegments-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-datasets-dataset-api
-  name: Coactive datasets > dataset API
-  description: The datasets > dataset API from Coactive — 2 operation(s) for datasets > dataset.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - datasets > dataset
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-datasets-dataset-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-datasets-datasetconfig-api
-  name: Coactive datasets > datasetConfig API
-  description: >-
-    The datasets > datasetConfig API from Coactive — 1 operation(s) for datasets > datasetconfig.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - datasets > datasetConfig
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-datasets-datasetconfig-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-datasets-encoder-api
-  name: Coactive datasets > encoder API
-  description: The datasets > encoder API from Coactive — 1 operation(s) for datasets > encoder.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - datasets > encoder
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-datasets-encoder-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-dynamictags-api
-  name: Coactive Dynamic Tags API
-  description: The dynamicTags API from Coactive — 1 operation(s) for dynamictags.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags: []
-  tags_raw:
-  - dynamicTags
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-dynamictags-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-ingestion-api
-  name: Coactive Ingestion API
-  description: The ingestion API from Coactive — 1 operation(s) for ingestion.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - Ingestion
-  tags_raw:
-  - ingestion
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-ingestion-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-ingestion-ingest-api
-  name: Coactive ingestion > ingest API
-  description: The ingestion > ingest API from Coactive — 6 operation(s) for ingestion > ingest.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - ingestion > ingest
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-ingestion-ingest-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-ingestion-status-api
-  name: Coactive ingestion > status API
-  description: The ingestion > status API from Coactive — 9 operation(s) for ingestion > status.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - IngestionStatus
-  tags_raw:
-  - ingestion > status
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-ingestion-status-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-queries-api
-  name: Coactive Queries API
-  description: The queries API from Coactive — 9 operation(s) for queries.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - Query
-  tags_raw:
-  - queries
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-queries-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-search-metadata-filter-api
-  name: Coactive Search Metadata Filter API
-  description: >-
-    The search-metadata-filter API from Coactive — 8 operation(s) for search-metadata-filter.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - search-metadata-filter
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-search-metadata-filter-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-search-search-api
-  name: Coactive search > search API
-  description: The search > search API from Coactive — 10 operation(s) for search > search.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - search > search
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-search-search-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-search-video-searchvideo-api
-  name: Coactive search-video > searchVideo API
-  description: >-
-    The search-video > searchVideo API from Coactive — 1 operation(s) for search-video > searchvideo.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - search-video > searchVideo
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-search-video-searchvideo-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-video-narative-metadata-videonarrativemetadata-api
-  name: Coactive video-narative-metadata > videoNarrativeMetadata API
-  description: >-
-    The video-narative-metadata > videoNarrativeMetadata API from Coactive — 13 operation(s) for video-narative-metadata
-    > videonarrativemetadata.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - video-narative-metadata > videoNarrativeMetadata
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-video-narative-metadata-videonarrativemetadata-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-video-narative-metadata-videosummarization-api
-  name: Coactive video-narative-metadata > videoSummarization API
-  description: >-
-    The video-narative-metadata > videoSummarization API from Coactive — 1 operation(s) for video-narative-metadata
-    > videosummarization.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - video-narative-metadata > videoSummarization
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-video-narative-metadata-videosummarization-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-video-scores-videoscores-api
-  name: Coactive video-scores > videoScores API
-  description: >-
-    The video-scores > videoScores API from Coactive — 4 operation(s) for video-scores > videoscores.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - video-scores > videoScores
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-video-scores-videoscores-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-system-credentials-api
-  name: Coactive System Credentials API
-  description: The System Credentials API from Coactive — 2 operation(s) for system credentials.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - System Credentials
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-system-credentials-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
-- aid: coactive:coactive-user-management-api
-  name: Coactive User Management API
-  description: The User Management API from Coactive — 6 operation(s) for user management.
-  humanURL: https://docs.coactive.ai/
-  baseURL: https://api.coactive.ai
-  tags:
-  - User Management
-  properties:
-  - type: OpenAPI
-    url: openapi/coactive-user-management-api-openapi.yml
-  - type: Documentation
-    url: https://docs.coactive.ai/
-  - type: APIReference
-    url: https://docs.coactive.ai/api-reference/api-reference
-  - type: Authentication
-    url: authentication/coactive-authentication.yml
-  - type: ErrorCatalog
-    url: errors/coactive-error-codes.yml
-  - type: Conventions
-    url: conventions/coactive-conventions.yml
-  - type: DataModel
-    url: data-model/coactive-data-model.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Spectral
+  url: rules/coactive-rules.yml
+- type: JSONLD
+  url: json-ld/coactive-context.jsonld
+- type: Vocabulary
+  url: vocabulary/coactive-vocabulary.yml
+- type: ChangeLog
+  url: changelog/coactive-changelog.yml
+- type: SecurityTxt
+  url: well-known/coactive-status-security.txt
+- type: WellKnown
+  url: well-known/coactive-well-known.yml
+- type: Hosts
+  url: hosts/coactive-hosts.yml
+- type: IntegrationEdges
+  url: integrations/coactive-integration-edges.yml
+- type: Vendors
+  url: vendors/coactive-vendors.yml
+- type: Newsroom
+  url: https://www.coactive.ai/blog-category/news
+- type: Leadership
+  url: https://www.coactive.ai/blog-category/team
 - type: CapabilityMap
   url: capabilities/coactive-capability-edges.yml
   name: Coactive Business Capability Map
@@ -603,14 +116,14 @@ common:
   url: agentic-access/coactive-agentic-access.yml
 - type: Website
   url: https://www.coactive.ai
+- type: Documentation
+  url: https://docs.coactive.ai/docs-guides/introduction/overview
+- type: GettingStarted
+  url: https://docs.coactive.ai/docs-guides/getting-started/accepted-media-formats
 - type: DeveloperPortal
   url: https://docs.coactive.ai/
-- type: Documentation
-  url: https://docs.coactive.ai/introduction/overview
 - type: APIReference
   url: https://docs.coactive.ai/api-reference/api-reference
-- type: GettingStarted
-  url: https://docs.coactive.ai/introduction/overview
 - type: Blog
   url: https://www.coactive.ai/blog
 - type: SignUp
@@ -667,15 +180,713 @@ common:
   url: plans/coactive-plans-pricing.yml
 - type: RateLimits
   url: rate-limits/coactive-rate-limits.yml
-x-enrichment:
-  date: '2026-08-13'
-  status: enriched
-  artifacts_added: 3
-  pass: local-v1
-  note: >-
-    Round 2. Live anonymous MCP tools/list against docs.coactive.ai/_mcp/server returned the real
-    searchDocs inputSchema; discovered Coactive's public Postman workspace (coactive-all); recorded
-    honest zeros for plans and rate limits; removed the WellKnown pointer whose own probe is all
-    404s/SPA false positives. No A2A agent card on any host.
+apis:
+- aid: coactive:coactive-agentic-search-agenticsearch-api
+  name: Coactive agentic-search > agenticSearch API
+  description: >-
+    The agentic-search > agenticSearch API from Coactive — 2 operation(s) for agentic-search > agenticsearch.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - agentic-search > agenticSearch
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-agentic-search-agenticsearch-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-agentic-search-chat-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-agentic-search-chat-request-schema.json
+- aid: coactive:coactive-celebrity-detection-api
+  name: Coactive Celebrity Detection API
+  description: The celebrity-detection API from Coactive — 7 operation(s) for celebrity-detection.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - celebrity-detection
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-celebrity-detection-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-celebrity-detection-get-person-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-celebrity-detection-get-persons-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-celebrity-detection-get-faces-with-person-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-celebrity-detection-update-person-aliases-request-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/coactive-celebrity-detection-identify-celebrities-in-external-image-response-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/coactive-celebrity-detection-get-persons-by-names-aliases-response-schema.json
+- aid: coactive:coactive-classification-api
+  name: Coactive Classification API
+  description: The classification API from Coactive — 1 operation(s) for classification.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - Classification
+  tags_raw:
+  - classification
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-classification-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-public-url-classification-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-classification-schema.json
+- aid: coactive:coactive-concept-api
+  name: Coactive Concept API
+  description: The concept API from Coactive — 5 operation(s) for concept.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - Concept
+  tags_raw:
+  - concept
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-concept-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-concept-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-create-concept-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-concept-prediction-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-update-concept-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-update-concept-labels-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-paged-concept-labels-schema.json
+- aid: coactive:coactive-connections-connections-api
+  name: Coactive connections > connections API
+  description: >-
+    The connections > connections API from Coactive — 5 operation(s) for connections > connections.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - connections > connections
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-connections-connections-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-connections-get-connection-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-connections-list-with-connection-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-connections-get-connection-credentials-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-connections-list-with-connection-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-connections-list-connections-response-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/coactive-connections-connections-create-connection-api-v0-connections-post-request-schema.json
+- aid: coactive:coactive-context-studio-adsegments-api
+  name: Coactive context-studio > adSegments API
+  description: >-
+    The context-studio > adSegments API from Coactive — 1 operation(s) for context-studio > adsegments.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - context-studio > adSegments
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-context-studio-adsegments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-context-studio-video-ad-segments-create-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-context-studio-video-ad-segments-create-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-context-studio-video-ad-segments-get-response-schema.json
+- aid: coactive:coactive-datasets-dataset-api
+  name: Coactive datasets > dataset API
+  description: The datasets > dataset API from Coactive — 2 operation(s) for datasets > dataset.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - datasets > dataset
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-datasets-dataset-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-datasets-dataset-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-datasets-dataset-create-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-datasets-dataset-update-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-datasets-dataset-get-many-response-schema.json
+- aid: coactive:coactive-datasets-datasetconfig-api
+  name: Coactive datasets > datasetConfig API
+  description: >-
+    The datasets > datasetConfig API from Coactive — 1 operation(s) for datasets > datasetconfig.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - datasets > datasetConfig
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-datasets-datasetconfig-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-datasets-dataset-config-response-schema.json
+- aid: coactive:coactive-datasets-encoder-api
+  name: Coactive datasets > encoder API
+  description: The datasets > encoder API from Coactive — 1 operation(s) for datasets > encoder.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - datasets > encoder
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-datasets-encoder-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-datasets-encoder-description-schema.json
+- aid: coactive:coactive-dynamictags-api
+  name: Coactive Dynamic Tags API
+  description: The dynamicTags API from Coactive — 1 operation(s) for dynamictags.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags: []
+  tags_raw:
+  - dynamicTags
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-dynamictags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-dynamic-tag-get-groups-response-schema.json
+- aid: coactive:coactive-ingestion-api
+  name: Coactive Ingestion API
+  description: The ingestion API from Coactive — 1 operation(s) for ingestion.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - Ingestion
+  tags_raw:
+  - ingestion
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-ingestion-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-delete-assets-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-delete-assets-request-schema.json
+- aid: coactive:coactive-ingestion-ingest-api
+  name: Coactive ingestion > ingest API
+  description: The ingestion > ingest API from Coactive — 6 operation(s) for ingestion > ingest.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - ingestion > ingest
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-ingestion-ingest-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-ingestion-create-ingest-job-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-ingestion-create-ingest-job-from-bucket-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-ingestion-create-ingest-job-for-metadata-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-ingestion-create-ingest-job-from-file-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-ingestion-create-ingest-job-from-assets-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-ingestion-create-ingest-job-from-images-request-schema.json
+- aid: coactive:coactive-ingestion-status-api
+  name: Coactive ingestion > status API
+  description: The ingestion > status API from Coactive — 9 operation(s) for ingestion > status.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - IngestionStatus
+  tags_raw:
+  - ingestion > status
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-ingestion-status-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-ingestion-get-one-ingest-job-response-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/coactive-ingestion-status-get-dataset-assets-status-summary-api-v1-ingestion-datasets-dataset-id-assets-status-summary-get-response-200-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/coactive-ingestion-status-get-dataset-assets-status-api-v1-ingestion-datasets-dataset-id-assets-status-post-response-200-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/coactive-ingestion-status-get-dataset-status-api-v1-ingestion-datasets-dataset-id-status-get-response-200-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-ingestion-dataset-assets-status-count-response-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/coactive-ingestion-status-get-image-asset-status-api-v1-ingestion-images-asset-id-status-get-response-200-schema.json
+- aid: coactive:coactive-queries-api
+  name: Coactive Queries API
+  description: The queries API from Coactive — 9 operation(s) for queries.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - Query
+  tags_raw:
+  - queries
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-queries-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-queries-app-api-v1-schema-get-query-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-queries-app-api-v1-schema-create-query-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-queries-app-api-v1-schema-list-queries-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-queries-export-query-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-queries-body-list-queries-api-v1-queries-get-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-queries-app-api-v1-schema-export-query-response-schema.json
+- aid: coactive:coactive-search-metadata-filter-api
+  name: Coactive Search Metadata Filter API
+  description: >-
+    The search-metadata-filter API from Coactive — 8 operation(s) for search-metadata-filter.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - search-metadata-filter
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-search-metadata-filter-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: >-
+      json-schema/coactive-search-metadata-filter-metadata-transcript-search-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-search-metadata-filter-metadata-sound-search-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-search-metadata-filter-metadata-search-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-search-metadata-filter-metadata-search-status-response-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/coactive-search-metadata-filter-get-metadata-filter-search-result-response-200-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-search-metadata-filter-metadata-search-trigger-response-schema.json
+- aid: coactive:coactive-search-search-api
+  name: Coactive search > search API
+  description: The search > search API from Coactive — 10 operation(s) for search > search.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - search > search
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-search-search-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-search-text-search-by-person-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-search-image-search-request-schema.json
+- aid: coactive:coactive-search-video-searchvideo-api
+  name: Coactive search-video > searchVideo API
+  description: >-
+    The search-video > searchVideo API from Coactive — 1 operation(s) for search-video > searchvideo.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - search-video > searchVideo
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-search-video-searchvideo-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-search-video-video-search-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-search-video-video-composite-drill-down-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-search-video-video-search-response-schema.json
+- aid: coactive:coactive-video-narative-metadata-videonarrativemetadata-api
+  name: Coactive video-narative-metadata > videoNarrativeMetadata API
+  description: >-
+    The video-narative-metadata > videoNarrativeMetadata API from Coactive — 13 operation(s) for video-narative-metadata
+    > videonarrativemetadata.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - video-narative-metadata > videoNarrativeMetadata
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-video-narative-metadata-videonarrativemetadata-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-video-narative-metadata-create-metadata-request-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/coactive-video-narative-metadata-predict-composite-slice-subject-response-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/coactive-video-narative-metadata-predict-composite-slice-format-response-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/coactive-video-narative-metadata-predict-composite-slice-mood-response-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/coactive-video-narative-metadata-generate-composite-slice-summary-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-video-narative-metadata-update-metadata-request-schema.json
+- aid: coactive:coactive-video-narative-metadata-videosummarization-api
+  name: Coactive video-narative-metadata > videoSummarization API
+  description: >-
+    The video-narative-metadata > videoSummarization API from Coactive — 1 operation(s) for video-narative-metadata
+    > videosummarization.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - video-narative-metadata > videoSummarization
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-video-narative-metadata-videosummarization-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: >-
+      json-schema/coactive-video-narative-metadata-caption-video-keyframes-response-schema.json
+- aid: coactive:coactive-video-scores-videoscores-api
+  name: Coactive video-scores > videoScores API
+  description: >-
+    The video-scores > videoScores API from Coactive — 4 operation(s) for video-scores > videoscores.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - video-scores > videoScores
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-video-scores-videoscores-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-video-scores-get-video-scores-result-count-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-video-scores-get-video-scores-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-video-scores-get-video-shot-scores-response-schema.json
+- aid: coactive:coactive-system-credentials-api
+  name: Coactive System Credentials API
+  description: The System Credentials API from Coactive — 2 operation(s) for system credentials.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - System Credentials
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-system-credentials-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-update-client-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-create-client-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-client-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-user-invitation-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-user-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-update-user-roles-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-create-user-invitation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-user-invitation-list-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-users-list-response-schema.json
+- aid: coactive:coactive-user-management-api
+  name: Coactive User Management API
+  description: The User Management API from Coactive — 6 operation(s) for user management.
+  humanURL: https://docs.coactive.ai/
+  baseURL: https://api.coactive.ai
+  tags:
+  - User Management
+  properties:
+  - type: OpenAPI
+    url: openapi/coactive-user-management-api-openapi.yml
+  - type: Documentation
+    url: https://docs.coactive.ai/
+  - type: APIReference
+    url: https://docs.coactive.ai/api-reference/api-reference
+  - type: Authentication
+    url: authentication/coactive-authentication.yml
+  - type: ErrorCatalog
+    url: errors/coactive-error-codes.yml
+  - type: Conventions
+    url: conventions/coactive-conventions.yml
+  - type: DataModel
+    url: data-model/coactive-data-model.yml
+  - type: JSONSchema
+    url: json-schema/coactive-update-client-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-create-client-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-client-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-user-invitation-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-user-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-update-user-roles-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-create-user-invitation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-user-invitation-list-response-schema.json
+  - type: JSONSchema
+    url: json-schema/coactive-users-list-response-schema.json
 x-merged-from:
 - coactive-ai
+x-enrichment:
+  date: '2026-10-20'
+  status: enriched
+  artifacts_added: 2
+  pass: local-v5

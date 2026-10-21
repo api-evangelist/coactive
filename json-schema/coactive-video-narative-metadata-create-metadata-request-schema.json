@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-video-narative-metadata-create-metadata-request-schema.json",
+  "title": "CreateMetadataRequest",
+  "description": "Create a new metadata value.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-video-narative-metadata-videonarrativemetadata-api-openapi.yml#/components/schemas/video-narative-metadata_CreateMetadataRequest",
+  "type": "object",
+  "properties": {
+    "metadata_type": {
+      "$ref": "#/$defs/video-narative-metadata_MetadataType"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "metadata_type",
+    "name",
+    "description",
+    "examples"
+  ],
+  "$defs": {
+    "video-narative-metadata_MetadataType": {
+      "type": "string",
+      "enum": [
+        "genre",
+        "mood",
+        "subject",
+        "format"
+      ],
+      "description": "Supported metadata types.",
+      "title": "MetadataType"
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-search-video-video-composite-drill-down-response-schema.json",
+  "title": "VideoCompositeDrillDownResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-search-video-searchvideo-api-openapi.yml#/components/schemas/search-video_VideoCompositeDrillDownResponse",
+  "type": "object",
+  "properties": {
+    "dataset_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "text_query": {
+      "type": "string"
+    },
+    "video_id": {
+      "type": "string"
+    },
+    "composite_type": {
+      "type": "string"
+    },
+    "source_path": {
+      "type": "string"
+    },
+    "slices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/search-video_VideoCompositeSliceDrillDown"
+      }
+    }
+  },
+  "required": [
+    "dataset_id",
+    "text_query",
+    "video_id",
+    "composite_type",
+    "source_path",
+    "slices"
+  ],
+  "$defs": {
+    "search-video_VideoCompositeSliceDrillDown": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "index": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "start_frame_num": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "end_frame_num": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "start_time_ms": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "end_time_ms": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "composite_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uuid"
+        },
+        "composite_type": {
+          "type": "string",
+          "default": "shot",
+          "description": "Type of composite"
+        },
+        "composite_slice_score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "title": "VideoCompositeSliceDrillDown"
+    }
+  }
+}

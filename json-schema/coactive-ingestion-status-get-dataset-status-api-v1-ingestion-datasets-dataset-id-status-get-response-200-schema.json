@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-ingestion-status-get-dataset-status-api-v1-ingestion-datasets-dataset-id-status-get-response-200-schema.json",
+  "title": "Status_get_dataset_status_api_v1_ingestion_datasets__dataset_id__status_get_Response_200",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-ingestion-status-api-openapi.yml#/components/schemas/ingestion_Status_get_dataset_status_api_v1_ingestion_datasets__dataset_id__status_get_Response_200",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/ingestion_DatasetIngestionStatusResponse"
+    },
+    {
+      "$ref": "#/$defs/ingestion_EmptyResponse"
+    }
+  ],
+  "$defs": {
+    "ingestion_DatasetIngestionInfo": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/ingestion_IngestJobStatusEnum"
+        },
+        "ingest_job_id": {
+          "type": "string",
+          "description": "The ID of the ingestion job"
+        },
+        "ingestion_dt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time",
+          "description": "The date and time of the ingestion job"
+        }
+      },
+      "required": [
+        "status",
+        "ingest_job_id",
+        "ingestion_dt"
+      ],
+      "title": "DatasetIngestionInfo"
+    },
+    "ingestion_DatasetIngestionStatusResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/$defs/ingestion_PagedMetaResponse",
+          "description": "Metadata for the set of data returned"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ingestion_DatasetIngestionInfo"
+          },
+          "description": "The paginated data"
+        }
+      },
+      "required": [
+        "meta",
+        "data"
+      ],
+      "title": "DatasetIngestionStatusResponse"
+    },
+    "ingestion_EmptyResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "description": "Any type"
+          },
+          "description": "Empty data list"
+        }
+      },
+      "title": "EmptyResponse"
+    },
+    "ingestion_IngestJobStatusEnum": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "failed",
+        "in_progress",
+        "pending",
+        "paused",
+        "stopping",
+        "stopped"
+      ],
+      "description": "Enum of Ingest Job Status.",
+      "title": "IngestJobStatusEnum"
+    },
+    "ingestion_PagedMetaResponse": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "$ref": "#/$defs/ingestion_PagedPageDetailsResponse",
+          "description": "Details about the total set of data"
+        }
+      },
+      "required": [
+        "page"
+      ],
+      "description": "Metadata about the paginated response",
+      "title": "PagedMetaResponse"
+    },
+    "ingestion_PagedPageDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "current_page": {
+          "type": "integer",
+          "description": "Current page number"
+        },
+        "last_page": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Max page number based on limit and total number of items"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Number of items to return"
+        },
+        "offset": {
+          "type": "integer",
+          "description": "Starting index to return"
+        },
+        "total": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Total number of items"
+        }
+      },
+      "required": [
+        "current_page",
+        "last_page",
+        "limit",
+        "offset",
+        "total"
+      ],
+      "description": "Pagination metadata",
+      "title": "PagedPageDetailsResponse"
+    }
+  }
+}

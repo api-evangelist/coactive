@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-ingestion-status-get-dataset-assets-status-summary-api-v1-ingestion-datasets-dataset-id-assets-status-summary-get-response-200-schema.json",
+  "title": "Status_get_dataset_assets_status_summary_api_v1_ingestion_datasets__dataset_id__assets_status_summary_get_Response_200",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-ingestion-status-api-openapi.yml#/components/schemas/ingestion_Status_get_dataset_assets_status_summary_api_v1_ingestion_datasets__dataset_id__assets_status_summary_get_Response_200",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/ingestion_PagedAssetsStatusSummaryResponse"
+    },
+    {
+      "$ref": "#/$defs/ingestion_EmptyResponse"
+    }
+  ],
+  "$defs": {
+    "ingestion_AssetStatusEnum": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "received",
+        "processing_started",
+        "completed",
+        "error"
+      ],
+      "title": "AssetStatusEnum"
+    },
+    "ingestion_EmptyResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "description": "Any type"
+          },
+          "description": "Empty data list"
+        }
+      },
+      "title": "EmptyResponse"
+    },
+    "ingestion_PagedAssetsStatusSummaryResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/$defs/ingestion_PagedMetaResponse",
+          "description": "Metadata for the set of data returned"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ingestion_StatusSummary"
+          },
+          "description": "The paginated data"
+        }
+      },
+      "required": [
+        "meta",
+        "data"
+      ],
+      "title": "PagedAssetsStatusSummaryResponse"
+    },
+    "ingestion_PagedMetaResponse": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "$ref": "#/$defs/ingestion_PagedPageDetailsResponse",
+          "description": "Details about the total set of data"
+        }
+      },
+      "required": [
+        "page"
+      ],
+      "description": "Metadata about the paginated response",
+      "title": "PagedMetaResponse"
+    },
+    "ingestion_PagedPageDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "current_page": {
+          "type": "integer",
+          "description": "Current page number"
+        },
+        "last_page": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Max page number based on limit and total number of items"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Number of items to return"
+        },
+        "offset": {
+          "type": "integer",
+          "description": "Starting index to return"
+        },
+        "total": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Total number of items"
+        }
+      },
+      "required": [
+        "current_page",
+        "last_page",
+        "limit",
+        "offset",
+        "total"
+      ],
+      "description": "Pagination metadata",
+      "title": "PagedPageDetailsResponse"
+    },
+    "ingestion_StatusSummary": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/ingestion_AssetStatusEnum"
+        },
+        "asset_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "dataset_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "asset_type": {
+          "type": "string"
+        },
+        "source_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ingestion_dt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "status",
+        "asset_id",
+        "dataset_id",
+        "asset_type"
+      ],
+      "title": "StatusSummary"
+    }
+  }
+}

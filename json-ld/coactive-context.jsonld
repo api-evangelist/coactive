@@ -1,0 +1,824 @@
+{
+  "@context": {
+    "@vocab": "https://coactive.ai/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "coactive": "https://coactive.ai/schema#",
+    "agentic-search_VideoSearchResponse": "coactive:agentic-search_VideoSearchResponse",
+    "results": {
+      "@id": "coactive:results",
+      "@container": "@list"
+    },
+    "agentic-search_TextToImageSearchByPersonResultItem": "coactive:agentic-search_TextToImageSearchByPersonResultItem",
+    "coactive_image_id": {
+      "@id": "coactive:coactive_image_id",
+      "@type": "xsd:string"
+    },
+    "asset_type": {
+      "@id": "coactive:asset_type",
+      "@type": "xsd:string"
+    },
+    "dataset_id": {
+      "@id": "coactive:dataset_id",
+      "@type": "xsd:string"
+    },
+    "video_id": {
+      "@id": "coactive:video_id",
+      "@type": "xsd:string"
+    },
+    "composite_slice_id": {
+      "@id": "coactive:composite_slice_id",
+      "@type": "xsd:string"
+    },
+    "composite_type": {
+      "@id": "coactive:composite_type",
+      "@type": "xsd:string"
+    },
+    "composite_start_time_ms": {
+      "@id": "coactive:composite_start_time_ms",
+      "@type": "xsd:integer"
+    },
+    "composite_end_time_ms": {
+      "@id": "coactive:composite_end_time_ms",
+      "@type": "xsd:integer"
+    },
+    "moderation_score": {
+      "@id": "coactive:moderation_score",
+      "@type": "xsd:decimal"
+    },
+    "agentic-search_TranscriptExactMatchResponse": "coactive:agentic-search_TranscriptExactMatchResponse",
+    "data": {
+      "@id": "coactive:data",
+      "@container": "@list"
+    },
+    "agentic-search_MetadataFilterTriggerResponse": "coactive:agentic-search_MetadataFilterTriggerResponse",
+    "run_id": {
+      "@id": "coactive:run_id",
+      "@type": "xsd:integer"
+    },
+    "agentic-search_HybridSearchResponse": "coactive:agentic-search_HybridSearchResponse",
+    "agentic-search_ImageKeyframeSearchResultItem": "coactive:agentic-search_ImageKeyframeSearchResultItem",
+    "path": {
+      "@id": "coactive:path",
+      "@type": "xsd:string"
+    },
+    "metadata": {
+      "@id": "coactive:metadata"
+    },
+    "video": {
+      "@id": "coactive:video"
+    },
+    "shot": {
+      "@id": "coactive:shot"
+    },
+    "audio_segment": {
+      "@id": "coactive:audio_segment"
+    },
+    "timestamp": {
+      "@id": "coactive:timestamp",
+      "@type": "xsd:integer"
+    },
+    "agentic-search_HybridSearchResultItem": "coactive:agentic-search_HybridSearchResultItem",
+    "relevance_score": {
+      "@id": "coactive:relevance_score",
+      "@type": "xsd:decimal"
+    },
+    "agentic-search_ChatResponse": "coactive:agentic-search_ChatResponse",
+    "chat_response_text": {
+      "@id": "coactive:chat_response_text",
+      "@type": "xsd:string"
+    },
+    "tool_results": {
+      "@id": "coactive:tool_results",
+      "@container": "@list"
+    },
+    "history_chat_messages": {
+      "@id": "coactive:history_chat_messages",
+      "@container": "@list"
+    },
+    "suggested_follow_ups": {
+      "@id": "coactive:suggested_follow_ups",
+      "@container": "@list"
+    },
+    "agentic-search_AudioChunk": "coactive:agentic-search_AudioChunk",
+    "start_time_ms": {
+      "@id": "coactive:start_time_ms",
+      "@type": "xsd:integer"
+    },
+    "end_time_ms": {
+      "@id": "coactive:end_time_ms",
+      "@type": "xsd:integer"
+    },
+    "score": {
+      "@id": "coactive:score",
+      "@type": "xsd:decimal"
+    },
+    "agentic-search_KeyframeSearchResultItem": "coactive:agentic-search_KeyframeSearchResultItem",
+    "keyframe_id": {
+      "@id": "coactive:keyframe_id",
+      "@type": "xsd:string"
+    },
+    "agentic-search_TextToImageSearchByPersonResponse": "coactive:agentic-search_TextToImageSearchByPersonResponse",
+    "videos": {
+      "@id": "coactive:videos",
+      "@container": "@list"
+    },
+    "agentic-search_VideoTranscriptMatch": "coactive:agentic-search_VideoTranscriptMatch",
+    "coverage_score": {
+      "@id": "coactive:coverage_score",
+      "@type": "xsd:decimal"
+    },
+    "agentic-search_Video": "coactive:agentic-search_Video",
+    "coactive_video_id": {
+      "@id": "coactive:coactive_video_id",
+      "@type": "xsd:string"
+    },
+    "agentic-search_VideoMetadata": "coactive:agentic-search_VideoMetadata",
+    "agentic-search_VideoKeyframe": "coactive:agentic-search_VideoKeyframe",
+    "id": {
+      "@id": "coactive:id",
+      "@type": "xsd:string"
+    },
+    "frame_time_ms": {
+      "@id": "coactive:frame_time_ms",
+      "@type": "xsd:integer"
+    },
+    "agentic-search_TextToImageSearchByPersonVideoResult": "coactive:agentic-search_TextToImageSearchByPersonVideoResult",
+    "agentic-search_CompositeSliceWithScore": "coactive:agentic-search_CompositeSliceWithScore",
+    "index": {
+      "@id": "coactive:index",
+      "@type": "xsd:integer"
+    },
+    "start_frame_num": {
+      "@id": "coactive:start_frame_num",
+      "@type": "xsd:integer"
+    },
+    "end_frame_num": {
+      "@id": "coactive:end_frame_num",
+      "@type": "xsd:integer"
+    },
+    "composite_id": {
+      "@id": "coactive:composite_id",
+      "@type": "xsd:string"
+    },
+    "composite_slice_score": {
+      "@id": "coactive:composite_slice_score",
+      "@type": "xsd:decimal"
+    },
+    "agentic-search_GetVideoDetailsResponse": "coactive:agentic-search_GetVideoDetailsResponse",
+    "text_query": {
+      "@id": "coactive:text_query",
+      "@type": "xsd:string"
+    },
+    "source_path": {
+      "@id": "coactive:source_path",
+      "@type": "xsd:string"
+    },
+    "slices": {
+      "@id": "coactive:slices",
+      "@container": "@list"
+    },
+    "agentic-search_VideoSearchResultItem": "coactive:agentic-search_VideoSearchResultItem",
+    "video_score": {
+      "@id": "coactive:video_score",
+      "@type": "xsd:decimal"
+    },
+    "top_composite_slice": {
+      "@id": "coactive:top_composite_slice"
+    },
+    "top_keyframe": {
+      "@id": "coactive:top_keyframe"
+    },
+    "agentic-search_ToolName": "coactive:agentic-search_ToolName",
+    "agentic-search_HTTPValidationError": "coactive:agentic-search_HTTPValidationError",
+    "detail": {
+      "@id": "coactive:detail",
+      "@container": "@list"
+    },
+    "agentic-search_AudioSegment": "coactive:agentic-search_AudioSegment",
+    "speech_to_text_transcription": {
+      "@id": "coactive:speech_to_text_transcription",
+      "@type": "xsd:string"
+    },
+    "agentic-search_ImageKeyframeSearchResponse": "coactive:agentic-search_ImageKeyframeSearchResponse",
+    "agentic-search_ValidationError": "coactive:agentic-search_ValidationError",
+    "loc": {
+      "@id": "coactive:loc",
+      "@container": "@list"
+    },
+    "msg": {
+      "@id": "coactive:msg",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "coactive:type",
+      "@type": "xsd:string"
+    },
+    "agentic-search_ToolResult": "coactive:agentic-search_ToolResult",
+    "tool_name": {
+      "@id": "coactive:tool_name",
+      "@type": "@id"
+    },
+    "dataset_type": {
+      "@id": "coactive:dataset_type",
+      "@type": "@id"
+    },
+    "invocation_timestamp": {
+      "@id": "coactive:invocation_timestamp",
+      "@type": "xsd:string"
+    },
+    "result": {
+      "@id": "coactive:result",
+      "@type": "@id"
+    },
+    "agentic-search_DatasetType": "coactive:agentic-search_DatasetType",
+    "agentic-search_AudioSoundSearchResponse": "coactive:agentic-search_AudioSoundSearchResponse",
+    "agentic-search_KeyframeSearchResponse": "coactive:agentic-search_KeyframeSearchResponse",
+    "agentic-search_Shot": "coactive:agentic-search_Shot",
+    "shot_id": {
+      "@id": "coactive:shot_id",
+      "@type": "xsd:string"
+    },
+    "agentic-search_ChatRequest": "coactive:agentic-search_ChatRequest",
+    "chat_request_text": {
+      "@id": "coactive:chat_request_text",
+      "@type": "xsd:string"
+    },
+    "upload_id": {
+      "@id": "coactive:upload_id",
+      "@type": "xsd:string"
+    },
+    "agentic-search_CompositeSlice": "coactive:agentic-search_CompositeSlice",
+    "celebrity-detection_Face": "coactive:celebrity-detection_Face",
+    "image_id": {
+      "@id": "coactive:image_id",
+      "@type": "xsd:string"
+    },
+    "bbox": {
+      "@id": "coactive:bbox",
+      "@type": "@id"
+    },
+    "confidence": {
+      "@id": "coactive:confidence",
+      "@type": "xsd:decimal"
+    },
+    "celebrity-detection_IdentifyCelebritiesInExternalImageResponse": "coactive:celebrity-detection_IdentifyCelebritiesInExternalImageResponse",
+    "persons": {
+      "@id": "coactive:persons",
+      "@container": "@list"
+    },
+    "celebrity-detection_BoundingBox": "coactive:celebrity-detection_BoundingBox",
+    "x1": {
+      "@id": "coactive:x1",
+      "@type": "xsd:decimal"
+    },
+    "y1": {
+      "@id": "coactive:y1",
+      "@type": "xsd:decimal"
+    },
+    "x2": {
+      "@id": "coactive:x2",
+      "@type": "xsd:decimal"
+    },
+    "y2": {
+      "@id": "coactive:y2",
+      "@type": "xsd:decimal"
+    },
+    "celebrity-detection_PagedMetaResponse": "coactive:celebrity-detection_PagedMetaResponse",
+    "page": {
+      "@id": "coactive:page",
+      "@type": "@id"
+    },
+    "has_next_page": {
+      "@id": "coactive:has_next_page",
+      "@type": "xsd:boolean"
+    },
+    "celebrity-detection_EnrollmentStatus": "coactive:celebrity-detection_EnrollmentStatus",
+    "celebrity-detection_GetPersonsInImageResponse": "coactive:celebrity-detection_GetPersonsInImageResponse",
+    "celebrity-detection_GetFacesWithPersonResponse": "coactive:celebrity-detection_GetFacesWithPersonResponse",
+    "faces": {
+      "@id": "coactive:faces",
+      "@container": "@list"
+    },
+    "celebrity-detection_UpdatePersonAliasesRequest": "coactive:celebrity-detection_UpdatePersonAliasesRequest",
+    "person_id": {
+      "@id": "coactive:person_id",
+      "@type": "xsd:string"
+    },
+    "aliases": {
+      "@id": "coactive:aliases",
+      "@container": "@list"
+    },
+    "celebrity-detection_GetPersonsByNamesAliasesResponse": "coactive:celebrity-detection_GetPersonsByNamesAliasesResponse",
+    "matches": {
+      "@id": "coactive:matches",
+      "@container": "@list"
+    },
+    "celebrity-detection_SortDirection": "coactive:celebrity-detection_SortDirection",
+    "celebrity-detection_PagedPageDetailsResponse": "coactive:celebrity-detection_PagedPageDetailsResponse",
+    "per_page": {
+      "@id": "coactive:per_page",
+      "@type": "xsd:integer"
+    },
+    "celebrity-detection_ValidationError": "coactive:celebrity-detection_ValidationError",
+    "celebrity-detection_HTTPValidationError": "coactive:celebrity-detection_HTTPValidationError",
+    "celebrity-detection_IngestedImage": "coactive:celebrity-detection_IngestedImage",
+    "celebrity-detection_IdentifyCelebritiesInExternalImageRequest": "coactive:celebrity-detection_IdentifyCelebritiesInExternalImageRequest",
+    "image": {
+      "@id": "coactive:image",
+      "@type": "xsd:string"
+    },
+    "celebrity-detection_Person": "coactive:celebrity-detection_Person",
+    "name": {
+      "@id": "coactive:name",
+      "@type": "xsd:string"
+    },
+    "celebrity-detection_GetPersonResponse": "coactive:celebrity-detection_GetPersonResponse",
+    "upload_ids": {
+      "@id": "coactive:upload_ids",
+      "@container": "@list"
+    },
+    "ingested_images": {
+      "@id": "coactive:ingested_images",
+      "@container": "@list"
+    },
+    "status": {
+      "@id": "coactive:status",
+      "@type": "@id"
+    },
+    "created_user_id": {
+      "@id": "coactive:created_user_id",
+      "@type": "xsd:string"
+    },
+    "created_dt": {
+      "@id": "coactive:created_dt",
+      "@type": "xsd:dateTime"
+    },
+    "celebrity-detection_GetPersonsResponse": "coactive:celebrity-detection_GetPersonsResponse",
+    "meta": {
+      "@id": "coactive:meta"
+    },
+    "sort": {
+      "@id": "coactive:sort",
+      "@container": "@list"
+    },
+    "celebrity-detection_PersonNameMatch": "coactive:celebrity-detection_PersonNameMatch",
+    "celebrity-detection_SortField": "coactive:celebrity-detection_SortField",
+    "field": {
+      "@id": "coactive:field",
+      "@type": "xsd:string"
+    },
+    "direction": {
+      "@id": "coactive:direction",
+      "@type": "@id"
+    },
+    "PublicUrlClassificationRequest": "coactive:PublicUrlClassificationRequest",
+    "url": {
+      "@id": "coactive:url",
+      "@type": "xsd:string"
+    },
+    "conceptIds": {
+      "@id": "coactive:conceptIds",
+      "@container": "@list"
+    },
+    "datasetId": {
+      "@id": "coactive:datasetId",
+      "@type": "xsd:string"
+    },
+    "ClassificationScore": "coactive:ClassificationScore",
+    "conceptName": {
+      "@id": "coactive:conceptName",
+      "@type": "xsd:string"
+    },
+    "conceptId": {
+      "@id": "coactive:conceptId",
+      "@type": "xsd:string"
+    },
+    "threshold": {
+      "@id": "coactive:threshold",
+      "@type": "xsd:decimal"
+    },
+    "positive": {
+      "@id": "coactive:positive",
+      "@type": "xsd:boolean"
+    },
+    "ErrorResponse": "coactive:ErrorResponse",
+    "HTTPValidationError": "coactive:HTTPValidationError",
+    "Classification": "coactive:Classification",
+    "scores": {
+      "@id": "coactive:scores",
+      "@container": "@list"
+    },
+    "ValidationError": "coactive:ValidationError",
+    "PagedLinksResponse": "coactive:PagedLinksResponse",
+    "prev": {
+      "@id": "coactive:prev",
+      "@type": "xsd:string"
+    },
+    "next": {
+      "@id": "coactive:next",
+      "@type": "xsd:string"
+    },
+    "first": {
+      "@id": "coactive:first",
+      "@type": "xsd:string"
+    },
+    "last": {
+      "@id": "coactive:last",
+      "@type": "xsd:string"
+    },
+    "VideoMetadata": "coactive:VideoMetadata",
+    "UpdateConceptRequest": "coactive:UpdateConceptRequest",
+    "description": {
+      "@id": "coactive:description",
+      "@type": "xsd:string"
+    },
+    "regularization": {
+      "@id": "coactive:regularization",
+      "@type": "xsd:decimal"
+    },
+    "PagedConcepts": "coactive:PagedConcepts",
+    "ConceptLabelRequest": "coactive:ConceptLabelRequest",
+    "coactiveImageId": {
+      "@id": "coactive:coactiveImageId",
+      "@type": "xsd:string"
+    },
+    "imagePath": {
+      "@id": "coactive:imagePath",
+      "@type": "xsd:string"
+    },
+    "label": {
+      "@id": "coactive:label"
+    },
+    "CandidatesToLabel": "coactive:CandidatesToLabel",
+    "Concept": "coactive:Concept",
+    "createdUserId": {
+      "@id": "coactive:createdUserId",
+      "@type": "xsd:string"
+    },
+    "createdDt": {
+      "@id": "coactive:createdDt",
+      "@type": "xsd:dateTime"
+    },
+    "updatedUserId": {
+      "@id": "coactive:updatedUserId",
+      "@type": "xsd:string"
+    },
+    "updatedDt": {
+      "@id": "coactive:updatedDt",
+      "@type": "xsd:dateTime"
+    },
+    "PagedPageDetailsResponse": "coactive:PagedPageDetailsResponse",
+    "currentPage": {
+      "@id": "coactive:currentPage",
+      "@type": "xsd:integer"
+    },
+    "lastPage": {
+      "@id": "coactive:lastPage",
+      "@type": "xsd:integer"
+    },
+    "limit": {
+      "@id": "coactive:limit",
+      "@type": "xsd:integer"
+    },
+    "offset": {
+      "@id": "coactive:offset",
+      "@type": "xsd:integer"
+    },
+    "total": {
+      "@id": "coactive:total",
+      "@type": "xsd:integer"
+    },
+    "Keyframe": "coactive:Keyframe",
+    "audioSegment": {
+      "@id": "coactive:audioSegment"
+    },
+    "app__shared__v1__schema__Shot": "coactive:app__shared__v1__schema__Shot",
+    "shotId": {
+      "@id": "coactive:shotId",
+      "@type": "xsd:string"
+    },
+    "startTimeMs": {
+      "@id": "coactive:startTimeMs",
+      "@type": "xsd:integer"
+    },
+    "endTimeMs": {
+      "@id": "coactive:endTimeMs",
+      "@type": "xsd:integer"
+    },
+    "PagedMetaResponse": "coactive:PagedMetaResponse",
+    "links": {
+      "@id": "coactive:links",
+      "@type": "@id"
+    },
+    "ConceptLabelEnum": "coactive:ConceptLabelEnum",
+    "SortItem": "coactive:SortItem",
+    "UpdateConceptLabelsRequest": "coactive:UpdateConceptLabelsRequest",
+    "labels": {
+      "@id": "coactive:labels",
+      "@container": "@list"
+    },
+    "autosampledNumNegativeLabels": {
+      "@id": "coactive:autosampledNumNegativeLabels",
+      "@type": "xsd:integer"
+    },
+    "Image": "coactive:Image",
+    "ConceptPredictionResponse": "coactive:ConceptPredictionResponse",
+    "probabilityRanges": {
+      "@id": "coactive:probabilityRanges",
+      "@container": "@list"
+    },
+    "estimates": {
+      "@id": "coactive:estimates",
+      "@container": "@list"
+    },
+    "confidenceIntervals": {
+      "@id": "coactive:confidenceIntervals",
+      "@container": "@list"
+    },
+    "app__shared__v1__schema__AudioSegment": "coactive:app__shared__v1__schema__AudioSegment",
+    "speechToTextTranscription": {
+      "@id": "coactive:speechToTextTranscription",
+      "@type": "xsd:string"
+    },
+    "PagedConceptLabels": "coactive:PagedConceptLabels",
+    "ConceptLabel": "coactive:ConceptLabel",
+    "labelId": {
+      "@id": "coactive:labelId",
+      "@type": "xsd:string"
+    },
+    "keyframe": {
+      "@id": "coactive:keyframe"
+    },
+    "CreateConceptRequest": "coactive:CreateConceptRequest",
+    "Video": "coactive:Video",
+    "coactiveVideoId": {
+      "@id": "coactive:coactiveVideoId",
+      "@type": "xsd:string"
+    },
+    "SortDirection": "coactive:SortDirection",
+    "connections_HTTPSBearerAuthConfig": "coactive:connections_HTTPSBearerAuthConfig",
+    "hostname": {
+      "@id": "coactive:hostname",
+      "@type": "xsd:string"
+    },
+    "bearer_token": {
+      "@id": "coactive:bearer_token",
+      "@type": "xsd:string"
+    },
+    "connections_HTTPValidationError": "coactive:connections_HTTPValidationError",
+    "connections_GetConnectionCredentialsResponse": "coactive:connections_GetConnectionCredentialsResponse",
+    "access_key_id": {
+      "@id": "coactive:access_key_id",
+      "@type": "xsd:string"
+    },
+    "secret_access_key": {
+      "@id": "coactive:secret_access_key",
+      "@type": "xsd:string"
+    },
+    "session_token": {
+      "@id": "coactive:session_token",
+      "@type": "xsd:string"
+    },
+    "expires_in": {
+      "@id": "coactive:expires_in",
+      "@type": "xsd:integer"
+    },
+    "connections_HTTPSBasicAuthConfig": "coactive:connections_HTTPSBasicAuthConfig",
+    "username": {
+      "@id": "coactive:username",
+      "@type": "xsd:string"
+    },
+    "password": {
+      "@id": "coactive:password",
+      "@type": "xsd:string"
+    },
+    "connections_CreateHTTPSBasicAuthConnectionRequest": "coactive:connections_CreateHTTPSBasicAuthConnectionRequest",
+    "test_location": {
+      "@id": "coactive:test_location",
+      "@type": "xsd:string"
+    },
+    "config": {
+      "@id": "coactive:config",
+      "@type": "@id"
+    },
+    "connections_UpdateConnectionRequest": "coactive:connections_UpdateConnectionRequest",
+    "connections_ListWithConnectionRequest": "coactive:connections_ListWithConnectionRequest",
+    "bucket": {
+      "@id": "coactive:bucket",
+      "@type": "xsd:string"
+    },
+    "prefix": {
+      "@id": "coactive:prefix",
+      "@type": "xsd:string"
+    },
+    "max_keys": {
+      "@id": "coactive:max_keys",
+      "@type": "xsd:integer"
+    },
+    "continuation_token": {
+      "@id": "coactive:continuation_token",
+      "@type": "xsd:string"
+    },
+    "connections_AWSIAMRoleScope": "coactive:connections_AWSIAMRoleScope",
+    "connections_PagedLinksDetailsResponse": "coactive:connections_PagedLinksDetailsResponse",
+    "current": {
+      "@id": "coactive:current",
+      "@type": "xsd:string"
+    },
+    "previous": {
+      "@id": "coactive:previous",
+      "@type": "xsd:string"
+    },
+    "connections_PagedPageDetailsResponse": "coactive:connections_PagedPageDetailsResponse",
+    "current_page": {
+      "@id": "coactive:current_page",
+      "@type": "xsd:integer"
+    },
+    "connections_GetConnectionResponse": "coactive:connections_GetConnectionResponse",
+    "connection_id": {
+      "@id": "coactive:connection_id",
+      "@type": "xsd:string"
+    },
+    "updated_dt": {
+      "@id": "coactive:updated_dt",
+      "@type": "xsd:dateTime"
+    },
+    "connections_ListWithConnectionResponse": "coactive:connections_ListWithConnectionResponse",
+    "keys": {
+      "@id": "coactive:keys",
+      "@container": "@list"
+    },
+    "common_prefixes": {
+      "@id": "coactive:common_prefixes",
+      "@container": "@list"
+    },
+    "connections_CreateAWSConnectionRequest": "coactive:connections_CreateAWSConnectionRequest",
+    "connections_ValidationError": "coactive:connections_ValidationError",
+    "connections_ConnectionStatus": "coactive:connections_ConnectionStatus",
+    "connections_AWSIAMRoleConfig": "coactive:connections_AWSIAMRoleConfig",
+    "iam_role_arn": {
+      "@id": "coactive:iam_role_arn",
+      "@type": "xsd:string"
+    },
+    "scope": {
+      "@id": "coactive:scope",
+      "@type": "@id"
+    },
+    "bucket_name": {
+      "@id": "coactive:bucket_name",
+      "@type": "xsd:string"
+    },
+    "session_ttl_seconds": {
+      "@id": "coactive:session_ttl_seconds",
+      "@type": "xsd:integer"
+    },
+    "connections_PagedMetaResponse": "coactive:connections_PagedMetaResponse",
+    "connections_TestConnectionRequest": "coactive:connections_TestConnectionRequest",
+    "location": {
+      "@id": "coactive:location",
+      "@type": "xsd:string"
+    },
+    "update_state": {
+      "@id": "coactive:update_state",
+      "@type": "xsd:boolean"
+    },
+    "connections_ListConnectionsResponse": "coactive:connections_ListConnectionsResponse",
+    "connections_CreateHTTPSBearerAuthConnectionRequest": "coactive:connections_CreateHTTPSBearerAuthConnectionRequest",
+    "connections_ConnectionType": "coactive:connections_ConnectionType",
+    "context-studio_VideoAdSegmentCreateRequest": "coactive:context-studio_VideoAdSegmentCreateRequest",
+    "segment_start_time_ms": {
+      "@id": "coactive:segment_start_time_ms",
+      "@type": "xsd:decimal"
+    },
+    "segment_end_time_ms": {
+      "@id": "coactive:segment_end_time_ms",
+      "@type": "xsd:decimal"
+    },
+    "segment_start_frame_number": {
+      "@id": "coactive:segment_start_frame_number",
+      "@type": "xsd:integer"
+    },
+    "segment_end_frame_number": {
+      "@id": "coactive:segment_end_frame_number",
+      "@type": "xsd:integer"
+    },
+    "context-studio_AdSegmentInfo": "coactive:context-studio_AdSegmentInfo",
+    "segment_number": {
+      "@id": "coactive:segment_number",
+      "@type": "xsd:integer"
+    },
+    "context-studio_VideoAdSegmentResponse": "coactive:context-studio_VideoAdSegmentResponse",
+    "context-studio_HTTPValidationError": "coactive:context-studio_HTTPValidationError",
+    "context-studio_VideoAdSegmentsCreateResponse": "coactive:context-studio_VideoAdSegmentsCreateResponse",
+    "asset_identifier_value": {
+      "@id": "coactive:asset_identifier_value",
+      "@type": "xsd:string"
+    },
+    "ad_segments_created": {
+      "@id": "coactive:ad_segments_created",
+      "@type": "xsd:integer"
+    },
+    "segments": {
+      "@id": "coactive:segments",
+      "@container": "@list"
+    },
+    "message": {
+      "@id": "coactive:message",
+      "@type": "xsd:string"
+    },
+    "context-studio_VideoAdSegmentMetadataResponse": "coactive:context-studio_VideoAdSegmentMetadataResponse",
+    "segment_type": {
+      "@id": "coactive:segment_type",
+      "@type": "xsd:string"
+    },
+    "incode": {
+      "@id": "coactive:incode",
+      "@type": "xsd:string"
+    },
+    "outcode": {
+      "@id": "coactive:outcode",
+      "@type": "xsd:string"
+    },
+    "context-studio_VideoAdSegmentMetadataRequest": "coactive:context-studio_VideoAdSegmentMetadataRequest",
+    "context-studio_ValidationError": "coactive:context-studio_ValidationError",
+    "context-studio_VideoAdSegmentsCreateRequest": "coactive:context-studio_VideoAdSegmentsCreateRequest",
+    "ad_segments": {
+      "@id": "coactive:ad_segments",
+      "@container": "@list"
+    },
+    "context-studio_VideoAdSegmentsGetResponse": "coactive:context-studio_VideoAdSegmentsGetResponse",
+    "datasets_AssetTypeEnum": "coactive:datasets_AssetTypeEnum",
+    "datasets_DatasetStatusEnum": "coactive:datasets_DatasetStatusEnum",
+    "datasets_DatasetConfig": "coactive:datasets_DatasetConfig",
+    "embedding_id": {
+      "@id": "coactive:embedding_id"
+    },
+    "encoder_name": {
+      "@id": "coactive:encoder_name"
+    },
+    "extra_config": {
+      "@id": "coactive:extra_config"
+    },
+    "hybrid_search": {
+      "@id": "coactive:hybrid_search"
+    },
+    "context_studio_enabled": {
+      "@id": "coactive:context_studio_enabled",
+      "@type": "xsd:boolean"
+    },
+    "metadata_fields_to_embed": {
+      "@id": "coactive:metadata_fields_to_embed",
+      "@container": "@list"
+    },
+    "metadata_fields_to_index": {
+      "@id": "coactive:metadata_fields_to_index",
+      "@container": "@list"
+    },
+    "celebrity_detection_enabled": {
+      "@id": "coactive:celebrity_detection_enabled",
+      "@type": "xsd:boolean"
+    },
+    "agentic_search_metadata_description": {
+      "@id": "coactive:agentic_search_metadata_description"
+    },
+    "asset_identifier_key": {
+      "@id": "coactive:asset_identifier_key",
+      "@type": "xsd:string"
+    },
+    "context_studio_export_json_connection_name": {
+      "@id": "coactive:context_studio_export_json_connection_name",
+      "@type": "xsd:string"
+    },
+    "datasets_PagedPageDetailsResponse": "coactive:datasets_PagedPageDetailsResponse",
+    "last_page": {
+      "@id": "coactive:last_page",
+      "@type": "xsd:integer"
+    },
+    "datasets_ExtraConfig": "coactive:datasets_ExtraConfig",
+    "composite_settings": {
+      "@id": "coactive:composite_settings"
+    },
+    "datasets_ValidationError": "coactive:datasets_ValidationError",
+    "datasets_DatasetGetManyResponse": "coactive:datasets_DatasetGetManyResponse",
+    "datasets_PagedMetaResponse": "coactive:datasets_PagedMetaResponse",
+    "datasets_CompositeSettings": "coactive:datasets_CompositeSettings",
+    "maximum_slice_duration_seconds": {
+      "@id": "coactive:maximum_slice_duration_seconds",
+      "@type": "xsd:integer"
+    },
+    "datasets_DatasetUpdateRequestStatus": "coactive:datasets_DatasetUpdateRequestStatus"
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "Coactive API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects Coactive's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-20) from openapi/coactive-agentic-search-agenticsearch-api-openapi.yml, openapi/coactive-celebrity-detection-api-openapi.yml, openapi/coactive-classification-api-openapi.yml.",
+  "dcterms:created": "2026-10-20",
+  "dcterms:source": [
+    "openapi/coactive-agentic-search-agenticsearch-api-openapi.yml",
+    "openapi/coactive-celebrity-detection-api-openapi.yml",
+    "openapi/coactive-classification-api-openapi.yml",
+    "openapi/coactive-concept-api-openapi.yml",
+    "openapi/coactive-connections-connections-api-openapi.yml"
+  ]
+}

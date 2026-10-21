@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-search-text-search-by-person-request-schema.json",
+  "title": "TextSearchByPersonRequest",
+  "description": "Text search filtered by person request",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-search-search-api-openapi.yml#/components/schemas/search_TextSearchByPersonRequest",
+  "type": "object",
+  "properties": {
+    "dataset_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The unique identifier for the dataset"
+    },
+    "offset": {
+      "type": "integer",
+      "default": 0,
+      "description": "Starting index to return"
+    },
+    "limit": {
+      "type": "integer",
+      "default": 100,
+      "description": "Max number of items to return"
+    },
+    "metadata_filters": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/search_MetadataFilters"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "List of metadata filters to apply to the search"
+    },
+    "moderation_score_type": {
+      "$ref": "#/$defs/search_ScoreType",
+      "description": "Type of moderation scores to return when moderation is enabled.probability returns scores 0-1 using BGE Reranker model.level returns scores 0-5 using OpenAI model.This does not enable/disable moderation - use skip_moderation for that."
+    },
+    "text_query": {
+      "type": "string",
+      "description": "The text query to search for"
+    },
+    "negative_text": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Optional text describing what to exclude from search results. Steers the query embedding away from this direction."
+    },
+    "person_ids": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "description": "List of person IDs to filter results by. Currently only a single person_id is supported."
+    },
+    "person_names_or_aliases": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "description": "List of person names/aliases to filter results by. Currently only a single person name is supported."
+    },
+    "asset_type": {
+      "$ref": "#/$defs/search_VisualAssetType",
+      "description": "Visual asset type to search over. For datasets using the native video data model, only 'keyframe' is supported."
+    },
+    "skip_moderation": {
+      "type": "boolean",
+      "default": false,
+      "description": "Skip content moderation if enabled"
+    }
+  },
+  "required": [
+    "dataset_id",
+    "text_query",
+    "asset_type"
+  ],
+  "$defs": {
+    "search_BooleanEqualsClause": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "=="
+          ]
+        },
+        "value": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "key",
+        "operator",
+        "value"
+      ],
+      "title": "BooleanEqualsClause"
+    },
+    "search_DateTimeRangeInclusiveClause": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "start_utc_epoch": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "end_utc_epoch": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "DateTimeRangeInclusive"
+          ]
+        }
+      },
+      "required": [
+        "key",
+        "operator"
+      ],
+      "title": "DateTimeRangeInclusiveClause"
+    },
+    "search_EqualsClause": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "=="
+          ]
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "operator",
+        "value"
+      ],
+      "title": "EqualsClause"
+    },
+    "search_MetadataFilters": {
+      "type": "object",
+      "properties": {
+        "filters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/search_MetadataFiltersFiltersItems"
+          }
+        }
+      },
+      "required": [
+        "filters"
+      ],
+      "title": "MetadataFilters"
+    },
+    "search_MetadataFiltersFiltersItems": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/search_BooleanEqualsClause"
+        },
+        {
+          "$ref": "#/$defs/search_EqualsClause"
+        },
+        {
+          "$ref": "#/$defs/search_NotEqualsClause"
+        },
+        {
+          "$ref": "#/$defs/search_DateTimeRangeInclusiveClause"
+        }
+      ],
+      "title": "MetadataFiltersFiltersItems"
+    },
+    "search_NotEqualsClause": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "!="
+          ]
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "operator",
+        "value"
+      ],
+      "title": "NotEqualsClause"
+    },
+    "search_ScoreType": {
+      "type": "string",
+      "enum": [
+        "probability",
+        "level"
+      ],
+      "description": "Score type returned by the moderation service.\n- PROBABILITY: Scores in range 0-1 (uses BGE Reranker model)\n- LEVEL: Scores in range 0-5 (uses OpenAI model)",
+      "title": "ScoreType"
+    },
+    "search_VisualAssetType": {
+      "type": "string",
+      "enum": [
+        "image",
+        "keyframe"
+      ],
+      "title": "VisualAssetType"
+    }
+  }
+}

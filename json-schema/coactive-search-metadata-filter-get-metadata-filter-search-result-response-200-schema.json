@@ -1,0 +1,555 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-search-metadata-filter-get-metadata-filter-search-result-response-200-schema.json",
+  "title": "get_metadata_filter_search_result_Response_200",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-search-metadata-filter-api-openapi.yml#/components/schemas/search-metadata-filter_get_metadata_filter_search_result_Response_200",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/search-metadata-filter_VideoMetadataSearchResponse"
+    },
+    {
+      "$ref": "#/$defs/search-metadata-filter_ShotMetadataSearchResponse"
+    },
+    {
+      "$ref": "#/$defs/search-metadata-filter_TranscriptMetadataSearchResponse"
+    },
+    {
+      "$ref": "#/$defs/search-metadata-filter_ImageMetadataSearchResponse"
+    },
+    {
+      "$ref": "#/$defs/search-metadata-filter_KeyframeMetadataSearchResponse"
+    },
+    {
+      "$ref": "#/$defs/search-metadata-filter_SoundMetadataSearchResponse"
+    }
+  ],
+  "$defs": {
+    "search-metadata-filter_AudioSegment": {
+      "type": "object",
+      "properties": {
+        "start_time_ms": {
+          "type": "integer"
+        },
+        "end_time_ms": {
+          "type": "integer"
+        },
+        "speech_to_text_transcription": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "start_time_ms",
+        "end_time_ms",
+        "speech_to_text_transcription"
+      ],
+      "title": "AudioSegment"
+    },
+    "search-metadata-filter_ImageMetadataSearchResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "search_target": {
+          "type": "string",
+          "enum": [
+            "image"
+          ]
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/search-metadata-filter_ImageSearchResult"
+          }
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "ImageMetadataSearchResponse"
+    },
+    "search-metadata-filter_ImageSearchResult": {
+      "type": "object",
+      "properties": {
+        "coactive_image_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "path": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "description": "Any type"
+          }
+        },
+        "relevance_score": {
+          "type": "number",
+          "format": "double"
+        },
+        "moderation_score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        }
+      },
+      "required": [
+        "coactive_image_id",
+        "path",
+        "metadata",
+        "relevance_score"
+      ],
+      "title": "ImageSearchResult"
+    },
+    "search-metadata-filter_KeyframeMetadataSearchResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "search_target": {
+          "type": "string",
+          "enum": [
+            "keyframe"
+          ]
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/search-metadata-filter_KeyframeSearchResult"
+          }
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "KeyframeMetadataSearchResponse"
+    },
+    "search-metadata-filter_KeyframeSearchResult": {
+      "type": "object",
+      "properties": {
+        "keyframe_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "video_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "video_metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "description": "Any type"
+          }
+        },
+        "frame_time_ms": {
+          "type": "integer"
+        },
+        "composite_slice_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "slice_start_time_ms": {
+          "type": "integer"
+        },
+        "slice_end_time_ms": {
+          "type": "integer"
+        },
+        "cosine_sim": {
+          "type": "number",
+          "format": "double"
+        },
+        "moderation_score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        }
+      },
+      "required": [
+        "keyframe_id",
+        "video_id",
+        "video_metadata",
+        "frame_time_ms",
+        "composite_slice_id",
+        "slice_start_time_ms",
+        "slice_end_time_ms",
+        "cosine_sim"
+      ],
+      "title": "KeyframeSearchResult"
+    },
+    "search-metadata-filter_ShotMetadataSearchResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "search_target": {
+          "type": "string",
+          "enum": [
+            "shot"
+          ]
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/search-metadata-filter_ShotSearchResult"
+          }
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "ShotMetadataSearchResponse"
+    },
+    "search-metadata-filter_ShotSearchResult": {
+      "type": "object",
+      "properties": {
+        "composite_slice_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "video_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "video_metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "description": "Any type"
+          }
+        },
+        "slice_start_time_ms": {
+          "type": "integer"
+        },
+        "slice_end_time_ms": {
+          "type": "integer"
+        },
+        "max_cosine_sim": {
+          "type": "number",
+          "format": "double"
+        },
+        "keyframe_count": {
+          "type": "integer"
+        },
+        "moderation_score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        }
+      },
+      "required": [
+        "composite_slice_id",
+        "video_id",
+        "video_metadata",
+        "slice_start_time_ms",
+        "slice_end_time_ms",
+        "max_cosine_sim",
+        "keyframe_count"
+      ],
+      "title": "ShotSearchResult"
+    },
+    "search-metadata-filter_SoundMetadataSearchResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "search_target": {
+          "type": "string",
+          "enum": [
+            "sound"
+          ]
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/search-metadata-filter_SoundSearchResult"
+          }
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "SoundMetadataSearchResponse"
+    },
+    "search-metadata-filter_SoundSearchResult": {
+      "type": "object",
+      "properties": {
+        "coactive_image_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "video": {
+          "$ref": "#/$defs/search-metadata-filter_Video"
+        },
+        "start_time_ms": {
+          "type": "integer"
+        },
+        "end_time_ms": {
+          "type": "integer"
+        },
+        "score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "timestamp": {
+          "type": "integer"
+        },
+        "moderation_score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        }
+      },
+      "required": [
+        "coactive_image_id",
+        "video",
+        "start_time_ms",
+        "end_time_ms",
+        "timestamp"
+      ],
+      "title": "SoundSearchResult"
+    },
+    "search-metadata-filter_TranscriptMetadataSearchResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "search_target": {
+          "type": "string",
+          "enum": [
+            "transcript"
+          ]
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/search-metadata-filter_TranscriptSearchResult"
+          }
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "TranscriptMetadataSearchResponse"
+    },
+    "search-metadata-filter_TranscriptSearchResult": {
+      "type": "object",
+      "properties": {
+        "coactive_image_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "video": {
+          "$ref": "#/$defs/search-metadata-filter_Video"
+        },
+        "audio_segment": {
+          "$ref": "#/$defs/search-metadata-filter_AudioSegment"
+        },
+        "timestamp": {
+          "type": "integer"
+        },
+        "score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "coverage_score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "moderation_score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        }
+      },
+      "required": [
+        "coactive_image_id",
+        "video",
+        "audio_segment",
+        "timestamp"
+      ],
+      "title": "TranscriptSearchResult"
+    },
+    "search-metadata-filter_Video": {
+      "type": "object",
+      "properties": {
+        "coactive_video_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "path": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "description": "Any type"
+          }
+        }
+      },
+      "required": [
+        "coactive_video_id",
+        "path",
+        "metadata"
+      ],
+      "title": "Video"
+    },
+    "search-metadata-filter_VideoCompositeSlice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "composite_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "composite_type": {
+          "type": "string"
+        },
+        "index": {
+          "type": "integer"
+        },
+        "start_time_ms": {
+          "type": "integer"
+        },
+        "end_time_ms": {
+          "type": "integer"
+        },
+        "start_frame_num": {
+          "type": "integer"
+        },
+        "end_frame_num": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "composite_id",
+        "composite_type",
+        "index",
+        "start_time_ms",
+        "end_time_ms",
+        "start_frame_num",
+        "end_frame_num"
+      ],
+      "title": "VideoCompositeSlice"
+    },
+    "search-metadata-filter_VideoKeyframe": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "frame_time_ms": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "frame_time_ms"
+      ],
+      "title": "VideoKeyframe"
+    },
+    "search-metadata-filter_VideoMetadataSearchResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "search_target": {
+          "type": "string",
+          "enum": [
+            "video"
+          ]
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/search-metadata-filter_VideoSearchResult"
+          }
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "VideoMetadataSearchResponse"
+    },
+    "search-metadata-filter_VideoSearchResult": {
+      "type": "object",
+      "properties": {
+        "dataset_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "video_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "source_path": {
+          "type": "string"
+        },
+        "video_score": {
+          "type": "number",
+          "format": "double"
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "description": "Any type"
+          }
+        },
+        "top_composite_slice": {
+          "$ref": "#/$defs/search-metadata-filter_VideoCompositeSlice"
+        },
+        "top_keyframe": {
+          "$ref": "#/$defs/search-metadata-filter_VideoKeyframe"
+        },
+        "moderation_score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        }
+      },
+      "required": [
+        "dataset_id",
+        "video_id",
+        "source_path",
+        "video_score",
+        "metadata",
+        "top_composite_slice",
+        "top_keyframe"
+      ],
+      "title": "VideoSearchResult"
+    }
+  }
+}

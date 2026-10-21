@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-celebrity-detection-get-faces-with-person-response-schema.json",
+  "title": "GetFacesWithPersonResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-celebrity-detection-api-openapi.yml#/components/schemas/celebrity-detection_GetFacesWithPersonResponse",
+  "type": "object",
+  "properties": {
+    "faces": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/celebrity-detection_Face"
+      },
+      "description": "List of faces associated with the person (id, image_id, dataset_id, bbox, confidence)"
+    }
+  },
+  "required": [
+    "faces"
+  ],
+  "$defs": {
+    "celebrity-detection_BoundingBox": {
+      "type": "object",
+      "properties": {
+        "x1": {
+          "type": "number",
+          "format": "double"
+        },
+        "y1": {
+          "type": "number",
+          "format": "double"
+        },
+        "x2": {
+          "type": "number",
+          "format": "double"
+        },
+        "y2": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "required": [
+        "x1",
+        "y1",
+        "x2",
+        "y2"
+      ],
+      "title": "BoundingBox"
+    },
+    "celebrity-detection_Face": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Face ID"
+        },
+        "image_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Asset ID (image_id or keyframe_id)"
+        },
+        "dataset_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Dataset ID"
+        },
+        "bbox": {
+          "$ref": "#/$defs/celebrity-detection_BoundingBox",
+          "description": "Relative bounding box coordinates (x1, y1, x2, y2)"
+        },
+        "confidence": {
+          "type": "number",
+          "format": "double",
+          "description": "Confidence score of the face identification"
+        }
+      },
+      "required": [
+        "id",
+        "image_id",
+        "dataset_id",
+        "bbox",
+        "confidence"
+      ],
+      "title": "Face"
+    }
+  }
+}

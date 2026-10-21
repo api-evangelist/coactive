@@ -1,9 +1,9 @@
 generated: '2026-08-13'
 method: searched
 source: https://www.coactive.ai/contact
+name: Coactive API Plans
 plan_count: 0
 model: contact-sales
-currency: null
 free_tier: false
 trial: false
 self_serve_purchase: false

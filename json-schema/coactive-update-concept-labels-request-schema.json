@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-update-concept-labels-request-schema.json",
+  "title": "UpdateConceptLabelsRequest",
+  "description": "An request to update labels for a concept",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-concept-api-openapi.yml#/components/schemas/UpdateConceptLabelsRequest",
+  "type": "object",
+  "properties": {
+    "labels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ConceptLabelRequest"
+      },
+      "description": "Labels for the concept. A label with an empty label value will delete any existing labels associate with the provided image or keyframe"
+    },
+    "autosampledNumNegativeLabels": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The number of negative labels to add"
+    }
+  },
+  "required": [
+    "labels"
+  ],
+  "$defs": {
+    "ConceptLabelEnum": {
+      "type": "string",
+      "enum": [
+        "positive",
+        "negative"
+      ],
+      "description": "Concept label values",
+      "title": "ConceptLabelEnum"
+    },
+    "ConceptLabelRequest": {
+      "type": "object",
+      "properties": {
+        "coactiveImageId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uuid4",
+          "description": "The id of image or video keyframe to label"
+        },
+        "imagePath": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The path of an image to label"
+        },
+        "label": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ConceptLabelEnum"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The label for the image or video keyframe. \"negative\" means the image or keyframe is not an example of the concept. \"positive\" means the image or keyframe is example of the concept. An empty value indicates the label should be removed if one exists."
+        }
+      },
+      "description": "An request to associate an image or video keyframe to a concept",
+      "title": "ConceptLabelRequest"
+    }
+  }
+}

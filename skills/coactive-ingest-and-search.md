@@ -1,5 +1,6 @@
 ---
-name: Ingest a video dataset and search it
+name: coactive-ingest-and-search
+title: Ingest a video dataset and search it
 description: Create a Coactive dataset, ingest videos into it, wait for ingestion to
   complete, then run natural-language (text-to-image) search over the content.
 api: openapi/coactive-datasets-dataset-api-openapi.yml

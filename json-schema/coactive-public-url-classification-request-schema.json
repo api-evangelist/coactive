@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-public-url-classification-request-schema.json",
+  "title": "PublicUrlClassificationRequest",
+  "description": "A request to classify a publicly downloadable image for specific concepts or all concepts\nfor a dataset. Either concept ids of a dataset id must be provided.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-classification-api-openapi.yml#/components/schemas/PublicUrlClassificationRequest",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "description": "A public url for downloading the image"
+    },
+    "conceptIds": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string",
+        "format": "uuid4"
+      },
+      "description": "The ids of concepts to use to classify an image"
+    },
+    "datasetId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid4",
+      "description": "The id of the dataset related to the concepts to use to classify an image"
+    }
+  },
+  "required": [
+    "url"
+  ]
+}

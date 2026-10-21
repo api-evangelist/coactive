@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-video-scores-get-video-shot-scores-response-schema.json",
+  "title": "GetVideoShotScoresResponse",
+  "description": "Response for getting shot scores for a video.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-video-scores-videoscores-api-openapi.yml#/components/schemas/video-scores_GetVideoShotScoresResponse",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/video-scores_ShotScore"
+      },
+      "description": "Shot scores for the video."
+    },
+    "total_shot_count": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Total number of shots in the video (from Pinot composite keyframes); null if unavailable."
+    }
+  },
+  "$defs": {
+    "video-scores_ShotScore": {
+      "type": "object",
+      "properties": {
+        "shot_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Shot identifier."
+        },
+        "score": {
+          "type": "number",
+          "format": "double",
+          "description": "Computed score for the shot."
+        },
+        "start_time": {
+          "type": "number",
+          "format": "double",
+          "description": "Shot start time in seconds."
+        },
+        "end_time": {
+          "type": "number",
+          "format": "double",
+          "description": "Shot end time in seconds."
+        },
+        "duration": {
+          "type": "number",
+          "format": "double",
+          "description": "Shot duration in seconds."
+        },
+        "textPrompts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/video-scores_ShotTextPrompt"
+          },
+          "description": "Text prompts for this shot from the asset-check endpoint."
+        }
+      },
+      "required": [
+        "shot_id",
+        "score",
+        "start_time",
+        "end_time",
+        "duration"
+      ],
+      "description": "Shot-level score for a single shot in a video (only shots meeting min_conf are returned).",
+      "title": "ShotScore"
+    },
+    "video-scores_ShotTextPrompt": {
+      "type": "object",
+      "properties": {
+        "modality": {
+          "type": "string",
+          "description": "The modality of the prompt (e.g., \"Visual\" or \"Transcript\")."
+        },
+        "prompt": {
+          "type": "string",
+          "description": "The text prompt used to score this shot."
+        }
+      },
+      "required": [
+        "modality",
+        "prompt"
+      ],
+      "description": "Text prompt with modality information for shot scoring.",
+      "title": "ShotTextPrompt"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-celebrity-detection-identify-celebrities-in-external-image-response-schema.json",
+  "title": "IdentifyCelebritiesInExternalImageResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-celebrity-detection-api-openapi.yml#/components/schemas/celebrity-detection_IdentifyCelebritiesInExternalImageResponse",
+  "type": "object",
+  "properties": {
+    "persons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/celebrity-detection_Person"
+      },
+      "description": "List of persons identified in the image"
+    }
+  },
+  "required": [
+    "persons"
+  ],
+  "$defs": {
+    "celebrity-detection_BoundingBox": {
+      "type": "object",
+      "properties": {
+        "x1": {
+          "type": "number",
+          "format": "double"
+        },
+        "y1": {
+          "type": "number",
+          "format": "double"
+        },
+        "x2": {
+          "type": "number",
+          "format": "double"
+        },
+        "y2": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "required": [
+        "x1",
+        "y1",
+        "x2",
+        "y2"
+      ],
+      "title": "BoundingBox"
+    },
+    "celebrity-detection_Person": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Person ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Person name"
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Person aliases"
+        },
+        "bbox": {
+          "$ref": "#/$defs/celebrity-detection_BoundingBox",
+          "description": "Relative bounding box coordinates (x1, y1, x2, y2)"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "aliases",
+        "bbox"
+      ],
+      "title": "Person"
+    }
+  }
+}

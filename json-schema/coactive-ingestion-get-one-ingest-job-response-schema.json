@@ -1,0 +1,513 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-ingestion-get-one-ingest-job-response-schema.json",
+  "title": "GetOneIngestJobResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-ingestion-status-api-openapi.yml#/components/schemas/ingestion_GetOneIngestJobResponse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "org_id": {
+      "type": "string"
+    },
+    "dataset_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "connection_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "job_type": {
+      "$ref": "#/$defs/ingestion_IngestJobType"
+    },
+    "details": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ingestion_GetOneIngestJobResponseDetails"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "source_type": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ingestion_AssetType"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "file_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "created_dt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "updated_dt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "started_dt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "finished_dt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "status": {
+      "$ref": "#/$defs/ingestion_IngestJobStatusEnum"
+    },
+    "total_assets": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "processed_assets": {
+      "type": "integer",
+      "default": 0
+    },
+    "errored_assets": {
+      "type": "integer",
+      "default": 0
+    },
+    "error_details": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "request_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "org_id",
+    "dataset_id",
+    "job_type",
+    "details",
+    "file_path",
+    "total_assets"
+  ],
+  "$defs": {
+    "ingestion_AssetJobDetail": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "$ref": "#/$defs/ingestion_IngestJobAsset"
+        },
+        "asset_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uuid"
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "asset"
+      ],
+      "title": "AssetJobDetail"
+    },
+    "ingestion_AssetType": {
+      "type": "string",
+      "enum": [
+        "unspecified",
+        "image",
+        "keyframe",
+        "video",
+        "audio",
+        "metadata",
+        "csv",
+        "json",
+        "s3_prefix"
+      ],
+      "title": "AssetType"
+    },
+    "ingestion_AssetsJobDetails": {
+      "type": "object",
+      "properties": {
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ingestion_AssetJobDetail"
+          }
+        }
+      },
+      "required": [
+        "assets"
+      ],
+      "title": "AssetsJobDetails"
+    },
+    "ingestion_BucketJobDetails": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "spec": {
+          "$ref": "#/$defs/ingestion_BucketSpec"
+        },
+        "max_depth": {
+          "type": "integer",
+          "default": 0
+        }
+      },
+      "required": [
+        "path",
+        "spec"
+      ],
+      "title": "BucketJobDetails"
+    },
+    "ingestion_BucketSpec": {
+      "type": "object",
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string",
+          "default": "/"
+        },
+        "provider": {
+          "$ref": "#/$defs/ingestion_ExternalCloudStorageProvider"
+        }
+      },
+      "required": [
+        "bucket"
+      ],
+      "title": "BucketSpec"
+    },
+    "ingestion_CreateIngestJobFromFileRequest": {
+      "type": "object",
+      "properties": {
+        "dataset_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "source_path": {
+          "type": "string"
+        },
+        "connection_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "file_type": {
+          "$ref": "#/$defs/ingestion_ExternalFileType"
+        }
+      },
+      "required": [
+        "dataset_id",
+        "source_path"
+      ],
+      "title": "CreateIngestJobFromFileRequest"
+    },
+    "ingestion_ExistingAssetMetadataUpdate": {
+      "type": "object",
+      "properties": {
+        "asset_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uuid"
+        },
+        "source_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "asset_type": {
+          "$ref": "#/$defs/ingestion_ExplicitExternalAssetType"
+        },
+        "metadata": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "$ref": "#/$defs/ingestion_ExistingAssetMetadataUpdateMetadata"
+          }
+        }
+      },
+      "required": [
+        "asset_type"
+      ],
+      "title": "ExistingAssetMetadataUpdate"
+    },
+    "ingestion_ExistingAssetMetadataUpdateMetadata": {
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number",
+          "format": "double"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ],
+      "title": "ExistingAssetMetadataUpdateMetadata"
+    },
+    "ingestion_ExplicitExternalAssetType": {
+      "type": "string",
+      "enum": [
+        "image",
+        "video"
+      ],
+      "title": "ExplicitExternalAssetType"
+    },
+    "ingestion_ExternalAssetType": {
+      "type": "string",
+      "enum": [
+        "unspecified",
+        "image",
+        "video"
+      ],
+      "title": "ExternalAssetType"
+    },
+    "ingestion_ExternalCloudStorageProvider": {
+      "type": "string",
+      "enum": [
+        "aws"
+      ],
+      "title": "ExternalCloudStorageProvider"
+    },
+    "ingestion_ExternalFileType": {
+      "type": "string",
+      "enum": [
+        "unspecified",
+        "csv",
+        "json"
+      ],
+      "title": "ExternalFileType"
+    },
+    "ingestion_FileJobDetails": {
+      "type": "object",
+      "properties": {
+        "file": {
+          "$ref": "#/$defs/ingestion_CreateIngestJobFromFileRequest"
+        }
+      },
+      "required": [
+        "file"
+      ],
+      "title": "FileJobDetails"
+    },
+    "ingestion_GetOneIngestJobResponseDetails": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ingestion_AssetsJobDetails"
+        },
+        {
+          "$ref": "#/$defs/ingestion_FileJobDetails"
+        },
+        {
+          "$ref": "#/$defs/ingestion_BucketJobDetails"
+        },
+        {
+          "$ref": "#/$defs/ingestion_MetadataUpdateJobDetails"
+        }
+      ],
+      "title": "GetOneIngestJobResponseDetails"
+    },
+    "ingestion_IngestJobAsset": {
+      "type": "object",
+      "properties": {
+        "source_path": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "$ref": "#/$defs/ingestion_IngestJobAssetMetadata"
+          }
+        },
+        "asset_type": {
+          "$ref": "#/$defs/ingestion_ExternalAssetType"
+        }
+      },
+      "required": [
+        "source_path"
+      ],
+      "title": "IngestJobAsset"
+    },
+    "ingestion_IngestJobAssetMetadata": {
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number",
+          "format": "double"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ],
+      "title": "IngestJobAssetMetadata"
+    },
+    "ingestion_IngestJobStatusEnum": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "failed",
+        "in_progress",
+        "pending",
+        "paused",
+        "stopping",
+        "stopped"
+      ],
+      "description": "Enum of Ingest Job Status.",
+      "title": "IngestJobStatusEnum"
+    },
+    "ingestion_IngestJobType": {
+      "type": "string",
+      "enum": [
+        "unspecified",
+        "assets",
+        "file",
+        "bucket",
+        "metadata"
+      ],
+      "title": "IngestJobType"
+    },
+    "ingestion_InternalAssetMetadataUpdate": {
+      "type": "object",
+      "properties": {
+        "asset_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "source_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "asset_type": {
+          "$ref": "#/$defs/ingestion_ExplicitExternalAssetType"
+        },
+        "metadata": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "$ref": "#/$defs/ingestion_InternalAssetMetadataUpdateMetadata"
+          }
+        }
+      },
+      "required": [
+        "asset_id",
+        "source_path",
+        "asset_type"
+      ],
+      "title": "InternalAssetMetadataUpdate"
+    },
+    "ingestion_InternalAssetMetadataUpdateMetadata": {
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number",
+          "format": "double"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ],
+      "title": "InternalAssetMetadataUpdateMetadata"
+    },
+    "ingestion_MetadataUpdateJobDetails": {
+      "type": "object",
+      "properties": {
+        "accepted": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ingestion_InternalAssetMetadataUpdate"
+          }
+        },
+        "invalid_assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ingestion_ExistingAssetMetadataUpdate"
+          }
+        }
+      },
+      "required": [
+        "accepted",
+        "invalid_assets"
+      ],
+      "title": "MetadataUpdateJobDetails"
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-datasets-encoder-description-schema.json",
+  "title": "EncoderDescription",
+  "description": "An encoder",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-datasets-encoder-api-openapi.yml#/components/schemas/datasets_EncoderDescription",
+  "type": "object",
+  "properties": {
+    "name": {
+      "$ref": "#/$defs/datasets_EncoderDescriptionName",
+      "description": "The name of the encoder."
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A short summary of what the encoder is used for."
+    },
+    "modality": {
+      "$ref": "#/$defs/datasets_ModalityEnum",
+      "description": "The modality of the encoder."
+    }
+  },
+  "required": [
+    "name",
+    "modality"
+  ],
+  "$defs": {
+    "datasets_AudioEncoderNameEnum": {
+      "type": "string",
+      "enum": [
+        "audio",
+        "text-llm"
+      ],
+      "title": "AudioEncoderNameEnum"
+    },
+    "datasets_EncoderDescriptionName": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/datasets_VisualEncoderNameEnum"
+        },
+        {
+          "$ref": "#/$defs/datasets_AudioEncoderNameEnum"
+        }
+      ],
+      "description": "The name of the encoder.",
+      "title": "EncoderDescriptionName"
+    },
+    "datasets_ModalityEnum": {
+      "type": "string",
+      "enum": [
+        "image",
+        "audio_speech_to_text",
+        "video"
+      ],
+      "description": "Indicates the modality of an encoder",
+      "title": "ModalityEnum"
+    },
+    "datasets_VisualEncoderNameEnum": {
+      "type": "string",
+      "enum": [
+        "multimodal",
+        "multimodal-tx-large2",
+        "multimodal-tx-large3",
+        "multimodal-tx-large4",
+        "nova2-multimodal",
+        "resnet-50",
+        "resnet-50-reduced"
+      ],
+      "title": "VisualEncoderNameEnum"
+    }
+  }
+}

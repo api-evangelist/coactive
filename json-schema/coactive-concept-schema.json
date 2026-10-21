@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-concept-schema.json",
+  "title": "Concept",
+  "description": "Data about a concept that can be used to query a dataset",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-concept-api-openapi.yml#/components/schemas/Concept",
+  "type": "object",
+  "properties": {
+    "createdUserId": {
+      "type": "string",
+      "description": "The user that created the resource"
+    },
+    "createdDt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The created datetime of the resource"
+    },
+    "updatedUserId": {
+      "type": "string",
+      "description": "The user that last updated the resource"
+    },
+    "updatedDt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The datetime the resource was last updated"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the concept"
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A description for the concept"
+    },
+    "threshold": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "format": "double",
+      "default": 0.8,
+      "description": "Threshold above which classification is positive"
+    },
+    "regularization": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "format": "double",
+      "default": 0.0625,
+      "description": "How strongly the model adapts to the training labels. Regularization strength. Lower value means the model fits more heavily to the training data"
+    },
+    "conceptId": {
+      "type": "string",
+      "format": "uuid4",
+      "description": "The unique identifier for the concept"
+    },
+    "datasetId": {
+      "type": "string",
+      "format": "uuid4",
+      "description": "The unique identifier for the dataset"
+    }
+  },
+  "required": [
+    "createdUserId",
+    "createdDt",
+    "updatedUserId",
+    "updatedDt",
+    "name",
+    "conceptId",
+    "datasetId"
+  ]
+}

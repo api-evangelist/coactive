@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-queries-app-api-v1-schema-list-queries-response-schema.json",
+  "title": "app__api__v1__schema__ListQueriesResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-queries-api-openapi.yml#/components/schemas/queries_app__api__v1__schema__ListQueriesResponse",
+  "type": "object",
+  "properties": {
+    "meta": {
+      "$ref": "#/$defs/queries_PagedMetaResponse",
+      "description": "Metadata for the set of data returned"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/queries_app__api__v1__schema__GetQueryResponse"
+      },
+      "description": "The paginated data"
+    }
+  },
+  "required": [
+    "meta",
+    "data"
+  ],
+  "$defs": {
+    "queries_PagedLinksDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "current": {
+          "type": "string",
+          "description": "The current page link"
+        },
+        "previous": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The previous page, if applicable"
+        },
+        "next": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The next page link, if applicable"
+        }
+      },
+      "required": [
+        "current",
+        "previous",
+        "next"
+      ],
+      "description": "Pagination metadata",
+      "title": "PagedLinksDetailsResponse"
+    },
+    "queries_PagedMetaResponse": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "$ref": "#/$defs/queries_PagedPageDetailsResponse",
+          "description": "Details about the response page"
+        },
+        "links": {
+          "$ref": "#/$defs/queries_PagedLinksDetailsResponse",
+          "description": "Links for easy page traversal"
+        }
+      },
+      "required": [
+        "page",
+        "links"
+      ],
+      "description": "Metadata about the paginated response",
+      "title": "PagedMetaResponse"
+    },
+    "queries_PagedPageDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "current_page": {
+          "type": "integer",
+          "description": "Current page number"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Number of items returned in the list response"
+        },
+        "offset": {
+          "type": "integer",
+          "description": "Starting index returned for the list response"
+        }
+      },
+      "required": [
+        "current_page",
+        "limit",
+        "offset"
+      ],
+      "description": "Pagination metadata",
+      "title": "PagedPageDetailsResponse"
+    },
+    "queries_QueryStatus": {
+      "type": "string",
+      "enum": [
+        "Queued",
+        "Running",
+        "Stopping",
+        "Stopped",
+        "Complete",
+        "Error"
+      ],
+      "description": "All possible query status values",
+      "title": "QueryStatus"
+    },
+    "queries_QueryType": {
+      "type": "string",
+      "enum": [
+        "NATURAL_LANGUAGE",
+        "SQL"
+      ],
+      "description": "All possible query types",
+      "title": "QueryType"
+    },
+    "queries_app__api__v1__schema__GetQueryResponse": {
+      "type": "object",
+      "properties": {
+        "query_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "query": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/queries_QueryType"
+        },
+        "status": {
+          "$ref": "#/$defs/queries_QueryStatus"
+        },
+        "results": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "start_dt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "end_dt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "dataset_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "total_row_count": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "parameters": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "description": "Any type"
+          }
+        },
+        "created_dt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_dt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "created_user_id": {
+          "type": "string"
+        },
+        "updated_user_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "query_id",
+        "query",
+        "type",
+        "status",
+        "results",
+        "dataset_id",
+        "created_dt",
+        "updated_dt",
+        "created_user_id"
+      ],
+      "title": "app__api__v1__schema__GetQueryResponse"
+    }
+  }
+}

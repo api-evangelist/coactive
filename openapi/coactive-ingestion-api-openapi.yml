@@ -12,18 +12,11 @@ tags:
 paths:
   /api/v0/delete/assets:
     post:
-      operationId: delete-assets
+      operationId: ingestion_deleteAssets
       summary: Delete Assets
       description: Delete assets from a dataset by creating deletion jobs. Supports deletion of up to 100 assets per request. Assets can be identified by their Coactive Video/Image ID or path string.
       tags:
       - Ingestion
-      parameters:
-      - name: Authorization
-        in: header
-        description: Bearer authentication
-        required: true
-        schema:
-          type: string
       responses:
         '202':
           description: Deletion jobs enqueued
@@ -42,8 +35,40 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteAssetsRequest'
+      security:
+      - HTTPBearer: []
 components:
   schemas:
+    AssetType:
+      type: string
+      enum:
+      - image
+      - video
+      description: An enumeration.
+      title: AssetType
+    DeleteJobAssetIdentifier:
+      oneOf:
+      - type: string
+        format: uuid
+      - type: string
+      description: Either the Coactive Video/Image ID of the asset or a path string
+      title: DeleteJobAssetIdentifier
+    ValidationError:
+      type: object
+      properties:
+        loc:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationErrorLocItems'
+        msg:
+          type: string
+        type:
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     DeleteAssetsResponse:
       type: object
       properties:
@@ -61,13 +86,21 @@ components:
       - dataset_id
       - assets
       title: DeleteAssetsResponse
-    AssetType:
-      type: string
-      enum:
-      - image
-      - video
-      description: An enumeration.
-      title: AssetType
+    HTTPValidationError:
+      type: object
+      properties:
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+      title: HTTPValidationError
+    ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
     DeleteJobAsset:
       type: object
       properties:
@@ -80,21 +113,6 @@ components:
       - asset_type
       - identifier
       title: DeleteJobAsset
-    ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
-    HTTPValidationError:
-      type: object
-      properties:
-        detail:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-      title: HTTPValidationError
     DeleteAssetsRequest:
       type: object
       properties:
@@ -125,29 +143,6 @@ components:
       - identifier
       - delete_job_id
       title: DeleteAssetsResponseAssetsItems
-    ValidationError:
-      type: object
-      properties:
-        loc:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationErrorLocItems'
-        msg:
-          type: string
-        type:
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    DeleteJobAssetIdentifier:
-      oneOf:
-      - type: string
-        format: uuid
-      - type: string
-      description: Either the Coactive Video/Image ID of the asset or a path string
-      title: DeleteJobAssetIdentifier
   securitySchemes:
     HTTPBearer:
       type: http

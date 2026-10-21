@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-datasets-dataset-config-response-schema.json",
+  "title": "DatasetConfigResponse",
+  "description": "Response schema for the dataset_config JSONB column.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-datasets-datasetconfig-api-openapi.yml#/components/schemas/datasets_DatasetConfigResponse",
+  "type": "object",
+  "properties": {
+    "dataset_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "embedding_id": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": "string",
+        "format": "uuid"
+      }
+    },
+    "encoder_name": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "hybrid_search": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "metadata_fields_to_embed": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "metadata_fields_to_index": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "new_video_data_model": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "celebrity_detection_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "context_studio_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "agentic_search_metadata_description": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "asset_identifier_key": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "dataset_id"
+  ]
+}

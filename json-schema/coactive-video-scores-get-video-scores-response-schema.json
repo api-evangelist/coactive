@@ -1,0 +1,326 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-video-scores-get-video-scores-response-schema.json",
+  "title": "GetVideoScoresResponse",
+  "description": "Response for getting video scores.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-video-scores-videoscores-api-openapi.yml#/components/schemas/video-scores_GetVideoScoresResponse",
+  "type": "object",
+  "properties": {
+    "meta": {
+      "$ref": "#/$defs/video-scores_PageMetadata",
+      "description": "Metadata for pagination."
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/video-scores_VideoScore"
+      },
+      "description": "The paginated data."
+    },
+    "sort": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/video-scores_SortField"
+      },
+      "description": "Sort details."
+    }
+  },
+  "required": [
+    "meta"
+  ],
+  "$defs": {
+    "video-scores_PageDetails": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "description": "Current page number (1-indexed)."
+        },
+        "per_page": {
+          "type": "integer",
+          "description": "Number of items per page."
+        }
+      },
+      "required": [
+        "page",
+        "per_page"
+      ],
+      "description": "Pagination metadata.",
+      "title": "PageDetails"
+    },
+    "video-scores_PageMetadata": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "$ref": "#/$defs/video-scores_PageDetails",
+          "description": "Details about pagination."
+        },
+        "has_next_page": {
+          "type": "boolean",
+          "description": "Whether another page exists."
+        }
+      },
+      "required": [
+        "page",
+        "has_next_page"
+      ],
+      "description": "Metadata about the paginated response.",
+      "title": "PageMetadata"
+    },
+    "video-scores_SortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ],
+      "default": "desc",
+      "description": "Sort direction for results.",
+      "title": "SortDirection"
+    },
+    "video-scores_SortField": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "Field name to sort by."
+        },
+        "direction": {
+          "$ref": "#/$defs/video-scores_SortDirection",
+          "description": "Sort direction."
+        }
+      },
+      "required": [
+        "field"
+      ],
+      "description": "Sort field details.",
+      "title": "SortField"
+    },
+    "video-scores_VideoMetadata": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Video title."
+        },
+        "episode_name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Episode name."
+        },
+        "video_type": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Video type."
+        },
+        "series_name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Series name."
+        },
+        "genre": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Genre."
+        },
+        "rating": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Rating."
+        },
+        "content_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Content ID."
+        }
+      },
+      "description": "Video metadata from the metadata service.",
+      "title": "VideoMetadata"
+    },
+    "video-scores_VideoModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Coactive Video ID."
+        },
+        "dataset_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "created_user_id": {
+          "type": "string"
+        },
+        "updated_user_id": {
+          "type": "string"
+        },
+        "created_dt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_dt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string",
+          "description": "Path to the video file."
+        },
+        "video_key": {
+          "type": "string"
+        },
+        "internal_metadata": {
+          "$ref": "#/$defs/video-scores_VideoModelInternalMetadata"
+        }
+      },
+      "required": [
+        "id",
+        "dataset_id",
+        "created_user_id",
+        "updated_user_id",
+        "created_dt",
+        "updated_dt",
+        "status",
+        "path"
+      ],
+      "description": "Video details.",
+      "title": "VideoModel"
+    },
+    "video-scores_VideoModelInternalMetadata": {
+      "type": "object",
+      "properties": {},
+      "title": "VideoModelInternalMetadata"
+    },
+    "video-scores_VideoScore": {
+      "type": "object",
+      "properties": {
+        "group_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Group ID."
+        },
+        "group_name": {
+          "type": "string",
+          "description": "Group name."
+        },
+        "tag_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Tag ID."
+        },
+        "tag_name": {
+          "type": "string",
+          "description": "Tag name."
+        },
+        "tag_version_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Version identifier for the tag."
+        },
+        "coactive_video_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Coactive Video ID."
+        },
+        "score": {
+          "type": "number",
+          "format": "double",
+          "description": "Computed score."
+        },
+        "criteria_met": {
+          "type": "boolean",
+          "description": "Whether the criteria was met."
+        },
+        "accepted": {
+          "type": "boolean",
+          "description": "Whether the result is accepted."
+        },
+        "computed_dt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the score was computed."
+        },
+        "video": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/video-scores_VideoModel"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Video details associated with the score."
+        },
+        "video_metadata": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/video-scores_VideoMetadata"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Video metadata from the metadata service."
+        },
+        "preview_s3_path": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "S3 path (s3://bucket/key) to the preview keyframe for this video and tag version when available."
+        },
+        "preview_asset_start_time_ms": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double",
+          "description": "Start time of the preview asset in milliseconds when preview is available."
+        },
+        "preview_asset_end_time_ms": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double",
+          "description": "End time of the preview asset in milliseconds when preview is available."
+        }
+      },
+      "required": [
+        "group_id",
+        "group_name",
+        "tag_id",
+        "tag_name",
+        "tag_version_id",
+        "coactive_video_id",
+        "score",
+        "criteria_met",
+        "accepted",
+        "computed_dt"
+      ],
+      "description": "Video score result.",
+      "title": "VideoScore"
+    }
+  }
+}

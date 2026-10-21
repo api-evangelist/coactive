@@ -1,5 +1,6 @@
 ---
-name: Conversational agentic search over a dataset
+name: coactive-agentic-search
+title: Conversational agentic search over a dataset
 description: Use Coactive's agentic search to answer natural-language questions over multimodal content, scoped to a dataset, and drill down conversationally.
 api: openapi/coactive-agentic-search-agenticsearch-api-openapi.yml
 operations:

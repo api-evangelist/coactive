@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-queries-export-query-request-schema.json",
+  "title": "ExportQueryRequest",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-queries-api-openapi.yml#/components/schemas/queries_ExportQueryRequest",
+  "type": "object",
+  "properties": {
+    "connection_name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": "coactive"
+    },
+    "export_type": {
+      "$ref": "#/$defs/queries_ExportType"
+    },
+    "target_bucket": {
+      "type": "string"
+    },
+    "target_prefix": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "target_bucket",
+    "target_prefix"
+  ],
+  "$defs": {
+    "queries_ExportType": {
+      "type": "string",
+      "enum": [
+        "DELTA",
+        "CSV",
+        "UNITY"
+      ],
+      "description": "All possible export types",
+      "title": "ExportType"
+    }
+  }
+}

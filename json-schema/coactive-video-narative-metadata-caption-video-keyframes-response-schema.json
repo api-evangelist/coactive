@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-video-narative-metadata-caption-video-keyframes-response-schema.json",
+  "title": "CaptionVideoKeyframesResponse",
+  "description": "Response body for video keyframes captioning.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-video-narative-metadata-videosummarization-api-openapi.yml#/components/schemas/video-narative-metadata_CaptionVideoKeyframesResponse",
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "message"
+  ]
+}

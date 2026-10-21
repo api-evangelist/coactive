@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-datasets-dataset-update-request-schema.json",
+  "title": "DatasetUpdateRequest",
+  "description": "Update a dataset schema",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-datasets-dataset-api-openapi.yml#/components/schemas/datasets_DatasetUpdateRequest",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Name of the dataset, must be unique per organization and must only contain alphanumeric and underscore characters."
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A short summary of what the dataset includes or is intended for."
+    },
+    "status": {
+      "$ref": "#/$defs/datasets_DatasetUpdateRequestStatus",
+      "description": "The status of the dataset (ACTIVE or INACTIVE)"
+    },
+    "store_original": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Whether the original file is stored."
+    },
+    "store_preview": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Whether preview files are stored."
+    },
+    "dataset_config": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/datasets_DatasetConfig"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "datasets_CompositeSettings": {
+      "type": "object",
+      "properties": {
+        "maximum_slice_duration_seconds": {
+          "type": "integer",
+          "description": "Maximum duration in seconds for a single composite slice."
+        }
+      },
+      "required": [
+        "maximum_slice_duration_seconds"
+      ],
+      "title": "CompositeSettings"
+    },
+    "datasets_DatasetConfig": {
+      "type": "object",
+      "properties": {
+        "embedding_id": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": "Mapping from encoder modality to the UUID of the embedding model used for that modality."
+        },
+        "encoder_name": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Mapping from encoder modality to the name of the encoder model used for that modality."
+        },
+        "extra_config": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/datasets_ExtraConfig"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Optional extra configuration for composite types."
+        },
+        "hybrid_search": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/datasets_HybridSearchConfig"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Optional hybrid search configuration specifying modality weights."
+        },
+        "context_studio_enabled": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "default": false,
+          "description": "Whether Context Studio is enabled for this dataset."
+        },
+        "metadata_fields_to_embed": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "Metadata fields whose values are embedded."
+        },
+        "metadata_fields_to_index": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "Metadata fields that are indexed for filtering and search."
+        },
+        "celebrity_detection_enabled": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "default": false,
+          "description": "Whether celebrity detection is enabled for this dataset."
+        },
+        "agentic_search_metadata_description": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Per-key descriptions of metadata fields."
+        },
+        "asset_identifier_key": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The metadata field name that uniquely identifies each asset in the dataset."
+        },
+        "context_studio_export_json_connection_name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The name of the connection required for external s3 export. (this is related to context_studio feature)."
+        }
+      },
+      "required": [
+        "embedding_id",
+        "encoder_name"
+      ],
+      "title": "DatasetConfig"
+    },
+    "datasets_DatasetUpdateRequestStatus": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "description": "The status of the dataset (ACTIVE or INACTIVE)",
+      "title": "DatasetUpdateRequestStatus"
+    },
+    "datasets_ExtraConfig": {
+      "type": "object",
+      "properties": {
+        "composite_settings": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/datasets_CompositeSettings"
+          },
+          "description": "Mapping of composite type name to its settings."
+        }
+      },
+      "required": [
+        "composite_settings"
+      ],
+      "title": "ExtraConfig"
+    },
+    "datasets_HybridSearchConfig": {
+      "type": "object",
+      "properties": {
+        "weights": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "format": "double"
+          },
+          "description": "Weights for each modality used in hybrid search scoring."
+        }
+      },
+      "required": [
+        "weights"
+      ],
+      "title": "HybridSearchConfig"
+    }
+  }
+}

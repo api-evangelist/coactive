@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-update-concept-request-schema.json",
+  "title": "UpdateConceptRequest",
+  "description": "Base model for all schema",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-concept-api-openapi.yml#/components/schemas/UpdateConceptRequest",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A replacement name for the concept"
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A replacement description for the concept"
+    },
+    "threshold": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "format": "double",
+      "description": "A replacement decision threshold for the concept"
+    },
+    "regularization": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "format": "double",
+      "description": "How strongly the model adapts to the training labels. Regularization strength. Lower value means the model fits more heavily to the training data"
+    }
+  }
+}

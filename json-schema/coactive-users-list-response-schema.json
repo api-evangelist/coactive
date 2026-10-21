@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-users-list-response-schema.json",
+  "title": "UsersListResponse",
+  "description": "Response model for listing users with pagination.\n\nThis model contains a paginated list of users with partial information and\nmetadata about the pagination. It is used for endpoints that return multiple\nusers with their basic information.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-user-management-api-openapi.yml#/components/schemas/UsersListResponse",
+  "type": "object",
+  "properties": {
+    "users": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PartialUserResponse"
+      },
+      "description": "List of users with partial information"
+    },
+    "meta": {
+      "$ref": "#/$defs/PagedMeta",
+      "description": "Pagination metadata for the response"
+    }
+  },
+  "required": [
+    "users",
+    "meta"
+  ],
+  "$defs": {
+    "PagedLinks": {
+      "type": "object",
+      "properties": {
+        "prev": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "URL for the previous page"
+        },
+        "next": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "URL for the next page"
+        },
+        "first": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "URL for the first page"
+        },
+        "last": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "URL for the last page"
+        }
+      },
+      "description": "Metadata for retrieving paginated data",
+      "title": "PagedLinks"
+    },
+    "PagedMeta": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "$ref": "#/$defs/PagedPageDetails",
+          "description": "Current page number (1-indexed)"
+        },
+        "links": {
+          "$ref": "#/$defs/PagedLinks",
+          "description": "Links to the previous, next, first, and last pages"
+        },
+        "sort": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SortItem1"
+          },
+          "description": "Sort order for the response"
+        }
+      },
+      "required": [
+        "page",
+        "links",
+        "sort"
+      ],
+      "description": "Metadata for paginated responses",
+      "title": "PagedMeta"
+    },
+    "PagedPageDetails": {
+      "type": "object",
+      "properties": {
+        "current_page": {
+          "type": "integer",
+          "description": "Current page number (1-indexed)"
+        },
+        "last_page": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Last page number (if total is known)"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Number of items per page"
+        },
+        "offset": {
+          "type": "integer",
+          "description": "Offset of the first item in the current page"
+        },
+        "total": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Total number of items across all pages"
+        }
+      },
+      "required": [
+        "current_page",
+        "limit",
+        "offset"
+      ],
+      "description": "Pagination metadata",
+      "title": "PagedPageDetails"
+    },
+    "PartialUserResponse": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string",
+          "description": "Unique identifier for the user"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the user"
+        },
+        "email": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Email address of the user"
+        },
+        "picture": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "URL to the user's profile picture"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the user was created"
+        },
+        "last_login": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time",
+          "description": "Timestamp of the user's last login"
+        },
+        "roles": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/Role"
+          },
+          "description": "Optional list of roles assigned to the user"
+        }
+      },
+      "required": [
+        "user_id",
+        "name",
+        "created_at"
+      ],
+      "description": "Partial user response model with optional roles.\n\nThis model extends the base user response with optional roles. It is used\nwhen roles information may not be available or required in the response.",
+      "title": "PartialUserResponse"
+    },
+    "Role": {
+      "type": "object",
+      "properties": {
+        "role_id": {
+          "type": "string",
+          "description": "Name of the role (e.g., 'admin', 'editor', 'viewer')"
+        },
+        "resource": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Optional resource type the role applies to (e.g., 'dataset')"
+        },
+        "resource_instance": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Optional resource instance ID the role applies to"
+        }
+      },
+      "required": [
+        "role_id"
+      ],
+      "description": "Role model for user and client roles",
+      "title": "Role"
+    },
+    "SortDirection1": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ],
+      "description": "Possible sort orders",
+      "title": "SortDirection1"
+    },
+    "SortItem1": {
+      "type": "object",
+      "properties": {
+        "direction": {
+          "$ref": "#/$defs/SortDirection1",
+          "description": "Sort direction (ascending or descending)"
+        },
+        "field": {
+          "type": "string",
+          "description": "Field name to sort by"
+        }
+      },
+      "required": [
+        "direction",
+        "field"
+      ],
+      "description": "Metadata about the sort order of the response",
+      "title": "SortItem1"
+    }
+  }
+}

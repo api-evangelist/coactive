@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-queries-app-api-v1-schema-create-query-request-schema.json",
+  "title": "app__api__v1__schema__CreateQueryRequest",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-queries-api-openapi.yml#/components/schemas/queries_app__api__v1__schema__CreateQueryRequest",
+  "type": "object",
+  "properties": {
+    "dataset_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "query": {
+      "type": "string"
+    },
+    "type": {
+      "$ref": "#/$defs/queries_QueryType"
+    },
+    "parameters": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "description": "Any type"
+      }
+    },
+    "embedding_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid"
+    },
+    "check_validity": {
+      "type": "boolean",
+      "default": true
+    },
+    "dynamic_tags_version": {
+      "type": "string",
+      "default": "v2"
+    }
+  },
+  "required": [
+    "dataset_id",
+    "query"
+  ],
+  "$defs": {
+    "queries_QueryType": {
+      "type": "string",
+      "enum": [
+        "NATURAL_LANGUAGE",
+        "SQL"
+      ],
+      "description": "All possible query types",
+      "title": "QueryType"
+    }
+  }
+}

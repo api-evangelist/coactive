@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-classification-schema.json",
+  "title": "Classification",
+  "description": "A classification of an asset for one or more concepts",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-classification-api-openapi.yml#/components/schemas/Classification",
+  "type": "object",
+  "properties": {
+    "scores": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ClassificationScore"
+      },
+      "description": "Classifications of images for the relevant concept(s)"
+    }
+  },
+  "required": [
+    "scores"
+  ],
+  "$defs": {
+    "ClassificationScore": {
+      "type": "object",
+      "properties": {
+        "conceptName": {
+          "type": "string",
+          "description": "The concept name"
+        },
+        "conceptId": {
+          "type": "string",
+          "format": "uuid4",
+          "description": "The concept id"
+        },
+        "threshold": {
+          "type": "number",
+          "format": "double",
+          "description": "The threshold used to determine if it's a positive example"
+        },
+        "positive": {
+          "type": "boolean",
+          "description": "If the sample is classified as positive"
+        },
+        "score": {
+          "type": "number",
+          "format": "double",
+          "description": "The classification score in the range [0, 1]"
+        }
+      },
+      "required": [
+        "conceptName",
+        "conceptId",
+        "threshold",
+        "positive",
+        "score"
+      ],
+      "description": "A classification of an asset for a single concept",
+      "title": "ClassificationScore"
+    }
+  }
+}

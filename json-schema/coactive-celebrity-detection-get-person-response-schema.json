@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-celebrity-detection-get-person-response-schema.json",
+  "title": "GetPersonResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-celebrity-detection-api-openapi.yml#/components/schemas/celebrity-detection_GetPersonResponse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Person ID"
+    },
+    "name": {
+      "type": "string",
+      "description": "Person name"
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Person aliases"
+    },
+    "upload_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Upload IDs of the person's images"
+    },
+    "ingested_images": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/celebrity-detection_IngestedImage"
+      },
+      "description": "Ingested images of the person"
+    },
+    "status": {
+      "$ref": "#/$defs/celebrity-detection_EnrollmentStatus",
+      "description": "Person status"
+    },
+    "created_user_id": {
+      "type": "string",
+      "description": "User ID who created the person"
+    },
+    "created_dt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time the person was created"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "aliases",
+    "upload_ids",
+    "ingested_images",
+    "status",
+    "created_user_id",
+    "created_dt"
+  ],
+  "$defs": {
+    "celebrity-detection_EnrollmentStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "failed",
+        "in_progress"
+      ],
+      "title": "EnrollmentStatus"
+    },
+    "celebrity-detection_IngestedImage": {
+      "type": "object",
+      "properties": {
+        "coactive_image_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "dataset_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "coactive_image_id",
+        "dataset_id"
+      ],
+      "title": "IngestedImage"
+    }
+  }
+}

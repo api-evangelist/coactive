@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-update-user-roles-request-schema.json",
+  "title": "UpdateUserRolesRequest",
+  "description": "Request model for updating user roles.\n\nThis model is used when modifying a user's role assignments. It allows for\nupdating the complete list of roles and optionally specifying the context\nwhere these roles apply. For example, if the \"system\" context is used, the roles\nprovided will only replace roles at the system level (ex. dataset\nroles would remain unchanged). If no context is provided, the role provided in the\nrequest will replace all roles for the user.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-user-management-api-openapi.yml#/components/schemas/UpdateUserRolesRequest",
+  "type": "object",
+  "properties": {
+    "roles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Role"
+      },
+      "description": "New list of roles to assign to the user"
+    },
+    "roles_context": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Context for the roles to update. This can either be 'system' for system-level roles or 'dataset:{dataset_id}' for dataset-level roles."
+    }
+  },
+  "required": [
+    "roles"
+  ],
+  "$defs": {
+    "Role": {
+      "type": "object",
+      "properties": {
+        "role_id": {
+          "type": "string",
+          "description": "Name of the role (e.g., 'admin', 'editor', 'viewer')"
+        },
+        "resource": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Optional resource type the role applies to (e.g., 'dataset')"
+        },
+        "resource_instance": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Optional resource instance ID the role applies to"
+        }
+      },
+      "required": [
+        "role_id"
+      ],
+      "description": "Role model for user and client roles",
+      "title": "Role"
+    }
+  }
+}

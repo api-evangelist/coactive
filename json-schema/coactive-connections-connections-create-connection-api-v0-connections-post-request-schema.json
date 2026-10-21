@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-connections-connections-create-connection-api-v0-connections-post-request-schema.json",
+  "title": "Connections_create_connection_api_v0_connections_post_Request",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-connections-connections-api-openapi.yml#/components/schemas/connections_Connections_create_connection_api_v0_connections_post_Request",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/connections_CreateHTTPSBasicAuthConnectionRequest"
+    },
+    {
+      "$ref": "#/$defs/connections_CreateHTTPSBearerAuthConnectionRequest"
+    },
+    {
+      "$ref": "#/$defs/connections_CreateAWSConnectionRequest"
+    }
+  ],
+  "$defs": {
+    "connections_AWSIAMRoleConfig": {
+      "type": "object",
+      "properties": {
+        "iam_role_arn": {
+          "type": "string",
+          "description": "The ARN of the IAM role to assume"
+        },
+        "scope": {
+          "$ref": "#/$defs/connections_AWSIAMRoleScope",
+          "description": "The scope of permissions for the IAM role. Defaults to s3."
+        },
+        "bucket_name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The S3 bucket name associated with this connection"
+        },
+        "session_ttl_seconds": {
+          "type": "integer",
+          "default": 3600,
+          "description": "Session duration in seconds (60-3600)"
+        }
+      },
+      "required": [
+        "iam_role_arn"
+      ],
+      "title": "AWSIAMRoleConfig"
+    },
+    "connections_AWSIAMRoleScope": {
+      "type": "string",
+      "enum": [
+        "s3",
+        "bedrock"
+      ],
+      "description": "The scope of permissions for an AWS IAM role connection",
+      "title": "AWSIAMRoleScope"
+    },
+    "connections_ConnectionType": {
+      "type": "string",
+      "enum": [
+        "https_basic",
+        "https_bearer",
+        "aws_iam_role"
+      ],
+      "description": "The type of connection",
+      "title": "ConnectionType"
+    },
+    "connections_CreateAWSConnectionRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The connection name (3-255 characters, lowercase alphanumeric with underscores)"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Optional description for the connection"
+        },
+        "test_location": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Optional location to test the connection"
+        },
+        "type": {
+          "$ref": "#/$defs/connections_ConnectionType"
+        },
+        "config": {
+          "$ref": "#/$defs/connections_AWSIAMRoleConfig"
+        }
+      },
+      "required": [
+        "name",
+        "config"
+      ],
+      "title": "CreateAWSConnectionRequest"
+    },
+    "connections_CreateHTTPSBasicAuthConnectionRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The connection name (3-255 characters, lowercase alphanumeric with underscores)"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Optional description for the connection"
+        },
+        "test_location": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Optional location to test the connection"
+        },
+        "type": {
+          "$ref": "#/$defs/connections_ConnectionType"
+        },
+        "config": {
+          "$ref": "#/$defs/connections_HTTPSBasicAuthConfig"
+        }
+      },
+      "required": [
+        "name",
+        "config"
+      ],
+      "title": "CreateHTTPSBasicAuthConnectionRequest"
+    },
+    "connections_CreateHTTPSBearerAuthConnectionRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The connection name (3-255 characters, lowercase alphanumeric with underscores)"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Optional description for the connection"
+        },
+        "test_location": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Optional location to test the connection"
+        },
+        "type": {
+          "$ref": "#/$defs/connections_ConnectionType"
+        },
+        "config": {
+          "$ref": "#/$defs/connections_HTTPSBearerAuthConfig"
+        }
+      },
+      "required": [
+        "name",
+        "config"
+      ],
+      "title": "CreateHTTPSBearerAuthConnectionRequest"
+    },
+    "connections_HTTPSBasicAuthConfig": {
+      "type": "object",
+      "properties": {
+        "hostname": {
+          "type": "string",
+          "description": "The hostname to connect to"
+        },
+        "username": {
+          "type": "string",
+          "description": "The username for authentication"
+        },
+        "password": {
+          "type": "string",
+          "description": "The password for authentication"
+        }
+      },
+      "required": [
+        "hostname",
+        "username",
+        "password"
+      ],
+      "title": "HTTPSBasicAuthConfig"
+    },
+    "connections_HTTPSBearerAuthConfig": {
+      "type": "object",
+      "properties": {
+        "hostname": {
+          "type": "string",
+          "description": "The hostname to connect to"
+        },
+        "bearer_token": {
+          "type": "string",
+          "description": "The bearer token for authentication"
+        }
+      },
+      "required": [
+        "hostname",
+        "bearer_token"
+      ],
+      "title": "HTTPSBearerAuthConfig"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-video-narative-metadata-predict-composite-slice-subject-response-schema.json",
+  "title": "PredictCompositeSliceSubjectResponse",
+  "description": "Response body for predicting composite slice subjects.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-video-narative-metadata-videonarrativemetadata-api-openapi.yml#/components/schemas/video-narative-metadata_PredictCompositeSliceSubjectResponse",
+  "type": "object",
+  "properties": {
+    "subjects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Predicted composite slice subjects"
+    }
+  },
+  "required": [
+    "subjects"
+  ]
+}

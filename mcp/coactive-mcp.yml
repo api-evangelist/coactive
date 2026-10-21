@@ -38,6 +38,7 @@ notes: This is a documentation-search MCP server (readOnly). Coactive does not p
   were read from a live anonymous tools/list call, not from prose.
 deployment:
   mode: remote
+  endpoint: https://docs.coactive.ai/_mcp/server
   verified: searched
   tools: 1
   checked: '2026-08-12'

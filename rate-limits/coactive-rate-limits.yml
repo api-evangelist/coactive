@@ -1,6 +1,7 @@
 generated: '2026-08-13'
 method: searched
 source: https://docs.coactive.ai/api-reference/api-reference
+name: Coactive API Rate Limits
 limit_count: 0
 limits: []
 response_headers:

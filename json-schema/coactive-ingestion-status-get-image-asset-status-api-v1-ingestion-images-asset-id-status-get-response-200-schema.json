@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-ingestion-status-get-image-asset-status-api-v1-ingestion-images-asset-id-status-get-response-200-schema.json",
+  "title": "Status_get_image_asset_status_api_v1_ingestion_images__asset_id__status_get_Response_200",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-ingestion-status-api-openapi.yml#/components/schemas/ingestion_Status_get_image_asset_status_api_v1_ingestion_images__asset_id__status_get_Response_200",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/ingestion_ImageAssetStatusResponse"
+    },
+    {
+      "$ref": "#/$defs/ingestion_EmptyResponse"
+    }
+  ],
+  "$defs": {
+    "ingestion_AssetStatusEnum": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "received",
+        "processing_started",
+        "completed",
+        "error"
+      ],
+      "title": "AssetStatusEnum"
+    },
+    "ingestion_EmptyResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "description": "Any type"
+          },
+          "description": "Empty data list"
+        }
+      },
+      "title": "EmptyResponse"
+    },
+    "ingestion_ErrorCode": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "unknown_content_type",
+        "file_not_found",
+        "permission_denied",
+        "broken_url",
+        "file_too_large",
+        "video_too_short",
+        "video_too_long",
+        "resolution_out_of_spec",
+        "unsupported_format",
+        "unsupported_codec",
+        "unsupported_source_type",
+        "unsupported_uri_scheme",
+        "audio_processing_failed",
+        "asset_metadata_error",
+        "transcription_failed",
+        "composite_creation_failed",
+        "composite_slice_creation_failed"
+      ],
+      "title": "ErrorCode"
+    },
+    "ingestion_EventEntity": {
+      "type": "string",
+      "enum": [
+        "unspecified",
+        "request",
+        "image",
+        "video",
+        "audio",
+        "shot",
+        "visual_keyframe",
+        "audio_keyframe",
+        "audio_segment",
+        "metadata",
+        "csv_file",
+        "json_file",
+        "s3_prefix",
+        "composite"
+      ],
+      "description": "The kind of entity that the status event applies to.\n\nDetermines what collection of IDs show up in the event, e.g.:\n    - request (fewest):\n        - request_id\n        - ingest_job_id\n        - dataset_id\n        - org_id\n    - audio_keyframe (most):\n        - coactive_image_id\n        - coactive_audio_segment_id\n        - coactive_shot_id\n        - coactive_video_id\n        - request_id\n        - ingest_job_id\n        - dataset_id\n        - org_id",
+      "title": "EventEntity"
+    },
+    "ingestion_EventName": {
+      "type": "string",
+      "enum": [
+        "received",
+        "assets_enumerated",
+        "completed",
+        "processing_started",
+        "error",
+        "kind_determined",
+        "stored",
+        "metadata_stored",
+        "embedding_computed",
+        "embedding_stored",
+        "asset_copied",
+        "timecodes_computed",
+        "audio_extracted",
+        "audio_processing_started",
+        "audio_processing_finished",
+        "keyframe_generation_started",
+        "keyframe_generation_completed",
+        "shot_boundary_detection_started",
+        "shot_boundary_detection_completed",
+        "file_downloaded",
+        "keyframe_generated",
+        "transcribed",
+        "transcription_segmented",
+        "transcripts_created",
+        "composite_created",
+        "composite_slices_created"
+      ],
+      "description": "The status-related event that applies to the entity.",
+      "title": "EventName"
+    },
+    "ingestion_ImageAssetStatusResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/ingestion_Status"
+        }
+      },
+      "required": [
+        "data"
+      ],
+      "title": "ImageAssetStatusResponse"
+    },
+    "ingestion_LatestEvent": {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ingestion_EventName"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "event_entity": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ingestion_EventEntity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "timestamp_dt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      },
+      "title": "LatestEvent"
+    },
+    "ingestion_Status": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/ingestion_AssetStatusEnum"
+        },
+        "asset_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "dataset_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "error_code": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ingestion_ErrorCode"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "error_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "latest_event": {
+          "$ref": "#/$defs/ingestion_LatestEvent"
+        },
+        "asset_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "asset_id",
+        "dataset_id",
+        "latest_event"
+      ],
+      "title": "Status"
+    }
+  }
+}

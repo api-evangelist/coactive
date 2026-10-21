@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-connections-get-connection-response-schema.json",
+  "title": "GetConnectionResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-connections-connections-api-openapi.yml#/components/schemas/connections_GetConnectionResponse",
+  "type": "object",
+  "properties": {
+    "connection_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The unique identifier for the connection"
+    },
+    "name": {
+      "type": "string",
+      "description": "The connection name"
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The connection description"
+    },
+    "type": {
+      "$ref": "#/$defs/connections_ConnectionType",
+      "description": "The type of connection"
+    },
+    "status": {
+      "$ref": "#/$defs/connections_ConnectionStatus",
+      "description": "The current status of the connection"
+    },
+    "config": {
+      "$ref": "#/$defs/connections_GetConnectionResponseConfig",
+      "description": "The connection configuration"
+    },
+    "created_dt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the connection was created"
+    },
+    "updated_dt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the connection was last updated"
+    }
+  },
+  "required": [
+    "connection_id",
+    "name",
+    "type",
+    "status",
+    "config",
+    "created_dt",
+    "updated_dt"
+  ],
+  "$defs": {
+    "connections_AWSIAMRoleConfig": {
+      "type": "object",
+      "properties": {
+        "iam_role_arn": {
+          "type": "string",
+          "description": "The ARN of the IAM role to assume"
+        },
+        "scope": {
+          "$ref": "#/$defs/connections_AWSIAMRoleScope",
+          "description": "The scope of permissions for the IAM role. Defaults to s3."
+        },
+        "bucket_name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The S3 bucket name associated with this connection"
+        },
+        "session_ttl_seconds": {
+          "type": "integer",
+          "default": 3600,
+          "description": "Session duration in seconds (60-3600)"
+        }
+      },
+      "required": [
+        "iam_role_arn"
+      ],
+      "title": "AWSIAMRoleConfig"
+    },
+    "connections_AWSIAMRoleScope": {
+      "type": "string",
+      "enum": [
+        "s3",
+        "bedrock"
+      ],
+      "description": "The scope of permissions for an AWS IAM role connection",
+      "title": "AWSIAMRoleScope"
+    },
+    "connections_ConnectionStatus": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "ready",
+        "error"
+      ],
+      "description": "The status of a connection",
+      "title": "ConnectionStatus"
+    },
+    "connections_ConnectionType": {
+      "type": "string",
+      "enum": [
+        "https_basic",
+        "https_bearer",
+        "aws_iam_role"
+      ],
+      "description": "The type of connection",
+      "title": "ConnectionType"
+    },
+    "connections_GetConnectionResponseConfig": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/connections_HTTPSBasicAuthConfig"
+        },
+        {
+          "$ref": "#/$defs/connections_HTTPSBearerAuthConfig"
+        },
+        {
+          "$ref": "#/$defs/connections_AWSIAMRoleConfig"
+        }
+      ],
+      "description": "The connection configuration",
+      "title": "GetConnectionResponseConfig"
+    },
+    "connections_HTTPSBasicAuthConfig": {
+      "type": "object",
+      "properties": {
+        "hostname": {
+          "type": "string",
+          "description": "The hostname to connect to"
+        },
+        "username": {
+          "type": "string",
+          "description": "The username for authentication"
+        },
+        "password": {
+          "type": "string",
+          "description": "The password for authentication"
+        }
+      },
+      "required": [
+        "hostname",
+        "username",
+        "password"
+      ],
+      "title": "HTTPSBasicAuthConfig"
+    },
+    "connections_HTTPSBearerAuthConfig": {
+      "type": "object",
+      "properties": {
+        "hostname": {
+          "type": "string",
+          "description": "The hostname to connect to"
+        },
+        "bearer_token": {
+          "type": "string",
+          "description": "The bearer token for authentication"
+        }
+      },
+      "required": [
+        "hostname",
+        "bearer_token"
+      ],
+      "title": "HTTPSBearerAuthConfig"
+    }
+  }
+}

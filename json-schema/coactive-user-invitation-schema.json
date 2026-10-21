@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-user-invitation-schema.json",
+  "title": "UserInvitation",
+  "description": "Model representing a user invitation.\n\nThis model contains the details of an invitation sent to a user, including the\ninvitation ID, who sent it, who it was sent to, and the roles that will be\nassigned upon acceptance. The invitation URL is included for the user to accept\nthe invitation.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-user-management-api-openapi.yml#/components/schemas/UserInvitation",
+  "type": "object",
+  "properties": {
+    "invitation_id": {
+      "type": "string",
+      "description": "Unique identifier for the invitation"
+    },
+    "inviter": {
+      "$ref": "#/$defs/Inviter",
+      "description": "Details about the user who sent the invitation"
+    },
+    "invitee": {
+      "$ref": "#/$defs/Invitee",
+      "description": "Details about the user being invited"
+    },
+    "invitation_url": {
+      "type": "string",
+      "description": "URL for the user to accept the invitation"
+    },
+    "created_at": {
+      "type": "string",
+      "description": "Timestamp when the invitation was created"
+    },
+    "expires_at": {
+      "type": "string",
+      "description": "Timestamp when the invitation expires"
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Role"
+      },
+      "description": "List of roles that will be assigned upon acceptance"
+    }
+  },
+  "required": [
+    "invitation_id",
+    "inviter",
+    "invitee",
+    "invitation_url",
+    "created_at",
+    "expires_at",
+    "roles"
+  ],
+  "$defs": {
+    "Invitee": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email address of the invitee"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the invitee"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Role"
+          },
+          "description": "List of roles to assign to the invitee"
+        }
+      },
+      "required": [
+        "email",
+        "name",
+        "roles"
+      ],
+      "title": "Invitee"
+    },
+    "Inviter": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Display name of the inviter"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "description": "Model representing the user who sent the invitation.\n\nThis model contains the details of the user who sent the invitation, including\ntheir display name.",
+      "title": "Inviter"
+    },
+    "Role": {
+      "type": "object",
+      "properties": {
+        "role_id": {
+          "type": "string",
+          "description": "Name of the role (e.g., 'admin', 'editor', 'viewer')"
+        },
+        "resource": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Optional resource type the role applies to (e.g., 'dataset')"
+        },
+        "resource_instance": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Optional resource instance ID the role applies to"
+        }
+      },
+      "required": [
+        "role_id"
+      ],
+      "description": "Role model for user and client roles",
+      "title": "Role"
+    }
+  }
+}

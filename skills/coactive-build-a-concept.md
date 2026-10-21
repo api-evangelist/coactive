@@ -1,5 +1,6 @@
 ---
-name: Build and refine a visual concept
+name: coactive-build-a-concept
+title: Build and refine a visual concept
 description: Create a Coactive concept, label candidate assets, and read its prediction estimation to tag and retrieve matching visual content.
 api: openapi/coactive-concept-api-openapi.yml
 operations:

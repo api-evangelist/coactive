@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-celebrity-detection-update-person-aliases-request-schema.json",
+  "title": "UpdatePersonAliasesRequest",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-celebrity-detection-api-openapi.yml#/components/schemas/celebrity-detection_UpdatePersonAliasesRequest",
+  "type": "object",
+  "properties": {
+    "person_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Person ID"
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Updated list of person aliases"
+    }
+  },
+  "required": [
+    "person_id"
+  ]
+}

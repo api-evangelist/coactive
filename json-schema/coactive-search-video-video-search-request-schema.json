@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-search-video-video-search-request-schema.json",
+  "title": "VideoSearchRequest",
+  "description": "Request schema for video search endpoint.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-search-video-searchvideo-api-openapi.yml#/components/schemas/search-video_VideoSearchRequest",
+  "type": "object",
+  "properties": {
+    "dataset_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The unique identifier for the dataset"
+    },
+    "text_query": {
+      "type": "string",
+      "description": "The natural language search string"
+    },
+    "metadata_filters": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/search-video_MetadataFilters"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "JSON string containing a list of metadata filters"
+    },
+    "offset": {
+      "type": "integer",
+      "default": 0,
+      "description": "Starting index to return (default 0)"
+    },
+    "limit": {
+      "type": "integer",
+      "default": 60,
+      "description": "Max number of items to return(default 60, max 1000)"
+    },
+    "modality": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/search-video_ModalityEnum"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Modality of the video to search for ( video, shot, image ). Valid options: \"video\", \"shot\", \"image\", \"audio_speech_to_text\", \"capped-shot-segment\". Default is 'video'."
+    },
+    "skip_moderation": {
+      "type": "boolean",
+      "default": false,
+      "description": "Skip content moderation if enabled"
+    },
+    "moderation_score_type": {
+      "$ref": "#/$defs/search-video_ScoreType",
+      "description": "Type of moderation scores to return when moderation is enabled"
+    },
+    "ignore_keyframes": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to ignore keyframes"
+    }
+  },
+  "required": [
+    "dataset_id",
+    "text_query"
+  ],
+  "$defs": {
+    "search-video_BooleanEqualsClause": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "=="
+          ]
+        },
+        "value": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "key",
+        "operator",
+        "value"
+      ],
+      "title": "BooleanEqualsClause"
+    },
+    "search-video_DateTimeRangeInclusiveClause": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "start_utc_epoch": {
+          "type": "number",
+          "format": "double"
+        },
+        "end_utc_epoch": {
+          "type": "number",
+          "format": "double"
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "DateTimeRangeInclusive"
+          ]
+        }
+      },
+      "required": [
+        "key",
+        "start_utc_epoch",
+        "end_utc_epoch",
+        "operator"
+      ],
+      "title": "DateTimeRangeInclusiveClause"
+    },
+    "search-video_EqualsClause": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "=="
+          ]
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "operator",
+        "value"
+      ],
+      "title": "EqualsClause"
+    },
+    "search-video_MetadataFilters": {
+      "type": "object",
+      "properties": {
+        "filters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/search-video_MetadataFiltersFiltersItems"
+          }
+        }
+      },
+      "required": [
+        "filters"
+      ],
+      "description": "Metadata filters for video search.",
+      "title": "MetadataFilters"
+    },
+    "search-video_MetadataFiltersFiltersItems": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/search-video_BooleanEqualsClause"
+        },
+        {
+          "$ref": "#/$defs/search-video_EqualsClause"
+        },
+        {
+          "$ref": "#/$defs/search-video_NotEqualsClause"
+        },
+        {
+          "$ref": "#/$defs/search-video_DateTimeRangeInclusiveClause"
+        }
+      ],
+      "title": "MetadataFiltersFiltersItems"
+    },
+    "search-video_ModalityEnum": {
+      "type": "string",
+      "enum": [
+        "video",
+        "shot",
+        "image",
+        "audio_speech_to_text",
+        "capped-shot-segment"
+      ],
+      "title": "ModalityEnum"
+    },
+    "search-video_NotEqualsClause": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "!="
+          ]
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "operator",
+        "value"
+      ],
+      "title": "NotEqualsClause"
+    },
+    "search-video_ScoreType": {
+      "type": "string",
+      "enum": [
+        "probability",
+        "level"
+      ],
+      "description": "Score type returned by the moderation service.\n- PROBABILITY: Scores in range 0-1 (uses BGE Reranker model)\n- LEVEL: Scores in range 0-5 (uses OpenAI model)",
+      "title": "ScoreType"
+    }
+  }
+}

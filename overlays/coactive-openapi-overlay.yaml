@@ -2,7 +2,7 @@ overlay: 1.0.0
 info:
   title: API Evangelist enhancements for Coactive API
   version: 1.0.0
-extends: openapi/coactive-openapi-original.json
+extends: ../openapi/_original/coactive-openapi-original.json
 actions:
 - target: $.info
   update:

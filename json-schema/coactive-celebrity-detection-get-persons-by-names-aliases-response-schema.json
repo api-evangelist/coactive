@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-celebrity-detection-get-persons-by-names-aliases-response-schema.json",
+  "title": "GetPersonsByNamesAliasesResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-celebrity-detection-api-openapi.yml#/components/schemas/celebrity-detection_GetPersonsByNamesAliasesResponse",
+  "type": "object",
+  "properties": {
+    "matches": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/celebrity-detection_PersonNameMatch"
+      },
+      "description": "List of name to person_id mappings"
+    }
+  },
+  "required": [
+    "matches"
+  ],
+  "$defs": {
+    "celebrity-detection_PersonNameMatch": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name or alias that was searched"
+        },
+        "person_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uuid",
+          "description": "The matched person ID, or None if not found"
+        }
+      },
+      "required": [
+        "name",
+        "person_id"
+      ],
+      "title": "PersonNameMatch"
+    }
+  }
+}

@@ -12,7 +12,7 @@ tags:
 paths:
   /api/v1/datasets/{dataset_id}/config:
     get:
-      operationId: get-dataset-config-api-v-1-datasets-dataset-id-config-get
+      operationId: datasets_datasetConfig_get_dataset_config_api_v1_datasets__dataset_id__config_get
       summary: Get Dataset Config
       description: Retrieve configuration for a dataset from the dataset_config JSONB column.
       tags:
@@ -30,12 +30,6 @@ paths:
         schema:
           type: boolean
           default: false
-      - name: Authorization
-        in: header
-        description: Bearer authentication
-        required: true
-        schema:
-          type: string
       responses:
         '200':
           description: Successful Response
@@ -49,6 +43,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/datasets_HTTPValidationError'
+      security:
+      - HTTPBearer: []
 components:
   schemas:
     datasets_DatasetConfigResponse:
@@ -119,6 +115,11 @@ components:
       - dataset_id
       description: Response schema for the dataset_config JSONB column.
       title: DatasetConfigResponse
+    datasets_ValidationErrorLocItems:
+      oneOf:
+      - type: string
+      - type: integer
+      title: ValidationErrorLocItems
     datasets_HTTPValidationError:
       type: object
       properties:
@@ -127,11 +128,6 @@ components:
           items:
             $ref: '#/components/schemas/datasets_ValidationError'
       title: HTTPValidationError
-    datasets_ValidationErrorLocItems:
-      oneOf:
-      - type: string
-      - type: integer
-      title: ValidationErrorLocItems
     datasets_ValidationError:
       type: object
       properties:

@@ -12,18 +12,11 @@ tags:
 paths:
   /api/v1/encoders:
     get:
-      operationId: list-available-encoders-api-v-1-encoders-get
+      operationId: datasets_encoder_list_available_encoders_api_v1_encoders_get
       summary: List Available Encoders
       description: List available encoders
       tags:
       - datasets > encoder
-      parameters:
-      - name: Authorization
-        in: header
-        description: Bearer authentication
-        required: true
-        schema:
-          type: string
       responses:
         '200':
           description: Successful Response
@@ -33,14 +26,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/datasets_EncoderDescription'
+      security:
+      - HTTPBearer: []
 components:
   schemas:
-    datasets_EncoderDescriptionName:
-      oneOf:
-      - $ref: '#/components/schemas/datasets_VisualEncoderNameEnum'
-      - $ref: '#/components/schemas/datasets_AudioEncoderNameEnum'
-      description: The name of the encoder.
-      title: EncoderDescriptionName
     datasets_EncoderDescription:
       type: object
       properties:
@@ -60,6 +49,18 @@ components:
       - modality
       description: An encoder
       title: EncoderDescription
+    datasets_AudioEncoderNameEnum:
+      type: string
+      enum:
+      - audio
+      - text-llm
+      title: AudioEncoderNameEnum
+    datasets_EncoderDescriptionName:
+      oneOf:
+      - $ref: '#/components/schemas/datasets_VisualEncoderNameEnum'
+      - $ref: '#/components/schemas/datasets_AudioEncoderNameEnum'
+      description: The name of the encoder.
+      title: EncoderDescriptionName
     datasets_VisualEncoderNameEnum:
       type: string
       enum:
@@ -71,12 +72,6 @@ components:
       - resnet-50
       - resnet-50-reduced
       title: VisualEncoderNameEnum
-    datasets_AudioEncoderNameEnum:
-      type: string
-      enum:
-      - audio
-      - text-llm
-      title: AudioEncoderNameEnum
     datasets_ModalityEnum:
       type: string
       enum:

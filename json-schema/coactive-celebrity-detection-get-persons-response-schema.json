@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-celebrity-detection-get-persons-response-schema.json",
+  "title": "GetPersonsResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-celebrity-detection-api-openapi.yml#/components/schemas/celebrity-detection_GetPersonsResponse",
+  "type": "object",
+  "properties": {
+    "meta": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/celebrity-detection_PagedMetaResponse"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Metadata for pagination"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/celebrity-detection_GetPersonResponse"
+      },
+      "description": "The paginated data"
+    },
+    "sort": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/celebrity-detection_SortField"
+      },
+      "description": "Sort details"
+    }
+  },
+  "required": [
+    "data"
+  ],
+  "$defs": {
+    "celebrity-detection_EnrollmentStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "failed",
+        "in_progress"
+      ],
+      "title": "EnrollmentStatus"
+    },
+    "celebrity-detection_GetPersonResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Person ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Person name"
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Person aliases"
+        },
+        "upload_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Upload IDs of the person's images"
+        },
+        "ingested_images": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/celebrity-detection_IngestedImage"
+          },
+          "description": "Ingested images of the person"
+        },
+        "status": {
+          "$ref": "#/$defs/celebrity-detection_EnrollmentStatus",
+          "description": "Person status"
+        },
+        "created_user_id": {
+          "type": "string",
+          "description": "User ID who created the person"
+        },
+        "created_dt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and time the person was created"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "aliases",
+        "upload_ids",
+        "ingested_images",
+        "status",
+        "created_user_id",
+        "created_dt"
+      ],
+      "title": "GetPersonResponse"
+    },
+    "celebrity-detection_IngestedImage": {
+      "type": "object",
+      "properties": {
+        "coactive_image_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "dataset_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "coactive_image_id",
+        "dataset_id"
+      ],
+      "title": "IngestedImage"
+    },
+    "celebrity-detection_PagedMetaResponse": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "$ref": "#/$defs/celebrity-detection_PagedPageDetailsResponse",
+          "description": "Details about pagination"
+        },
+        "has_next_page": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether another page exists"
+        }
+      },
+      "required": [
+        "page"
+      ],
+      "description": "Metadata about the paginated response.",
+      "title": "PagedMetaResponse"
+    },
+    "celebrity-detection_PagedPageDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "description": "Current page number (1-indexed)"
+        },
+        "per_page": {
+          "type": "integer",
+          "description": "Number of items per page"
+        }
+      },
+      "required": [
+        "page",
+        "per_page"
+      ],
+      "description": "Pagination metadata.",
+      "title": "PagedPageDetailsResponse"
+    },
+    "celebrity-detection_SortDirection": {
+      "type": "string",
+      "enum": [
+        "asc",
+        "desc"
+      ],
+      "description": "Sort direction.",
+      "title": "SortDirection"
+    },
+    "celebrity-detection_SortField": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "Field name to sort by"
+        },
+        "direction": {
+          "$ref": "#/$defs/celebrity-detection_SortDirection",
+          "description": "Sort direction"
+        }
+      },
+      "required": [
+        "field"
+      ],
+      "description": "Sort field details.",
+      "title": "SortField"
+    }
+  }
+}

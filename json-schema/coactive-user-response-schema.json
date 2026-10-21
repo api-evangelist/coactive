@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-user-response-schema.json",
+  "title": "UserResponse",
+  "description": "Complete user response model including roles.\n\nThis model extends the base user response to include the user's assigned roles.\nIt is used when the complete user information, including roles, is required.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-user-management-api-openapi.yml#/components/schemas/UserResponse",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Unique identifier for the user"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the user"
+    },
+    "email": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Email address of the user"
+    },
+    "picture": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "URL to the user's profile picture"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the user was created"
+    },
+    "last_login": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "description": "Timestamp of the user's last login"
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Role"
+      },
+      "description": "List of roles assigned to the user"
+    }
+  },
+  "required": [
+    "user_id",
+    "name",
+    "created_at",
+    "roles"
+  ],
+  "$defs": {
+    "Role": {
+      "type": "object",
+      "properties": {
+        "role_id": {
+          "type": "string",
+          "description": "Name of the role (e.g., 'admin', 'editor', 'viewer')"
+        },
+        "resource": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Optional resource type the role applies to (e.g., 'dataset')"
+        },
+        "resource_instance": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Optional resource instance ID the role applies to"
+        }
+      },
+      "required": [
+        "role_id"
+      ],
+      "description": "Role model for user and client roles",
+      "title": "Role"
+    }
+  }
+}

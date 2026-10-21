@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/coactive/main/json-schema/coactive-context-studio-video-ad-segments-create-response-schema.json",
+  "title": "VideoAdSegmentsCreateResponse",
+  "description": "Response returned after ad segments are created.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/coactive-context-studio-adsegments-api-openapi.yml#/components/schemas/context-studio_VideoAdSegmentsCreateResponse",
+  "type": "object",
+  "properties": {
+    "asset_identifier_value": {
+      "type": "string"
+    },
+    "ad_segments_created": {
+      "type": "integer"
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/context-studio_AdSegmentInfo"
+      }
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "asset_identifier_value",
+    "ad_segments_created",
+    "segments",
+    "message"
+  ],
+  "$defs": {
+    "context-studio_AdSegmentInfo": {
+      "type": "object",
+      "properties": {
+        "segment_number": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "segment_number",
+        "id"
+      ],
+      "description": "A single Break Pattern segment with its assigned ID.",
+      "title": "AdSegmentInfo"
+    }
+  }
+}
